@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "salesleadsplits" showinFrame ="true"  title ="Sales Dashboard| Rainbow CRM" Object = "com.rainbow.crm.dashboard.model.SalesDashbBard" 
+Controller = "com.rainbow.crm.dashboard.controller.SalesDashBoardController">
+<Template type= "General"  name = "miniGraphTemplate"></Template>
+
+<Elements>
+<UIForm Id ="salesleadsplits" method = "POST" enctype="multipart/form-data" >
+<Section type= "fullSection">
+<Element type = "UIHidden" Id = "hdngraphId"  property = "graphId"  constantValue="leadsplits"/>
+<Element type = "UIPieChart" Id = "pieChart4"  useDonutChart="true" dataProvider = "leadSplits" useGoogleGraph="true" >
+	  <centerX>150</centerX>
+	  <centerY>150</centerY>
+	  <radius>50</radius>
+	  <rangeHeight>300</rangeHeight>
+	  <rangeWidth>500</rangeWidth>
+ 	</Element>  
+</Section>
+</UIForm>
+</Elements>
+</Page>

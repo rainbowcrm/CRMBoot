@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+<class name="com.rainbow.crm.sales.model.SalesLine" table="SALES_LINES" lazy="false">
+	<meta attribute="class-description">
+         This class contains the Sales Line
+      </meta>
+       <id name="id" type="int" column="id">
+      </id>
+      <version name="objectVersion" column="version" type="integer"></version>
+      <many-to-one name="company" column ="company_id" not-null="true" lazy="false" ></many-to-one>
+      <property name="billNumber" column="bill_number" type="string"/>
+      <property name="lineNumber" column="LINE_NUMBER" type="integer"/>
+      <many-to-one name="sku" column ="sku_id" not-null="true" lazy="false" ></many-to-one>
+      <many-to-one name="user" column ="user_id"  lazy="false" ></many-to-one>
+      <property name="unitPrice" column="unit_price" type="double"/>
+      <property name="qty" column="qty" type="integer"/>
+      <property name="comments" column="comments" type="string"/>
+      <property name="unitDisc" column="UNIT_DISCOUNT" type="double"/>
+      <property name="returnPrice" column="RETURN_PRICE" type="double"/>
+      <property name="originalPrice" column="ORIGINAL_PRICE" type="double"/>
+      <property name="originalQty" column="ORIGINAL_QTY" type="integer"/>
+      <property name="discPercent" column="DISC_PERCENT" type="double"/>
+      <property name="lineTotalDisc" column="LINE_TOTDISC" type="double"/>
+      <property name="taxPercent" column="TAX_PERCENT" type="double"/>
+      <property name="taxAmount" column="TAX_AMOUNT" type="double"/>
+      <property name="lineTotal" column="LINE_TOTAL" type="double"/>
+      <property name="voided" column="IS_VOIDED" type="boolean"/>
+      <property name="returnLine" column="IS_RETURN_LINE" type="boolean"/>
+      <property name="createdDate" column="created_date" type="timestamp" update="false"/>
+      <property name="lastUpdateDate" column="last_updated_date" type="timestamp"/>
+      <property name="createdUser" column="created_by" type="string" update="false"/>
+      <property name="lastUpdateUser" column="last_updated_by" type="string"/>
+      <many-to-one name="salesDoc" column ="SALES_ID" 
+       not-null="true"></many-to-one>
+       <many-to-one name="promotion" column ="PROMOTION_ID" ></many-to-one>
+       <property name="isMasterLine" column="IS_MASTER_LINE" type="boolean"/>
+       <property name="isChildLine" column="IS_CHILD_LINE" type="boolean"/>
+       <property name="masterlineId" column="MASTER_LINE_ID" type="integer"/>
+</class>
+</hibernate-mapping>
+      

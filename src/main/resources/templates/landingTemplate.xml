@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Template id ="generalTemplate" type = "com.techtrade.rads.framework.ui.templates.TemplateType" >
+    <DataType>  </DataType>
+    <MetaData>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    </MetaData>
+    <Renderers>
+        <Renderer>
+            <RendererType>HTML</RendererType>
+            <StyleSheet>./css/build/CRUDPage.css</StyleSheet>
+            <StyleSheet>./css/build/navPage.css</StyleSheet>
+            <PageStyle>landingpagestyle</PageStyle>
+        </Renderer>
+    </Renderers>
+    <fixedActionField>hdnFixedAction</fixedActionField>
+    <SubmitActionField>submitAction</SubmitActionField>
+    <FixedActionParamField>hdnFixedActionParam</FixedActionParamField>
+    <CRUDFieldMarker>:</CRUDFieldMarker>
+    <IncludeJS>./js/RadsLib.js</IncludeJS>
+    <IncludeJS>./js/dialog-polyfill.js</IncludeJS>
+    <IncludeJS>./js/date-polyfill.js</IncludeJS>
+    <IncludeJS>./js/CRMGeneral.js</IncludeJS>
+    <Errors showin ="detail"  style ="errorStyle" showinTable = "true" tabStyle ="errorStyle">
+        <OddRow>oddRowError</OddRow>
+        <EvenRow>evenRowError</EvenRow>
+        <TitleRow>listPageTitleError</TitleRow>
+    </Errors>
+    <Sections>
+        <Section Id ="topBar"  style ="topBar"  >
+            <Panel key ="topBar"  Id ="tpBR" > </Panel>
+        </Section>
+        <Section Id ="shortCutBar"  style ="shortcutbar"  >
+            <Panel key ="shortcutbar"  Id ="scutBR" > </Panel>
+        </Section>
+        <Section Id ="adminshortCutBar"  style ="shortcutbar"  >
+            <Panel key ="adminShortcutbar"  Id ="scutBR" > </Panel>
+        </Section>
+        <Section Id ="operationsshortCutBar"  style ="shortcutbar"  >
+            <Panel key ="operationsShortcutbar"  Id ="scutBR" > </Panel>
+        </Section>
+        <Section Id ="managershortCutBar"  style ="shortcutbar"  >
+            <Panel key ="mgrShortcutbar"  Id ="hrBR" > </Panel>
+        </Section>
+        <Section Id ="leftsideBar"  style ="leftnav"  >
+            <Panel key ="menuPanel"  Id ="leftnav" > </Panel>
+        </Section>
+        <Section Id ="adminleftsideBar"  style ="leftnav"  >
+            <Panel key ="adminMenuPanel"  Id ="leftnav" > </Panel>
+        </Section>
+        <Section Id ="operationsleftsideBar"  style ="leftnav"  >
+            <Panel key ="operationsMenuPanel"  Id ="leftnav" > </Panel>
+        </Section>
+        <Section Id ="managerleftsidebar"  style ="leftnav"  >
+            <Panel key ="managermenuPanel"  Id ="leftnav" > </Panel>
+        </Section>
+        <Section Id ="agentsleftsidebar"  style ="leftnav"  >
+            <Panel key ="agentmenuPanel"  Id ="leftnav" > </Panel>
+        </Section>
+        <Section Id ="leftsideBarApp"  style ="leftnav"  >
+            <Panel key ="appMenuPanel"  Id ="leftnav" > </Panel>
+        </Section>
+        <CoreSection>
+            <ErrorSection showinTable = "true"  style= "errorStyle" >
+            </ErrorSection>
+            <Section Id = "mainSection" style= "detailCRUDStyle">
+            </Section>
+            <Section Id = "fullPage" style="" >
+            </Section>
+            <Section Id = "displaySection"  showinTable = "true" style= "childSectionStyle">
+                <noRows>-1</noRows>
+                <noCols>1</noCols>
+            </Section>
+            <Section Id = "tileSection"  showinTable = "true" style= "childSectionStyle">
+                <noRows>-1</noRows>
+                <noCols>3</noCols>
+            </Section>
+        </CoreSection>
+        <Section Id ="summary" showinTable = "true"  style= "summaryStyle" >
+            <noRows>1</noRows>
+            <noCols>1</noCols>
+
+        </Section>
+        <Section Id ="discussionsummary" showinTable = "true"  style= "discussionrootStyle" >
+            <noRows>1</noRows>
+            <noCols>1</noCols>
+
+        </Section>
+
+        <Section Id ="copyRightSection"   style= "copyRight" >
+            <Panel key ="copyRightPanel"  Id ="copyRightPanel" > </Panel>
+        </Section>
+    </Sections>
+
+
+</Template>

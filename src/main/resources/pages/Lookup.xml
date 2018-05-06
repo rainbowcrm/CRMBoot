@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id ="lookupPage"  Object = "com.techtrade.rads.framework.ui.components.UILookupPage">
+<Template type= "lookup"  name = "LookupTemplate"></Template>
+<Elements>
+<Element label = "Search"  type = "UIText" Id = "txtSearch"   />
+<Element   type = "UIList" Id = "lstOptions"  WindowAction ="CLOSELOOKUPWINDOW" size = "20"/>
+<Summary>
+<Element caption = "Close" style="btn btn-warning" iconStyle="glyphicon glyphicon-remove"  type = "UIButton" Id = "btnClose"  fixedAction ="FixedAction.CLOSELOOKUPWINDOW"   />
+<Element caption = "Cancel" style="btn btn-primary"  type = "UIButton" Id = "btnCancel" fixedAction ="FixedAction.CANCELWINDOW" />
+</Summary>
+</Elements>
+</Page>

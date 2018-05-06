@@ -1,0 +1,19 @@
+@font-face {
+  font-family: "Oregon LDO Black";
+  src: url("./fonts/Oregon LDO Black.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "Oregon LDO Black Oblique";
+  src: url("./fonts/Oregon LDO Black Oblique.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "Oregon LDO Book";
+  src: url("./fonts/Oregon LDO Book.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "Oregon LDO Light";
+  src: url("./fonts/Oregon LDO Light.ttf") format("truetype"); }
+
+@font-face {
+  font-family: "Oregon LDO Medium";
+  src: url("./fonts/Oregon LDO Medium.ttf") format("truetype"); }

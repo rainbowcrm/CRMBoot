@@ -1,0 +1,72 @@
+
+<div align="center">
+<font size="6"> <b> $companyName </b> </font>
+<br>
+$title
+</div>
+<br> <br>
+<table width="100%" style="border-bottom: 1px solid;" >
+<tr>
+<td align ="left">
+$FromText : &nbsp; $FromDate   &nbsp; $ToText : &nbsp; $ToDate
+</td>
+<td align ="right">
+ $runon:<b>$runDate</b>
+ </td>
+</tr>
+</table>
+<br>
+
+<br>
+ 
+<br>
+ <table width="100%" border="1" >
+   <tr>
+     <td>
+	 <b>$Field1</b>
+	 </td>
+	 <td>
+	 <b>$Field2</b>
+	 </td>
+	 <td>
+	 <b>$Field3</b>
+	 </td>
+	 <td>
+	 <b>$Field4</b>
+	 </td>
+	<td >
+	 <b>$Field5</b>
+	 </td>
+	 <td >
+	 <b>$Field6</b>
+	 </td>
+	 <td >
+	 <b>$Field7</b>
+	 </td>
+  </tr>
+  #foreach ($record in $records)
+	<tr>
+     <td>
+	 $record.Field1
+	 </td>
+     <td>
+	 $record.Field2
+	 </td>	 
+     <td>
+	 $record.Field3
+	 </td>
+     <td>
+	 $record.Field4
+	 </td>	 
+     <td>
+	 $record.Field5
+	 </td>	 
+     <td>
+	 $record.Field6
+	 </td>
+     <td>
+	 $record.Field7
+	 </td>
+    </tr>
+#end	
+</table>

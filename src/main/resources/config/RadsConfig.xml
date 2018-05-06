@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Config>
+    <ExternalizeFacade class= "com.rainbow.crm.common.Externalize">
+
+    </ExternalizeFacade>
+    <Properties>
+        <appURL>http://localhost:8080/</appURL>
+        <settings>com.rainbow.crm.common.CRMDefaultSettings</settings>
+        <portalPrefix></portalPrefix>
+        <!-- AWS entry <appURL>http://ec2-35-154-225-199.ap-south-1.compute.amazonaws.com:8080/</appURL>
+        <portalPrefix>primuscrm</portalPrefix>  -->
+        <bootstrapFolder>./vendor</bootstrapFolder>
+        <useGoogleforGraphs>false</useGoogleforGraphs>
+    </Properties>
+    <Pages>
+        <Page id = "login" definition ="/resources/pages/login/login.xml" modelclass = "com.rainbow.crm.login.model.Login" >
+        </Page>
+        <Page id = "noaccesspage" definition ="/resources/pages/login/noaccesspage.xml" modelclass = "com.rainbow.crm.login.model.DummyObject" >
+        </Page>
+        <Page id = "testTags" definition ="/resources/pages/login/testTags.xml" modelclass = "com.rainbow.crm.login.model.Login" >
+        </Page>
+        <Page id = "sysadmin" definition ="/resources/pages/company/CompanyList.xml" modelclass = "com.rainbow.crm.company.model.Company" >
+        </Page>
+        <Page id = "compcreate" definition ="/resources/pages/company/CompanyCreate.xml" modelclass = "com.rainbow.crm.company.model.Company" >
+        </Page>
+        <Page id = "selfcompcreate" definition ="/resources/pages/company/SelfCompanyCreate.xml" modelclass = "com.rainbow.crm.company.model.GuestCompany"   authRequired="false">
+        </Page>
+        <Page id = "newuser" definition ="/resources/pages/user/UserCreate.xml" accessCode ="ADMIN:USER" modelclass = "com.rainbow.crm.user.model.User" >
+        </Page>
+        <Page id = "Appnewuser" definition ="/resources/pages/user/AppUserCreate.xml" accessCode ="ADMIN:USER" modelclass = "com.rainbow.crm.user.model.User" >
+        </Page>
+        <Page id = "users" definition ="/resources/pages/user/UserList.xml"  accessCode ="ADMIN:USER" modelclass = "com.rainbow.crm.user.model.User" >
+        </Page>
+        <Page id = "appUsers" definition ="/resources/pages/user/AppUserList.xml" accessCode ="ADMIN:USER" modelclass = "com.rainbow.crm.user.model.User" >
+        </Page>
+        <Page id = "lookup" definition ="/resources/pages/lookup/lookup.xml"  modelclass = "com.techtrade.rads.framework.model.simple.LookupObject" > </Page>
+        <Page id = "divisions" definition ="/resources/pages/division/divisionList.xml" accessCode ="ADMIN:DIVISION" modelclass = "com.rainbow.crm.division.model.Division" >
+        </Page>
+        <Page id = "categories" definition ="/resources/pages/category/categories.xml" accessCode ="MERCH:CATEGORIES" modelclass = "com.rainbow.crm.category.model.Category" >
+        </Page>
+        <Page id = "expenseheads" definition ="/resources/pages/expensehead/expenseheads.xml" accessCode ="SPLAN:EXPHEADS" modelclass = "com.rainbow.crm.expensehead.model.ExpenseHead" >
+        </Page>
+        <Page id = "brands" definition ="/resources/pages/brand/brands.xml" accessCode ="MERCH:BRANDS"  modelclass = "com.rainbow.crm.brand.model.Brand" >
+        </Page>
+        <Page id = "inventory" definition ="/resources/pages/inventory/inventory.xml" modelclass = "com.rainbow.crm.inventory.model.Inventory" >
+        </Page>
+        <Page id = "products" definition ="/resources/pages/products/products.xml"  accessCode ="MERCH:PRODUCTS" modelclass = "com.rainbow.crm.product.model.Product" >
+        </Page>
+        <Page id = "vendors" definition ="/resources/pages/vendor/vendorList.xml" modelclass = "com.rainbow.crm.vendor.model.Vendor" >
+        </Page>
+        <Page id = "customers" definition ="/resources/pages/customer/customerList.xml" modelclass = "com.rainbow.crm.customer.model.Customer" >
+        </Page>
+        <Page id = "carriers" definition ="/resources/pages/carrier/carrierList.xml" modelclass = "com.rainbow.crm.carrier.model.Carrier" >
+        </Page>
+        <Page id = "contacts" definition ="/resources/pages/contact/contactList.xml" modelclass = "com.rainbow.crm.contact.model.Contact" >
+        </Page>
+        <Page id = "followups" definition ="/resources/pages/followup/followupList.xml" modelclass = "com.rainbow.crm.followup.model.Followup" >
+        </Page>
+        <Page id = "enquiries" definition ="/resources/pages/enquiry/enquiryList.xml" modelclass = "com.rainbow.crm.enquiry.model.Enquiry" >
+        </Page>
+        <Page id = "documents" definition ="/resources/pages/documents/documentList.xml" modelclass = "com.rainbow.crm.document.model.Document" >
+        </Page>
+        <Page id = "salespitches" definition ="/resources/pages/salespitch/salespitchList.xml" modelclass = "com.rainbow.crm.salespitch.model.Salespitch" >
+        </Page>
+        <Page id = "feedbacks" definition ="/resources/pages/feedback/feedbackList.xml" modelclass = "com.rainbow.crm.feedback.model.FeedBack" >
+        </Page>
+        <Page id = "dashboard" definition ="/resources/pages/dashboards/salesdashboard.xml" modelclass = "com.rainbow.crm.dashboard.model.SalesDashBoard" >
+        </Page>
+        <Page id = "divmgrdashboard" definition ="/resources/pages/dashboards/divmgrdashboard.xml"  accessCode ="MANAGER:DASHBOARD" modelclass = "com.rainbow.crm.dashboard.model.SalesDashBoard" >
+        </Page>
+        <Page id = "corpadmindashboard" definition ="/resources/pages/dashboards/corpadmindashboard.xml"  accessCode ="ADMIN:DASHBOARD" modelclass = "com.rainbow.crm.dashboard.model.SalesDashBoard" >
+        </Page>
+        <Page id = "salesdashboardtargetdata" definition ="/resources/pages/dashboards/salesdashboardtargetdata.xml" modelclass = "com.rainbow.crm.dashboard.model.SalesDashBoard" >
+        </Page>
+        <Page id = "divtargetanalysis" definition ="/resources/pages/dashboards/divtargetanalysis.xml" modelclass = "com.rainbow.crm.dashboard.model.SalesDashBoard" >
+        </Page>
+        <Page id = "divsalehistory" definition ="/resources/pages/dashboards/divsaleshistory.xml" modelclass = "com.rainbow.crm.dashboard.model.SalesDashBoard" >
+        </Page>
+        <Page id = "divsalesleadsplits" definition ="/resources/pages/dashboards/divsalesleadsplits.xml" modelclass = "com.rainbow.crm.dashboard.model.SalesDashBoard" >
+        </Page>
+        <Page id = "salesdashboardsaleshistory" definition ="/resources/pages/dashboards/salesdashboardsaleshistory.xml" modelclass = "com.rainbow.crm.dashboard.model.SalesDashBoard" >
+        </Page>
+        <Page id = "salesportfoliosplits" definition ="/resources/pages/dashboards/salesportfoliosplits.xml" modelclass = "com.rainbow.crm.dashboard.model.SalesDashBoard" >
+        </Page>
+        <Page id = "salesleadssplits" definition ="/resources/pages/dashboards/salesleadssplits.xml" modelclass = "com.rainbow.crm.dashboard.model.SalesDashBoard" >
+        </Page>
+        <Page id = "divassocsalessplits" definition ="/resources/pages/dashboards/divassocsalessplits.xml" accessCode ="MANAGER:SALESSPLITS" modelclass = "com.rainbow.crm.dashboard.model.SalesDashBoard" >
+        </Page>
+        <Page id = "adminsalessplits" definition ="/resources/pages/dashboards/adminsalessplits.xml" accessCode ="ADMIN:SALESSPLITS" modelclass = "com.rainbow.crm.dashboard.model.SalesDashBoard" >
+        </Page>
+        <Page id = "divproductsalesplits" definition ="/resources/pages/dashboards/divproductsalesplits.xml" modelclass = "com.rainbow.crm.dashboard.model.SalesDashBoard" >
+        </Page>
+        <Page id = "custcategories" definition ="/resources/pages/custcategory/custcategoryList.xml" accessCode ="SPLAN:CUSTCATEGORY" modelclass = "com.rainbow.crm.custcategory.model.CustCategory" >
+        </Page>
+        <Page id = "newcustcategory" definition ="/resources/pages/custcategory/newcustcategory.xml" accessCode ="SPLAN:CUSTCATEGORY" modelclass = "com.rainbow.crm.custcategory.model.CustCategory" >
+        </Page>
+        <Page id = "alerts" definition ="/resources/pages/alert/alertList.xml" modelclass = "com.rainbow.crm.alert.model.Alert" >
+        </Page>
+        <Page id = "loyatylist" definition ="/resources/pages/loyalty/loyaltyList.xml" modelclass = "com.rainbow.crm.alert.model.Alert" >
+        </Page>
+        <Page id = "purchases" definition ="/resources/pages/purchase/purchaseList.xml" modelclass = "com.rainbow.crm.purchase.model.Purchase" >
+        </Page>
+        <Page id = "salesperiodlist" definition ="/resources/pages/salesperiod/salesperiodList.xml"  accessCode ="SPLAN:SPERIOD" modelclass = "com.rainbow.crm.salesperiod.model.SalesPeriod" >
+        </Page>
+        <Page id = "corpsalesperiodlist" definition ="/resources/pages/corpsalesperiod/corpsalesperiodList.xml"  accessCode ="ADMIN:SPERIOD" modelclass = "com.rainbow.crm.corpsalesperiod.model.CorpSalesPeriod" >
+        </Page>
+
+        <Page id = "salesportfoliolist" definition ="/resources/pages/salesportfolio/salesportfolioList.xml" accessCode ="SPLAN:SAPFOLIO" modelclass = "com.rainbow.crm.salesportfolio.model.SalesPortfolio" >
+        </Page>
+        <Page id = "promotionslist" definition ="/resources/pages/promotions/promotionsList.xml"  accessCode ="MANAGER:PROMOTIONS" modelclass = "com.rainbow.crm.promotion.model.Promotion" >
+        </Page>
+        <Page id = "sales" definition ="/resources/pages/sales/salesList.xml" modelclass = "com.rainbow.crm.sales.model.Sales" >
+        </Page>
+        <Page id = "salesreturns" definition ="/resources/pages/sales/salesreturnList.xml" modelclass = "com.rainbow.crm.sales.model.Sales" >
+        </Page>
+        <Page id = "salesreturnsearch" definition ="/resources/pages/sales/salesreturnsearch.xml" modelclass = "com.rainbow.crm.sales.model.SalesReturnSearch" >
+        </Page>
+        <Page id = "wishlist" definition ="/resources/pages/wishlist/wishlistList.xml" modelclass = "com.rainbow.crm.wishlist.model.WishList" >
+        </Page>
+        <Page id = "saleslead" definition ="/resources/pages/saleslead/salesleadList.xml" modelclass = "com.rainbow.crm.saleslead.model.SalesLead" >
+        </Page>
+        <Page id = "expensevouchers" definition ="/resources/pages/expensevoucher/expensevoucherList.xml" modelclass = "com.rainbow.crm.expensevoucher.model.ExpenseVoucher" >
+        </Page>
+        <Page id = "openexpenses" definition ="/resources/pages/expensevoucher/mgrexpensevoucherList.xml" accessCode ="MANAGER:OPENEXPENSES" modelclass = "com.rainbow.crm.expensevoucher.model.ExpenseVoucher" >
+        </Page>
+
+        <Page id = "territories" definition ="/resources/pages/territory/territoryList.xml"  accessCode ="SPLAN:TERRIT" modelclass = "com.rainbow.crm.territory.model.Territory" >
+        </Page>
+        <Page id = "distributionorders" definition ="/resources/pages/distributionorder/distributionorderList.xml" modelclass = "com.rainbow.crm.distributionorder.model.DistributionOrder" >
+        </Page>
+
+        <!--  TBD
+        <Page id = "uoms" definition ="/resources/pages/uoms/uoms.xml" modelclass = "com.rainbow.crm.uom.model.UOM" >
+        </Page>
+        -->
+        <Page id = "queries" definition ="/resources/pages/query/query.xml" accessCode ="MANAGER:QUERY" modelclass = "com.rainbow.framework.query.model.Query" >
+        </Page>
+        <Page id = "config" definition ="/resources/pages/config/config.xml" accessCode ="ADMIN:CONFIG" modelclass = "com.rainbow.crm.config.model.ConfigSet" >
+        </Page>
+        <Page id = "reasoncodes" definition ="/resources/pages/reasoncode/reasoncodes.xml" accessCode ="ADMIN:REASON" modelclass = "com.rainbow.crm.reasoncode.model.ReasonCode" >
+        </Page>
+        <Page id = "newcustomer" definition ="/resources/pages/customer/newcustomer.xml" modelclass = "com.rainbow.crm.customer.model.Customer" >
+        </Page>
+        <Page id = "newcarrier" definition ="/resources/pages/carrier/newcarrier.xml" modelclass = "com.rainbow.crm.carrier.model.Carrier" >
+        </Page>
+        <Page id = "quickcustomeradd" definition ="/resources/pages/customer/quickcustomeradd.xml" modelclass = "com.rainbow.crm.customer.model.Customer" >
+        </Page>
+        <Page id = "transactiondocument" definition ="/resources/pages/documents/transactiondocument.xml" modelclass = "com.rainbow.crm.transactiondocuments.model.TransactionDocument" >
+        </Page>
+        <Page id = "newcontact" definition ="/resources/pages/contact/newcontact.xml" modelclass = "com.rainbow.crm.contact.model.Contact" >
+        </Page>
+        <Page id = "newfollowup" definition ="/resources/pages/followup/newfollowup.xml" modelclass = "com.rainbow.crm.followup.model.Followup" >
+        </Page>
+        <Page id = "newenquiry" definition ="/resources/pages/enquiry/newenquiry.xml" modelclass = "com.rainbow.crm.enquiry.model.Enquiry" >
+        </Page>
+        <Page id = "newdocument" definition ="/resources/pages/documents/newdocument.xml" modelclass = "com.rainbow.crm.document.model.Document" >
+        </Page>
+        <Page id = "newsalespitch" definition ="/resources/pages/salespitch/newsalespitch.xml" modelclass = "com.rainbow.crm.salespitch.model.Salespitch" >
+        </Page>
+        <Page id = "newfeedback" definition ="/resources/pages/feedback/newfeedback.xml" modelclass = "com.rainbow.crm.feedback.model.FeedBack" >
+        </Page>
+        <Page id = "newsku" definition ="/resources/pages/item/newsku.xml"  accessCode ="MERCH:SKUS" modelclass = "com.rainbow.crm.item.model.Sku" >
+        </Page>
+        <Page id = "skus" definition ="/resources/pages/item/skuList.xml" accessCode ="MERCH:SKUS" modelclass = "com.rainbow.crm.item.model.Sku" >
+        </Page>
+        <Page id = "newitem" definition ="/resources/pages/item/newitem.xml" accessCode ="MERCH:ITEMS" modelclass = "com.rainbow.crm.item.model.Item" >
+        </Page>
+        <Page id = "items" definition ="/resources/pages/item/itemList.xml" accessCode ="MERCH:ITEMS" modelclass = "com.rainbow.crm.item.model.Item" >
+        </Page>
+        <Page id = "skucompletelist" definition ="/resources/pages/item/skucompletelist.xml" modelclass = "com.rainbow.crm.item.model.SkuComplete" >
+        </Page>
+        <Page id = "itemimages" definition ="/resources/pages/item/itemImages.xml"  accessCode ="MERCH:ITEMIMAGES" modelclass = "com.rainbow.crm.item.model.ItemImageSet" >
+        </Page>
+        <Page id = "productfaqs" definition ="/resources/pages/products/productFAQs.xml"  accessCode ="MERCH:PRODFAQ" modelclass = "com.rainbow.crm.product.model.ProductFAQSet" >
+        </Page>
+        <Page id = "itemattributes" definition ="/resources/pages/item/itemAttributes.xml"  accessCode ="MERCH:ITEMATTR" modelclass = "com.rainbow.crm.item.model.ItemAttributeSet" >
+        </Page>
+        <Page id = "itemprofile" definition ="/resources/pages/profiles/itemprofile.xml"  accessCode ="MERCH:ITEMPROF" modelclass = "com.rainbow.crm.profile.model.ItemProfile" >
+        </Page>
+        <Page id = "customerprofile" definition ="/resources/pages/profiles/customerprofile.xml"  modelclass = "com.rainbow.crm.profile.model.CustomerProfile" >
+        </Page>
+
+        <Page id = "skucomplete" definition ="/resources/pages/item/skucomplete.xml" modelclass = "com.rainbow.crm.item.model.SkuComplete" >
+        </Page>
+        <Page id = "setup" definition ="/resources/pages/datasetup/datasetup.xml" accessCode ="ADMIN:DATASETUP" modelclass = "com.rainbow.framework.setup.model.DataLoader" >
+        </Page>
+        <Page id = "topic" definition ="/resources/pages/topic/topic.xml" modelclass = "com.rainbow.crm.topic.model.TopicSet" >
+        </Page>
+        <Page id = "newdivision" definition ="/resources/pages/division/newDivision.xml"  accessCode ="ADMIN:DIVISION" modelclass = "com.rainbow.crm.division.model.Division" >
+        </Page>
+        <Page id = "newvendor" definition ="/resources/pages/vendor/newVendor.xml" modelclass = "com.rainbow.crm.vendor.model.Vendor" >
+        </Page>
+        <Page id = "newpurchase" definition ="/resources/pages/purchase/newpurchase.xml" modelclass = "com.rainbow.crm.purchase.model.Purchase" >
+        </Page>
+        <Page id = "newexpensevoucher" definition ="/resources/pages/expensevoucher/newexpensevoucher.xml" modelclass = "com.rainbow.crm.expensevoucher.model.ExpenseVoucher" >
+        </Page>
+        <Page id = "mgrexpensevoucher" definition ="/resources/pages/expensevoucher/mgrproexpensevoucher.xml"   accessCode ="MANAGER:OPENEXPENSES" modelclass = "com.rainbow.crm.expensevoucher.model.ExpenseVoucher" >
+        </Page>
+        <Page id = "newsalesperiod" definition ="/resources/pages/salesperiod/newsalesperiod.xml"   accessCode ="SPLAN:SPERIOD" modelclass = "com.rainbow.crm.salesperiod.model.SalesPeriod" >
+        </Page>
+        <Page id = "newcorpsalesperiod" definition ="/resources/pages/corpsalesperiod/newcorpsalesperiod.xml"   accessCode ="ADMIN:SPERIOD" modelclass = "com.rainbow.crm.corpsalesperiod.model.CorpSalesPeriod" >
+        </Page>
+        <Page id = "newsalesportfolio" definition ="/resources/pages/salesportfolio/newsalesportfolio.xml" accessCode ="SPLAN:SAPFOLIO" modelclass = "com.rainbow.crm.salesportfolio.model.SalesPortfolio" >
+        </Page>
+        <Page id = "newpromotions" definition ="/resources/pages/promotions/newpromotions.xml" accessCode ="MANAGER:PROMOTIONS" modelclass = "com.rainbow.crm.promotion.model.Promotion" >
+        </Page>
+        <Page id = "newsales" definition ="/resources/pages/sales/newsale.xml" modelclass = "com.rainbow.crm.sales.model.Sales" >
+        </Page>
+        <Page id = "newsalereturn" definition ="/resources/pages/sales/newsalereturn.xml" modelclass = "com.rainbow.crm.sales.model.Sales" >
+        </Page>
+        <Page id = "salesperiodAnalysis" definition ="/resources/pages/salesanalysis/salestargetanalyse.xml" accessCode ="ANALY:STARGET" modelclass = "com.rainbow.crm.salesperiod.model.SalesPeriodAnalyzer" >
+        </Page>
+        <Page id = "corpsalesperiodAnalysis" definition ="/resources/pages/salesanalysis/corpsalestargetanalyse.xml" accessCode ="ADMIN:STARGETANALY" modelclass = "com.rainbow.crm.corpsalesperiod.model.CorpSalesPeriodAnalyzer" >
+        </Page>
+        <Page id = "productanalysis" definition ="/resources/pages/products/productanalyse.xml" accessCode ="ANALY:PRODANALYSE" modelclass = "com.rainbow.crm.product.model.ProductAnalyzer" >
+        </Page>
+        <Page id = "salesleadanalysis" definition ="/resources/pages/saleslead/salesleadanalyse.xml" accessCode ="ANALY:LEADANALYSE" modelclass = "com.rainbow.crm.saleslead.model.SalesLeadAnalyzer" >
+        </Page>
+        <Page id = "swotanalysis" definition ="/resources/pages/swotanalysis/swotanalyse.xml" accessCode ="MANAGER:SWOTANALYSE" modelclass = "com.rainbow.crm.swot.model.SWOTAnalysis" >
+        </Page>
+
+        <Page id = "feedbackanalysis" definition ="/resources/pages/feedback/feedbackanalyse.xml" accessCode ="ANALY:FDBACKANALYSE" modelclass = "com.rainbow.crm.feedback.model.FeedBackAnalyzer" >
+        </Page>
+
+
+        <Page id = "salestrend" definition ="/resources/pages/products/productstrend.xml"  accessCode ="ANALY:PRODTREND" modelclass = "com.rainbow.crm.sales.model.SalesTrend" >
+        </Page>
+        <Page id = "salesforceanalysis" definition ="/resources/pages/salesanalysis/salesforceanalyse.xml"  accessCode ="ANALY:SALESFORCEANALYSE" modelclass = "com.rainbow.crm.salesforceanalyzer.model.SalesForceAnalyzer" >
+        </Page>
+
+        <Page id = "newwishlist" definition ="/resources/pages/wishlist/newwishlist.xml" modelclass = "com.rainbow.crm.wishlist.model.WishList" >
+        </Page>
+        <Page id = "newsaleslead" definition ="/resources/pages/saleslead/newsaleslead.xml" modelclass = "com.rainbow.crm.saleslead.model.SalesLead" >
+        </Page>
+        <Page id = "salesleadconsole" definition ="/resources/pages/saleslead/salesleadconsole.xml" modelclass = "com.rainbow.crm.saleslead.model.SalesLeadExtended" >
+        </Page>
+        <Page id = "salesreport" definition ="/resources/pages/reports/salesreports.xml" accessCode ="REPORTS:DAILYSALES" modelclass = "com.rainbow.crm.reports.model.SalesReport" >
+        </Page>
+        <Page id = "newterritory" definition ="/resources/pages/territory/newterritory.xml" accessCode ="SPLAN:TERRIT" modelclass = "com.rainbow.crm.territory.model.Territory" >
+        </Page>
+        <Page id = "newdistributionorder" definition ="/resources/pages/distributionorder/newdistributionorder.xml" modelclass = "com.rainbow.crm.distributionorder.model.DistributionOrder" >
+        </Page>
+    </Pages>
+    <Panels>
+        <Panel key = "CRUDPanel" showInDiv = "false" >
+            <Element caption = "Create"  type = "UIButton" Id = "btSubmit"   style="btn btn-primary" iconStyle="glyphicon glyphicon-plus"  rendered = "Controller.isCreateMode" fixedAction ="FixedAction.ACTION_CREATE"
+                     fixedActionvalidateFunc="validateforCreate()" fixedActionParam =  "SAVE"  />
+            <Element caption = "Update"  type = "UIButton" Id = "btUpdate"   style="btn btn-primary" iconStyle="glyphicon glyphicon-flash"  rendered = "Controller.isUpdateMode"
+                     fixedAction ="FixedAction.ACTION_UPDATE"  fixedActionvalidateFunc="validateforCreate()" fixedActionParam =  "SAVE"  />
+            <Element caption = "Cancel"  type = "UIButton" Id = "btCancel"  style="btn btn-warning" iconStyle="glyphicon glyphicon-remove"  fixedAction ="FixedAction.ACTION_PAGEFORWARD" fixedActionParam =  "CANCEL"  />
+        </Panel>
+        <Panel key = "FilterButtonsPanel" showInDiv = "true"  >
+            <Element caption = "Apply"  type = "UIButton" Id = "btfilterApply"  style="btn btn-primary"  fixedAction ="FixedAction.ACTION_FILTERAPPLY"   />
+            <Element caption = "Clear"  type = "UIButton" Id = "btfilterClear"    style="btn btn-warning" iconStyle="glyphicon glyphicon-remove" fixedAction ="FixedAction.ACTION_FILTERCLEAR"  />
+            <Element caption = "Save"  type = "UIButton" Id = "btfilterSave"  style="btn btn-primary" iconStyle="glyphicon glyphicon-save-file" fixedAction ="FixedAction.ACTION_FILTERSAVE"   />
+        </Panel>
+        <Panel key = "popupButtonPanel" showInDiv = "false"  >
+            <Element caption = "Close"  type = "UIButton" Id = "btfilterApply"  style="btn btn-warning" iconStyle="glyphicon glyphicon-remove"  fixedAction ="FixedAction.CLOSELOOKUPWINDOW"   />
+            <Element caption = "Cancel"  type = "UIButton" Id = "btfilterClear"    style="btn btn-warning" fixedAction ="FixedAction.CANCELWINDOW"  />
+        </Panel>
+        <Panel key = "copyRightPanel" >
+            <Element  type = "UILabel" value = "©Rainbow Enterprise Solutions" style="copyRightText" />
+        </Panel>
+        <Panel key = "breakPanel" >
+            <Element  type = "UIBreak" />
+            <Element  type = "UIBreak" />
+        </Panel>
+        <Panel key = "smallbreakPanel" >
+            <Element  type = "UIBreak" />
+        </Panel>
+
+        <Panel key = "NavPanel"  showInDiv = "false" >
+            <Element caption = "First"  type = "UIButton" Id = "btnFirst"  style="btn btn-primary" iconStyle="glyphicon glyphicon-fast-backward" fixedAction ="FixedAction.NAV_FIRSTPAGE"   />
+            <Element caption = "Previous"  type = "UIButton" Id = "btnPrev" style="btn btn-primary" iconStyle="glyphicon glyphicon-step-backward" fixedAction ="FixedAction.NAV_PREVPAGE" />
+            <Element caption = "Next"  type = "UIButton" Id = "btnNext"   style="btn btn-primary" iconStyle="glyphicon glyphicon-step-forward" fixedAction ="FixedAction.NAV_NEXTPAGE" />
+            <Element caption = "Last"  type = "UIButton" Id = "btnLast"    style="btn btn-primary" iconStyle="glyphicon glyphicon-fast-forward" fixedAction ="FixedAction.NAV_LASTPAGE"/>
+        </Panel>
+        <Panel key = "topBar"   showInDiv = "false">
+            <Element type = "UITable" rows = "1" cols = "3">
+                <Element type = "UITableRow">
+                    <Element type = "UITableCol" width ="13%"> <Element label="" type= "UIImage" height = "35" width ="180" src= "./resources/images/logo1.gif" /> </Element>
+                    <Element type = "UITableCol" width ="25%"> <Element label="" type= "UILabel"  width ="33%" Id="compnamespan" generatedValue="Controller.getCompanyName" style="topBar"/> </Element>
+                    <Element type = "UITableCol" width ="50%" align ="center"></Element>
+                    <Element type = "UITableCol" width ="25%" align="right"> <Element label="" type= "UIButton" caption ="Logout" style="btn" iconStyle="glyphicon glyphicon-off"   width ="33%" onClickJS="logout();"/> </Element>
+                </Element>
+            </Element>
+        </Panel>
+        <Panel key ="shortcutbar" showInDiv = "false" >
+            <Element type = "UITable" rows = "1" cols = "18">
+                <Element type = "UITableRow">
+                    <Element type = "UITableCol" width ="14%">  </Element>
+
+                    <Element type = "UITableCol" width ="5%" align="center">
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/customer-icon.png" title ="Customers" onClickJS="window.location.href ='rdscontroller?page=customers'"/> </Element>
+                    <Element type = "UITableCol" width ="5%" align="center">
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/sales.png" title ="Sales" onClickJS="window.location.href ='rdscontroller?page=sales'"/></Element>
+                    <Element type = "UITableCol" width ="5%" align="center">
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/settings.jpg" title ="Customers"  onClickJS="window.location.href ='rdscontroller?page=customers'"/> </Element>
+                    <Element type = "UITableCol" width ="5%" align="center">
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/alerts.png"   title ="Alerts" onClickJS="window.location.href ='rdscontroller?page=alerts'"/> </Element>
+                    <Element type = "UITableCol" width ="5%" align="center">
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/dashboard.png" title ="Dashboard"  onClickJS="window.location.href ='rdscontroller?page=topic'"/></Element>
+                    <Element type = "UITableCol" width ="5%" align="center">
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/opportunity.png" title ="Sales Leads"  onClickJS="window.location.href ='rdscontroller?page=saleslead'"/> </Element>
+                    <Element type = "UITableCol" width ="5%" align="center">
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/followups.png" title ="Followups"  onClickJS="window.location.href ='rdscontroller?page=followups'"/> </Element>
+                    <Element type = "UITableCol" width ="5%" align="center">
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/pitchers.ico" title ="Sales Pitches" onClickJS="window.location.href ='rdscontroller?page=salespitches'"/> </Element>
+                    <Element type = "UITableCol" width ="5%" align="center">
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/documents.jpg" title ="Documents" onClickJS="window.location.href ='rdscontroller?page=documents'"/> </Element>
+                    <Element type = "UITableCol" width ="5%" align="center">
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/feedback.png" title ="Feedbacks"  onClickJS="window.location.href ='rdscontroller?page=feedbacks'"/> </Element>
+                    <Element type = "UITableCol" width ="5%" align="center">
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/items.png" title ="Items" onClickJS="window.location.href ='rdscontroller?page=items'"/> </Element>
+                    <Element type = "UITableCol" width ="5%" align="center">
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/discussion.png" title ="Discussions"  onClickJS="window.location.href ='rdscontroller?page=topic'"/> </Element>
+                    <Element type = "UITableCol" width ="5%" align="center">
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/inventory_icon.jpg" title ="Inventory" onClickJS="window.location.href ='rdscontroller?page=inventory'"/> </Element>
+                    <Element type = "UITableCol" width ="5%" align="center">
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/delivery.jpg" title ="Delivery Orders" onClickJS="window.location.href ='rdscontroller?page=distributionorders'"/> </Element>
+                    <Element type = "UITableCol" width ="5%" align="center">
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/enquiry-icon.jpg" title ="Enquiry"  onClickJS="window.location.href ='rdscontroller?page=enquiries'"/> </Element>
+                    <Element type = "UITableCol" width ="5%" align="center">
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/product_faq.jpg" title ="Product FAQ" onClickJS="window.location.href ='rdscontroller?page=productfaqs'"/> </Element>
+                    <Element type = "UITableCol" width ="5%" align="center">
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/purchase.png" title ="Purchases" onClickJS="window.location.href ='rdscontroller?page=pruchases'"/> </Element>
+                    <!-- <Element type = "UITableCol" width ="5%" align="right">
+                            <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/expenses.jpg"  onClickJS="logout();"/> </Element> -->
+
+                </Element>
+            </Element>
+        </Panel>
+        <Panel key = "menuPanel"   showInDiv = "false">
+            <Element label = "" type = "UIMenu" Id = "menu00" style="menustyleParent" title="Setup" groupId= "menuGRP01"  >
+                <Element label = "" type = "UIMenu" Id = "menu01" style="menustyle" title="Company" link = "rdscontroller?page=sysadmin" iconStyle="fa fa-fw fa-dashboard"  />
+                <Element label = "" type = "UIMenu" Id = "menu02" style="menustyle" title="New Company" link = "rdscontroller?page=compcreate" iconStyle="fa fa-fw fa-dashboard"  />
+                <Element label = "" type = "UIMenu" Id = "menu03" style="menustyle" title="Users" link = "rdscontroller?page=users" iconStyle="fa fa-fw fa-dashboard"  />
+                <Element label = "" type = "UIMenu" Id = "menu04" style="menustyle" title="New User" link = "rdscontroller?page=newuser"  iconStyle="fa fa-fw fa-dashboard" />
+                <Element label = "" type = "UIMenu" Id = "menu04" style="menustyle" title="Audits" link = "rdscontroller?page=SLSXML" iconStyle="fa fa-fw fa-dashboard"  />
+            </Element>
+        </Panel>
+        <Panel key = "appMenuPanel"   showInDiv = "false">
+            <Element label = "" type = "UIMenu" Id = "menu80" style="menustyleParent" title="Administration" groupId= "menuGRP080"  >
+                <Element label = "" type = "UIMenu" Id = "menu01" style="menustyle" title="Configuration" link = "rdscontroller?page=config" iconStyle="fa fa-fw fa-briefcase"  />
+                <Element label = "" type = "UIMenu" Id = "menu01" style="menustyle" title="Data_Setup" link = "rdscontroller?page=setup" iconStyle="fa fa-fw fa-download"  />
+                <Element label = "" type = "UIMenu" Id = "menu02" style="menustyle" title="Divisions" link = "rdscontroller?page=divisions" iconStyle="fa fa-fw fa-bookmark"  />
+                <Element label = "" type = "UIMenu" Id = "menu03" style="menustyle" title="Users" link = "rdscontroller?page=appUsers"  iconStyle="fa fa-fw fa-users" />
+                <Element label = "" type = "UIMenu" Id = "menu04" style="menustyle" title="Reason_Codes" link = "rdscontroller?page=reasoncodes"  iconStyle="fa fa-fw fa-plug" />
+            </Element>
+
+            <Element label = "" type = "UIMenu" Id = "menu00" style="menustyleParent" title="Setup" groupId= "menuGRP001"  >
+                <Element label = "" type = "UIMenu" Id = "menu04" style="menustyle" title="Vendors" link = "rdscontroller?page=vendors"  iconStyle="fa fa-fw fa-money" />
+                <Element label = "" type = "UIMenu" Id = "menu04" style="menustyle" title="Contacts" link = "rdscontroller?page=contacts"  iconStyle="fa fa-fw fa-male" />
+                <Element label = "" type = "UIMenu" Id = "menu04" style="menustyle" title="Carriers" link = "rdscontroller?page=carriers"  iconStyle="fa fa-fw fa-truck" />
+            </Element>
+            <Element label = "" type = "UIMenu" Id = "menu10" style="menustyleParent" title="Merchandise" groupId= "menuGRP002"  >
+                <Element label = "" type = "UIMenu" Id = "menu110" style="menustyle" title="Brands" link = "rdscontroller?page=brands"  iconStyle="fa fa-fw fa-compass" />
+                <Element label = "" type = "UIMenu" Id = "menu111" style="menustyle" title="Categories" link = "rdscontroller?page=categories"  iconStyle="fa fa-fw fa-fax" />
+                <Element label = "" type = "UIMenu" Id = "menu112" style="menustyle" title="Products" link = "rdscontroller?page=products"  iconStyle="fa fa-fw fa-tty" />
+                <Element label = "" type = "UIMenu" Id = "menu116" style="menustyle" title="Product_FAQ" link = "rdscontroller?page=productfaqs" iconStyle="fa fa-fw fa-question"  />
+
+                <!-- TBD
+                 <Element label = "" type = "UIMenu" Id = "menu13" style="menustyle" title="UOMs" link = "rdscontroller?page=uoms"   />
+                 -->
+                <Element label = "" type = "UIMenu" Id = "menu113" style="menustyle" title="Items" link = "rdscontroller?page=items"  iconStyle="fa fa-fw fa-tag" />
+                <Element label = "" type = "UIMenu" Id = "menu114" style="menustyle" title="SKU" link = "rdscontroller?page=skus" iconStyle="fa fa-fw fa-tags"  />
+                <Element label = "" type = "UIMenu" Id = "menu115" style="menustyle" title="Item Images" link = "rdscontroller?page=itemimages"  iconStyle="fa fa-fw fa-photo" />
+                <Element label = "" type = "UIMenu" Id = "menu117" style="menustyle" title="Item_Profile" link = "rdscontroller?page=itemprofile" iconStyle="fa fa-fw fa-id-badge"  />
+            </Element>
+            <Element label = "" type = "UIMenu" Id = "menu20" style="menustyleParent" title="Customer_Management" groupId= "menuGRP003"  >
+                <Element label = "" type = "UIMenu" Id = "menu05" style="menustyle" title="Customers" link = "rdscontroller?page=customers"  iconStyle="fa fa-fw fa-female" />
+                <Element label = "" type = "UIMenu" Id = "menu05" style="menustyle" title="Loyalty" link = "rdscontroller?page=loyatylist"  iconStyle="fa fa-fw fa-magnet" />
+                <Element label = "" type = "UIMenu" Id = "menu05" style="menustyle" title="Wish_List" link = "rdscontroller?page=wishlist" iconStyle="fa fa-fw fa-magic"  />
+                <Element label = "" type = "UIMenu" Id = "menu117" style="menustyle" title="Customer_Profile" link = "rdscontroller?page=customerprofile" iconStyle="fa fa-fw fa-user"  />
+            </Element>
+            <Element label = "" type = "UIMenu" Id = "menu600" style="menustyleParent" title="Corporate_WorkBench" groupId= "menuGRP0060"  >
+                <Element label = "" type = "UIMenu" Id = "menu601" style="menustyle" title="Corp_Sales_Period" link = "rdscontroller?page=corpsalesperiodlist" iconStyle="fa fa-fw fa-calendar"   />
+                <Element label = "" type = "UIMenu" Id = "menu602" style="menustyle" title="Sales_Period_Analysis" link = "rdscontroller?page=corpsalesperiodAnalysis"   iconStyle="fa fa-fw fa-bar-chart" />
+                <Element label = "" type = "UIMenu" Id = "menu602" style="menustyle" title="Corp_Dashboard" link = "rdscontroller?page=corpadmindashboard" iconStyle="fa fa-fw fa-dashboard"  />
+            </Element>
+
+            <Element label = "" type = "UIMenu" Id = "menu300" style="menustyleParent" title="Sales_Planning" groupId= "menuGRP0040"  >
+                <Element label = "" type = "UIMenu" Id = "menu3001" style="menustyle" title="Territories" link = "rdscontroller?page=territories"  iconStyle="fa fa-fw fa-industry" />
+                <Element label = "" type = "UIMenu" Id = "menu05" style="menustyle" title="Categories" link = "rdscontroller?page=custcategories"  iconStyle="fa fa-fw fa-bookmark" />
+                <Element label = "" type = "UIMenu" Id = "menu301" style="menustyle" title="Sales_Associate_PortFolio" link = "rdscontroller?page=salesportfoliolist"  iconStyle="fa fa-fw fa-suitcase" />
+                <Element label = "" type = "UIMenu" Id = "menu302" style="menustyle" title="Sales_Period" link = "rdscontroller?page=salesperiodlist"  iconStyle="fa fa-fw fa-calendar" />
+                <Element label = "" type = "UIMenu" Id = "menu303" style="menustyle" title="Expense_Heads" link = "rdscontroller?page=expenseheads"  iconStyle="fa fa-fw fa-cubes" />
+            </Element>
+            <Element label = "" type = "UIMenu" Id = "menu30" style="menustyleParent" title="Salesforce_WorkBench" groupId= "menuGRP004"  >
+                <Element label = "" type = "UIMenu" Id = "menu301" style="menustyle" title="Alerts" link = "rdscontroller?page=alerts"  iconStyle="fa fa-fw fa-bullhorn" />
+                <Element label = "" type = "UIMenu" Id = "menu3011" style="menustyle" title="Discussions" link = "rdscontroller?page=topic"  iconStyle="fa fa-fw fa-comment" />
+                <Element label = "" type = "UIMenu" Id = "menu302" style="menustyle" title="Documents" link = "rdscontroller?page=documents"  iconStyle="fa fa-fw fa-clone" />
+                <Element label = "" type = "UIMenu" Id = "menu34" style="menustyle" title="Sales_Leads" link = "rdscontroller?page=saleslead" iconStyle="fa fa-fw fa-eye"  />
+                <Element label = "" type = "UIMenu" Id = "menu35" style="menustyle" title="Followups" link = "rdscontroller?page=followups"  iconStyle="fa fa-fw fa-exchange" />
+                <Element label = "" type = "UIMenu" Id = "menu36" style="menustyle" title="Expense_Vouchers" link = "rdscontroller?page=expensevouchers"  iconStyle="fa fa-fw fa-cutlery" />
+                <Element label = "" type = "UIMenu" Id = "menu36" style="menustyle" title="Enquiries" link = "rdscontroller?page=enquiries"  iconStyle="fa fa-fw fa-envelope" />
+                <Element label = "" type = "UIMenu" Id = "menu36" style="menustyle" title="Sales_Pitches" link = "rdscontroller?page=salespitches"  iconStyle="fa fa-fw fa-gift" />
+                <Element label = "" type = "UIMenu" Id = "menu361" style="menustyle" title="Feedbacks" link = "rdscontroller?page=feedbacks"  iconStyle="fa fa-fw fa-history" />
+                <Element label = "" type = "UIMenu" Id = "menu367" style="menustyle" title="Dashboard" link = "rdscontroller?page=dashboard"  iconStyle="fa fa-fw fa-dashboard" />
+            </Element>
+            <Element label = "" type = "UIMenu" Id = "menu70" style="menustyleParent" title="Manager_Workbench" groupId= "menuGRP005"  >
+                <Element label = "" type = "UIMenu" Id = "menu0701" style="menustyle" title="Open_Expenditure" link = "rdscontroller?page=openexpenses"  iconStyle="fa fa-fw fa-suitcase" />
+                <Element label = "" type = "UIMenu" Id = "menu071" style="menustyle" title="Queries" link = "rdscontroller?page=queries"  iconStyle="fa fa-fw fa-road" />
+                <Element label = "" type = "UIMenu" Id = "menu072" style="menustyle" title="Dashboard" link = "rdscontroller?page=divmgrdashboard"  iconStyle="fa fa-fw fa-dashboard" />
+                <Element label = "" type = "UIMenu" Id = "menu073" style="menustyle" title="Promotions" link = "rdscontroller?page=promotionslist"  iconStyle="fa fa-fw fa-star" />
+                <Element label = "" type = "UIMenu" Id = "menu073" style="menustyle" title="SWOT_Analysis" link = "rdscontroller?page=swotanalysis"   iconStyle="fa fa-fw fa-tachometer"/>
+                <!--  <Element label = "" type = "UIMenu" Id = "menu074" style="menustyle" title="Marketing_Campaign" link = "rdscontroller?page=campaign"   /> -->
+            </Element>
+            <Element label = "" type = "UIMenu" Id = "menu30" style="menustyleParent" title="Analytics" groupId= "menuGRP006"  >
+                <Element label = "" type = "UIMenu" Id = "menu032" style="menustyle" title="Sales_Period_Analysis" link = "rdscontroller?page=salesperiodAnalysis" iconStyle="fa fa-fw fa-bar-chart"  />
+                <Element label = "" type = "UIMenu" Id = "menu033" style="menustyle" title="Product_Analysis" link = "rdscontroller?page=productanalysis" iconStyle="fa fa-fw fa-pie-chart"  />
+                <Element label = "" type = "UIMenu" Id = "menu035" style="menustyle" title="Salesforce_Analysis" link = "rdscontroller?page=salesforceanalysis"   />
+                <Element label = "" type = "UIMenu" Id = "menu036" style="menustyle" title="Saleslead_Analysis" link = "rdscontroller?page=salesleadanalysis"   />
+                <Element label = "" type = "UIMenu" Id = "menu034" style="menustyle" title="Sales_Trend" link = "rdscontroller?page=salestrend"  iconStyle="fa fa-fw fa-area-chart"   />
+                <Element label = "" type = "UIMenu" Id = "menu036" style="menustyle" title="FeedBack_Analysis" link = "rdscontroller?page=feedbackanalysis"   />
+            </Element>
+            <Element label = "" type = "UIMenu" Id = "menu40" style="menustyleParent" title="Operations" groupId= "menuGRP007"  >
+                <Element label = "" type = "UIMenu" Id = "menu41" style="menustyle" title="Stock" link = "rdscontroller?page=inventory"  iconStyle="fa fa-fw fa-compass" />
+                <Element label = "" type = "UIMenu" Id = "menu42" style="menustyle" title="Purchase_Orders" link = "rdscontroller?page=purchases"  iconStyle="fa fa-fw fa-reorder" />
+                <Element label = "" type = "UIMenu" Id = "menu43" style="menustyle" title="Sales_Orders" link = "rdscontroller?page=sales"   iconStyle="fa fa-fw fa-shopping-cart"/>
+                <Element label = "" type = "UIMenu" Id = "menu44" style="menustyle" title="Delivery_Orders" link = "rdscontroller?page=distributionorders"  iconStyle="fa fa-fw fa-bus" />
+                <Element label = "" type = "UIMenu" Id = "menu400" style="menustyleParent" title="Returns" groupId= "menuGRP0071"  >
+                    <Element label = "" type = "UIMenu" Id = "menu401" style="menustyle" title="Sales_Returns" link = "rdscontroller?page=salesreturns"   iconStyle="fa fa-fw fa-exchange" />
+                    <!-- <Element label = "" type = "UIMenu" Id = "menu402" style="menustyle" title="Purchase Returns" link = "rdscontroller?page=purchasereturns"   />  -->
+                </Element>
+            </Element>
+            <Element label = "" type = "UIMenu" Id = "menu50" style="menustyleParent" title="Reports" groupId= "menuGRP008"  >
+                <Element label = "" type = "UIMenu" Id = "menu51" style="menustyle" title="Daily_Sales_Report" link = "rdscontroller?page=salesreport"  iconStyle="fa fa-fw fa-dashboard" />
+                <Element label = "" type = "UIMenu" Id = "menu52" style="menustyle" title="Sales_Item_Report" link = "rdscontroller?page=salesreport&amp;reportType=DailyItemSales"  iconStyle="fa fa-fw fa-dashboard" />
+                <Element label = "" type = "UIMenu" Id = "menu53" style="menustyle" title="Sales_Product_Report" link = "rdscontroller?page=salesreport&amp;reportType=DailyProductSales"   iconStyle="fa fa-fw fa-dashboard"/>
+                <Element label = "" type = "UIMenu" Id = "menu53" style="menustyle" title="Sales_Category_Report" link = "rdscontroller?page=salesreport&amp;reportType=DailyCategorySales"   iconStyle="fa fa-fw fa-dashboard"/>
+                <Element label = "" type = "UIMenu" Id = "menu54" style="menustyle" title="Sales_Brand_Report" link = "rdscontroller?page=salesreport&amp;reportType=DailyBrandSales"  iconStyle="fa fa-fw fa-dashboard" />
+                <Element label = "" type = "UIMenu" Id = "menu55" style="menustyle" title="Sales_Associate_Report" link = "rdscontroller?page=salesreport&amp;reportType=DailyAssociateSales"  iconStyle="fa fa-fw fa-dashboard" />
+                <!-- <Element label = "" type = "UIMenu" Id = "menu52" style="menustyle" title="Sales_Category_Report" link = "rdscontroller?page=report"   />
+                <Element label = "" type = "UIMenu" Id = "menu52" style="menustyle" title="Sales_Brand_Report" link = "rdscontroller?page=report"   />
+                <Element label = "" type = "UIMenu" Id = "menu52" style="menustyle" title="Sales_Product_Report" link = "rdscontroller?page=report"   />
+
+                <Element label = "" type = "UIMenu" Id = "menu52" style="menustyle" title="Customer_Summary" link = "rdscontroller?page=report"   />  -->
+
+            </Element>
+        </Panel>
+    </Panels>
+    <Lookups> <!--  lookuppage = "com.techtrade.rads.framework.ui.components.UILookupPage"-->
+        <Lookup type ="company" lookupservice="com.rainbow.crm.lookups.LookupCompanies"
+                lookuppage= "lookup">
+        </Lookup>
+        <Lookup type ="division" lookupservice="com.rainbow.crm.lookups.LookupDivisions"
+                lookuppage= "lookup">
+        </Lookup>
+        <Lookup type ="salesportfoliokey" lookupservice="com.rainbow.crm.lookups.LookupSalesPortfolioKeys"
+                lookuppage= "lookup">
+        </Lookup>
+        <Lookup type ="brand" lookupservice="com.rainbow.crm.lookups.LookupBrands"
+                lookuppage= "lookup">
+        </Lookup>
+        <Lookup type ="item" lookupservice="com.rainbow.crm.lookups.LookupItems"
+                lookuppage= "lookup">
+        </Lookup>
+        <Lookup type ="sku" lookupservice="com.rainbow.crm.lookups.LookupSkus"
+                lookuppage= "lookup">
+        </Lookup>
+        <Lookup type ="product" lookupservice="com.rainbow.crm.lookups.LookupProducts"
+                lookuppage= "lookup">
+        </Lookup>
+        <Lookup type ="category" lookupservice="com.rainbow.crm.lookups.LookupCategories"
+                lookuppage= "lookup">
+        </Lookup>
+        <Lookup type ="vendor" lookupservice="com.rainbow.crm.lookups.LookupVendors"
+                lookuppage= "lookup">
+        </Lookup>
+        <Lookup type ="customer" lookupservice="com.rainbow.crm.lookups.LookupCustomers"
+                lookuppage= "lookup">
+        </Lookup>
+        <Lookup type ="custcategory" lookupservice="com.rainbow.crm.lookups.LookupCustCategories"
+                lookuppage= "lookup">
+        </Lookup>
+        <Lookup type ="contact" lookupservice="com.rainbow.crm.lookups.LookupContacts"
+                lookuppage= "lookup">
+        </Lookup>
+        <Lookup type ="saleslead" lookupservice="com.rainbow.crm.lookups.LookupSalesLeads"
+                lookuppage= "lookup">
+        </Lookup>
+        <Lookup type ="sales" lookupservice="com.rainbow.crm.lookups.LookupSales"
+                lookuppage= "lookup">
+        </Lookup>
+        <Lookup type ="user" lookupservice="com.rainbow.crm.lookups.LookupUsers"
+                lookuppage= "lookup">
+        </Lookup>
+    </Lookups>
+
+    <AjaxServices>
+        <AjaxService service ="countryStateSearch" class = "com.rainbow.crm.common.ajaxservices.CountryStateAjaxService">
+            <key>countryCode</key>
+        </AjaxService>
+        <AjaxService service ="filterSearch" class = "com.rainbow.crm.common.ajaxservices.FilterAjaxService">
+            <key>filterId</key>
+            <key>filterName</key>
+            <key>page</key>
+        </AjaxService>
+        <AjaxService service ="allFilters" class = "com.rainbow.crm.common.ajaxservices.AllFiltersAjaxService">
+            <key>page</key>
+        </AjaxService>
+        <AjaxService service ="companySearch" class = "com.rainbow.crm.common.ajaxservices.CompanyDetailsAjaxService">
+            <key>companyName</key>
+            <key>companyCode</key>
+        </AjaxService>
+        <AjaxService service ="replyTopic" class = "com.rainbow.crm.common.ajaxservices.TopicReplyAjaxService">
+
+        </AjaxService>
+        <AjaxService service ="createEnquiry" class = "com.rainbow.crm.common.ajaxservices.EnquiryCreateService">
+
+        </AjaxService>
+        <AjaxService service ="allFiniteValues" class = "com.rainbow.crm.common.ajaxservices.AllFiniteValues">
+
+        </AjaxService>
+        <AjaxService service ="searchReasonCode" class = "com.rainbow.crm.common.ajaxservices.ReasonCodesAjaxService">
+            <key>type</key>
+        </AjaxService>
+        <AjaxService service ="allExpenseHeads" class = "com.rainbow.crm.common.ajaxservices.AllExpenseHeadsAjaxService">
+
+        </AjaxService>
+        <AjaxService service ="customerSearch" class = "com.rainbow.crm.customer.service.CustomerAjaxService">
+            <key>Phone</key>
+            <key>Email</key>
+        </AjaxService>
+        <AjaxService service ="skuSearch" class = "com.rainbow.crm.item.service.SkuAjaxService">
+            <key>Code</key>
+            <key>Division</key>
+            <key>Barcode</key>
+            <key>Name</key>
+        </AjaxService>
+        <AjaxService service ="feedbackReasons" class = "com.rainbow.crm.common.ajaxservices.FeedBackReasonsAjaxService">
+            <key>rating</key>
+        </AjaxService>
+        <AjaxService service ="feedbackObjectSearch" class = "com.rainbow.crm.feedback.service.FeedbackAjaxObjectsService">
+            <key>BillNo</key>
+            <key>ObjectType</key>
+        </AjaxService>
+        <AjaxService service ="itemSearch" class = "com.rainbow.crm.item.service.ItemAjaxService">
+            <key>Code</key>
+            <key>Name</key>
+        </AjaxService>
+        <AjaxService service ="divisionTerritorySearch" class = "com.rainbow.crm.territory.service.DivTerritoryAjaxService">
+            <key>divisionId</key>
+        </AjaxService>
+        <AjaxService service ="customerSearch" class = "com.rainbow.crm.customer.service.CustomerAjaxService">
+            <key>Phone</key>
+            <key>Email</key>
+            <key>Name</key>
+        </AjaxService>
+        <AjaxService service ="companySearchUsrCreate" class = "com.rainbow.crm.common.ajaxservices.CompanyDetailsUsrCreation">
+            <key>companyName</key>
+            <key>companyCode</key>
+        </AjaxService>
+
+    </AjaxServices>
+
+
+</Config>

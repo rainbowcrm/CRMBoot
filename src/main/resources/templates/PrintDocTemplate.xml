@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Template id ="printdocTemplate" type = "com.techtrade.rads.framework.ui.templates.TemplateType" >
+ <DataType>  </DataType>
+ <MetaData>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+ </MetaData>
+  <Renderers>
+ <Renderer>
+ <RendererType>HTML</RendererType>
+ <StyleSheet></StyleSheet>
+ <PageStyle></PageStyle>
+ </Renderer>
+ </Renderers>
+  <fixedActionField>hdnFixedAction</fixedActionField>
+ <SubmitActionField>submitAction</SubmitActionField>
+ <FixedActionParamField>hdnFixedActionParam</FixedActionParamField>
+  
+ <IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+ <IncludeJS>./resources/js/dialog-polyfill.js</IncludeJS>
+ <Sections>
+  <CoreSection>
+ <Section Id = "mainSection" >
+  </Section>
+ </CoreSection>
+ <Section Id ="summary"   >
+ 
+ 
+ </Section>
+  </Sections>
+ 
+ 
+ </Template>

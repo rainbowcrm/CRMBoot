@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "loyalty" showinFrame ="true" title ="Customer Loyalty | Rainbow CRM" Object = "com.rainbow.crm.loyalty.model.Loyalty" 
+Controller = "com.rainbow.crm.loyalty.controller.LoyaltyListController">
+<Template type= "List"  name = "ListTemplate"></Template>
+<AjaxGroups>
+<AjaxGroup service ="filterSearch">
+<requestElements>
+<requestElement key = "filterId">lstSavedFilters</requestElement>
+</requestElements>
+<responseElements>
+<responseElement key = "FilterName" >txtFilterName</responseElement>
+
+<responseElement key = "Sales Bill" >txtSalesBill</responseElement>
+<responseElement key = "Customer" >txtCustomer</responseElement>
+<responseElement key = "Division" >lstDivision</responseElement>
+</responseElements>
+</AjaxGroup>
+</AjaxGroups>
+
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<Elements>
+<Section type ="topBar"></Section>
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<FilterSection>
+<FilterNode>
+  <Element label = "Saved_Filters"  type = "UIList" Id = "lstSavedFilters"   property ="" >
+	<options populator =  "getSavedFiters"> 
+	</options>
+  </Element>
+ </FilterNode>
+<FilterNode>
+   	<Element label = "Filter_Name"  type = "UIText" Id = "txtFilterName"  property ="FilterName" />
+ </FilterNode>
+<Element label = "Division"  type = "UILookupDataList"  Id = "lstDivision"  listId="lstlookupdvns" property ="Division.Name"   >
+	 <lookupType>division</lookupType>
+</Element>
+<FilterNode>
+   	<Element label = "Customer"  type = "UIText" Id = "txtCustomer"  property ="customer.fullName" />
+ </FilterNode>
+  <FilterNode>
+   	<Element label = "Sales Bill"  type = "UIText" Id = "txtSalesBill"  property ="sales.billNumber" />
+ </FilterNode>
+</FilterSection>
+<ListSection >
+<Columns allowrowselection ="Multiple" uniqueproperty = "Id">
+<SelectionColumn   >
+<Element label = ""  type = "UICheckBox" Id = "idChkSel"  rendered="!Object.isDeleted" property ="Id" />
+<Element label = ""  type = "UIImage" Id = "idChkSel"  rendered="Object.isDeleted" height = "21" weight ="21" src= "./resources/images/deletedRow.jpg" />
+</SelectionColumn>
+<Column title ="Division"   width ="20%" sortField="division.name"  >
+<Element label = ""  type = "UINote" Id = "idIdNote"  property ="division.name" />
+</Column>  
+<Column title ="Bill"   width ="20%" sortField="sales.billNumber"  >
+<Element label = ""  type = "UINote" Id = "idIdNote"    property ="sales.billNumber" />
+</Column>
+<Column title ="Customer"  width ="30%"  sortField="customer.firstName"  >
+<Element label = ""  type = "UINote" Id = "idCt"  property ="customer.fullName" />
+</Column> 
+<Column title ="Points"   width ="20%" sortField="Points"  >
+<Element label = ""  type = "UINote" Id = "idIdNote"  property ="points" />
+</Column>
+<Column title ="Redeemed"   width ="10%" sortField="redeemed"  >
+<Element label = ""  type = "UINote" Id = "idIdNote"  property ="redeemed" />
+</Column>
+</Columns>
+</ListSection>
+</CoreSection>
+<Section type ="summary">
+<Element type= "Panel" key= "NavPanel"  style = "sameline" ></Element>
+<Element caption = "Acknowledge"  type = "UIButton"    Id = "btnAck"  style="btn btn-primary" onClickJS ="acknowledgeAlert();" />
+</Section>
+<Section type ="copyRightSection"/>
+</Elements>
+</Page>
+

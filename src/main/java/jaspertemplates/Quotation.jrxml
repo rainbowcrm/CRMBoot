@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-04-18T22:24:52 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Quotation_Format1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="142599fa-d71d-4704-8481-bf352e04eec5">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CRM"/>
+	<parameter name="TermsAndCond" class="java.lang.String"/>
+	<parameter name="FooterNote" class="java.lang.String"/>
+	<parameter name="HeaderNote" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT customers.first_name ,
+	customers.last_name,
+	concat (customers.first_name , " " , customers.last_name) fullName,
+	customers.address1,
+	customers.address2,
+	customers.zipcode,
+	customers.phone,
+	customers.city,
+	companies.company_name,
+	companies.address1 companyAddress,
+	companies.address2 companyAddress2,
+	companies.zipcode companyZipCode,
+	companies.city companyCity,
+	companies.phone companyPhone,	
+	divisions.division_name divname,
+	divisions.address1 divaddress1,
+	divisions.address2 divaddress2,
+	divisions.city divcity,
+	divisions.zipcode divzipcode,
+	divisions.city divcity,
+	divisions.phone divphone,
+	skus.sku_name,
+	sales_leads.doc_number,
+	saleslead_lines.desired_qty,
+	saleslead_lines.negotited_price,
+	companies.id,
+	sales_leads.id,
+	sales_leads.customer_id,
+	sales_leads.company_id,
+	saleslead_lines.saleslead_id,
+	saleslead_lines.sku_id,
+	customers.id,
+	skus.id
+FROM sales_leads,
+	saleslead_lines,
+	skus,
+	customers,
+	companies,
+	divisions
+WHERE 
+	 sales_leads.id = saleslead_lines.saleslead_id 
+	 AND sales_leads.company_id = companies.id 
+	 AND sales_leads.customer_id = customers.id 
+	 AND sales_leads.division_id = divisions.id
+	 AND saleslead_lines.sku_id = skus.id]]>
+	</queryString>
+	<field name="first_name" class="java.lang.String"/>
+	<field name="last_name" class="java.lang.String"/>
+	<field name="fullName" class="java.lang.String"/>
+	<field name="address1" class="java.lang.String"/>
+	<field name="address2" class="java.lang.String"/>
+	<field name="zipcode" class="java.lang.String"/>
+	<field name="phone" class="java.lang.String"/>
+	<field name="city" class="java.lang.String"/>
+	<field name="company_name" class="java.lang.String"/>
+	<field name="companyAddress" class="java.lang.String"/>
+	<field name="companyAddress2" class="java.lang.String"/>
+	<field name="companyZipCode" class="java.lang.String"/>
+	<field name="companyCity" class="java.lang.String"/>
+	<field name="companyPhone" class="java.lang.String"/>
+	<field name="divname" class="java.lang.String"/>
+	<field name="divaddress1" class="java.lang.String"/>
+	<field name="divaddress2" class="java.lang.String"/>
+	<field name="divcity" class="java.lang.String"/>
+	<field name="divzipcode" class="java.lang.String"/>
+	<field name="COLUMN_20" class="java.lang.String"/>
+	<field name="divphone" class="java.lang.String"/>
+	<field name="sku_name" class="java.lang.String"/>
+	<field name="doc_number" class="java.lang.String"/>
+	<field name="desired_qty" class="java.lang.Integer"/>
+	<field name="negotited_price" class="java.lang.Double"/>
+	<field name="id" class="java.lang.Integer"/>
+	<field name="COLUMN_27" class="java.lang.Integer"/>
+	<field name="customer_id" class="java.lang.Integer"/>
+	<field name="company_id" class="java.lang.Integer"/>
+	<field name="saleslead_id" class="java.lang.Integer"/>
+	<field name="sku_id" class="java.lang.Integer"/>
+	<field name="COLUMN_32" class="java.lang.Integer"/>
+	<field name="COLUMN_33" class="java.lang.Integer"/>
+	<variable name="LeadTotal" class="java.lang.Double" resetType="Group" resetGroup="SalesLeadGroup" calculation="Sum">
+		<variableExpression><![CDATA[$F{desired_qty} * $F{negotited_price}]]></variableExpression>
+	</variable>
+	<group name="SalesLeadGroup">
+		<groupExpression><![CDATA[$F{saleslead_id}]]></groupExpression>
+		<groupHeader>
+			<band height="157">
+				<staticText>
+					<reportElement x="10" y="5" width="60" height="30" uuid="c6f4226f-ba51-418a-9a2c-4f8e34e7dfd6"/>
+					<text><![CDATA[To]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="80" y="7" width="110" height="23" uuid="46946f25-a526-44b5-8151-53ca22f5490e"/>
+					<textElement>
+						<font size="11" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="460" y="0" width="100" height="30" uuid="f3307a8d-7a1e-43d0-8d93-d1f4dbb49cbe"/>
+					<textFieldExpression><![CDATA[$F{doc_number}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="80" y="30" width="120" height="25" uuid="a8c92b6a-f0dd-4548-ab69-e560e7b5ecd5"/>
+					<textFieldExpression><![CDATA[$F{address1}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="80" y="58" width="120" height="22" uuid="cbd51422-0137-4205-bc14-efb95f5f772c"/>
+					<textFieldExpression><![CDATA[$F{address2}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="80" y="80" width="120" height="20" uuid="0c73a209-1196-4f6c-92da-fe3d4e0a745a"/>
+					<textFieldExpression><![CDATA[$F{city}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="120" width="100" height="30" forecolor="#000000" backcolor="#9298D1" uuid="412dbc1a-3078-4af9-849f-5ee701df97b5"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Product]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="148" y="120" width="100" height="30" forecolor="#000000" backcolor="#9298D1" uuid="433b7962-9d5e-47b0-b2bd-f85d5effbbc8"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Qty]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="310" y="120" width="100" height="30" forecolor="#000000" backcolor="#9298D1" uuid="b2e6a084-9c26-4507-8867-b4d41938381d"/>
+					<textElement textAlignment="Right">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Price]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="470" y="120" width="80" height="30" forecolor="#000000" backcolor="#9298D1" uuid="0ffe3709-d22c-4a5c-ba44-eb423752cbe5"/>
+					<textElement textAlignment="Right">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Line Total]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="40">
+				<textField>
+					<reportElement key="" mode="Opaque" x="450" y="5" width="100" height="30" uuid="12775e47-320c-4be5-ae9a-06a8285bd8a2"/>
+					<textElement textAlignment="Right">
+						<font size="13" isBold="true" isUnderline="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{LeadTotal}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="183" splitType="Stretch">
+			<staticText>
+				<reportElement x="450" y="0" width="100" height="30" uuid="5330df60-6d4b-4251-9c49-c4ab9f2a9a12"/>
+				<textElement textAlignment="Right">
+					<font fontName="Arial" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Quotation]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="10" width="170" height="30" uuid="d850a1cd-d890-421d-9846-813fc7d9e9e5"/>
+				<textElement>
+					<font fontName="Arial" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{company_name}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="430" y="42" width="120" height="30" uuid="0445b869-e7c8-4453-bb70-6c2e39af99ec"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="320" y="42" width="100" height="30" uuid="0a114729-e19c-4a48-bb2f-287ee2a2619d"/>
+				<textElement textAlignment="Right"/>
+				<text><![CDATA[Date:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="42" width="100" height="18" uuid="c4bba689-bbae-4649-9d6e-33776428631f"/>
+				<textFieldExpression><![CDATA[$F{divaddress1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="60" width="100" height="20" uuid="a1ee6615-6722-44c8-b579-2e6627fcc452"/>
+				<textFieldExpression><![CDATA[$F{divaddress2}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="80" width="100" height="20" uuid="3240e6c2-833a-4108-a4d2-1d6d12aa0a8d"/>
+				<textFieldExpression><![CDATA[$F{divcity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="100" width="100" height="22" uuid="525698f3-5b8b-436c-a8f8-b4a80a14d9c2"/>
+				<textFieldExpression><![CDATA[$F{divzipcode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="120" width="100" height="20" uuid="09b1bdf8-f005-4c96-a5fd-16cc0d47c406"/>
+				<textFieldExpression><![CDATA[$F{divphone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="10" y="153" width="530" height="30" uuid="40fac837-c84b-4503-9f89-cb46aead6731"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$P{HeaderNote}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="11" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="3" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.grid.JSSGridBagLayout"/>
+			<textField>
+				<reportElement x="0" y="0" width="138" height="30" uuid="45c73c42-a839-4a02-9809-0047ea67b228"/>
+				<textFieldExpression><![CDATA[$F{sku_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="138" y="0" width="138" height="30" uuid="f91d8848-4266-428b-8c7a-b899d98bde26"/>
+				<textFieldExpression><![CDATA[$F{desired_qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="276" y="0" width="138" height="30" uuid="89c204e1-f845-4211-9d8a-e3c13542b901"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{negotited_price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="0" width="138" height="30" uuid="962d22f9-1c1e-4e8f-b5e6-0b7b6e6566bb"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{desired_qty} * $F{negotited_price}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="1" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="38" splitType="Stretch">
+			<textField>
+				<reportElement x="440" y="4" width="100" height="30" uuid="a702a005-c4d8-4260-9d45-9f2974a096e5"/>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="100" splitType="Stretch">
+			<textField>
+				<reportElement x="10" y="0" width="400" height="60" uuid="695229d7-f96b-4180-b4f9-0c4f1c4358f8"/>
+				<textFieldExpression><![CDATA[$P{TermsAndCond}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="100" y="60" width="450" height="30" uuid="af2551ef-e9cc-443a-8fee-1084fac25edb"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$P{FooterNote}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "datasetup" showinFrame ="true"  title ="Data Setup| Rainbow CRM" Object = "com.rainbow.framework.setup.model.DataLoader" 
+Controller = "com.rainbow.framework.setup.controller.DataSetupController">
+<Template type= "General"  name = "generalTemplate"></Template>
+ <IncludeJS>./resources/js/DataDULoad.js</IncludeJS>
+<Elements>
+<UIForm Id ="frmdd" method = "POST" enctype="multipart/form-data" >
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type= "mainSection">
+<Element type ="UIHidden" Id = "hdnAction" value ="" property ="action"></Element>
+<Element type ="UITabset" Id = "impexp" style = "uitabstyle" selectedTabStyle= "titleStyleSelected active nav-link" unSelectedTabStyle ="titleStyleUnSelected nav-link" >
+<Element type ="UITab" Id= "idFin" title = "Data_Import" showinTable = "true" cols = "2"  >
+  <Element label = "Object"  type = "UIList" Id = "lstObjs" property= "importMetadataClasss"     externalise= "true">
+	<options populator =  "getAllMetaData"> 
+	</options>
+  </Element>
+   <Element label = "Format"  type = "UIList" Id = "lstFormats"   property= "importFormat"   externalise= "true">
+	<options populator =  "getAllFormats"> 
+	</options>
+  </Element>
+<Element label = "File" type = "UIFileUpload" Id = "txtPhoto1"   property =  "importData" fileNameProperty="importFile"
+   maxSize = "16793604" multiple ="false"  accept= ".xls, .json, .xml" />
+ <Element label = " "  type = "UICheckBox" Id = "idChkImpOptions"   property ="deleteOtherEntries" >  
+	<options> 
+	  <option key ="true"> Delete Non existing entries </option>
+	 </options>
+</Element>
+ <Element label = ""  type = "UICheckBox" Id = "idChkImpOptions1"   showInPrevCol ="true" property ="updateEntries" >  
+	<options> 
+	  <option key ="true"> Update Existing objects </option>
+	 </options>
+</Element>
+
+<Element caption = "Upload"  type = "UIButton" Id = "btfilterSave"  style="btn btn-primary" iconStyle="glyphicon glyphicon-cloud-upload" onClickJS ="upload();"  />
+</Element>
+<Element type ="UITab" Id= "idExp" title = "Data_Export"  showinTable = "true" cols = "1"  >
+<Element label = "Object"  type = "UIList" Id = "lstExportObjs"     property= "exportmetadataClass" externalise= "true">
+	<options populator =  "getAllMetaData"> 
+	</options>
+</Element>
+  <Element label = "Format"  type = "UIList" Id = "lstExportFormats"   property= "exportFormat"    externalise= "true">
+	<options populator =  "getAllFormats"> 
+	</options>
+ </Element>
+ <Element label = ""  type = "UICheckBox" Id = "idChkExport"   property ="excludeDeleted" >  
+	<options> 
+	  <option key ="true"> Exclude Deleted objects </option>
+	 </options>
+</Element>
+
+<Element caption = "DownLoad"  type = "UIButton" Id = "btdwLoad"  style="btn btn-primary" iconStyle="glyphicon glyphicon-cloud-download" onClickJS ="downLoad();"  />
+</Element>
+</Element>
+
+</Section>
+</CoreSection>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

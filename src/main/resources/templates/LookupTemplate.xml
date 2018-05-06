@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Template id ="lookup" type = "com.techtrade.rads.framework.ui.templates.LookupTemplateType" >
+ <MetaData>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+ </MetaData>
+ <Renderers>
+ <Renderer>
+ <RendererType>HTML</RendererType>
+ <StyleSheet>./css/build/LookupPage.css</StyleSheet>
+ </Renderer>
+ </Renderers>
+  <fixedActionField>hdnFixedAction</fixedActionField>
+ <SubmitActionField>submitAction</SubmitActionField>
+ <FixedActionParamField>hdnFixedActionParam</FixedActionParamField>
+  <IncludeJS>./js/RadsLib.js</IncludeJS>
+ <Sections>
+ <Section Id="querySection" style= "lookupPagesummaryStyle">
+ </Section>
+ <Section Id="ListSection" style ="lookupPageoptionsStyle">
+ </Section>
+ <Section Id="summarySection"   style= "lookupPagesummaryStyle">
+  <!--  <Panel key ="popupButtonPanel"  Id ="popupButtonPanel" > </Panel> -->  
+ </Section>
+ </Sections>
+</Template>

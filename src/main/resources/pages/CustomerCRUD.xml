@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "CustomerCRUD" showinFrame ="true" Object = "com.techtrade.rads.framework.test.Customer" 
+Controller = "com.techtrade.rads.framework.test.CustomerController">
+<Template type= "CRUD"  name = "CRUDTemplate"></Template>
+<Forwards>
+<!-- <Forward key ="NEW">rdscontroller?page=CSXML</Forward>  -->
+<Forward key ="CANCEL">rdscontroller?page=CLXML</Forward>
+</Forwards>
+<IncludeJS>./resources/js/general.js</IncludeJS>
+<IncludeJS>./resources/js/page3.js</IncludeJS>
+<Elements>
+<UIForm Id ="cust" method = "POST"  >
+<Section type ="leftsideBar"></Section>
+<!-- <Section type ="errorSection" ></Section>  -->
+<Section type ="detail">
+<If check  = "!Controller.isReadMode" >  
+	<Element label = "id" type = "UIText" Id = "txtID" property ="Id" />
+	<Element label = "First Name"  type = "UIText" Id = "txtFirstName"  property ="FirstName" />
+	<Element label = "Last Name"  type = "UIText" Id = "txtLastName"  property ="LastName" rendered = "true" />
+	<Element label = "Age"  type = "UIText" Id = "txtAge"  property ="Age"  isNumeric="true"  />
+	<Element label = "Address"  type = "UITextArea" Id = "txtAddress"   rendered = "!Controller.shouldShow"   property ="Address" > 
+	     <rows>5</rows> <cols>20</cols>
+	</Element>
+	<Element label = "State"  type = "UIList" Id = "lstState"   property ="State" >
+	<options populator =  "getStates"> 
+	</options>
+	</Element>
+	<Element label = "Birthday"  type = "UIDate" Id = "txtBirthday"    property ="Birthday" />
+	<Element label = "Sex"  type = "UIRadioBox" Id = "txtSex"   property ="Sex" >
+	  <options> 
+	  <option key ="MA"> MALE</option>
+	  <option key ="FE"> Female</option>
+	  </options>
+	</Element>
+	<Element label = "SalesMan"  type = "UILookupText"  Id = "txtSalesman"  property ="SalesMan" >
+	 <lookupType>salesMan</lookupType>
+	</Element>
+</If> 
+<If check  = "Controller.isReadMode" >  
+	<Element label = "id" type = "UILabel" Id = "txtID" property ="Id" />
+	<Element label = "First Name"  type = "UILabel" Id = "txtFirstName"  property ="FirstName" />
+	<Element label = "Last Name"  type = "UILabel" Id = "txtLastName"  property ="LastName" rendered = "true" />
+	<Element label = "Age"  type = "UILabel" Id = "txtAge"  property ="Age"  rendered = "Object.isEligible"  />
+	<Element label = "Address"  type = "UILabel" Id = "txtAddress"   rendered = "Controller.shouldShow"   property ="Address" > 
+	 </Element>
+	<Element label = "State"  type = "UILabel" Id = "lstState"   property ="State" >
+	</Element>
+	<Element label = "Birthday"  type = "UILabel" Id = "txtBirthday"    property ="Birthday" />
+	<Element label = "Sex"  type = "UILabel" Id = "txtSex"   property ="Sex" >
+	</Element>
+	<Element label = "SalesMan"  type = "UILabel"  Id = "txtSalesman"  property ="SalesMan" >
+	</Element>
+</If> 
+</Section>
+
+<Section type ="summary">
+<!--  Set in Template <Element type= "Panel" key= "CRUDPanel"  style = "bottom" ></Element>  -->
+</Section>
+
+</UIForm>
+</Elements>
+</Page>  

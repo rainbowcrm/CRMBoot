@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "salesportfolioList" showinFrame ="true" title ="Sales Portfolio | Rainbow CRM"  Object = "com.rainbow.crm.salesportfolio.model.SalesPortfolio" 
+Controller = "com.rainbow.crm.salesportfolio.controller.SalesPortfolioListController">
+<Template type= "List"  name = "ListTemplate"></Template>
+<Forwards>
+<Forward key ="NEW">rdscontroller?page=newsalesportfolio</Forward>
+<Forward key ="EDIT">rdscontroller?page=newsalesportfolio</Forward>
+</Forwards>
+<AjaxGroups>
+<AjaxGroup service ="filterSearch">
+<requestElements>
+<requestElement key = "filterId">lstSavedFilters</requestElement>
+</requestElements>
+<responseElements>
+<responseElement key = "FilterName" >txtFilterName</responseElement>
+<responseElement key = "Division.Name" >txtDivision</responseElement>
+<responseElement key = "User.Id" >txtUser</responseElement>
+<responseElement key = "FromDate" >txtFromDate</responseElement>
+<responseElement key = "ToDate" >txtToDate</responseElement>
+</responseElements>
+</AjaxGroup>
+</AjaxGroups>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<Elements>
+<Section type ="topBar"></Section>
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<FilterSection>
+<FilterNode>
+  <Element label = "Saved_Filters"  type = "UIList" Id = "lstSavedFilters"   property ="" >
+	<options populator =  "getSavedFiters"> 
+	</options>
+  </Element>
+ </FilterNode>
+<FilterNode>
+   	<Element label = "Filter_Name"  type = "UIText" Id = "txtFilterName"  property ="FilterName" />
+</FilterNode>
+<FilterNode>
+<Element label = "Division"  type = "UILookupDataList"  listId="lstDivlkps"  Id = "txtDivision"  property ="Division.Name" showLookupAsDialog="true" dialogId="dlgComp"
+  dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" >
+	 <lookupType>division</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+</Element>
+</FilterNode>
+<FilterNode>
+<Element label = "Associate"  type = "UILookupDataList"  listId="lstDivusrs"   Id = "txtUser"  size  = "40" property ="User.id" showLookupAsDialog="true" dialogId="dlgIt"
+  dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" >
+	 <lookupType>user</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+</Element> 	
+</FilterNode>
+<FilterNode operator = ">=">
+   	<Element label = "From"  type = "UIDate" Id = "txtFromDate"  property ="fromDate" />
+</FilterNode>
+<FilterNode operator = ">=">
+   	<Element label = "To"  type = "UIDate" Id = "txtToDate"  property ="toDate" />
+</FilterNode>     
+</FilterSection>
+<ListSection >
+ <Columns allowrowselection ="Multiple" uniqueproperty = "Id">
+<SelectionColumn  width ="5%"  >
+<Element label = ""  type = "UICheckBox" Id = "idChkSel"  rendered="!Object.isVoided" property ="Id" />
+<Element label = ""  type = "UIImage" Id = "idChkSel"  rendered="Object.isVoided" height = "21" weight ="21" src= "./resources/images/deletedRow.jpg" />
+</SelectionColumn>
+<Column title ="Division" sortField="division.name"  width ="30%" >
+<Element label = ""  type = "UINote" Id = "idperiod"  property ="Division.Name" />
+</Column>
+<Column title ="User"  sortField="user_id" width ="30%%" >
+<Element label = ""  type = "UINote" Id = "iduse"  property ="User.userId" />
+</Column>
+<Column title ="From_Date"  sortField="START_DATE" width ="15%" >
+<Element label = ""  type = "UINote" Id = "idfrmDate"  property ="startDate" />
+</Column>
+<Column title ="To_Date" sortField="END_DATE"  width ="15%" >
+<Element label = ""  type = "UINote" Id = "idDoc"  property ="EndDate" />
+</Column>
+</Columns>
+</ListSection>
+</CoreSection>
+<Section type ="summary">
+<Element caption = "Add"  type = "UIButton"    Id = "btnAdd"  style="btn btn-primary" iconStyle="glyphicon glyphicon-plus" fixedAction ="FixedAction.ACTION_PAGEFORWARD" fixedActionParam =  "NEW" />
+<Element caption = "Edit"  type = "UIButton"    Id = "btnEdit"  style="btn btn-warning" iconStyle="glyphicon glyphicon-pencil" fixedAction ="FixedAction.ACTION_GOEDITMODE"  fixedActionParam =  "EDIT"  />
+<Element type= "Panel" key= "NavPanel"  style = "sameline" ></Element>
+</Section>
+<Section type ="copyRightSection"/>
+</Elements>
+</Page>
+
+
+

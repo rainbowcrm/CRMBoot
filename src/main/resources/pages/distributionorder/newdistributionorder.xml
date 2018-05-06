@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "newDiv" showinFrame ="true" title ="New Distribution Order | Rainbow CRM" Object = "com.rainbow.crm.distributionorder.model.DistributionOrder" 
+Controller = "com.rainbow.crm.distributionorder.controller.DistributionOrderController">
+<Template type= "Transaction"  name = "TransactionTemplate"></Template>
+<Forwards>
+<Forward key ="CANCEL">rdscontroller?page=distributionorders</Forward>
+<Forward key ="SAVE">distributionorders</Forward>
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<AjaxGroups>
+<AjaxGroup service ="customerSearch">
+<requestElements >
+<requestElement key = "Phone">txtPhone</requestElement>
+<requestElement key = "Email">txtEmail</requestElement>
+</requestElements>
+<responseElements>
+<responseElement key = "Phone">txtPhone</responseElement>
+<responseElement key = "Email">txtEmail</responseElement>
+<responseElement key = "FullName">txtCustomerName</responseElement>
+</responseElements>
+</AjaxGroup>
+<AjaxGroup service ="itemSearch">
+<requestElements event = "">
+<requestElement key = "Name">txtItName</requestElement>
+<requestElement key = "Code">txtCode</requestElement>
+</requestElements>
+<responseElements>
+<!-- <responseElement key = "Name" >txtItem</responseElement>  -->
+<responseElement key = "Code">txtCode</responseElement>
+<responseElement key = "Name">txtItName</responseElement>
+<responseElement key = "RetailPrice">txtPrice</responseElement>
+
+</responseElements>
+</AjaxGroup>
+
+</AjaxGroups>
+
+<Elements>
+<UIForm Id ="cust" method = "POST" > 
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section> 
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type ="header">
+	<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
+	<Element label = ""  type = "UIHidden" Id = "hdnUserID"  property ="Id" />
+	<Element label = "Division"  type = "UIText" Id = "lstInvDivision"  readOnle="true" property ="Division.Name"/>
+	<Element label = ""  type = "UIHidden" Id = "hdnDivID"   property ="Division.Id"/>
+
+
+
+	<Element label = "Doc_No"  type = "UIText" Id = "txtDocNo"   readonly="true" property ="docNumber" />
+	<Element label = "Date"  type = "UIDate" Id = "txtwishListDate" readonly="true"  property ="orderDate" />
+	<Element label = "Customer_Phone"  type = "UIText" Id = "txtPhone"   readonly="true"  property ="Customer.Phone" />
+	<Element label = "Customer_Email"  type = "UIText" Id = "txtEmail"  readonly="true"  property ="Customer.Email" />
+	 <Element label = "Customer_Name"  type = "UIText"  Id = "txtCustomerName"   readonly="true" isMandatory="true" property ="Customer.FullName"  />
+	
+	<Element label = "Sales_Bill"  type = "UIText" Id = "txtSale" readonly="true"    property ="Sales.BillNumber" />
+	<Element label = "Status"  type = "UIText" Id = "txtStatus"  readonly="true"  property ="Status.description" />
+	<Element label = ""  type = "UIHidden" Id = "hdnStatusID"  readonly="true"  property ="Status.code" />
+	<Element type ="UIDialog" Id = "newprintpop" style= "fullpagepopup" >
+	<Element type = "UIIFrame" Id= "printFRM" src ="./rdscontroller?page=transactiondocument" style ="fullPageFrameStyle">
+	</Element>
+	</Element>
+</Section>
+<Section type ="detailCRUDStyleForPage">
+
+
+
+<Element type ="UITabset" Id = "impexp" style = "uitabstyle" selectedTabStyle= "titleStyleSelected active nav-link" unSelectedTabStyle ="titleStyleUnSelected nav-link" >
+<Element type ="UITab" Id= "idLine" title = "Line_Items" showinTable = "false" >
+<Element type = "UITable" rows = "1" cols = "7" style = "listPageTitle" applyStyleonChildren ="true" Id  ="tblTrans" property ="DistributionOrderLines[]" >
+<Element type = "UITableHead">
+ <Element type = "UITableRow">
+<Element type ="UITableCol" width = "3%" ><Element label = ""  type = "UILabel" Id = "selLine" value ="Select" /></Element>
+<Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Code" /></Element>
+<Element type ="UITableCol" width = "32%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Item" /></Element>
+<Element type ="UITableCol" width = "15%" ><Element label = ""  type = "UILabel" Id = "dtPic" value ="PickDate" /></Element>
+<Element type ="UITableCol" width = "18%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Comments" /></Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Qty" /></Element>
+
+</Element>  
+ </Element>
+<Element type = "UITableRow"  dataType = "com.rainbow.crm.distributionorder.model.DistributionOrderLine"  style = "uitabstyle" rendered = "!Object.getVoided">
+
+<Element type ="UITableCol" width = "3%"><Element label = ""  type = "UIBooleanCheckBox" Id = "chkSel"  rendered = "!Object.isPicked" hiddenControlId= "hdnSelstate" property ="picked" > 
+	
+	 </Element>
+</Element>
+<Element type ="UITableCol" width = "10%"><Element label = ""  type = "UILabel" Id = "txtCode" size  = "10" property ="sku.Code" /> 
+<Element label = ""  type = "UIHidden" Id = "hdnLineNo" size  = "10"   property ="lineNumber" />  
+</Element>
+<Element type ="UITableCol" width = "32%"><Element label = ""  type = "UILabel"  Id = "txtItName"  size  = "30" property ="Sku.Name" /> 
+<Element label = ""  type = "UIHidden" Id = "hdnItemId" size  = "10"  property ="Sku.Id" />
+<Element label = ""  type = "UIHidden" Id = "hdnItemName" size  = "10"  property ="Sku.Name" />
+</Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "pckDate"  property ="pickDate"   />  </Element>
+<Element type ="UITableCol" width = "18%"><Element label = ""  type = "UILabel" Id = "txtLineCo"  property ="Comments" size = "30" />  </Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "txtQty"  property ="Qty"   isNumeric= "true"  size = "10"/>  </Element>
+</Element>
+
+</Element>
+
+</Element>
+<Element type ="UITab" Id= "idAddress" title = "Delivery_Address" showinTable = "true" cols = "2" >
+	
+<Element label = "Recipient"  type = "UIText" Id = "txtRecp"   readonly="true" property ="address.recipient"  size = "40" />
+<Element label = "Address1"  type = "UIText" Id = "txtAddress1"  readonly="true"   property ="address.address1"  size = "40" />
+<Element label = "Address2"  type = "UIText" Id = "txtAddr2"  readonly="true"   property ="address.address2"  size = "40" />
+<Element label = "City"  type = "UIText" Id = "txtCity"  readonly="true"   property ="address.city"  size = "40" />
+<Element label = "ZipCode"  type = "UIText" Id = "txtZip"   readonly="true"  property ="address.zipcode"  size = "10" />
+<Element label = "State"  type = "UIText" Id = "txtState"   readonly="true"  property ="address.state"  size = "40" />
+<Element label = "Country"  type = "UIText" Id = "txtCountry"  readonly="true"   property ="address.country"  size = "40" />
+<Element label = "Phone"  type = "UIText" Id = "txtDelPh"  readonly="true"   property ="address.phone"  size = "40" />
+<Element label = "Email"  type = "UIText" Id = "txtDelEmail"  readonly="true"   property ="address.email"  size = "40" />
+
+</Element>
+<Element type ="UITab" Id= "idTasbShipping" title = "Shipment_Details" showinTable = "true" cols = "2" >
+
+<Element label = "Carrier"  type = "UIList"  Id = "lstCarriers"  isMandatory="true" property ="Carrier.id"  >
+<options populator =  "getAllCarriers"> 
+	</options>
+</Element>
+<Element label = "Shipment_No"  type = "UIText"  Id = "txtShipmentNo" property ="shipmentRefNumber"  />
+<Element label = "Shipment_Date"  type = "UIDate"  Id = "dtShip" property ="shippingDate"  />
+<Element label = "Shipment_Charge"  type = "UIText" isNumeric= "true" Id = "txtShipmentChrg" property ="shippingCharges"  />
+</Element>
+</Element>
+</Section>
+<Section type ="footer">
+</Section>
+
+</CoreSection>
+<Section type ="optionalsummary">
+<Element caption = "Pick"  type = "UIButton"    Id = "btnPick"  style="btn btn-primary" rendered = "Controller.isReleased" fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam ="pick"   />
+<Element caption = "Pack"  type = "UIButton"    Id = "btnPack"  style="btn btn-primary" rendered = "Controller.isPicked" fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam ="pack"   />
+<Element caption = "Start_Shipping"  type = "UIButton"    Id = "btnShip"  style="btn btn-primary" rendered = "Controller.isPacking" fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam ="ship"   />
+<Element caption = "Shipped"  type = "UIButton"    Id = "btnShipped"  style="btn btn-primary" rendered = "Controller.isShipping" fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam ="shipped"   />
+<Element caption = "Print_Label"  type = "UIButton"    Id = "btnPrint" style="btn btn-primary" iconStyle="glyphicon glyphicon-print"  onClickJS = "showPrintDialog('newprintpop','ShippingLabel');"    />
+</Section>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.rainbow.crm.custcategory.model.CustCategory" table="CUSTOMER_CATEGORIES" lazy="false">
+      <meta attribute="class-description">
+         This class contains the CUSTOMER_CATEGORIES 
+      </meta>
+       <id name="id" type="int" column="id">
+      </id>
+      <version name="objectVersion" column="version" type="integer"></version>
+       <many-to-one name="company" column ="company_id" not-null="true" lazy="false" ></many-to-one>
+      <property name="name" column="name" type="string"/>
+      <many-to-one name="division" column ="division_id"  lazy="false" ></many-to-one>
+      <many-to-one name="evalFrom" column ="EVAL_FROM" not-null="false" lazy="false" ></many-to-one>
+      <many-to-one name="evalTo" column ="EVAL_TO" not-null="false" lazy="false" ></many-to-one>
+      <property name="incudeReturns" column="INCLUDE_RETURNS" type="boolean"/>
+      <property name="comments" column="comments" type="string"/>
+      <property name="deleted" column="is_deleted" type="boolean"/>
+      <property name="createdDate" column="created_date" type="timestamp" update="false"/>
+      <property name="lastUpdateDate" column="last_updated_date" type="timestamp"/>
+      <property name="createdUser" column="created_by" type="string" update="false"/>
+      <property name="lastUpdateUser" column="last_updated_by" type="string"/>
+      <set   name="conditions" cascade="all-delete-orphan" inverse="true" lazy="false"  order-by="lineNumber" >
+     	 <key column="CUSTOMER_CATEGORY_ID"></key>
+      <one-to-many class="com.rainbow.crm.custcategory.model.CustCategoryCondition"/>
+      </set> 
+   </class>
+ </hibernate-mapping>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "newpromotions" showinFrame ="true" title ="New Promotions | Rainbow CRM" Object = "com.rainbow.crm.promotion.model.Promotion" 
+Controller = "com.rainbow.crm.promotion.controller.PromotionController">
+<Template type= "Transaction"  name = "TransactionTemplate"></Template>
+<Forwards>
+<Forward key ="CANCEL">rdscontroller?page=promotionslist</Forward>
+<Forward key ="SAVE">promotionslist</Forward>
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./scripts/salesportfolio/SalesPortFolio.js</IncludeJS>
+<AjaxGroups>
+
+
+</AjaxGroups>
+
+<Elements>
+<UIForm Id ="cust" method = "POST" > 
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type ="header">
+	<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
+	<Element label = ""  type = "UIHidden" Id = "hdnUserID"  property ="Id" />
+	<Element label = "Division"  type = "UIList" Id = "lstInvDivision"  isMandatory="true" property ="Division.Id" >
+	<options populator =  "getAllDivisions"> 
+	</options>
+	</Element>
+	<Element label = "From_Date"  type = "UIDate" Id = "txtDate" isMandatory="true"  property ="startDt" />
+	<Element label = "To_Date"  type = "UIDate" Id = "txtToDate" isMandatory="true"  property ="endDt" />
+	<Element label = "Name"  type = "UIText" Id = "txtName" isMandatory="true"  property ="name" />
+	<Element label = "Type"  type = "UIList" Id = "lstPromoType"  isMandatory="true" property ="promoType.code" >
+	<options populator =  "getAllPromoTypes"> 
+	</options>
+	</Element>
+	<Element label = "Item_Class"  type = "UIList" Id = "lstItemClass"   property ="itemClass.code" >
+	<options populator =  "getAllItemClasses"> 
+	</options>
+	</Element>
+	
+	<Element label = "Customer_Category"  type = "UILookupDataList" listId="lstcustCatglkps"  Id = "txtCustCategory"  property ="custCategory.name" showLookupAsDialog="true" dialogId="dlgIt"
+  dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" additionalInputControl = "lstInvDivision">
+	 <lookupType>custcategory</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+</Element>
+	<Element label = "Bundling_Pricing"  type = "UIList" Id = "lstBundlePricinggCode"   property ="bundlePricing.code" >
+	<options populator =  "getAllBundlePricigOptions"> 
+	</options>
+	</Element>
+	<Element label = "Bundle_Fixed_Price"  type = "UIText" Id = "ttxtfixedbdlprice"   isNumeric="true" property ="bundlePrice" />
+
+    
+    <Element label = "Required_Amount"  type = "UIText" Id = "txtAllReqAmt"   property ="requiredAmount" />
+    <Element label = "Discount_Percent"  type = "UIText" Id = "txtAllDiscPerce"   property ="promotedDiscPercent" /> 	
+	<Element label = "Comments"  type = "UIText" Id = "txtDesc" isMandatory="true"  size  = "40"  property ="comments" />
+<!-- 	<Element label = ""  type = "UILabel" Id = "txtBoolExpired" rendered ="isActive" value ="isActive" />
+ -->	<Element label = "Al_Items"  type = "UIBooleanCheckBox" Id = "txtBoolAllitems" hiddenControlId= "hdnAll"   property ="forAll" />
+</Section>
+<Section type ="brk1"/>
+<Section type ="detailForSale">
+<Element label = ""  type = "UILabel" Id = "lblLineitTitle"  style="bigTitle" value ="Promotion_Items" />
+<Element type = "UITable" rows = "1" cols = "7" style = "grid" applyStyleonChildren ="true" Id  ="tblTrans" property ="promotionLines[]" >
+<Element type = "UITableHead" style ="listPageTitle" >
+ <Element type = "UITableRow">
+
+<Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Master_Type" /></Element>
+<Element type ="UITableCol" width = "25%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Master_Value" /></Element>
+<Element type ="UITableCol" width = "15%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Required_Qty" /></Element>
+<Element type ="UITableCol" width = "15%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Required_Amount" /></Element>
+<Element type ="UITableCol" width = "15%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Incentive_Type" /></Element>
+<Element type ="UITableCol" width = "25%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Incentive_Value" /></Element>
+<Element type ="UITableCol" width = "15%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Promoted_Qty" /></Element>
+<Element type ="UITableCol" width = "15%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Promoted_Disc" /></Element>
+<Element type ="UITableCol" width = "10%"> </Element>
+</Element>  
+ </Element>
+<Element type = "UITableRow"  dataType = "com.rainbow.crm.promotion.model.PromotionLine" rendered = "!Object.isDeleted">
+<Element type ="UITableCol" width = "10%"><Element label = ""  type = "UIList" Id = "txtKeyCode" onChangeJS = "selectPFKeyType(this);" property ="masterPortFolioType.code" > 
+	<options populator =  "getAllTypes"> 
+	</options>
+</Element>
+</Element>
+
+<Element type ="UITableCol" width = "25%">
+
+<Element label = ""  type = "UILookupText"  Id = "txtportkeyName"  size  = "20" property ="masterPortFolioValue" showLookupAsDialog="true" dialogId="dlgItportkey"
+  dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" >
+	 <lookupType>salesportfoliokey</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+</Element>
+ </Element>
+
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UIText" Id = "txtLineReqQty"  property ="requiredQty" size = "5" />  </Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UIText" Id = "txtLinereqAmt"  property ="requiredAmount" size = "5" />  </Element>
+ 
+<Element type ="UITableCol" width = "10%"><Element label = ""  type = "UIList" Id = "txtCHKeyCode" onChangeJS = "selectPFKeyTypeChild(this);" property ="childPortFolioType.code" > 
+	<options populator =  "getAllTypes"> 
+	</options>
+</Element>
+</Element>
+
+<Element type ="UITableCol" width = "25%">
+<Element label = ""  type = "UILookupText"  Id = "txtCHportkeyName"  size  = "20" property ="childPortFolioValue" showLookupAsDialog="true" dialogId="dlgItportChildkey"
+  dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" >
+	 <lookupType>salesportfoliokey</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+</Element>
+</Element>
+ 
+
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UIText" Id = "txtLinepromotedQty"  property ="promotedQty" size = "5" />  </Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UIText" Id = "txtLinepromotedDisc"  property ="promotedDiscPercent" size = "5" />  </Element>
+<Element type ="UITableCol" width = "10%">
+	<Element caption = "" style="btn btn-primary" iconStyle="glyphicon glyphicon-plus"  type = "UIButton" Id = "btnAddRow"    fixedAction ="FixedAction.ACTION_ADDTABLEROW"  fixedActionParam =  "this"/>
+	<Element caption = "" style="btn btn-danger"  iconStyle="glyphicon glyphicon-minus"  type = "UIButton" Id = "btnDelRow"    fixedAction ="FixedAction.ACTION_DELETETABLEROW"  fixedActionParam =  "this"/>
+</Element>
+</Element>
+</Element>
+</Section>
+<Section type ="brk3"/>
+</CoreSection>
+<Section type ="summary">
+</Section>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

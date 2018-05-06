@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "newExpense" showinFrame ="true" title ="New Expense | Rainbow CRM" Object = "com.rainbow.crm.expense.model.ExpenseVoucher" 
+Controller = "com.rainbow.crm.expensevoucher.controller.ExpenseVoucherController">
+<Template type= "Transaction"  name = "TransactionTemplate"></Template>
+<Forwards>
+<Forward key ="CANCEL">rdscontroller?page=openexpenses</Forward>
+<Forward key ="SAVE">openexpenses</Forward>
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<AjaxGroups>
+</AjaxGroups>
+
+<Elements>
+<UIForm Id ="cust"  method = "POST"  > 
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section> 
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type ="header">
+	<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
+	<Element label = ""  type = "UIHidden" Id = "hdnUserID"  property ="Id" />
+	<Element label = "Division"  type = "UIText" Id = "lstInvDivision"  readonly="true" property ="Division.Name" />
+	<Element label = "Associate"  type = "UIText"  Id = "txtAssociate"  size  = "20" readonly="true" property ="salesAssoicate.userId" />
+	<Element label = "Doc_No"  type = "UIText" Id = "txtDocNo"  isMandatory="true"  readonly="true" property ="docNumber" />
+	<Element label = "Date"  type = "UIDate" Id = "txtwishListDate" isMandatory="true" readonly="true"  property ="expenseDate" />
+	<Element label = "Status"  type = "UIText" Id = "txtStatus"  readonly="true"  property ="Status.description" />
+	<Element label = "Manager"  type = "UIText" Id = "txtMgr"  readonly="true"  property ="manager.userId" />
+	
+	
+</Section>
+<Section type ="detail">
+<Element label = ""  type = "UILabel" Id = "lblLineitTitle"  style="bigTitle" value ="Expense_Lines" />
+<Element type = "UITable" rows = "1" cols = "7" style = "listPageTitle" applyStyleonChildren ="true" Id  ="tblTrans" property ="ExpenseVoucherLines[]" >
+<Element type = "UITableHead">
+ <Element type = "UITableRow">
+
+<Element type ="UITableCol" width = "15%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Expense" /></Element>
+<Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="BillNo" /></Element>
+<Element type ="UITableCol" width = "20%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Comments" /></Element>
+<Element type ="UITableCol" width = "20%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Manager_Comments" /></Element>
+<Element type ="UITableCol" width = "12%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Attachment" /></Element>
+<Element type ="UITableCol" width = "6%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Requested_Amount" /></Element>
+<Element type ="UITableCol" width = "6%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Countered_Amount" /></Element>
+
+</Element>  
+ </Element>
+<Element type = "UITableRow"  dataType = "com.rainbow.crm.expensevoucher.model.ExpenseVoucherLine"  rendered = "!Object.isDeleted">
+
+<Element type ="UITableCol" width = "15%"><Element label = ""  type = "UILabel" Id = "lstExpents" style="uitabstyle" property ="expenseHead.name" />
+ <Element label = ""  type = "UIHidden" Id = "lstHDBExpensID"  property ="expenseHead.id" />
+</Element>
+
+
+<Element type ="UITableCol" width = "10%"><Element label = ""  type = "UILabel" Id = "txtLineCo" readonly="true"  style="uitabstyle"   property ="billNumber" size = "10" />  </Element>
+<Element type ="UITableCol" width = "20%"><Element label = ""  type = "UILabel" Id = "txtLineAssComm" readonly="true"   style="uitabstyle"  property ="associateComments"  size = "18" />  </Element>
+<Element type ="UITableCol" width = "20%"><Element label = ""  type = "UIText" Id = "txtLineMgrComm"  property ="managerComments" readonly="true"  size = "18" />  </Element>
+<Element type ="UITableCol" width = "12%"/>
+<!--  <Element label = "" type = "UIFileUpload" Id = "txtPhoto3" property ="file1Data" maxSize="30720"
+   multiple ="false"  fileNameProperty="file1"    />
+</Element>  -->
+<Element type ="UITableCol" width = "6%"><Element label = ""  type = "UIText" Id = "txtLineReqAmt"  property ="requestedAmount"  readonly="true"   size = "5"/>  </Element>
+<Element type ="UITableCol" width = "6%"><Element label = ""  type = "UIText" Id = "txtLineCorrAmt"  property ="correctedAmount"   isNumeric= "true" size = "5" />  </Element>
+
+</Element>
+</Element>
+</Section>
+<Section type ="footer">
+<Element label = "Associate_comments"  type = "UITextArea" Id = "txtAssociateComments"    property ="associateComments" >
+	 <rows>2</rows> <cols>30</cols>
+</Element>
+<Element label = "Manager_Comments"  type = "UITextArea" Id = "txtMgrComments"  readonly="true"  property ="managerComments" >
+	 <rows>2</rows> <cols>30</cols>
+</Element>
+<Element label = "Requested_Total"  type = "UIText" Id = "txtReqTotal"   readonly="true" property ="requestedTotal" />
+<Element label = "Countered_Total"  type = "UIText" Id = "txtCounteredTotal"   readonly="true" property ="correctedTotal" />
+<Element label = "Approved_Total"  type = "UIText" Id = "txtApprTotal"   readonly="true" property ="approvedTotal" />
+	
+</Section>
+</CoreSection>
+<Section type ="optionalsummary">
+<Element caption = "Approve"  type = "UIButton"    Id = "btnPick"  style="btn btn-primary" fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam ="Approve"   />
+<Element caption = "Counter"  type = "UIButton"    Id = "btnCounter"  style="btn btn-primary"  fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam ="Counter"   />
+<Element caption = "Reject"  type = "UIButton"    Id = "btnReject"  style="btn btn-danger" fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam ="Reject"   />
+<Element caption = "Pending"  type = "UIButton"    Id = "btnPending"  style="btn btn-warning"  fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam ="Hold"   />
+
+</Section>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

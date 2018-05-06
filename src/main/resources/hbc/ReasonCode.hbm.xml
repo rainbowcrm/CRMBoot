@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+ <hibernate-mapping>
+   <class name="com.rainbow.crm.reasoncode.model.ReasonCode" table="REASON_CODES">
+      <meta attribute="class-description">
+         This class contains the ReasonCodes .. 
+      </meta>
+      <id name="id" type="int" column="id">
+      </id>
+      <version name="objectVersion" column="version" type="integer"></version>
+      <property name="reason" column="REASON" type="string"/>
+      <many-to-one name="company" column ="company_id" not-null="true" lazy="false" ></many-to-one>
+      <property name="description" column="description" type="string"/>
+      <many-to-one name="reasonType" column ="REASON_TYPE" not-null="true" lazy="false" ></many-to-one>
+      <many-to-one name="factorType" column ="FACTOR_TYPE" not-null="true" lazy="false" ></many-to-one>
+      <many-to-one name="accessibleBy" column ="ACCESSIBLE_BY" not-null="true" lazy="false" ></many-to-one>
+      <many-to-one name="orientation" column ="ORIENTATION" not-null="true" lazy="false" ></many-to-one>
+       <property name="useForSWOTAnalysis" column="USE_FOR_SWOT" type="boolean"/>
+      <property name="deleted" column="is_deleted" type="boolean"/>
+      <property name="createdDate" column="created_date" type="timestamp" update="false"/>
+      <property name="lastUpdateDate" column="last_updated_date" type="timestamp"/>
+      <property name="createdUser" column="created_by" type="string" update="false"/>
+      <property name="lastUpdateUser" column="last_updated_by" type="string"/>
+   </class>
+ </hibernate-mapping>

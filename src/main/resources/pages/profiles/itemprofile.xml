@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "itemprofile" showinFrame ="true"  title ="Item Profile| Rainbow CRM" Object = "com.rainbow.crm.profile.model.ItemProfile" 
+Controller = "com.rainbow.crm.profile.controller.ItemProfileController">
+<Template type= "Transaction"  name = "TransactionTemplate"></Template>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<Elements>
+<UIForm Id ="cust" method = "POST" enctype="multipart/form-data" >
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type= "header">
+<Element type = "UITable" rows = "2" cols = "2"  style = "outlinedTable">
+	<Element type = "UITableRow">
+	<Element type ="UITableCol">
+	 <Element label = "Item"  type = "UILookupText"  Id = "txtItem" isMandatory="true"  property ="Item.Name" showLookupAsDialog="true" dialogId="dlgItem"
+ 	 dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" >
+	 <lookupType>item</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+	</Element>
+	<Element caption = "View_Profile"  type = "UIButton" Id = "btnFilterCleas"  style="btn btn-primary" iconStyle="glyphicon glyphicon-flash" fixedAction ="FixedAction.ACTION_READ"   />
+	 </Element>
+	<Element type ="UITableCol">
+	</Element>
+	</Element>
+	<Element type = "UITableRow">
+	<Element type ="UITableCol">
+	<Element label = ""  type = "UILabel" Id = "txtSPec"  style="crudlabel" size="10" property ="item.Specification"    />
+	</Element>
+	</Element>
+</Element>
+</Section>
+
+<Section type= "detailCRUDStyleForPage">
+<Element type ="UITabset" Id = "impexp" style = "uitabstyle" selectedTabStyle= "titleStyleSelected active nav-link" unSelectedTabStyle ="titleStyleUnSelected nav-link" >
+
+<Element type ="UITab" Id= "idLine" title = "Details" showinTable = "true"  cols="2">
+ 	<Element label="" type= "UIImage" height = "200" width ="200"   src= "#" property ="itemImage" ></Element>
+	<!-- <Element label = ""  type = "UILabel" Id = "txtdummy" style="crudlabel"  size="10" /> -->
+	<Element type = "UIGaugeChart" Id = "guageChart1"     dataProvider = "satisfactionIndex" useGoogleGraph="true" >
+	  <ticks>10</ticks>
+	  <rangeHeight>170</rangeHeight>
+	  <rangeWidth>400</rangeWidth>
+ 	</Element>
+	<Element label = "Item_Code"  type = "UILabel" Id = "txtCode" style="crudlabel"  size="10" property ="item.Code" />
+	<Element label = "Item_Name"  type = "UILabel" Id = "txtName" style="crudlabel"  size="30" property ="item.Name" />
+	<Element label = "Product"  type = "UILabel" Id = "txtItem"  style="crudlabel"  size="30" property ="item.Product.Name" />
+	<Element label = "Manufacturer"  type = "UILabel" Id = "txtManu"  style="crudlabel" size="30" property ="item.Manufacturer" />
+	<Element label = "Brand"  type = "UILabel" Id = "txtBrand" style="crudlabel"  size="30" property ="item.Brand.Name" />
+	<Element label = "Item_Class"  type = "UILabel" Id = "txtItemClass" style="crudlabel"  size="30" property ="item.itemClassDesc" />
+	<Element label = "Max_Price"  type = "UILabel" Id = "txtMaxPrice" style="crudlabel"  size="10" property ="item.MaxPrice"   />
+	<Element label = "Retail_Price"  type = "UILabel" Id = "txtRetailPrice"  style="crudlabel" size="10" property ="item.RetailPrice"    />
+	<Element label = "Variants"  type = "UILabel" Id = "txtNoVariants"  style="crudlabel" size="10" property ="skuVariants"    />
+	<Element label = "Amount_Sold"  type = "UILabel" Id = "txtMaxPrice" style="crudlabel"  size="10" property ="totalAmountsSoldInCurrency"   />
+	<Element label = "Units_Sold"  type = "UILabel" Id = "txtBrand" style="crudlabel"  size="30" property ="unitsSold" />
+	<Element label = "Units_Returned"  type = "UILabel" Id = "txtItemClass" style="crudlabel"  size="30" property ="unitsReturned" />
+	
+	
+	
+	
+</Element> 
+
+  <Element type ="UITab" Id= "idSales" title = "Past Sales" showinTable = "false" >
+<Element type = "UITable" rows = "1" cols = "7" style = "grid" applyStyleonChildren ="true" Id  ="tblTrans" property ="PastSales[]" >
+<Element type = "UITableHead" style ="listPageTitle">
+ <Element type = "UITableRow">
+ <Element type ="UITableCol" width = "25%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Division" /></Element>
+ <Element type ="UITableCol" width = "15%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Doc" /></Element>
+ <Element type ="UITableCol" width = "15%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Date" /></Element>
+ <Element type ="UITableCol" width = "25%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Customer" /></Element>
+ <Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Qty" /></Element>
+ <Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Unit_Price" /></Element>
+ </Element>
+ </Element>
+ <Element type = "UITableRow"  dataType = "com.rainbow.crm.sales.model.SalesLine" >
+ 
+ <Element type ="UITableCol" width = "25%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="salesDoc.division.Name" /></Element>
+ <Element type ="UITableCol" width = "15%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="salesDoc.billNumber" /></Element>
+ <Element type ="UITableCol" width = "15%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="salesDoc.salesDate" /></Element>
+ <Element type ="UITableCol" width = "25%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="salesDoc.customer.fullName" /></Element>
+ <Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="qty" /></Element>
+ <Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="unitPrice" /></Element>
+ 
+ 
+</Element>
+</Element>
+
+</Element>  
+
+  <Element type ="UITab" Id= "idRevies" title = "Customer_Reviews" showinTable = "false" >
+<Element type = "UITable" rows = "1" cols = "8" style = "grid" applyStyleonChildren ="true" Id  ="tblFeedBackTrans" property ="customerFeedBacks[]" >
+<Element type = "UITableHead" style ="listPageTitle">
+ <Element type = "UITableRow">
+ <Element type ="UITableCol" width = "15%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Division" /></Element>
+ <Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Doc" /></Element>
+ <Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Date" /></Element>
+ <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Customer" /></Element>
+ <Element type ="UITableCol" width = "25%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Review" /></Element>
+ <Element type ="UITableCol" width = "15%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Reason" /></Element>
+ <Element type ="UITableCol" width = "5%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Rating" /></Element>
+ </Element>
+ </Element>
+
+ <Element type = "UITableRow"  dataType = "com.rainbow.crm.feedback.model.FeedBackLine" >
+ 
+ <Element type ="UITableCol" width = "15%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="feedBackDoc.division.Name" /></Element>
+ <Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="feedBackDoc.docNumber" /></Element>
+ <Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="feedBackDoc.feedBackDate" /></Element>
+ <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="feedBackDoc.customer.fullName" /></Element>
+ <Element type ="UITableCol" width = "25%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="comments" /></Element>
+ <Element type ="UITableCol" width = "15%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="reasonCode.reason" /></Element>
+ <Element type ="UITableCol" width = "5%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="rating" /></Element>
+ 
+</Element>
+
+</Element>
+</Element>  
+
+ <Element type ="UITab" Id= "idWWishes" title = "Customer_Wishes" showinTable = "false" >
+<Element type = "UITable" rows = "1" cols = "7" style = "grid" applyStyleonChildren ="true" Id  ="tblWishLists" property ="wishList[]" >
+<Element type = "UITableHead" style ="listPageTitle">
+ <Element type = "UITableRow">
+ <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Division" /></Element>
+ <Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Doc" /></Element>
+ <Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Date" /></Element>
+ <Element type ="UITableCol" width = "15%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="SKU" /></Element>
+ <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Customer" /></Element>
+ <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Reason" /></Element>
+ <Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Price_Ask" /></Element>
+ </Element>
+ </Element>
+
+ <Element type = "UITableRow"  dataType = "com.rainbow.crm.wishlist.model.WishListLine" >
+ 
+ <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="wishListDoc.division.Name" /></Element>
+ <Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="wishListDoc.docNumber" /></Element>
+ <Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="wishListDoc.wishListDate" /></Element>
+ <Element type ="UITableCol" width = "15%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="sku.name" /></Element>
+ <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="wishListDoc.customer.fullName" /></Element>
+ <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="reasonCode" /></Element>
+ <Element type ="UITableCol" width = "5%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="desiredPrice" /></Element>
+ 
+</Element>
+</Element>
+</Element>   <!--  End Wishlst - Start Attributes -->
+
+<Element type ="UITab" Id= "idAtts" title = "Attributes" showinTable = "false" >
+
+<Element type = "UITable" rows = "1" cols = "4" style = "grid" applyStyleonChildren ="true" Id  ="tblItAttr" property ="itemAttributes[]" >
+<Element type = "UITableHead" style ="listPageTitle">
+ <Element type = "UITableRow">
+ <Element type ="UITableCol" width = "30%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Attribute" /></Element>
+ <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Value" /></Element>
+ 
+ </Element>
+ </Element>
+
+ <Element type = "UITableRow"  dataType = "com.rainbow.crm.item.model.ItemAttribute" >
+ 
+ <Element type ="UITableCol" width = "30%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="attribute.attribute" /></Element>
+ <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="value" /></Element>
+ 
+</Element>
+</Element>
+
+</Element> <!--  End Attributes -->
+
+<Element type ="UITab" Id= "idDocss" title = "Documents" showinTable = "false" >
+
+<Element type = "UITable" rows = "1" cols = "4" style = "grid" applyStyleonChildren ="true" Id  ="tblDocuments" property ="documents[]" >
+<Element type = "UITableHead" style ="listPageTitle">
+ <Element type = "UITableRow">
+ <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Type" /></Element>
+ <Element type ="UITableCol" width = "30%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Docuent" /></Element>
+ <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Owner" /></Element>
+ <Element type ="UITableCol" width = "25%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Comments" /></Element>
+ 
+ </Element>
+ </Element>
+
+ <Element type = "UITableRow"  dataType = "com.rainbow.crm.document.model.Document" >
+ 
+ <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="docType.description" /></Element>
+ <Element type ="UITableCol" width = "30%" ><Element label = ""  type = "UIHyperLink" Id = "lblCode" property ="fileWithLink" /></Element>
+ <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="owner.userId" /></Element>
+ <Element type ="UITableCol" width = "25%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="comments" /></Element>
+ 
+</Element>
+</Element>
+
+</Element> <!--  End Docs -->
+
+<Element type ="UITab" Id= "idInventories" title = "Inventory" showinTable = "false" >
+
+<Element type = "UITable" rows = "1" cols = "8" style = "grid" applyStyleonChildren ="true" Id  ="tblInventories" property ="inventory[]" >
+ <Element type = "UITableHead" style ="listPageTitle">
+ <Element type = "UITableRow">
+ <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Division" /></Element>
+ <Element type ="UITableCol" width = "25%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="SKU" /></Element>
+ <Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Current_Qty" /></Element>
+ <Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Reserved_Qty" /></Element>
+ 
+ </Element>
+ </Element>
+
+ <Element type = "UITableRow"  dataType = "com.rainbow.crm.inventory.model.Inventory" >
+ 
+ <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="division.Name" /></Element>
+ <Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="sku.name" /></Element>
+ <Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="currentQty" /></Element>
+ <Element type ="UITableCol" width = "15%" ><Element label = ""  type = "UILabel" Id = "lblCode" property ="" /></Element>
+ 
+</Element>
+
+</Element>
+</Element>   <!--  end inventories -->
+
+</Element>
+</Section>
+</CoreSection>
+</UIForm>
+</Elements>
+</Page>
+ 

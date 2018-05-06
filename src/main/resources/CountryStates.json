@@ -1,0 +1,39 @@
+{
+  "IN": {
+    "KL" : "kerala",
+    "TN" : "TamilNadu",
+    "AP" : "AndhraPradesh",
+    "DL":"Delhi",
+    "RJ":"Rajasthan",
+    "MH":"Maharashtra",
+    "KA":"Karnataka",
+    "TG":"Telungana",
+    "OR":"Orrisa",
+    "WB":"West Bengal",
+    "HP":"Himachal Pradesh",
+    "HR":"Haryana",
+    "PJ":"Punjab",
+    "GA":"Gujarat"
+  } ,
+  "US":{
+    "GA":"Georgia",
+    "NJ":"New Jersey",
+    "CA":"California",
+    "AL":"Alabama",
+    "TX":"Texas",
+    "FL":"Florida",
+    "MS":"Minessotta",
+    "AS":"Alaska",
+    "NM":"New Mexico",
+    "NV":"Nevada"
+  },
+
+  "CA":{
+    "ON":"Ontario",
+    "BC":"British Colombia",
+    "QB":"Qubec",
+    "AL":"Alberta"
+
+  }
+
+}

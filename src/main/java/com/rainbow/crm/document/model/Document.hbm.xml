@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.rainbow.crm.document.model.Document" table="DOCUMENTS" lazy="false">
+      <meta attribute="class-description">
+         This class contains the DOCUMENTS 
+      </meta>
+       <id name="id" type="int" column="id">
+      </id>
+      <version name="objectVersion" column="version" type="integer"></version>
+      <many-to-one name="company" column ="company_id" not-null="true" lazy="false" ></many-to-one>
+      <many-to-one name="docType" column ="DOC_TYPE" not-null="false" lazy="false" ></many-to-one>
+      <property name="docName" column="DOC_NAME" type="string"/>
+      <property name="docPath" column="DOC_PATH" type="string"/>
+      <many-to-one name="owner" column ="OWNER"   lazy="false" ></many-to-one>
+      <many-to-one name="lead" column ="SALES_LEAD_ID"  lazy="false" ></many-to-one>
+      <many-to-one name="sales" column ="SALES_ID"  lazy="false" ></many-to-one>
+      <many-to-one name="item" column ="ITEM_ID"  lazy="false" ></many-to-one>
+      <many-to-one name="customer" column ="CUSTOMER_ID"  lazy="false" ></many-to-one>
+  	  <property name="comments" column="COMMENTS" type="string"/>
+      <property name="deleted" column="is_deleted" type="boolean"/>
+      <property name="createdDate" column="created_date" type="timestamp" update="false"/>
+      <property name="lastUpdateDate" column="last_updated_date" type="timestamp"/>
+      <property name="createdUser" column="created_by" type="string" update="false"/>
+      <property name="lastUpdateUser" column="last_updated_by" type="string"/>
+      
+   </class>
+ </hibernate-mapping>

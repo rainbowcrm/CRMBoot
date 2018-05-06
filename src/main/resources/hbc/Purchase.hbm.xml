@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+<class name="com.rainbow.crm.purchase.model.Purchase" table="PURCHASES" lazy="false">
+	<meta attribute="class-description">
+         This class contains the Purchases 
+      </meta>
+       <id name="id" type="int" column="id">
+      </id>
+      <version name="objectVersion" column="version" type="integer"></version>
+      <many-to-one name="company" column ="company_id" not-null="true" lazy="false" ></many-to-one>
+      <many-to-one name="division" column ="division_id" not-null="true" lazy="false" ></many-to-one>
+      <property name="billNumber" column="bill_number" type="string"/>
+      <property name="docNumber" column="DOC_NUMBER" type="string"/> 
+      <many-to-one name="vendor" column ="vendor_id" not-null="true" lazy="false" ></many-to-one>
+      <property name="purchaseDate" column="PURCHASE_DATE" type="date"/>
+      <property name="discAmount" column="HD_DISC_AMOUNT" type="double"/>
+      <property name="discPercent" column="HD_DISC_PERCENT" type="double"/>
+      <property name="totalDisc" column="TOTAL_DISCOUNT" type="double"/>
+      <property name="taxPerc" column="TAX_PERCENT" type="double"/>
+      <property name="taxAmount" column="TAX_AMOUNT" type="double"/>
+      <property name="netAmount" column="NET_AMOUNT" type="double"/>
+      <property name="creditPurchase" column="CREDIT_PURCHASE" type="boolean"/>
+      <property name="settled" column="IS_SETTLED" type="boolean"/>
+      <property name="voided" column="IS_CANCELLED" type="boolean"/>
+      <property name="returned" column="IS_RETURNED" type="boolean"/>
+      <property name="realised" column="IS_REALISED" type="boolean"/>
+      <property name="commments" column="commments" type="string"/>
+      <property name="createdDate" column="created_date" type="timestamp" update="false"/>
+      <property name="lastUpdateDate" column="last_updated_date" type="timestamp"/>
+      <property name="createdUser" column="created_by" type="string" update="false"/>
+      <property name="lastUpdateUser" column="last_updated_by" type="string"/>
+      <set   name="purchaseLines" cascade="all" inverse="true" lazy="false"  order-by="lineNumber" >
+     	 <key column="PURCHASE_ID"></key>
+     	
+      <one-to-many class="com.rainbow.crm.purchase.model.PurchaseLine"/>
+      </set>
+ </class>
+</hibernate-mapping>

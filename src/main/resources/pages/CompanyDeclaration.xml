@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "GNRL" showinFrame ="true" Object = "" 
+Controller = "com.techtrade.rads.framework.test.CustomerController">
+<Template type= "General"  name = "generalTemplate"></Template>
+<Forwards>
+<!-- <Forward key ="NEW">rdscontroller?page=CSXML</Forward>  -->
+<Forward key ="DONE">rdscontroller?page=CLXML</Forward>
+<Forward key ="ADD">rdscontroller?page=CSXML</Forward>
+<Forward key ="CANCEL">rdscontroller?page=SSXML</Forward>
+</Forwards>
+
+<Elements>
+<UIForm  id ="genCC" method = "POST">
+<Section type ="leftsideBar"></Section>
+<Element type ="UITabset" Id = "CompanyCostCenters" style = "uitabstyle" selectedTabStyle= "titleStyleSelected" unSelectedTabStyle ="titleStyleUnSelected" >
+<Element type ="UITab" Id= "idFin" title = "Finance"  >
+<Element type ="UINote" value ="&lt;table&gt;&lt;tr&gt;&lt;td&gt;"></Element>
+<Element label = "Vice President"  type = "UIText" Id = "txtFinVP"   />
+<Element type ="UINote" value ="&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;"></Element>
+<Element label = "Employee count"  type = "UIText" Id = "txtFinEmployeeCount" size ="2"  />
+<Element type ="UINote" value ="&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;"></Element>
+<Element label = "Annual Budget"  type = "UIText" Id = "txtFinAnnualBudget" size ="10"  />
+<Element type ="UINote" value ="&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;"></Element>
+</Element>
+<Element type ="UITab" Id= "idMarkerting" title = "Sales"  >
+<Element type = "UITable" rows = "2" cols = "2">
+<Element type = "UITableRow">
+<Element type ="UITableCol">
+<Element label = "Vice President"  type = "UIText" Id = "txtSalesVP"   />
+</Element>
+<Element type ="UITableCol">
+<Element label = "Employee count"  type = "UIText" Id = "txtSalesEmployeeCount" size ="2"  />
+</Element>
+</Element>
+<Element type = "UITableRow">
+<Element type ="UITableCol">
+<Element label = "Annual Budget"  type = "UIText" Id = "txtSalesAnnualBudget" size ="10"  />
+</Element>
+<Element type ="UITableCol">
+<Element label = "Marketing Budget"  type = "UIText" Id = "txtSalesMarketingBudget" size ="10"  />
+</Element>
+</Element>
+</Element>
+</Element>
+<Element type ="UITab" Id= "idProd" title = "Production" showinTable = "true" cols = "2" >
+<Element label = "Vice President"  type = "UIText" Id = "txtProdVP"   />
+<Element label = "Employee count"  type = "UIText" Id = "txtProdEmployeeCount" size ="2"  />
+<Element label = "Annual Budget"  type = "UIText" Id = "txtProdAnnualBudget" size ="10"  />
+<Element label = "Factory Address"  type = "UITextArea" Id = "txtProdFactoryAddress"  >
+<rows>5</rows> <cols>20</cols>
+</Element>
+</Element>
+<Element type ="UITab" Id= "idIT" title = "IT" >
+<Element label = "Vice President"  type = "UIText" Id = "txtITVP"   />
+<Element label = "Employee count"  type = "UIText" Id = "txtITEmployeeCount" size ="2"  />
+<Element label = "Annual Budget"  type = "UIText" Id = "txtITAnnualBudget" size ="10"  />
+</Element>
+<Element type ="UITab" Id= "idHR" title = "HR" >
+<Element label = "Vice President"  type = "UIText" Id = "txtHRVP"   />
+<Element label = "Employee count"  type = "UIText" Id = "txtHREmployeeCount" size ="2"  />
+<Element label = "Annual Budget"  type = "UIText" Id = "txtHRAnnualBudget" size ="10"  />
+</Element>
+<Element type ="UITab" Id= "idProc" title = "Procurement" >
+<Element label = "Vice President"  type = "UIText" Id = "txtProcVP"   />
+<Element label = "Employee count"  type = "UIText" Id = "txtProcEmployeeCount" size ="2"  />
+<Element label = "Annual Budget"  type = "UIText" Id = "txtProcAnnualBudget" size ="10"  />
+</Element>
+<Element type ="UITab" Id= "idRet" title = "Retail" >
+<Element label = "Vice President"  type = "UIText" Id = "txtRetVP"   />
+<Element label = "Employee count"  type = "UIText" Id = "txtRetEmployeeCount" size ="2"  />
+<Element label = "Annual Budget"  type = "UIText" Id = "txtRetAnnualBudget" size ="10"  />
+<Element label = "No of Stores"  type = "UIText" Id = "txtNoStores" size ="3"  />
+<Element label = "CreditLimit"  type = "UIText" Id = "txtCreditLimit" size ="3"  />
+</Element>
+</Element>
+<Section type ="summary">
+ <Element type= "Panel" key= "CRUDPanel"  style = "bottom" ></Element>
+</Section>
+
+</UIForm>
+</Elements>
+</Page>

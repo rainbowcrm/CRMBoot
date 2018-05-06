@@ -1,0 +1,103 @@
+<html>
+<body>
+<div align="center">
+<font size="6"> <b> $companyName </b> </font>
+<br>
+$title
+</div>
+<br> <br>
+<table width="100%" style="border-bottom: 1px solid;" >
+<tr>
+<td align ="left">
+$billField:<b>$billNo</b>
+</td>
+<td align ="right">
+ $dateField:<b>$saleDate</b>
+ </td>
+</tr>
+</table>
+<br>
+
+<br>
+$custField:$custName
+ <br>
+ <table width="100%" border="0" >
+   <tr>
+    <td align="right" >
+	$deliveryField: $address1 
+	</td>
+   </tr>
+    <tr>
+    <td align="right" >
+	$address2
+	</td>
+   </tr>
+   <tr>
+    <td align="right" >
+	$city
+	</td>
+   </tr>
+   <tr>
+    <td align="right" >
+	$pincode
+	</td>
+   </tr>
+   <tr>
+    <td align="right" >
+	$phone
+	</td>
+   </tr>
+ </table>
+ <br>
+ <table width="100%" border="1" >
+   <tr>
+     <td>
+	 Sl No
+	 </td>
+	 <td>
+	 Item
+	 </td>
+	 <td>
+	 Qty
+	 </td>
+	 <td align ="right">
+	 Price
+	 </td>
+	<td align ="right">
+	 Amount
+	 </td>
+  </tr>
+  #foreach ($line in $lines)
+	<tr>
+     <td>
+	 $line.lineNumber
+	 </td>
+	 <td>
+	 $line.sku.name
+	 </td>
+	 <td>
+	 $line.Qty
+	 </td>
+	 <td align ="right">
+	 $line.unitPrice
+	 </td>
+	<td align ="right">
+	 $line.lineTotal
+	 </td>
+	 
+    </tr>
+#end	
+<table>
+<br>
+<table width="100%" border="0" >
+<tr>
+<td align ="left">
+$taxField:<b>$taxAmount</b>
+</td>
+<td align="right">
+$totalField:<b>$totalAmount</b>	
+<td>
+</tr>
+</table>
+ </body>
+ </html>

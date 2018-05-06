@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "newitemcomplete" showinFrame ="true" title ="New item complete | Rainbow CRM" Object = "com.rainbow.crm.item.model.SkuComplete" 
+Controller = "com.rainbow.crm.item.controller.SkuCompleteController">
+<Template type= "CRUD"  name = "CRUDTemplate"></Template>
+<Forwards>
+<Forward key ="CANCEL">rdscontroller?page=items</Forward>
+<Forward key ="SAVE">items</Forward>
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<Elements>
+<UIForm Id ="cust" method = "POST" > 
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type ="detail">
+	<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="item.ObjectVersion" />
+	<Element label = ""  type = "UIHidden" Id = "hdnUserID"  property ="item.Id" />
+	<Element label = "Item_Code"  type = "UIText" Id = "txtCode"  isMandatory="true" size="10" property ="item.Code" />
+	<Element label = "Item_Name"  type = "UIText" Id = "txtName"  isMandatory="true" size="30" property ="item.Name" />
+	<Element label = "Product"  type = "UILookupText"  Id = "txtProduct" isMandatory="true"  property ="item.Product.Name" showLookupAsDialog="true" dialogId="dlgProd"
+ 	 dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" >
+	 <lookupType>product</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+	</Element>
+	<Element label = "Manufacturer"  type = "UIText" Id = "txtManu"   size="30" property ="item.Manufacturer" />
+	<Element label = "Item_Class"  type = "UIList" Id = "lstClass"   property ="item.ItemClass"  externalise= "true">
+	<options populator =  "getItemClassTypes"> 
+	</options>
+   </Element>
+	<Element label = "UOM"  type = "UIList" Id = "lstUOM"    isMandatory="true" property ="item.UomId" externalise= "true" >
+		<options populator =  "getUOMs"> 
+		</options>
+	</Element>
+	<Element label = "Brand"  type = "UIList" Id = "lstBrand"    isMandatory="true" property ="item.brand.id" externalise= "true" >
+		<options populator =  "getAllBrands"> 
+		</options>
+	</Element>
+	<Element label = "Purchase_Price"  type = "UIText" Id = "txtPurPrice" size="10" property ="item.PurchasePrice"  isNumeric="true"  />
+	<Element label = "Max_Price"  type = "UIText" Id = "txtMaxPrice" size="10" property ="item.MaxPrice"  isNumeric="true"  />
+	<Element label = "Retail_Price"  type = "UIText" Id = "txtRetailPrice" size="10" property ="item.RetailPrice"  isNumeric="true"  />
+	<Element label = "Wholesale_Price"  type = "UIText" Id = "txtWholPrice" size="10" property ="item.wholeSalePrice"  isNumeric="true"  />
+	<Element label = "BreakEven_Price"  type = "UIText" Id = "txtBEPrice" size="10" property ="item.BreakEvenPrice"  isNumeric="true"  />
+	<Element label = "Promotion_Price"  type = "UIText" Id = "txtPromoPrice" size="10" property ="item.PromotionPrice"  isNumeric="true"  />
+	<Element label = ""  type = "UICheckBox" Id = "chkOnProm"  property ="onPromotion" >
+	<options> 
+	  <option key ="true">On_Promotion</option>
+	 </options>
+	</Element>
+	
+	<Element label = "Specification"  type = "UITextArea" Id = "txtSpec" size="75" property ="item.Specification" >
+	 <rows>5</rows> <cols>40</cols>
+	</Element>
+	
+	<Element label = ""  type = "UIImage" Id = "idIMG3"  height = "200" weight ="200" src= "#" property ="image3URL" />
+	<Element label = ""  type = "UIImage" Id = "idIMG2"  height = "200" weight ="200" src= "#" property ="image2URL" />
+	<Element label = ""  type = "UIImage" Id = "idIMG1"  height = "200" weight ="200" src= "#" property ="image1URL" />
+</Section>
+</CoreSection>
+<Section type ="summary">
+</Section>
+<Section type ="copyRightSection"/>
+
+</UIForm>
+</Elements>
+</Page>

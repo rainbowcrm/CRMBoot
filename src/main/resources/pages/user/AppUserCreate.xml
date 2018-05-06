@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "AppUserCRUD" showinFrame ="true" title ="New Company | Rainbow CRM" Object = "com.rainbow.crm.user.model.User" 
+Controller = "com.rainbow.crm.user.controller.UserController">
+<Template type= "CRUD"  name = "CRUDTemplate"></Template>
+<Forwards>
+<Forward key ="CANCEL">rdscontroller?page=appUsers</Forward>
+<Forward key ="SAVE">appUsers</Forward>
+</Forwards>
+<IncludeJS>./scripts/user/User.js</IncludeJS>
+<AjaxGroups>
+<AjaxGroup service ="companySearchUsrCreate">
+<requestElements>
+<requestElement key = "companyName">txtCompany</requestElement>
+</requestElements>
+<responseElements>
+<responseElement key = "userNameSuffix" >lblsuffix</responseElement>
+</responseElements>
+</AjaxGroup>
+</AjaxGroups>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<Elements>
+<UIForm Id ="cust" method = "POST" >
+<Section type ="topBar"></Section>
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type ="detail">
+	<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
+	<Element label = ""  type = "UIHidden" Id = "hdnCompany" style ="bolded"   size="10" property ="Company.Name" />
+	<Element label = ""  type = "UIHidden" Id = "hdnUserID" style ="bolded"   size="10" property ="UserId" />
+	<If check  = "Controller.isCreateMode" >
+	<Element label = "User_Id"  type = "UIText" Id = "txtCode"  isMandatory="true" size="10" property ="Prefix" />
+	<Element label = ""  type = "UILabel" Id = "lblsuffix" style ="bolded" generatedValue="Controller.getSuffix" showInPrevCol="true" size="10"  />
+	</If>
+	<If check  = "Controller.isUpdateMode" >
+	<Element label = "User_Id"  type = "UILabel" Id = "txtCode" style ="bolded"   size="10" property ="UserId" />
+	</If>
+	<Element label = "Division"  type = "UILookupDataList"  Id = "txtDivis"  listId="lsthdrAss" property ="Division.Name" showLookupAsDialog="true"  >
+	 <lookupType>division</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+    </Element>
+	<Element label = "First_Name"  type = "UIText" Id = "txtFirstName" isMandatory="true" size="30" property ="FirstName" />
+	<Element label = "Last_Name"  type = "UIText" Id = "txtLastName" isMandatory="true" size="30" property ="LastName" />
+	<Element label = "Password"  type = "UIPassword" Id = "txtPwd" isMandatory="true" size="30" property ="Password" />
+	<Element label = "Confirm_Password"  type = "UIPassword" Id = "txtconf" size="30" property ="Password" />
+	<Element label = "Address1"  type = "UIText" Id = "txtAdd1" size="30" property ="Address1" />
+	<Element label = "Address2"  type = "UIText" Id = "txtAdd2" size="30" property ="Address2" />
+	<Element label = "City"  type = "UIText" Id = "txtCity" size="30"  property ="City" />
+	<Element label = "Pin_code"  type = "UIText" Id = "txtPinCode" size="7" property ="ZipCode" />
+	<Element label = "Email"  type = "UIText" Id = "txtemail" size="30" isMandatory="true" property ="Email" />
+	<Element label = "Phone"  type = "UIText" Id = "txtPhone" size="30" isMandatory="true" property ="Phone" />
+	<Element label = "Role"  type = "UIList" Id = "lstRole"  isMandatory="true"  property ="RoleType"  externalise= "true">
+	<options populator =  "Controller.getRoleTypes"> 
+	</options>
+    </Element>
+	
+</Section>
+</CoreSection>
+<Section type ="summary">
+</Section>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+<class name="com.rainbow.crm.corpsalesperiod.model.CorpSalesPeriodProduct" table="CORP_SALESPERIOD_PRODUCTS" lazy="false">
+	<meta attribute="class-description">
+         This class contains the Sales Period Product
+      </meta>
+       <id name="id" type="int" column="id">
+      </id>
+      <version name="objectVersion" column="version" type="integer"></version>
+      <many-to-one name="company" column ="company_id" not-null="true" lazy="false" ></many-to-one>
+      <property name="period" column="Period" type="string"/>
+      <property name="lineNumber" column="LINE_NUMBER" type="integer"/>
+      <many-to-one name="product" column ="product_id" not-null="true" lazy="false" ></many-to-one>
+      <property name="comments" column="comments" type="string"/>
+      <property name="lineTotal" column="line_total" type="double"/>
+      <property name="voided" column="IS_VOIDED" type="boolean"/>
+      <property name="createdDate" column="created_date" type="timestamp" update="false"/>
+      <property name="lastUpdateDate" column="last_updated_date" type="timestamp"/>
+      <property name="createdUser" column="created_by" type="string" update="false"/>
+      <property name="lastUpdateUser" column="last_updated_by" type="string"/>
+      <many-to-one name="corpSalesPeriodDoc" column ="CORP_SALES_PERIOD_ID" 
+       not-null="true"></many-to-one>
+</class>
+</hibernate-mapping>
+      

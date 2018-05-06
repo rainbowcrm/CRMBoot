@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "carriers" showinFrame ="true" title ="Carriers | Rainbow CRM" Object = "com.rainbow.crm.carrier.model.Carrier" 
+Controller = "com.rainbow.crm.carrier.controller.CarrierListController">
+<Template type= "List"  name = "ListTemplate"></Template>
+<Forwards>
+<Forward key ="NEW">rdscontroller?page=newcarrier</Forward>
+<Forward key ="EDIT">rdscontroller?page=newcarrier</Forward>
+</Forwards>
+<AjaxGroups>
+<AjaxGroup service ="filterSearch">
+<requestElements>
+<requestElement key = "filterId">lstSavedFilters</requestElement>
+</requestElements>
+<responseElements>
+<responseElement key = "FilterName" >txtFilterName</responseElement>
+
+<responseElement key = "code" >txtCode</responseElement>
+<responseElement key = "Name" >txtName</responseElement>
+<responseElement key = "Email" >txtEmail</responseElement>
+<responseElement key = "Phone" >txtPhone</responseElement>
+<responseElement key = "City" >txtCity</responseElement>
+</responseElements>
+</AjaxGroup>
+</AjaxGroups>
+
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<Elements>
+<Section type ="topBar"></Section>
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<FilterSection>
+<FilterNode>
+  <Element label = "Saved_Filters"  type = "UIList" Id = "lstSavedFilters"   property ="" >
+	<options populator =  "getSavedFiters"> 
+	</options>
+  </Element>
+ </FilterNode>
+<FilterNode>
+   	<Element label = "Filter_Name"  type = "UIText" Id = "txtFilterName"  property ="FilterName" />
+ </FilterNode>
+<FilterNode>
+   	<Element label = "Code"  type = "UIText" Id = "txtCode"  property ="Code" />
+ </FilterNode>
+ <FilterNode>
+   	<Element label = "Name"  type = "UIText" Id = "txtName"  property ="Name" />
+ </FilterNode>
+<FilterNode>
+   	<Element label = "Email"  type = "UIText" Id = "txtEmail"  property ="Email" />
+ </FilterNode>
+ <FilterNode>
+   	<Element label = "Phone"  type = "UIText" Id = "txtPhone"  property ="Phone" />
+ </FilterNode>
+ <FilterNode>
+   	<Element label = "City"  type = "UIText" Id = "txtCity"  property ="City" />
+ </FilterNode>
+</FilterSection>
+<ListSection >
+<Columns allowrowselection ="Multiple" uniqueproperty = "Id">
+<SelectionColumn   >
+<Element label = ""  type = "UICheckBox" Id = "idChkSel"  rendered="!Object.isDeleted" property ="Id" />
+<Element label = ""  type = "UIImage" Id = "idChkSel"  rendered="Object.isDeleted" height = "21" weight ="21" src= "./resources/images/deletedRow.jpg" />
+</SelectionColumn>
+<Column title ="Code"  sortField="carrier_code"  width ="10%">
+<Element label = ""  type = "UINote" Id = "idIdNote"  property ="Code" />
+</Column>
+<Column title ="Name" sortField="carrier_name"   width ="26%">
+<Element label = ""  type = "UINote" Id = "idIdNote"  property ="Name" />
+</Column>
+<Column title ="Phone"  sortField="phone"  width ="18%">
+<Element label = ""  type = "UINote" Id = "idIdNote"  property ="Phone" />
+</Column>
+<Column title ="Email" sortField="email"  width ="18%">
+<Element label = ""  type = "UINote" Id = "idIdNote"  property ="Email" />
+</Column>  
+<Column title ="Pincode"   sortField="zipcode" width ="10%">
+<Element label = ""  type = "UINote" Id = "idIdNote"  property ="ZipCode" />
+</Column>  
+<Column title ="City"  sortField="city"  width ="18%">
+<Element label = ""  type = "UINote" Id = "idIdNote"  property ="City" />
+</Column>
+</Columns>
+</ListSection>
+</CoreSection>
+<Section type ="summary">
+<Element caption = "Add"  type = "UIButton"    Id = "btnAdd"  style="btn btn-primary" iconStyle="glyphicon glyphicon-plus" fixedAction ="FixedAction.ACTION_PAGEFORWARD" fixedActionParam =  "NEW" />
+<Element caption = "Edit"  type = "UIButton"    Id = "btnEdit"  style="btn btn-warning" iconStyle="glyphicon glyphicon-pencil" fixedAction ="FixedAction.ACTION_GOEDITMODE"  fixedActionParam =  "EDIT"  />
+<Element caption = "Delete"  type = "UIButton" Id = "btnDel"  style="btn btn-danger" iconStyle="glyphicon glyphicon-trash"  fixedAction ="FixedAction.ACTION_DELETE"  fixedActionParam =  "DELETE"
+   fixedActionvalidateFunc ="deleteFromList()"/>
+<Element type= "Panel" key= "NavPanel"  style = "sameline" ></Element>
+</Section>
+<Section type ="copyRightSection"/>
+</Elements>
+</Page>
+

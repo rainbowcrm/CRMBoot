@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Template id ="simplecrud" type = "com.techtrade.rads.framework.ui.templates.CRUDTemplateType" >
+ <DataType   > ModelObject
+ </DataType>
+ <MetaData>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+ </MetaData>
+ <Renderers>
+ <Renderer>
+ <RendererType>HTML</RendererType>
+ <StyleSheet>./css/build/CRUDPage.css</StyleSheet>
+  <PageStyle>pagestylefull</PageStyle>
+ </Renderer>
+ </Renderers>
+ <fixedActionField>hdnFixedAction</fixedActionField>
+ <SubmitActionField>submitAction</SubmitActionField>
+ <FixedActionParamField>hdnFixedActionParam</FixedActionParamField>
+ <IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+ <IncludeJS>./resources/js/dialog-polyfill.js</IncludeJS>
+ <IncludeJS>./resources/js/date-polyfill.js</IncludeJS>
+ <MandatoryFieldMarker>*</MandatoryFieldMarker>
+ <CRUDFieldMarker>:</CRUDFieldMarker>
+ <Errors showin ="detail"  style ="errorStyle" showinTable = "true" tabStyle ="errorStyle">
+   <OddRow>oddRowError</OddRow>
+   <EvenRow>evenRowError</EvenRow>
+   <TitleRow>listPageTitleError</TitleRow>
+ </Errors>
+ <Sections>
+  <Section Id ="topBar"  style ="topBar"  >
+  <Panel key ="topBar"  Id ="tpBR" > </Panel>
+    
+ </Section>
+ <Section Id ="leftsideBar"  style ="leftnav"  >
+  <Panel key ="menuPanel"  Id ="leftnav" > </Panel>  
+ </Section>
+ <Section Id ="leftsideBarApp"  style ="leftnav"  >
+  <Panel key ="appMenuPanel"  Id ="leftnav" > </Panel>  
+ </Section>   
+ <CoreSection>
+ <ErrorSection showinTable = "true"  style= "errorStyle" >
+ </ErrorSection>
+ <Section Id ="header" style ="headerStyle"  showinTable = "true" >
+   <noRows>-1</noRows>
+  <noCols>3</noCols> 
+  </Section>
+ <Section Id ="detail" showinTable = "true"  style= "detailCRUDStyle"  tabStyle ="CRUDtableContainer">
+  <noRows>-1</noRows>
+  <noCols>2</noCols>
+ </Section>
+ </CoreSection>
+ <Section Id ="summary" showinTable = "true"  style= "summaryStyle" >
+ <noRows>1</noRows>
+ <noCols>1</noCols> 
+ <Panel key ="CRUDPanel"  Id ="crudPanel" > </Panel>  
+ </Section>
+ <Section Id ="optionalSummary" showinTable = "true"  style= "summaryStyle" >
+ <noRows>1</noRows>
+ <noCols>1</noCols> 
+ </Section>
+  <Section Id ="copyRightSection"   style= "copyRight" >
+  <Panel key ="copyRightPanel"  Id ="copyRightPanel" > </Panel>  
+ </Section>
+ </Sections>
+ 
+ 
+ 
+ 
+ <!-- 
+ <Errors showin ="Header" style ="errorStyle"></Errors>
+ <Panels>
+ <Panel key ="leftNavPanel"  Id ="leftnav" style ="leftnav"> </Panel> 
+ </Panels>
+ 
+ <HeaderSection showinTable = "true" style= "headerStyle"> 
+  <Panel>A </Panel>
+  <noRows>-1</noRows>
+  <noCols>3</noCols> 
+ </HeaderSection>
+ 
+ <DataSection showinTable = "true"  style= "detailStyle">
+  <noRows>10</noRows>
+  <noCols>2</noCols> 
+ </DataSection>
+ 
+ <SummarySection showinTable = "false"  style= "summaryStyle">
+	<Panel>B</Panel> 
+	<noRows>1</noRows>
+    <noCols>1</noCols> 
+    <tabStyle>tabsummary</tabStyle>
+ </SummarySection>
+  -->
+</Template> 

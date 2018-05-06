@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-06-26T18:40:03 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Daily_Product_Sale" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="68750888-44df-43e9-8c88-5884af22b4a3">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CRM"/>
+	<subDataset name="CompanyDetails" uuid="edfb6457-eac5-48ed-ba57-cec73dc7f407">
+		<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CRM"/>
+		<queryString language="SQL">
+			<![CDATA[select * from  crmsaas.companies]]>
+		</queryString>
+		<field name="ID" class="java.lang.Integer"/>
+		<field name="COMPANY_CODE" class="java.lang.String"/>
+		<field name="COMPANY_NAME" class="java.lang.String"/>
+		<field name="ADDRESS1" class="java.lang.String"/>
+		<field name="ADDRESS2" class="java.lang.String"/>
+		<field name="ZIPCODE" class="java.lang.String"/>
+		<field name="CITY" class="java.lang.String"/>
+		<field name="PHONE" class="java.lang.String"/>
+		<field name="INDUSTRY_TYPE" class="java.lang.String"/>
+		<field name="BUSINESS_TYPE" class="java.lang.String"/>
+		<field name="STATE" class="java.lang.String"/>
+		<field name="COUNTRY" class="java.lang.String"/>
+		<field name="ADMIN_NAME" class="java.lang.String"/>
+		<field name="NO_DIVISIONS" class="java.lang.Integer"/>
+		<field name="NO_USERS" class="java.lang.Integer"/>
+		<field name="REGISTRATION_DATE" class="java.sql.Timestamp"/>
+		<field name="ACTIVATION_DATE" class="java.sql.Timestamp"/>
+		<field name="SERVICE_EXPIRY_DATE" class="java.sql.Timestamp"/>
+		<field name="IS_ACTIVE" class="java.lang.Boolean"/>
+		<field name="IS_DELETED" class="java.lang.Boolean"/>
+		<field name="CREATED_DATE" class="java.sql.Timestamp"/>
+		<field name="LAST_UPDATED_DATE" class="java.sql.Timestamp"/>
+		<field name="CREATED_BY" class="java.lang.String"/>
+		<field name="LAST_UPDATED_BY" class="java.lang.String"/>
+		<field name="VERSION" class="java.lang.Integer"/>
+	</subDataset>
+	<parameter name="fromDate" class="java.util.Date"/>
+	<parameter name="toDate" class="java.util.Date"/>
+	<parameter name="companyId" class="java.lang.Integer"/>
+	<parameter name="companyName" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+	sum(sales_lines.line_total),
+	sum(sales_lines.qty),
+	avg(sales_lines.unit_price),
+	sum(line_totdisc),
+	products.product_name,
+	sales.sales_date
+FROM sales,
+	sales_lines,
+	companies,
+	divisions,
+	skus,
+	products
+WHERE 
+	 sales.id = sales_lines.sales_id 
+	 AND sales.company_id = companies.id 
+	 AND sales_lines.sku_id = skus.id 
+	 AND sales.division_id = divisions.id 
+	 AND skus.product_id= products.id
+	 AND sales.is_voided <> true 
+	 AND sales_lines.is_voided <> true   
+	 AND  sales.company_id = $P{companyId}
+	 AND sales.sales_date >= $P{fromDate} 
+	 AND sales.sales_date <= $P{toDate} 
+	GROUP BY
+	 sales.sales_date,
+	 products.product_name
+ORDER BY
+ sales.sales_date]]>
+	</queryString>
+	<field name="sum(sales_lines.line_total)" class="java.lang.Double"/>
+	<field name="sum(sales_lines.qty)" class="java.math.BigDecimal"/>
+	<field name="avg(sales_lines.unit_price)" class="java.lang.Double"/>
+	<field name="sum(line_totdisc)" class="java.lang.Double"/>
+	<field name="product_name" class="java.lang.String"/>
+	<field name="sales_date" class="java.sql.Date"/>
+	<variable name="Variable_1" class="java.lang.String"/>
+	<variable name="sum(sales_lines.line_total)1" class="java.lang.Double" resetType="Group" resetGroup="Date" calculation="Sum">
+		<variableExpression><![CDATA[$F{sum(sales_lines.line_total)}]]></variableExpression>
+	</variable>
+	<variable name="sum(sales_lines.line_total)2" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$F{sum(sales_lines.line_total)}]]></variableExpression>
+	</variable>
+	<group name="Date">
+		<groupExpression><![CDATA[$F{sales_date}]]></groupExpression>
+		<groupHeader>
+			<band height="24">
+				<textField pattern="MMM d, yyyy">
+					<reportElement x="0" y="0" width="100" height="20" uuid="f1bac659-4bac-41c4-9e08-467f34feca68"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{sales_date}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="0" y="0" width="550" height="1" uuid="ff7f6fe6-0bf6-4a97-8dee-f616c37a9b16"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="36">
+				<textField>
+					<reportElement x="480" y="0" width="70" height="30" uuid="d6ed3924-e069-4445-977b-d28ea3630d20"/>
+					<textElement textAlignment="Right">
+						<font isBold="true" isUnderline="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sum(sales_lines.line_total)1}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="33" splitType="Stretch">
+			<textField>
+				<reportElement x="160" y="0" width="240" height="30" uuid="1a47c450-e3d3-4a3d-90b8-336f175b9bad"/>
+				<textElement textAlignment="Center">
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{companyName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="50" splitType="Stretch">
+			<textField>
+				<reportElement x="50" y="30" width="100" height="20" uuid="63e9ac4e-4ebd-4c58-882e-df70577ec548"/>
+				<textFieldExpression><![CDATA[$P{fromDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="30" width="42" height="16" uuid="47886cfc-e736-466f-9572-1fee05bb761e"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[From:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="30" width="35" height="16" uuid="ad6dd1df-7b86-4168-a6f5-f3d74bbdf0fe"/>
+				<text><![CDATA[To:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="200" y="30" width="100" height="17" uuid="27e6db48-bad2-4304-b9e0-03c38a9876e7"/>
+				<textFieldExpression><![CDATA[$P{toDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="160" y="0" width="240" height="20" uuid="89533f16-4889-44aa-b8cc-0e824863a089"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Daily Sales Report: Product wise ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="46" width="553" height="1" uuid="5892d4c7-8ce5-4821-bafb-f2217230a8c1"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="330" y="0" width="50" height="21" uuid="cd7f1408-babc-44c3-b0d3-f73f9778570a"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Qty]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="70" height="21" uuid="357bb199-2f63-4cf2-b8f7-6becac8bd9ba"/>
+				<text><![CDATA[Total Disc]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="480" y="0" width="70" height="21" uuid="f616c0b6-f2cb-4609-a975-f7109ca2532c"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="0" width="46" height="21" uuid="c04a98d4-982b-4548-902e-f101eb4cda65"/>
+				<text><![CDATA[Avg Price]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="340" y="2" width="70" height="18" uuid="daba65bb-36b7-4182-958d-b48bf4296332"/>
+				<textFieldExpression><![CDATA[$F{sum(sales_lines.qty)}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="410" y="2" width="70" height="18" uuid="7d25a998-bcc3-49ac-a24a-75d0ce33d09c"/>
+				<textFieldExpression><![CDATA[$F{sum(line_totdisc)}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="480" y="0" width="70" height="20" uuid="d8e4bb71-6d1c-48cf-9159-4c7fa9560946"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{sum(sales_lines.line_total)}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="80" y="2" width="180" height="18" uuid="69a446d1-d042-4ea2-9502-d46190cec84a"/>
+				<textFieldExpression><![CDATA[$F{product_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="2" width="46" height="18" uuid="30c038fd-eac7-412d-a195-c09087ab9766"/>
+				<textFieldExpression><![CDATA[$F{avg(sales_lines.unit_price)}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="6" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="9" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="56" splitType="Stretch">
+			<textField>
+				<reportElement x="450" y="0" width="100" height="30" uuid="69794eab-5653-4ed0-b40a-ecd36e823d66"/>
+				<textElement textAlignment="Right">
+					<font size="12" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sum(sales_lines.line_total)2}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

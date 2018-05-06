@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "wishlistList" showinFrame ="true" title ="WishList | Rainbow CRM"  Object = "com.rainbow.crm.wishlist.model.WishList" 
+Controller = "com.rainbow.crm.wishlist.controller.WishListListController">
+<Template type= "List"  name = "ListTemplate"></Template>
+<Forwards>
+<Forward key ="NEW">rdscontroller?page=newwishlist</Forward>
+<Forward key ="EDIT">rdscontroller?page=newwishlist</Forward>
+</Forwards>
+<AjaxGroups>
+<AjaxGroup service ="filterSearch">
+<requestElements>
+<requestElement key = "filterId">lstSavedFilters</requestElement>
+</requestElements>
+<responseElements>
+<responseElement key = "FilterName" >txtFilterName</responseElement>
+<responseElement key = "BillNo" >txtBillNo</responseElement>
+<responseElement key = "Division.Name" >txtDivision</responseElement>
+<responseElement key = "Customer.Phone" >txtCustomerPhone</responseElement>
+<responseElement key = "Customer.FirstName" >txtCustomer</responseElement>
+<responseElement key = "FromDate" >txtFromDate</responseElement>
+<responseElement key = "ToDate" >txtToDate</responseElement>
+</responseElements>
+</AjaxGroup>
+</AjaxGroups>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<Elements>
+<Section type ="topBar"></Section>
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<FilterSection>
+<FilterNode>
+  <Element label = "Saved_Filters"  type = "UIList" Id = "lstSavedFilters"   property ="" >
+	<options populator =  "getSavedFiters"> 
+	</options>
+  </Element>
+ </FilterNode>
+<FilterNode>
+   	<Element label = "Filter_Name"  type = "UIText" Id = "txtFilterName"  property ="FilterName" />
+</FilterNode>
+<FilterNode>
+   	<Element label = "Bill_No"  type = "UIText" Id = "txtBillNo"  property ="billNumber" />
+</FilterNode>
+<FilterNode>
+<Element label = "Division"  type = "UILookupDataList"  Id = "lstDivision"  listId="lstlookupdvns" property ="Division.Name"   >
+	 <lookupType>division</lookupType>
+</Element>
+</FilterNode>
+<FilterNode>
+   	<Element label = "Customer_Phone"  type = "UIText" Id = "txtCustomerPhone"  property ="Customer.Phone" />
+</FilterNode>
+<FilterNode>
+   	<Element label = "Customer"  type = "UIText" Id = "txtCustomer"  property ="Customer.FirstName" />
+</FilterNode>
+<FilterNode operator = ">=">
+   	<Element label = "From"  type = "UIDate" Id = "txtFromDate"  property ="wishListDate" />
+</FilterNode>
+<FilterNode operator = ">=">
+   	<Element label = "To"  type = "UIDate" Id = "txtToDate"  property ="wishListDate" />
+</FilterNode>     
+</FilterSection>
+<ListSection >
+ <Columns allowrowselection ="Multiple" uniqueproperty = "Id">
+<SelectionColumn   >
+<Element label = ""  type = "UICheckBox" Id = "idChkSel"  rendered="!Object.isVoided" property ="Id" />
+<Element label = ""  type = "UIImage" Id = "idChkSel"  rendered="Object.isVoided" height = "21" weight ="21" src= "./resources/images/deletedRow.jpg" />
+</SelectionColumn>
+<Column title ="Doc_Number" sortField="DOC_NUMBER"  width ="20%" >
+<Element label = ""  type = "UINote" Id = "idDoc"  property ="DocNumber" />
+</Column>
+<Column title ="Date" sortField="REQUESTED_DATE" width ="20%" >
+<Element label = ""  type = "UINote" Id = "idDt"  property ="wishListDate" />
+</Column>
+<Column title ="Customer" sortField="customer.firstName"  width ="30%" >
+<Element label = ""  type = "UINote" Id = "idCust"  property ="Customer.FirstName" />
+</Column>
+<Column title ="Phone"  sortField="customer.phone" width ="30%" >
+<Element label = ""  type = "UINote" Id = "idPhone"  property ="Customer.Phone" />
+</Column>
+<Column title ="Sales_Lead" sortField="SALES_LEAD_GEN"  width ="31%" >
+<Element label = ""  type = "UINote" Id = "idAmt"  property ="salesLeadGenerated" />
+</Column>
+</Columns>
+</ListSection>
+</CoreSection>
+<Section type ="summary">
+<Element caption = "Add"  type = "UIButton"    Id = "btnAdd"  style="btn btn-primary" iconStyle="glyphicon glyphicon-plus" fixedAction ="FixedAction.ACTION_PAGEFORWARD" fixedActionParam =  "NEW" />
+<Element caption = "Edit"  type = "UIButton"    Id = "btnEdit"  style="btn btn-warning" iconStyle="glyphicon glyphicon-pencil" fixedAction ="FixedAction.ACTION_GOEDITMODE"  fixedActionParam =  "EDIT"  />
+<Element type= "Panel" key= "NavPanel"  style = "sameline" ></Element>
+</Section>
+<Section type ="copyRightSection"/>
+</Elements>
+</Page>
+
+
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.rainbow.crm.filter.model.CRMFilterDetails" table="FILTER_DETAILS">
+      <meta attribute="class-description">
+         This class contains the Filter Details .. 
+      </meta>
+      <id name="id" type="int" column="id">
+      </id>
+      <property name="field" column="FIELD" type="string"/>
+      <property name="value" column="VALUE" type="string"/>
+      <many-to-one name="parent" column ="FILTER_ID" not-null="true"></many-to-one>
+</class>
+</hibernate-mapping>

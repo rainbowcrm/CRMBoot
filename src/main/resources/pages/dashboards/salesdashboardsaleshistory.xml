@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "salesdashboardsaleshistory" showinFrame ="true"  title ="Sales Dashboard| Rainbow CRM" Object = "com.rainbow.crm.dashboard.model.SalesDashbBard" 
+Controller = "com.rainbow.crm.dashboard.controller.SalesDashBoardController">
+<Template type= "General"  name = "miniGraphTemplate"></Template>
+
+<Elements>
+<UIForm Id ="cust" method = "POST" enctype="multipart/form-data" >
+<Section type= "fullSection">
+<Element type = "UIHidden" Id = "hdngraphId"  property = "graphId"  constantValue="saleshistory"/>
+<Element type = "UILineChart" Id = "line3"  dataProvider = "salesHistory" useGoogleGraph="true"  >
+	  <xStart>0</xStart>
+	  <yStart>0</yStart>
+	  <canvasHeight>300</canvasHeight>
+	  <canvasWidth>500</canvasWidth>
+	  <rangeHeight>300</rangeHeight>
+	  <rangeWidth>500</rangeWidth>
+	  <marginWidth>30</marginWidth>
+	  <marginHeight>30</marginHeight>
+	  <noYAxisDivisions>6</noYAxisDivisions>
+	  <noXAxisDivisions>6</noXAxisDivisions>
+	</Element>
+</Section>
+</UIForm>
+</Elements>
+</Page>

@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "Inventory" showinFrame ="true" title ="Product Inventory | Rainbow CRM" Object = "com.rainbow.crm.inventory.model.Inventory" 
+Controller = "com.rainbow.crm.inventory.controller.InventoryController">
+<Template type= "DataSheet"  name = "DataSheetTemplate"></Template>
+<Forwards>
+<Forward key ="NEW">rdscontroller?page=inventory</Forward>
+<Forward key ="EDIT">rdscontroller?page=inventory</Forward>
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<AjaxGroups>
+<AjaxGroup service ="itemSearch">
+<requestElements event = "">
+<requestElement key = "Code">txtCode</requestElement>
+<requestElement key = "Name">txtItName</requestElement>
+</requestElements>
+<responseElements>
+<!-- <responseElement key = "Name" >txtItem</responseElement>  -->
+<responseElement key = "Code">txtCode</responseElement>
+<responseElement key = "Name">txtItName</responseElement>
+</responseElements>
+</AjaxGroup>
+
+</AjaxGroups>
+
+<Elements>
+<Section type ="topBar"></Section>
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+ 
+<FilterSection>
+
+<FilterNode>
+<Element label = "Division"  type = "UIList" Id = "lstDivision"  property ="Division.Id" >
+<options populator =  "getAllDivisionswithSelect"> 
+	</options>
+	</Element>
+</FilterNode>
+
+<FilterNode>
+<Element label = "Category"  type = "UIList" Id = "lstCategoy"   property ="Sku.Product.Category.Id"  externalise= "true">
+	<options populator =  "getAllCategorieswithSelect"> 
+	</options>
+  </Element>
+</FilterNode> 
+ <Element caption = "Apply"  type = "UIButton" Id = "btfilterApply"  style="btn btn-primary" iconStyle="glyphicon glyphicon-flash"  fixedAction ="FixedAction.ACTION_FILTERAPPLY"   />
+ <Element caption = "Clear"  type = "UIButton" Id = "btfilterClear"    style="btn btn-warning" iconStyle="glyphicon glyphicon-remove" showInPrevCol ="true" fixedAction ="FixedAction.ACTION_FILTERCLEAR"  />
+
+</FilterSection>
+ 
+
+<ListSection Id="tblCols" >
+ <Columns allowrowselection ="Multiple" uniqueproperty = "Id">
+<SelectionColumn  width ="5%"  >
+<Element label = ""  type = "UICheckBox" Id = "idChkSel"  rendered="!Object.isDeleted" property ="Id" />
+</SelectionColumn>
+<Column title ="Division"   sortField="division.name"  width ="22%" >
+<Element label = ""  type = "UINote" Id = "idNameNote"  property ="Division.Name" />
+</Column>
+<Column title ="Item_Code"   sortField="sku.code"  width ="15%" >
+<Element label = ""  type = "UINote" Id = "idItemCd"  property ="Sku.Code" />
+</Column>
+<Column title ="Item"  sortField="sku.name"  width ="22%" >
+<Element label = ""  type = "UINote" Id = "idItem"  property ="Sku.Name" />
+</Column>
+ <Column title ="Opening_Qty"  sortField="opQty"   width ="8%" >
+  <Element label = ""  type = "UINote" Id = "idOpQty"  property ="opQty" />
+ </Column>
+  <Column title ="Current_Qty"  sortField="currentQty"   width ="8%" >
+  <Element label = ""  type = "UINote" Id = "idCRQty"  property ="currentQty" />
+ </Column>
+   <Column title ="Reserved_Qty"   sortField="reservedQty"  width ="8%" >
+  <Element label = ""  type = "UINote" Id = "idRsQty"  property ="reservedQty" />
+ </Column>
+    <Column title ="Damaged_Qty"  sortField="damagedQty"   width ="8%" >
+  <Element label = ""  type = "UINote" Id = "iddmgQty"  property ="damagedQty" />
+ </Column>
+  <Column title =""  width ="7%" >
+  <Element label = ""  type = "UINote" Id = "idAdEd"   />
+ </Column>
+</Columns>
+<DataEntryColumns>
+<Column width ="5%">
+<Element label = ""  type = "UIHidden" Id = "idInvId"   property ="Id" />
+</Column>
+<Column width ="22%">
+<Element label = ""  type = "UIList" Id = "lstInvDivision"  property ="Division.Id" >
+	<options populator =  "getAllDivisions"> 
+	</options>
+</Element>
+</Column>
+<Column width ="15%">
+<Element label = ""  type = "UIText" Id = "txtCode" size  = "23" property ="Sku.Code" />
+</Column>
+<Column width ="22%">
+<Element label = ""  type = "UILookupText"  Id = "txtItName"  property ="Sku.Name" showLookupAsDialog="true" dialogId="dlgIt"
+  dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" >
+	 <lookupType>item</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+</Element>
+
+</Column>
+<Column width ="8%">
+<Element label = ""  type = "UIText" Id = "txtOPQTY" isNumeric="true" size ="5" property ="opQty" />
+</Column>
+<Column width ="8%">
+<Element label = ""  type = "UINote" Id = ""  property ="currentQty" />
+</Column>
+<Column width ="8%">
+<Element label = ""  type = "UINote" Id = ""  property ="reservedQty" />
+</Column>
+<Column width ="8%">
+<Element label = ""  type = "UINote" Id = ""  property ="damagedQty" />
+</Column>
+<Column width="7%">
+<Element caption = "" style="btn btn-primary" iconStyle="glyphicon glyphicon-plus"  type = "UIButton" Id = "btnAddRow"    fixedAction ="FixedAction.ACTION_ADDTABLEROW"   rendered = "Controller.isCreateMode" fixedActionParam =  "this"/>
+<Element caption = "" style="btn btn-danger" iconStyle="glyphicon glyphicon-minus"  type = "UIButton" Id = "btnDelRow"    fixedAction ="FixedAction.ACTION_DELETETABLEROW" rendered = "Controller.isCreateMode"  fixedActionParam =  "this"/>
+</Column>
+</DataEntryColumns>
+</ListSection>
+</CoreSection>
+<Section type ="summary">
+<If check  = "Controller.isReadMode" >
+<Element caption = "Add"  type = "UIButton"    Id = "btnAdd"  style="btn btn-primary" iconStyle="glyphicon glyphicon-plus" fixedAction ="FixedAction.ACTION_GOADDMODE"  fixedActionParam =  "NEW"/>
+<Element caption = "Edit"  type = "UIButton"    Id = "btnEdit"  style="btn btn-warning" iconStyle="glyphicon glyphicon-pencil" fixedAction ="FixedAction.ACTION_GOEDITMODE"  fixedActionParam =  "EDIT"  />
+<Element type= "Panel" key= "NavPanel"  style = "sameline" ></Element>
+</If>
+<If check  = "Controller.isCreateorEditMode" >
+ <Element type= "Panel" key= "CRUDPanel"  style = "sameline" ></Element>
+</If>
+</Section>
+<Section type ="copyRightSection"/>
+
+</Elements>
+</Page>

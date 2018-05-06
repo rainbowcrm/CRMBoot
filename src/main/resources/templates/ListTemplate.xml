@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Template id ="simpleList"  type ="com.techtrade.rads.framework.ui.templates.ListTemplateType">
+ <DataType   > List
+ </DataType>
+ <MetaData>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+ </MetaData>
+ <Renderers>
+ <Renderer>
+ <RendererType>HTML</RendererType>
+ <StyleSheet>./css/build/ListPage.css</StyleSheet>
+  <PageStyle>pagestyle</PageStyle>
+ </Renderer>
+ </Renderers>
+ <FixedActionField>hdnFixedAction</FixedActionField>
+ <SubmitActionField>submitAction</SubmitActionField>
+ <FixedActionParamField>hdnFixedActionParam</FixedActionParamField>
+ <CRUDFieldMarker>:</CRUDFieldMarker>
+ <IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+ <IncludeJS>./resources/js/dialog-polyfill.js</IncludeJS>
+ <IncludeJS>./resources/js/date-polyfill.js</IncludeJS>
+ 
+ <Errors showin ="list" style ="errorStyle" showinTable = "true" tabStyle ="errorStyle">  
+  <OddRow>oddRowError</OddRow>
+   <EvenRow>evenRowError</EvenRow>
+   <TitleRow>listPageTitleError</TitleRow>
+ </Errors>
+
+ <Sections>
+  <Section Id ="topBar"  style ="topBar"  >
+  <Panel key ="topBar"  Id ="tpBR" > </Panel>  
+  </Section>
+  <Section Id ="shortCutBar"  style ="shortcutbar"  >
+  <Panel key ="shortcutbar"  Id ="scutBR" > </Panel>  
+  </Section>
+  <Section Id ="leftsideBar"  style ="leftnav"  >
+  <Panel key ="menuPanel"  Id ="leftnav" > </Panel>  
+ </Section>   
+  <Section Id ="leftsideBarApp"  style ="leftnav"  >
+  <Panel key ="appMenuPanel"  Id ="leftnav" > </Panel>  
+ </Section>   
+  <Section Id ="header" style ="headerStyle"  showinTable = "true" >
+  </Section>
+ <CoreSection style ="pagestyle">  
+ <ErrorSection showinTable = "true"  style= "errorStyle" >
+ </ErrorSection>
+  <FilterSection showinTable = "true"  style= "filterStyle" Id = "filterGroup">
+ <noRows>Dynamic</noRows>
+ <noCols>4</noCols>
+ <Panel key ="FilterButtonsPanel"  Id ="filterPanel"  style="showinright"> </Panel>    
+ </FilterSection>
+ <ListSection Id ="list" showinTable = "true"  style= "detailStyle" >
+  <uniquekeyseperator>:</uniquekeyseperator>
+  <HiddenFields>
+  <HidenField>hdnPageNumber</HidenField>
+   </HiddenFields>
+  <form name = "frmList" pageNumberfield = "hdnPage" hidePageNumber = "true"> </form>
+    <noRows>20</noRows>
+    <noCols>Dynamic</noCols> 
+  <Colstyle>
+   <OddRow>oddRow</OddRow>
+   <EvenRow>evenRow</EvenRow>
+   <TitleRow>listPageTitle</TitleRow>
+   <TitleRowSpan>listPageTitle</TitleRowSpan>
+  </Colstyle> 
+ </ListSection>
+ </CoreSection>  
+ <Section Id ="summary" showinTable = "true"  style= "summaryStyle"  tabStyle ="summaryStyle">
+ <noRows>1</noRows>
+ <noCols>1</noCols> 
+ </Section>
+   <Section Id ="copyRightSection"   style= "copyRight" >
+  <Panel key ="copyRightPanel"  Id ="copyRightPanel" > </Panel>  
+ </Section>  
+  </Sections>
+ 
+</Template> 

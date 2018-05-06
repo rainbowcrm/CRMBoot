@@ -1,0 +1,64 @@
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1; }
+
+body {
+  padding: 50px; }
+
+div.shortcutbar {
+  position: absolute;
+  top: 6%;
+  left: 0px;
+  height: 5%;
+  width: 100%;
+  background: grey;
+  color: #f4f4f4;
+  text-align: center;
+  box-shadow: 2px 0 3px rgba(0, 0, 0, 0.5); }
+
+div.topBar {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  height: 6%;
+  width: 100%;
+  background: #31708f;
+  color: #f4f4f4;
+  text-align: center;
+  box-shadow: 2px 0 3px rgba(0, 0, 0, 0.5); }
+  div.topBar button.btn {
+    background: none;
+    color: white; }
+  div.topBar .menu:hover {
+    cursor: hand; }
+  div.topBar .menu {
+    display: none; }
+  div.topBar .menu:before {
+    content: "\f039";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    color: #f4f4f4;
+    font-size: 30px;
+    padding-right: 0.5em;
+    position: absolute;
+    left: 25px; }
+  div.topBar .table-striped > tbody > tr:nth-of-type(odd) {
+    background: none; }
+  div.topBar .table-bordered > tbody > tr > td, div.topBar .table-bordered > tbody > tr > th, div.topBar .table-bordered > tfoot > tr > td, div.topBar .table-bordered > tfoot > tr > th, div.topBar .table-bordered > thead > tr > td, div.topBar .table-bordered > thead > tr > th {
+    border: none; }
+  div.topBar .table-bordered {
+    border: none; }
+
+span.topBar {
+  font-size: 20px;
+  font-weight: bold;
+  color: white;
+  line-height: 40px; }
+
+.headerStyle table tbody tr td, .filterStyle table tbody tr td {
+  border: none; }

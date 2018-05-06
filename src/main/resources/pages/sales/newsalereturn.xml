@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "newsalereturn" showinFrame ="true" title ="New Sales | Rainbow CRM" Object = "com.rainbow.crm.sales.model.Sales" 
+Controller = "com.rainbow.crm.sales.controller.SalesController">
+<Template type= "Transaction"  name = "TransactionTemplate"></Template>
+<Forwards>
+<Forward key ="CANCEL">rdscontroller?page=salesreturns</Forward>
+<Forward key ="SAVE">salesreturns</Forward>
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./scripts/sales/SalesFunc.js</IncludeJS>
+<AjaxGroups>
+<AjaxGroup service ="customerSearch">
+<requestElements >
+<requestElement key = "Phone">txtPhone</requestElement>
+<requestElement key = "Email">txtEmail</requestElement>
+</requestElements>
+<responseElements>
+<responseElement key = "Phone">txtPhone</responseElement>
+<responseElement key = "Email">txtEmail</responseElement>
+<responseElement key = "FullName">txtCustomerName</responseElement>
+</responseElements>
+</AjaxGroup>
+<AjaxGroup service ="divisionTerritorySearch">
+<requestElements event = "">
+<requestElement key = "divisionId">lstInvDivision</requestElement>
+</requestElements>
+<responseElements>
+<responseElement key = "territories">txtTerritory</responseElement>
+</responseElements>
+</AjaxGroup>
+<AjaxGroup service ="skuSearch">
+<requestElements event = "">
+<requestElement key = "Name">txtItName</requestElement>
+<requestElement key = "Code">txtCode</requestElement>
+<requestElement key = "Division">lstInvDivision</requestElement>
+</requestElements>
+<responseElements>
+<!-- <responseElement key = "Name" >txtItem</responseElement>  -->
+<responseElement key = "Code">txtCode</responseElement>
+<responseElement key = "Name">txtItName</responseElement>
+<responseElement key = "RetailPrice">txtPrice</responseElement>
+<responseElement key = "SalesAssociates">lstAssociate</responseElement>
+</responseElements>
+</AjaxGroup>
+
+</AjaxGroups>
+
+<Elements>
+<UIForm Id ="cust" method = "POST" > 
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type ="header">
+	<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
+	<Element label = ""  type = "UIHidden" Id = "hdnUserID"  property ="Id" />
+	<Element label = ""  type = "UIHidden" Id = "hdnReturn"  property ="return" constantValue ="true"/>
+	<Element label = "Division"  type = "UIText" Id = "lstInvDivision" readonly="true" property ="Division.Name" />
+	<Element label = ""  type = "UIHidden" Id = "hdnlstDiv" readonly="true" property ="Division.Id" />
+	<Element label = "Territory"  type = "UIText"  Id = "txtTerritory"  readonly="true" property ="Territory.territory"  />
+	<Element label = ""  type = "UIHidden"  Id = "hdntxtTerritoryId"  readonly="true" property ="Territory.id"  />
+
+	<Element label = "Bill_No"  type = "UIText" Id = "txtBillNo"  isMandatory="true"  readonly="true" property ="billNumber" />
+	<Element label = "Date"  type = "UIDate" Id = "txtDate" isMandatory="true"  property ="salesDate" />
+	
+	<Element label = "Original_Bill"  type = "UIText" Id = "txtorigBill" readonly="true"  property ="originalBillNo" />
+	<Element label = "Original_Date"  type = "UIText" Id = "txtOrigDate" readonly="true"  property ="originalDate" />
+	<Element label = ""  type = "UILabel" Id = "lblCustTitle"   value ="Customer" />
+	<Element label = "Phone"  type = "UIText" Id = "txtPhone"  readonly="true" showInPrevCol ="true"  property ="Customer.Phone" />
+	<Element label = "Email"  type = "UIText" Id = "txtEmail"  readonly="true"   property ="Customer.Email" />
+	 <Element label = "Email"  type = "UIText" Id = "txtEmail"   readonly="true"  property ="Customer.FullName" />
+	
+	
+</Section>
+
+<Section type ="detail">
+<Element type ="UIDialog" Id = "newprintpop" style= "fullpagepopup" >
+<Element type = "UIIFrame" Id= "printFRM" src ="./rdscontroller?page=transactiondocument" style ="lookupFrameStyle">
+</Element>
+</Element>
+<Element type ="UITabset" Id = "impexp" style = "uitabstyle" selectedTabStyle= "titleStyleSelected active nav-link" unSelectedTabStyle ="titleStyleUnSelected nav-link" >
+<Element type ="UITab" Id= "idLine" title = "Line_Items" showinTable = "false" >
+
+<!--  <Element label = ""  type = "UILabel" Id = "lblLineitTitle"  style="bigTitle" value ="Line_Items" />  -->
+<Element type = "UITable" rows = "1" cols = "7" style = "grid" applyStyleonChildren ="true" Id  ="tblTrans" property ="SalesLines[]" >
+<Element type = "UITableHead" style ="listPageTitle">
+ <Element type = "UITableRow">
+
+<Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Code" /></Element>
+<Element type ="UITableCol" width = "22%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Item" /></Element>
+<Element type ="UITableCol" width = "5%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Original_Price" /></Element>
+<Element type ="UITableCol" width = "5%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Original_Qty" /></Element>
+<Element type ="UITableCol" width = "5%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Price" /></Element>
+<Element type ="UITableCol" width = "5%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Qty" /></Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Total" /></Element>
+<Element type ="UITableCol" width = "5%"> </Element>
+</Element>  
+ </Element>
+<Element type = "UITableRow"  dataType = "com.rainbow.crm.sales.model.SalesLine" rendered = "!Object.getVoided">
+
+<Element type ="UITableCol" width = "10%"><Element label = ""  type = "UIText" Id = "txtCode" size  = "10" readonly = "true" property ="Sku.Code" /> </Element>
+<Element type ="UITableCol" width = "22%"><Element label = ""  type = "UIText"  Id = "txtItName"  size  = "30" readonly = "true" property ="Sku.Name" />
+ </Element>
+<Element type ="UITableCol" width = "5%"><Element label = ""  type = "UIText" Id = "txtOrigPrice"  property ="originalPrice" readonly="true"  size = "10" />  </Element>
+<Element type ="UITableCol" width = "5%"><Element label = ""  type = "UIText" Id = "txtOrigQty"  property ="originalQty" readonly="true"  size = "10"/>  </Element>
+<Element type ="UITableCol" width = "5%"><Element label = ""  type = "UIText" Id = "txtPrice"  property ="returnPrice"  isNumeric= "true" size = "10" />  </Element>
+<Element type ="UITableCol" width = "5%"><Element label = ""  type = "UIText" Id = "txtQty"  property ="absQty"   isNumeric= "true" 
+ focusoutJS = "calculateAllforReturn()" size = "10"/>  </Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UIText" Id = "txtlineTotal"  property ="absLineTotal" size = "10"  readonly="true" />  </Element>
+
+<Element type ="UITableCol" width = "5%">
+
+</Element>
+</Element>
+</Element>
+</Element>
+
+<!--  
+
+<Element type ="UITab" Id= "idDel" title = "Payment_Details" showinTable = "true" cols = "2" >
+<Element label = ""  type = "UICheckBox" Id = "chkCredit"   property ="creditSales" >
+	<options> 
+	  <option key ="true"> Credit_Sales </option>
+	 </options>
+</Element>
+<Element label = "PaymentDue_Date"  type = "UIDate" Id = "txtPaymentDate"    property ="paymentDueDate"   />
+</Element>
+
+
+-->
+
+
+</Element>
+</Section>
+<Section type ="footer">
+<Element label = "Discount"  type = "UIText" Id = "txtDiscount"   focusoutJS = "calculateAllforReturn()" property ="totalDisc"  isNumeric= "true" size = "10" />  
+<Element label = "Tax_Percent"  type = "UIText" Id = "txtTaxPerc"   focusoutJS = "calculateAllforReturn()"  property ="taxPerc" isNumeric= "true" size = "10" />
+<Element label = "Tax_Amount"  type = "UIText" Id = "txtTaxAmt"   property ="taxAmount"  readonly="true" isNumeric= "true" size = "10" />
+<Element label = "Comments"  type = "UITextArea" Id = "txtComm"  property ="comments" >
+	 <rows>2</rows> <cols>30</cols>
+</Element>
+
+<Element label = "Total_Amount"  type = "UIText" Id = "txtTotalAmt"   property ="absNetAmount" isNumeric= "true" readonly="true" size = "10" />
+</Section>
+<Section type ="brk3"/>
+</CoreSection>
+<Section type ="summary">
+
+<Element caption = "Print_Invoice"  type = "UIButton"    Id = "btnInvoice"  style="btn btn-primary" iconStyle="glyphicon glyphicon-print" onClickJS = "showPrintDialog('newprintpop','SalesInvoice');"  rendered = "Controller.isUpdateMode" />
+</Section>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

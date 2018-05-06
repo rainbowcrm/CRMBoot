@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "itemimages" showinFrame ="true"  title ="Sales Target Analysis| Rainbow CRM" Object = "com.rainbow.crm.sales.model.SalesTrend" 
+Controller = "com.rainbow.crm.sales.controller.SalesTrendController">
+<Template type= "General"  name = "GraphTemplate"></Template>
+
+<Elements>
+<UIForm Id ="cust" method = "POST" enctype="multipart/form-data" >
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type= "mainSection">
+<Element type = "UITable" rows = "2" cols = "2"  style = "outlinedTable">
+	<Element type = "UITableRow">
+	<Element type ="UITableCol"><Element label = "From"  type = "UIDate" Id = "txtDate"    property ="fromDate"  >
+	 </Element>
+	 </Element>
+	 <Element type ="UITableCol"><Element label = "To"  type = "UIDate" Id = "txtToDate"    property ="toDate"  >
+	 </Element>
+	 </Element>
+	 <Element type ="UITableCol"><Element label = "No_Intervals"  type = "UIText" Id = "txtInterval"    property ="noItervals"  >
+	 </Element>
+	 </Element>
+	  <Element type ="UITableCol">
+	 <Element label = "Product"  type = "UILookupDataList" listId="lstProdList"   Id = "txtProduct" isMandatory="true"  property ="Product.Name" showLookupAsDialog="true" dialogId="dlgProd"
+ 	 dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" >
+	 <lookupType>product</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+	</Element>
+	</Element>
+	 <Element type ="UITableCol">
+	 	<Element caption = "Analyze"  type = "UIButton" Id = "btnFilterCleas"  style="btn btn-primary" iconStyle="glyphicon glyphicon-flash" fixedAction ="FixedAction.ACTION_READ"   />
+	 </Element>
+</Element>
+</Element>
+</Section>
+<Section type= "displaySection">
+ 	  <Element type = "UILineChart" Id = "brChrt"  dataProvider = "chartData" >
+	  <xStart>0</xStart>
+	  <yStart>0</yStart>
+	  <canvasHeight>550</canvasHeight>
+	  <canvasWidth>1200</canvasWidth>
+	  <rangeHeight>500</rangeHeight>
+	  <rangeWidth>1200</rangeWidth>
+	  <marginWidth>30</marginWidth>
+	  <marginHeight>30</marginHeight>
+	  <noYAxisDivisions>6</noYAxisDivisions>
+	  <noXAxisDivisions>6</noXAxisDivisions>
+	</Element>
+</Section>
+</CoreSection>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

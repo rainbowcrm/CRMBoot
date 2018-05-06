@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "corpashboard" showinFrame ="true"  title ="Corporate Dashboard| Rainbow CRM" Object = "com.rainbow.crm.dashboard.model.SalesDashbBard" 
+Controller = "com.rainbow.crm.dashboard.controller.SalesDashBoardController">
+<Template type= "General"  name = "GraphTemplate"></Template>
+
+<Elements>
+<UIForm Id ="cust" method = "POST" enctype="multipart/form-data" >
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type= "displaySection">
+<Element type = "UITable" rows = "1" cols = "2"  style = "outlinedTable">
+<Element type = "UITableRow" >
+<Element type = "UITableCol" width ="50%" >
+	<!-- <Element type = "UIPieChart" Id = "pieChart1"  dataProvider = "portfolioSplits" useGoogleGraph="true" >
+	  <centerX>150</centerX>
+	  <centerY>150</centerY>
+	  <radius>50</radius>
+	  <rangeHeight>300</rangeHeight>
+	  <rangeWidth>500</rangeWidth>
+ 	</Element>  -->  
+ 	<Element type = "UIIFrame" src ="./rdscontroller?page=adminsalessplits&amp;graphId=adminassocsalessplits"  style = "graphWindow">
+	</Element>
+</Element>
+
+<Element type = "UITableCol" width ="50%" >
+<!--   <Element type = "UIBarChart" Id = "brChrt"  dataProvider = "salesTargetData"  useGoogleGraph="false">
+	  <xStart>0</xStart>
+	  <yStart>20</yStart>
+	  <rangeHeight>300</rangeHeight>
+	  <rangeWidth>500</rangeWidth>
+	  <marginWidth>30</marginWidth>
+	  <barWidth>30</barWidth>
+	  <noYAxisDivisions>6</noYAxisDivisions>
+	</Element> 
+ 	<Element type = "UIIFrame" src ="./rdscontroller?page=divproductsalesplits&amp;graphId=divprodsalessplits"  style="graphWindow">
+	</Element> -->
+	
+	<Element type = "UIIFrame" src ="./rdscontroller?page=divsalesleadsplits&amp;graphId=adminmgrsalesleadsplits"  style = "graphWindow">
+	</Element> 
+</Element>	
+ 	
+
+
+</Element>	
+
+<Element type = "UITableRow" >
+<Element type = "UITableCol" width ="50%" >
+ 	<!-- <Element type = "UILineChart" Id = "line3"  dataProvider = "salesHistory" useGoogleGraph="true"  >
+	  <xStart>0</xStart>
+	  <yStart>0</yStart>
+	  <canvasHeight>300</canvasHeight>
+	  <canvasWidth>500</canvasWidth>
+	  <rangeHeight>300</rangeHeight>
+	  <rangeWidth>500</rangeWidth>
+	  <marginWidth>30</marginWidth>
+	  <marginHeight>30</marginHeight>
+	  <noYAxisDivisions>6</noYAxisDivisions>
+	  <noXAxisDivisions>6</noXAxisDivisions>
+	</Element> -->
+	
+	<Element type = "UIIFrame" src ="./rdscontroller?page=divtargetanalysis&amp;graphId=admintargetanalysis"  style="graphWindow">
+	</Element> 
+	
+</Element>
+
+<Element type = "UITableCol" width ="50%" >
+	<!-- <Element type = "UIPieChart" Id = "pieChart1"  dataProvider = "portfolioSplits" useGoogleGraph="true" >
+	  <centerX>150</centerX>
+	  <centerY>150</centerY>
+	  <radius>50</radius>
+	  <rangeHeight>300</rangeHeight>
+	  <rangeWidth>500</rangeWidth>
+ 	</Element>   
+ 	<Element type = "UIIFrame" src ="./rdscontroller?page=divsalesleadsplits&amp;graphId=divmgrsalesleadsplits"  style = "graphWindow">
+	</Element>  -->
+	<Element type = "UIIFrame" src ="./rdscontroller?page=divsalehistory&amp;graphId=adminsaleshistory"  style = "graphWindow">
+	</Element>
+</Element>
+
+</Element>
+ 	<!-- <Element type = "UIBarChart" Id = "brChrt4"  dataProvider = "salesTargetData" >
+	  <xStart>0</xStart>
+	  <yStart>20</yStart>
+	  <rangeHeight>600</rangeHeight>
+	  <rangeWidth>1000</rangeWidth>
+	  <marginWidth>30</marginWidth>
+	  <barWidth>30</barWidth>
+	  <noYAxisDivisions>6</noYAxisDivisions>
+	</Element>  -->  
+</Element>
+</Section>
+</CoreSection>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

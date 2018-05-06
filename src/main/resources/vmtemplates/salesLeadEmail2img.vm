@@ -1,0 +1,31 @@
+Hello $customerName <br>
+
+ We are pleased to announce the sale of new items
+ 
+ <br> <br>
+ #foreach ($line in $lines)
+    <B>$line.sku.name </B> with new price $line.sku.item.retailPrice
+	<br>
+	$line.sku.item.specification from $line.sku.item.manufacturer
+	<br>
+	
+	<img id="profileImage1" src="$line.image1URL" height="200" width ="200" />
+	<img id="profileImage2" src="$line.image2URL"  height="200" width ="200" />
+		
+	<br>
+	<br>
+#end
+
+ 
+ Looking forward to see you  <br>
+ $companyName  <br>
+ 
+ Please visit our showroom
+ $address1<br>
+ $address2<br>
+ $city<br>
+ $pin<br> <br>
+ 
+ call us at $storephone or $salesphone for personalized buying experience.
+ 
+ 

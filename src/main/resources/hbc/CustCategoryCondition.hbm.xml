@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+<class name="com.rainbow.crm.custcategory.model.CustCategoryCondition" table="CUSTOMER_CATEGORY_CONDITION" lazy="false">
+	<meta attribute="class-description">
+         This class contains the Cust Category Condition
+      </meta>
+       <id name="id" type="int" column="id">
+      </id>
+      <many-to-one name="company" column ="company_id" not-null="true" lazy="false" ></many-to-one>
+      <many-to-one name="category" column ="CUSTOMER_CATEGORY_ID"     not-null="true"></many-to-one>
+      <property name="noOpenBrackets" column="NO_OPEN_BRACKETS" type="integer"/>
+      <property name="noCloseBrackets" column="NO_CLOSE_BRACKETS" type="integer"/>
+      <property name="lineNumber" column="LINE_NUMBER" type="integer"/>
+      <many-to-one name="dataType" column ="DATA_TYPE" not-null="false" lazy="false" ></many-to-one>
+      <property name="field" column="FIELD" type="string"/>
+      <property name="operator" column="OPERATOR" type="string"/>
+      <property name="value" column="VALUE" type="string"/>
+      <property name="postCondition" column="POST_CONDITION" type="string"/>
+      <property name="deleted" column="IS_DELETED" type="boolean"/>
+</class>
+</hibernate-mapping>

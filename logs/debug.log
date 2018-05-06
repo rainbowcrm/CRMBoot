@@ -1,0 +1,8 @@
+2018-05-06 11:40:25 - Starting ApplicationStart on Dell-PC with PID 2296 (C:\apps\CRMBoot\out\production\classes started by Dell in C:\apps\CRMBoot)
+2018-05-06 11:40:25 - Running with Spring Boot v1.5.7.RELEASE, Spring v4.3.11.RELEASE
+2018-05-06 11:40:25 - No active profile set, falling back to default profiles: default
+2018-05-06 11:40:36 - Started ApplicationStart in 12.392 seconds (JVM running for 14.727)
+2018-05-06 12:25:30 - Starting ApplicationStart on Dell-PC with PID 4408 (C:\apps\CRMBoot\out\production\classes started by Dell in C:\apps\CRMBoot)
+2018-05-06 12:25:30 - Running with Spring Boot v1.5.7.RELEASE, Spring v4.3.11.RELEASE
+2018-05-06 12:25:30 - No active profile set, falling back to default profiles: default
+2018-05-06 12:25:39 - Started ApplicationStart in 10.674 seconds (JVM running for 12.934)

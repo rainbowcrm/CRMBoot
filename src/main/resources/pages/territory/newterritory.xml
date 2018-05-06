@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "newTerritory" showinFrame ="true" title ="New Territory | Rainbow CRM" Object = "com.rainbow.crm.territory.model.Territory" 
+Controller = "com.rainbow.crm.territory.controller.TerritoryController">
+<Template type= "Transaction"  name = "TransactionTemplate"></Template>
+<Forwards>
+<Forward key ="CANCEL">rdscontroller?page=territories</Forward>
+<Forward key ="SAVE">territories</Forward>
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<AjaxGroups>
+
+</AjaxGroups>
+
+<Elements>
+<UIForm Id ="cust" method = "POST" > 
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section> 
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type ="header">
+	<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
+	<Element label = ""  type = "UIHidden" Id = "hdnUserID"  property ="Id" />
+	<Element label = "Division"  type = "UIList" Id = "lstInvDivision"  isMandatory="true" property ="Division.Id" >
+	<options populator =  "getAllDivisions"> 
+	</options>
+	</Element>
+
+	<Element label = "Territory"  type = "UIText" Id = "txtTerritory"  isMandatory="true"   property ="territory" />
+	<Element label = "Description"  type = "UIText" Id = "txtDesc"  property ="description" />
+	
+</Section>
+<Section type ="brk1"/>
+<Section type ="detail">
+<Element label = ""  type = "UILabel" Id = "lblLineitTitle"  style="bigTitle" value ="zip codes" />
+<Element type = "UITable" rows = "1" cols = "7" style = "listPageTitle" applyStyleonChildren ="true" Id  ="tblTrans" property ="TerritoryLines[]" >
+<Element type = "UITableHead">
+ <Element type = "UITableRow">
+
+<Element type ="UITableCol" width = "25%" ><Element label = ""  type = "UILabel" Id = "lblZiop" value ="ZipCode" /></Element>
+<Element type ="UITableCol" width = "40%"><Element label = ""  type = "UILabel" Id = "lblLocs" value ="keyLocations" /></Element>
+<Element type ="UITableCol" width = "5%"> </Element>
+</Element>  
+ </Element>
+<Element type = "UITableRow"  dataType = "com.rainbow.crm.territory.model.TerritoryLine" rendered = "!Object.isDeleted">
+
+ 
+<Element type ="UITableCol" width = "25%"><Element label = ""  type = "UIText" Id = "txtLineCo"  property ="ZipCode" size = "10" />  </Element>
+<Element type ="UITableCol" width = "40%"><Element label = ""  type = "UIText" Id = "txtPrice"  property ="keyLocations"  size = "50" />  </Element>
+
+<Element type ="UITableCol" width = "5%">
+	<Element caption = "" style="btn btn-primary" iconStyle="glyphicon glyphicon-plus" type = "UIButton" Id = "btnAddRow"    fixedAction ="FixedAction.ACTION_ADDTABLEROW"  fixedActionParam =  "this"/>
+	<Element caption = "" style="btn btn-danger" iconStyle="glyphicon glyphicon-minus" type = "UIButton" Id = "btnDelRow"    fixedAction ="FixedAction.ACTION_DELETETABLEROW"  fixedActionParam =  "this"/>
+</Element>
+</Element>
+</Element>
+</Section>
+<Section type ="brk3"/>
+</CoreSection>
+<Section type ="summary">
+</Section>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

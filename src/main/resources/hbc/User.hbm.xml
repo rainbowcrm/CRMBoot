@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.rainbow.crm.user.model.User" table="USERS" lazy="false">
+      <meta attribute="class-description">
+         This class contains the Users 
+      </meta>
+      <id name="userId" type="string" column="user_id">
+      </id>
+      <!--  <property name="companyId" column="company_id" type="int"/> -->
+      <version name="objectVersion" column="version" type="integer"></version>
+      <property name="password" column="password" type="string"/>
+      <property name="roleType" column="role_Type" type="string"/>
+      <property name="firstName" column="first_name" type="string"/>
+      <property name="lastName" column="last_name" type="string"/>
+      <property name="phone" column="phone" type="string"/>
+      <property name="email" column="email" type="string"/>
+      <property name="address1" column="address1" type="string"/>
+      <property name="address2" column="address2" type="string"/>
+      <property name="zipCode" column="zipcode" type="string"/>
+      <property name="city" column="city" type="string"/>
+      <property name="active" column="is_active" type="boolean"/>
+      <property name="deleted" column="is_deleted" type="boolean"/>
+      <property name="createdDate" column="created_date" type="timestamp" update="false" />
+      <property name="lastUpdateDate" column="last_updated_date" type="timestamp"/>
+      <property name="createdUser" column="created_by" type="string" update="false" />
+      <property name="lastUpdateUser" column="last_updated_by" type="string"/>
+      <many-to-one name="company" column ="company_id" not-null="true" lazy="false" ></many-to-one>
+      <many-to-one name="division" column ="division_id"  lazy="false" ></many-to-one>
+      
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "divassocsalessplitspage" showinFrame ="true"  title ="Sales Dashboard| Rainbow CRM" Object = "com.rainbow.crm.dashboard.model.SalesDashbBard" 
+Controller = "com.rainbow.crm.dashboard.controller.SalesDashBoardController">
+<Template type= "General"  name = "miniGraphTemplate"></Template>
+
+<Elements>
+<UIForm Id ="cust" method = "POST" enctype="multipart/form-data" >
+<Section type= "fullSection">
+<Element type = "UIHidden" Id = "hdngraphId"  property = "graphId"  constantValue="adminassocsalessplits"/>
+<Element type = "UITable"  rows = "1" cols="2">
+<Element type = "UITableRow" >
+<Element type = "UITableCol" >	
+<Element label = "Based_on"  type = "UIList" Id = "lstAggrType"   property ="salespiecriteria" >
+	<options populator =  "getAllSplitUpOptions"> 
+	</options> 
+	</Element>
+</Element>
+<Element type = "UITableCol" >	
+<Element caption = "Refresh"  type = "UIButton" Id = "btfilterSave"  style="button" fixedAction ="FixedAction.ACTION_PLAINSUBMIT"   />
+</Element>
+</Element>
+</Element>
+
+<Element type = "UIPieChart" Id = "pieChart2"  dataProvider = "divManagerSalesAssociateSplits" useGoogleGraph="true" >
+	  <centerX>150</centerX>
+	  <centerY>150</centerY>
+	  <radius>50</radius>
+	  <rangeHeight>250</rangeHeight>
+	  <rangeWidth>500</rangeWidth>
+ 	</Element>  
+ 	
+	
+	
+
+ 	
+ 
+</Section>
+</UIForm>
+</Elements>
+</Page>

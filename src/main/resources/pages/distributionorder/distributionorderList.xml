@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "distributionorderList" showinFrame ="true" title ="Sales Leads | Rainbow CRM"  Object = "com.rainbow.crm.distributionorder.model.DistributionOrder" 
+Controller = "com.rainbow.crm.distributionorder.controller.DistributionOrderListController">
+<Template type= "List"  name = "ListTemplate"></Template>
+<Forwards>
+<Forward key ="NEW">rdscontroller?page=newdistributionorder</Forward>
+<Forward key ="EDIT">rdscontroller?page=newdistributionorder</Forward>
+</Forwards>
+<AjaxGroups>
+<AjaxGroup service ="filterSearch">
+<requestElements>
+<requestElement key = "filterId">lstSavedFilters</requestElement>
+</requestElements>
+<responseElements>
+<responseElement key = "FilterName" >txtFilterName</responseElement>
+<responseElement key = "BillNo" >txtBillNo</responseElement>
+<responseElement key = "Division.Name" >txtDivision</responseElement>
+<responseElement key = "Customer.Phone" >txtCustomerPhone</responseElement>
+<responseElement key = "Customer.FirstName" >txtCustomer</responseElement>
+<responseElement key = "FromDate" >txtFromDate</responseElement>
+<responseElement key = "ToDate" >txtToDate</responseElement>
+</responseElements>
+</AjaxGroup>
+</AjaxGroups>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./scripts/sales/DistributionOrder.js</IncludeJS>
+<Elements>
+<Section type ="topBar"></Section>
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<FilterSection>
+<FilterNode>
+  <Element label = "Saved_Filters"  type = "UIList" Id = "lstSavedFilters"   property ="" >
+	<options populator =  "getSavedFiters"> 
+	</options>
+  </Element>
+ </FilterNode>
+<FilterNode>
+   	<Element label = "Filter_Name"  type = "UIText" Id = "txtFilterName"  property ="FilterName" />
+</FilterNode>
+<FilterNode>
+   	<Element label = "Bill_No"  type = "UIText" Id = "txtBillNo"  property ="billNumber" />
+</FilterNode>
+<FilterNode>
+<Element label = "Division"  type = "UILookupDataList" listId="lsDivList"  Id = "txtDivision"  property ="Division.Name" showLookupAsDialog="true" dialogId="dlgComp"
+  dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" >
+	 <lookupType>division</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+</Element>
+</FilterNode>
+<FilterNode>
+   	<Element label = "Customer_Phone"  type = "UIText" Id = "txtCustomerPhone"  property ="Customer.Phone" />
+</FilterNode>
+<FilterNode>
+   	<Element label = "Customer"  type = "UIText" Id = "txtCustomer"  property ="Customer.FirstName" />
+</FilterNode>
+<FilterNode operator = ">=">
+   	<Element label = "From"  type = "UIDate" Id = "txtFromDate"  property ="orderDate" />
+</FilterNode>
+<FilterNode operator = ">=">
+   	<Element label = "To"  type = "UIDate" Id = "txtToDate"  property ="orderDate" />
+</FilterNode>     
+</FilterSection>
+<ListSection >
+ <Columns allowrowselection ="Multiple" uniqueproperty = "Id">
+<SelectionColumn   >
+<Element label = ""  type = "UICheckBox" Id = "idChkSel"  rendered="!Object.isVoided" property ="Id" />
+<Element label = ""  type = "UIImage" Id = "idChkSel"  rendered="Object.isVoided" height = "21" weight ="21" src= "./resources/images/deletedRow.jpg" />
+</SelectionColumn>
+<Column title ="Doc_Number" sortField="docNumber" width ="20%" >
+<Element label = ""  type = "UINote" Id = "idDoc"  property ="DocNumber" />
+</Column>
+<Column title ="Date" sortField="orderDate" width ="20%" >
+<Element label = ""  type = "UINote" Id = "idDt"  property ="orderDate" />
+</Column>
+<Column title ="Customer" sortField="customer.firstName" width ="30%" >
+<Element label = ""  type = "UINote" Id = "idCust"  property ="Customer.fullName" />
+</Column>
+<Column title ="Phone" sortField="customer.phone"  width ="10%" >
+<Element label = ""  type = "UINote" Id = "idPhone"  property ="Customer.Phone" />
+</Column>
+<Column title ="Status" sortField="status.description" width ="25%" >
+<Element label = ""  type = "UINote" Id = "idAmt"  property ="Status.description" />
+</Column>
+</Columns>
+</ListSection>
+</CoreSection>
+<Section type ="summary">
+<Element caption = "Process"  type = "UIButton"    Id = "btnEdit"  style="btn btn-primary" fixedAction ="FixedAction.ACTION_GOEDITMODE"  fixedActionParam =  "EDIT"  />
+<Element type= "Panel" key= "NavPanel"  style = "sameline" ></Element>
+</Section>
+<Section type ="copyRightSection"/>
+</Elements>
+</Page>
+
+
+

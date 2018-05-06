@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "configsetup" showinFrame ="true"  title ="Configuration| Rainbow CRM" Object = "com.rainbow.crm.config.model.ConfigSet" 
+Controller = "com.rainbow.crm.config.controller.ConfigController">
+<Template type= "General"  name = "generalTemplate"></Template>
+<Elements>
+<UIForm Id ="frmdd" method = "POST"  >
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type= "mainSection">
+<Element type ="UITabset" Id = "configSet" style = "uitabstyle" selectedTabStyle= "titleStyleSelected active nav-link" unSelectedTabStyle ="titleStyleUnSelected nav-link" >
+<Element type ="UITab" Id= "idGeneral" title = "General"   >
+<Element type = "UITable" rows = "1" cols = "3" style = "grid" applyStyleonChildren ="true" Id  ="tblGeneral" property ="GeneralConfigLines[]" >
+<Element type = "UITableRow"  dataType = "com.rainbow.crm.config.model.ConfigLine" >
+<Element type ="UITableCol" width = "70%" align = "left">
+<Element label = ""  type = "UIHidden" Id = "txtGNCode" size  = "10" property ="configCode" /> 
+<Element label = ""  type = "UILabel" Id = "txtGNDesc" size  = "50" property ="description" /> 
+</Element>
+<Element type ="UITableCol" width = "30%">
+<Element label = ""  type = "UIText" Id = "txtGNValue" size  = "40" property ="value" rendered = "Object.isTextField"/> 
+<Element label = ""  type = "UIList" Id = "txtGNValue"  property ="value" rendered = "Object.isFVField"> 
+<options populator = "Object.getOptions" >
+</options>
+</Element>
+<Element label = ""  type = "UIHidden" Id = "hdnGNCHKBX"    rendered = "!Object.isBooleanField"/>
+<Element label = ""  type = "UIText" Id = "txtGNValue"   size  = "10" isNumeric  ="true" property ="value" rendered = "Object.isNumericField"/>
+<Element label = ""  type = "UIBooleanCheckBox" Id = "hdnGNCHKBX"  property ="value"  hiddenControlId= "txtGNValue" rendered = "Object.isBooleanField">
+</Element>	   
+
+</Element>
+</Element>
+</Element>
+</Element>
+<Element type ="UITab" Id= "idcustMgmt" title = "Customer_Management"   >
+
+<Element type = "UITable" rows = "1" cols = "3" style = "grid" applyStyleonChildren ="true" Id  ="tblCust" property ="CustomerConfigLines[]" >
+<Element type = "UITableRow"  dataType = "com.rainbow.crm.config.model.ConfigLine" >
+<Element type ="UITableCol" width = "70%" align = "left">
+<Element label = ""  type = "UIHidden" Id = "txtCMCode" size  = "10" property ="configCode" /> 
+<Element label = ""  type = "UILabel" Id = "txtCMDesc" size  = "50" property ="description" /> 
+</Element>
+<Element type ="UITableCol" width = "30%">
+<Element label = ""  type = "UIText" Id = "txtCMValue" size  = "40" property ="value" rendered = "Object.isTextField"/> 
+<Element label = ""  type = "UIList" Id = "txtCMValue"  property ="value" rendered = "Object.isFVField"> 
+<options populator = "Object.getOptions" >
+</options>
+</Element>
+<Element label = ""  type = "UIHidden" Id = "hdnCMCHKBX"    rendered = "!Object.isBooleanField"/>
+<Element label = ""  type = "UIText" Id = "txtCMValue"   size  = "10" isNumeric  ="true" property ="value" rendered = "Object.isNumericField"/>
+<Element label = ""  type = "UIBooleanCheckBox" Id = "hdnCMCHKBX"  property ="value"  hiddenControlId= "txtCMValue" rendered = "Object.isBooleanField">
+</Element>
+</Element>
+</Element>
+</Element>
+</Element>
+
+<Element type ="UITab" Id= "idwfMgmt" title = "Workforce_Management"   >
+
+<Element type = "UITable" rows = "1" cols = "3" style = "grid" applyStyleonChildren ="true" Id  ="tblWForce" property ="WorkforceConfigLines[]" >
+<Element type = "UITableRow"  dataType = "com.rainbow.crm.config.model.ConfigLine" >
+<Element type ="UITableCol" width = "70%" align = "left">
+<Element label = ""  type = "UIHidden" Id = "txtWFMCode" size  = "10" property ="configCode" /> 
+<Element label = ""  type = "UILabel" Id = "txtWFMDesc" size  = "50" property ="description" /> 
+</Element>
+<Element type ="UITableCol" width = "30%">
+<Element label = ""  type = "UIText" Id = "txtWFMValue" size  = "40" property ="value" rendered = "Object.isTextField"/> 
+<Element label = ""  type = "UIList" Id = "txtWFMValue"  property ="value" rendered = "Object.isFVField"> 
+<options populator = "Object.getOptions" >
+</options>
+</Element>
+<Element label = ""  type = "UIHidden" Id = "hdnWFCHKBX"    rendered = "!Object.isBooleanField"/>
+<Element label = ""  type = "UIText" Id = "txtWFMValue"   size  = "10" isNumeric  ="true" property ="value" rendered = "Object.isNumericField"/>
+<Element label = ""  type = "UIBooleanCheckBox" Id = "hdnWFCHKBX"  property ="value"  hiddenControlId= "txtWFMValue" rendered = "Object.isBooleanField">
+</Element>
+</Element>
+</Element>
+</Element>
+</Element>
+
+
+
+
+<Element type ="UITab" Id= "idinven" title = "Inventory"   >
+<Element type = "UITable" rows = "1" cols = "3" style = "grid" applyStyleonChildren ="true" Id  ="tblInv" property ="InventoryConfigLines[]" >
+<Element type = "UITableRow"  dataType = "com.rainbow.crm.config.model.ConfigLine" >
+<Element type ="UITableCol" width = "70%" align = "left">
+<Element label = ""  type = "UIHidden" Id = "txtINCode" size  = "10" property ="configCode" /> 
+<Element label = ""  type = "UILabel" Id = "txtINDesc" size  = "50" property ="description" /> 
+</Element>
+<Element type ="UITableCol" width = "30%">
+<Element label = ""  type = "UIText" Id = "txtINValue" size  = "40" property ="value" rendered = "Object.isTextField"/> 
+<Element label = ""  type = "UIList" Id = "txtINValue"  property ="value" rendered = "Object.isFVField"> 
+<options populator = "Object.getOptions" >
+</options>
+</Element>
+<Element label = ""  type = "UIHidden" Id = "hdnCHKBX"    rendered = "!Object.isBooleanField"/>
+<Element label = ""  type = "UIText" Id = "txtINValue"   size  = "10" isNumeric  ="true" property ="value" rendered = "Object.isNumericField"/>
+<Element label = ""  type = "UIBooleanCheckBox" Id = "hdnCHKBX"  property ="value"  hiddenControlId= "txtINValue" rendered = "Object.isBooleanField">
+</Element>
+</Element>
+</Element>
+</Element>
+</Element>
+
+<Element type ="UITab" Id= "idauth" title = "Authorizations"   >
+<Element type = "UITable" rows = "1" cols = "3" style = "grid" applyStyleonChildren ="true" Id  ="tblAuth" property ="AuthorizationConfigLines[]" >
+<Element type = "UITableRow"  dataType = "com.rainbow.crm.config.model.ConfigLine" >
+<Element type ="UITableCol" width = "70%" align = "left">
+<Element label = ""  type = "UIHidden" Id = "txtAuthCode" size  = "10" property ="configCode" /> 
+<Element label = ""  type = "UILabel" Id = "txtAuthDesc" size  = "50" property ="description" /> 
+</Element>
+<Element type ="UITableCol" width = "30%">
+<Element label = ""  type = "UIText" Id = "txtAuthValue" size  = "40" property ="value" rendered = "Object.isTextField"/> 
+<Element label = ""  type = "UIList" Id = "txtAuthValue"  property ="value" rendered = "Object.isFVField"> 
+<options populator = "Object.getOptions" >
+</options>
+</Element>
+<Element label = ""  type = "UIHidden" Id = "hdnAuthCHKBX"    rendered = "!Object.isBooleanField"/>
+<Element label = ""  type = "UIText" Id = "txtAuthValue"   size  = "10" isNumeric  ="true" property ="value" rendered = "Object.isNumericField"/>
+<Element label = ""  type = "UIBooleanCheckBox" Id = "hdnAuthCHKBX"  property ="value"  hiddenControlId= "txtAuthValue" rendered = "Object.isBooleanField">
+</Element> 
+</Element>
+</Element>
+</Element>
+</Element>
+
+
+
+<!-- commenting  Payment Tab  
+<Element type ="UITab" Id= "idpay" title = "Payment"   >
+<Element type = "UITable" rows = "1" cols = "3" style = "grid" applyStyleonChildren ="true" Id  ="tblPay" property ="PaymentConfigLines[]" >
+<Element type = "UITableRow"  dataType = "com.rainbow.crm.config.model.ConfigLine" >
+<Element type ="UITableCol" width = "70%" align = "left">
+<Element label = ""  type = "UIHidden" Id = "txtPYCode" size  = "10" property ="configCode" /> 
+<Element label = ""  type = "UILabel" Id = "txtPYDesc" size  = "50" property ="description" /> 
+</Element>
+<Element type ="UITableCol" width = "30%">
+<Element label = ""  type = "UIText" Id = "txtPYValue" size  = "40" property ="value" rendered = "Object.isTextField"/> 
+<Element label = ""  type = "UIList" Id = "txtPYValue"  property ="value" rendered = "Object.isFVField"> 
+<options populator = "Object.getOptions" >
+</options>
+</Element>
+<Element label = ""  type = "UIHidden" Id = "hdnPYCHKBX"    rendered = "!Object.isBooleanField"/>
+<Element label = ""  type = "UIText" Id = "txtPYValue"   size  = "10" isNumeric  ="true" property ="value" rendered = "Object.isNumericField"/>
+<Element label = ""  type = "UIBooleanCheckBox" Id = "hdnPYCHKBX"  property ="value"  hiddenControlId= "txtPYValue" rendered = "Object.isBooleanField">
+</Element> 
+</Element>
+</Element>
+</Element>
+</Element>
+
+ -->
+<Element type ="UITab" Id= "idordermgmt" title = "Delivery_Management"  >
+<Element type = "UITable" rows = "1" cols = "3" style = "grid" applyStyleonChildren ="true" Id  ="tblOrderConf" property ="OrderConfigLines[]" >
+<Element type = "UITableRow"  dataType = "com.rainbow.crm.config.model.ConfigLine" >
+<Element type ="UITableCol" width = "70%" align = "left">
+<Element label = ""  type = "UIHidden" Id = "txtOMCode" size  = "10" property ="configCode" /> 
+<Element label = ""  type = "UILabel" Id = "txtOMDesc" size  = "50" property ="description" /> 
+</Element>
+<Element type ="UITableCol" width = "30%">
+<Element label = ""  type = "UIText" Id = "txtOMValue" size  = "40" property ="value" rendered = "Object.isTextField"/> 
+<Element label = ""  type = "UIList" Id = "txtOMValue"  property ="value" rendered = "Object.isFVField"> 
+<options populator = "Object.getOptions" >
+</options>
+</Element>
+<Element label = ""  type = "UIHidden" Id = "hdnOMCHKBX"    rendered = "!Object.isBooleanField"/>
+<Element label = ""  type = "UIText" Id = "txtOMValue"   size  = "10" isNumeric  ="true" property ="value" rendered = "Object.isNumericField"/>
+<Element label = ""  type = "UIBooleanCheckBox" Id = "hdnOMCHKBX"  property ="value"  hiddenControlId= "txtOMValue" rendered = "Object.isBooleanField">
+</Element>
+ </Element>
+</Element>
+</Element>
+</Element>
+
+</Element>
+</Section>
+</CoreSection>
+ <Section type ="summary"  >
+<Element caption = "Update"  type = "UIButton" Id = "btdwLoad"  style="btn btn-primary" iconStyle="glyphicon glyphicon-flash" 
+  fixedAction ="FixedAction.ACTION_PLAINSUBMIT"   />
+ </Section>
+
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

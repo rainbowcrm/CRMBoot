@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "newCustomer" showinFrame ="true" title ="New Customer | Rainbow CRM" Object = "com.rainbow.crm.customer.model.Customer" 
+Controller = "com.rainbow.crm.customer.controller.CustomerController">
+<Template type= "CRUD"  name = "CRUDTemplate"></Template>
+<Forwards>
+<Forward key ="CANCEL">rdscontroller?page=customers</Forward>
+<Forward key ="SAVE">customers</Forward>
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./resources/js/ImageUpload.js</IncludeJS>
+<Elements>
+<UIForm Id ="cust" method = "POST" enctype="multipart/form-data" >
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type ="detail">
+	<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
+	<Element label = ""  type = "UIHidden" Id = "hdnUserID"  property ="Id" />
+	<Element label = "First_Name"  type = "UIText" Id = "txtName"  isMandatory="true" size="30" autofocus = "true" property ="FirstName" />
+	<Element label = "Last_Name"  type = "UIText" Id = "txtLName"  isMandatory="true" size="30" property ="LastName" />
+	<Element label = "Address1"  type = "UIText" Id = "txtAdd1" size="30" property ="Address1" />
+	<Element label = "Address2"  type = "UIText" Id = "txtAdd2" size="30" property ="Address2" />
+	<Element label = "City"  type = "UIText" Id = "txtCity" size="30"  property ="City" />
+	<Element label = "Pin_code"  type = "UIText" Id = "txtPinCode" size="7" property ="ZipCode" />
+	<Element label = "Email"  type = "UIText" Id = "txtemail" size="30" isMandatory="true" property ="Email" />
+	<Element label = "Phone"  type = "UIText" Id = "txtPhone" size="30" isMandatory="true" property ="Phone" />
+	<Element label = "Loyalty_Point"  type = "UIText" Id = "txtLPoint" size="30"  readonly="true" property ="loyaltyPoint" />
+	<Element label = "Credit_Limit"  type = "UIText" Id = "txtCreditLimit" size="30"  isNumeric="true"  property ="CreditLimit" />
+	<Element label = "Referencable"  type = "UIBooleanCheckBox" Id = "txtreferncible" hiddenControlId= "hdnAskforFeeddBack"   property ="referencible"/> 
+	<Element label = "Photo" type = "UIFileUpload" Id = "txtPhoto3" property ="image" maxSize="30720"
+   multiple ="false"  fileNameProperty="fileName"   onChangeJS ="readURL(this,'idIMG3')" accept= ".png, .jpg, .jpeg"  />
+   <Element label = ""  type = "UIImage" Id = "idIMG3"  height = "200" weight ="200" src= "#" property ="fileWithLink" />
+   <Element label = ""  type = "UIHidden" Id = "hdnfilWithLink"   property ="tempPhotoFile" />
+</Section>
+</CoreSection>
+<Section type ="summary">
+</Section>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "topics" showinFrame ="true"  title ="Topics | Rainbow CRM" Object = "com.rainbow.crm.topic.model.TopicSet" 
+Controller = "com.rainbow.crm.topic.controller.TopicSetController">
+<Template type= "General"  name = "generalTemplate"></Template>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./scripts/salesportfolio/SalesPortFolio.js</IncludeJS>
+<IncludeJS>./scripts/topic/topic.js</IncludeJS>
+<AjaxGroups>
+</AjaxGroups>
+
+<Elements>
+<UIForm Id ="topicfrm" method = "POST" enctype="POST" >
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type= "mainSection">
+<Element label = ""  type = "UIHidden" Id = "hdnreplyRead"  property ="readReply"  />
+<Element type = "UITable" rows = "1" cols = "4"  style = "outlinedTable">
+
+	<Element type = "UITableRow">
+	<Element type ="UITableCol">
+		<Element label = ""  type = "UIList" Id = "txtKeyCode" onChangeJS = "selectPFKeyType(this);" property ="newTopic.portfolioType.code" > 
+		<options populator =  "getAllTypes"> 
+		</options>
+		</Element>
+	</Element>
+	<Element type ="UITableCol">
+		<Element label = ""  type = "UILookupText"  Id = "txtportkeyName"  size  = "20" property ="newTopic.portfolioValue" showLookupAsDialog="true" dialogId="dlgItportkey"
+	  dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" >
+		 <lookupType>salesportfoliokey</lookupType>
+		 <height>300</height>
+		 <width>290</width>
+	</Element>
+	</Element>
+	<Element type ="UITableCol">
+		<Element label = "Title"  type = "UIText" Id = "txtTitle" size  = "35" property ="newTopic.title"  />
+	</Element>
+	<Element type ="UITableCol">
+	  <Element label = "Question"  type = "UITextArea" Id = "txtSpecification" property ="newTopic.question"  > 
+		<rows>5</rows> <cols>35</cols>
+	</Element>
+	 <Element caption = "Post_Topic"  type = "UIButton" Id = "btdwLoad"  style="btn btn-primary"  fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam =  "newTopic" /> 
+	</Element>
+	</Element>
+	<Element type= "UITableRow">
+	 <Element type = "UITableCol">
+	
+	 </Element>
+	
+	</Element>
+</Element>
+<Element type = "UIDiv" style="childSectionStyle">
+<Element type = "UITable" rows = "1" cols = "3"  style = "outlinedTable">
+<Element type = "UITableRow">
+<Element type ="UITableCol"  width = "20%">
+  <Element type = "UIList"  size ="12" Id  ="lstAllTopics" multiple="true" onChangeJS = "getReplies()" property = "currentTopic"> 
+  	<options populator =  "getAllOpenTopics"> 
+	</options>
+   </Element>
+  
+</Element> 
+<Element type ="UITableCol"  width = "80%">
+<Element label = ""  type = "UILabel" style="discussion" Id = "txtdiscussion" property ="completeDiscussion"  > 
+	</Element>
+ 
+</Element>
+</Element>
+</Element>
+</Element>
+
+
+<Element type="UIStaticText">
+  &lt;script&gt;
+   checkforupdates();
+  &lt;/script&gt;
+</Element>
+</Section>
+</CoreSection>
+<Section type= "discussionsummary">
+<Element type = "UITable" rows = "1" cols = "1"  style = "outlinedTable">
+	<Element type = "UITableRow">
+	<Element type ="UITableCol">
+	<Element label = ""  type = "UIText" Id = "txtnewReply"  size ="130" property ="postedReply"  > 
+	</Element>
+	<Element caption = "Reply"  type = "UIButton" Id = "Reply"  style="btn btn-primary"  onClickJS="postReply();" />
+	<Element caption = "Close_Topic"  type = "UIButton" Id = "btdwLoad"  style="btn btn-warning" iconStyle="glyphicon glyphicon-remove"  fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam =  "closeTopic" />
+</Element>
+</Element>
+</Element>
+
+</Section> 
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

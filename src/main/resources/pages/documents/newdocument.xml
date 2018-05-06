@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "newDocument" showinFrame ="true" title ="New Document | Rainbow CRM" Object = "com.rainbow.crm.document.model.Document" 
+Controller = "com.rainbow.crm.document.controller.DocumentController">
+<Template type= "CRUD"  name = "CRUDTemplate"></Template>
+<Forwards>
+<Forward key ="CANCEL">rdscontroller?page=documents</Forward>
+<Forward key ="SAVE">documents</Forward>
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<AjaxGroups>
+
+</AjaxGroups>
+<Elements>
+<UIForm Id ="cust" method = "POST"   enctype="multipart/form-data" >
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type ="detail">
+	<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
+	<Element label = ""  type = "UIHidden" Id = "hdnUserID"  property ="Id" />
+	
+ 	<Element label = "Doc Name"  type = "UIText" Id = "txtxDocName"  isMandatory="true" size="30" property ="docName"   />
+	<Element label = "Owner"  type = "UIText" Id = "txtLName"  isMandatory="true" size="30" property ="owner.userId" readonly="true"  />
+	
+	<Element label = "Document_Type"  type = "UIList" Id = "lstEnqType"   property ="docType.code"  externalise= "true">
+		<options populator =  "getDocumentTypes"> 
+		</options>
+	</Element>
+	
+   
+	<Element label = "Item"  type = "UILookupText" Id = "txtITNearLName"   size="30" property ="item.name"  showLookupAsDialog="true" dialogId="dlgNearItem"
+ 	dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle"  >
+ 	<lookupType>item</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+	</Element>
+	<Element label = "Customer"  type = "UILookupText" Id = "txtCustomerLook"   size="30" property ="customer.name"  showLookupAsDialog="true" dialogId="dlgCust"
+ 	dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle"  >
+ 	<lookupType>customer</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+	</Element>
+	<Element label = "Sales_Lead"  type = "UILookupText" Id = "txtLeadNumber"   size="30" property ="salesLead.docNumber"  showLookupAsDialog="true" dialogId="dlgLead"
+ 	dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle"  >
+ 	<lookupType>saleslead</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+	</Element>
+	<Element label = "Sales"  type = "UILookupText" Id = "txtSLSBilNumer"   size="30" property ="sales.bilNumber"  showLookupAsDialog="true" dialogId="dlgSLSBill"
+ 	dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle"  >
+ 	<lookupType>sales</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+	</Element>
+	<Element label = "Comments"  type = "UITextArea" Id = "txtComments"   property ="comments" >
+	 <rows>5</rows> <cols>30</cols>
+	</Element>
+	
+	
+	
+	<Element label = "Document" type = "UIFileUpload" Id = "txtPhoto3" property ="docData" maxSize="60720"
+   multiple ="false"  fileNameProperty="fileName1"  accept= ".png, .jpg, .jpeg , .doc , .xls , .pdf , .txt , .pps, .ppt , .* "  />
+	<If check  = "Controller.isUpdateMode" >
+	<Element label = ""  type = "UIHyperLink" Id = "txtlink"    size="10" property ="fileWithLink" externalise ="false" />
+	</If>
+</Section>
+</CoreSection>
+<Section type ="summary">
+</Section>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

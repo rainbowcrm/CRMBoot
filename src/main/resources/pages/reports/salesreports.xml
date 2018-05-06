@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "salesleadconsole" showinFrame ="true" title ="Sales Reports | Rainbow CRM" Object = "com.rainbow.crm.reports.model.SalesReport" 
+Controller = "com.rainbow.crm.reports.controller.SalesReportController">
+<Template type= "General"  name = "generalTemplate"></Template>
+
+<Elements>
+<UIForm Id ="cust" method = "POST" enctype="multipart/form-data" >
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type= "mainSection">
+<Element type = "UITable" rows = "1" cols = "5"  style = "halftable">
+	<Element type = "UITableRow">
+	<Element type ="UITableCol">
+	<Element label = "Division"  type = "UIList" Id = "lstDivision"    property ="division.Id"  >
+	<options populator =  "getAllDivisions"> 
+	</options>
+	 </Element>
+	 </Element>
+	 
+	 <Element type ="UITableCol">
+	 <Element label = "From"  type = "UIDate" Id = "txtDate"    property ="from"  />
+	 <Element label = "To"  type = "UIDate" Id = "txtToDate"    property ="to"  />
+	 </Element>
+	</Element>
+  
+  	<Element type = "UITableRow">
+	<Element type ="UITableCol">
+	<Element label = ""  type = "UIHidden" Id = "hdnRepType"    property ="reportType"  />
+   <Element caption = "View"  type = "UIButton"    Id = "btnShipped"  style="btn btn-primary"  fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam ="viewReport"   />
+   </Element>
+   </Element>
+  
+</Element>
+</Section>
+</CoreSection>
+</UIForm>
+</Elements>
+</Page>

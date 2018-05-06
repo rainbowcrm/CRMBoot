@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "salesforceanalyse" showinFrame ="true"  title ="Sales Force Analysis| Rainbow CRM" Object = "com.rainbow.crm.salesforceanalyzer.model.SalesPeriodAnalyzer" 
+Controller = "com.rainbow.crm.salesforceanalyzer.controller.SalesForceAnalyzerController">
+<Template type= "General"  name = "GraphTemplate"></Template>
+
+<Elements>
+<UIForm Id ="cust" method = "POST" enctype="multipart/form-data" >
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type= "mainSection">
+<Element type = "UITable" rows = "1" cols = "5"  style = "outlinedTable">
+	<Element type = "UITableRow">
+	<Element type ="UITableCol"><Element label = "Division"  type = "UIList" Id = "lstDivision"    property ="division.Id"  >
+	<options populator =  "getAllDivisions"> 
+	</options>
+	 </Element>
+	 </Element>
+	 <Element type ="UITableCol">
+	 	<Element label = "Based on"  type = "UIRadioBox" Id = "rdoType"   property ="basedOn" >
+	  <options> 
+	  <option key ="Sales"> Sales </option>
+	  <option key ="Expense"> Expense </option>
+	  <option key ="Leads"> Leads </option>
+	  </options>
+	</Element>
+	</Element>
+	 <Element type ="UITableCol"><Element label = "From"  type = "UIDate" Id = "txtDate"    property ="fromDate"  >
+	 </Element>
+	 </Element>
+	 <Element type ="UITableCol"><Element label = "To"  type = "UIDate" Id = "txtToDate"    property ="toDate"  >
+	 </Element>
+	 <Element type ="UITableCol">
+	 	<Element caption = "Analyze"  type = "UIButton" Id = "btnFilterCleas"  style="btn btn-primary" iconStyle="glyphicon glyphicon-flash" fixedAction ="FixedAction.ACTION_READ"   />
+	 </Element>
+</Element>
+</Element>
+</Element>
+</Section>
+<Section type= "displaySection">
+	<Element type = "UIPieChart" Id = "brChrt2"  dataProvider = "salesData" >
+	  <centerX>500</centerX>
+	  <centerY>350</centerY>
+	  <radius>250</radius>
+	  <rangeHeight>800</rangeHeight>
+	  <rangeWidth>1000</rangeWidth>
+ 	</Element>
+ <!-- 	<Element type = "UIPieChart" Id = "brChrt3"  dataProvider = "expenseData" >
+	  <centerX>150</centerX>
+	  <centerY>150</centerY>
+	  <radius>50</radius>
+	  <rangeHeight>300</rangeHeight>
+	  <rangeWidth>500</rangeWidth>
+ 	</Element>
+ --></Section>
+</CoreSection>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

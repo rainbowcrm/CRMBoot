@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "newExpense" showinFrame ="true" title ="New Expense | Rainbow CRM" Object = "com.rainbow.crm.expense.model.ExpenseVoucher" 
+Controller = "com.rainbow.crm.expensevoucher.controller.ExpenseVoucherController">
+<Template type= "Transaction"  name = "TransactionTemplate"></Template>
+<Forwards>
+<Forward key ="CANCEL">rdscontroller?page=expensevouchers</Forward>
+<Forward key ="SAVE">expensevouchers</Forward>
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<AjaxGroups>
+</AjaxGroups>
+
+<Elements>
+<UIForm Id ="cust"  method = "POST" enctype="multipart/form-data" > 
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section> 
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type ="header">
+	<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
+	<Element label = ""  type = "UIHidden" Id = "hdnUserID"  property ="Id" />
+	<Element label = "Division"  type = "UIList" Id = "lstInvDivision"  isMandatory="true" property ="Division.Id" >
+	<options populator =  "getAllDivisions"> 
+	</options>
+	</Element>
+	<Element label = "Associate"   type = "UILookupDataList" listId="lsthdrAss"  Id = "txtAssociate"  size  = "20" property ="salesAssoicate.userId" showLookupAsDialog="true" dialogId="dlgslsAss"
+	  dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle"  additionalInputControl = "lstInvDivision" >
+		 <lookupType>user</lookupType>
+		 <height>300</height>
+		 <width>290</width>
+	</Element>
+
+	<Element label = "Doc_No"  type = "UIText" Id = "txtDocNo"  isMandatory="true"  readonly="true" property ="docNumber" />
+	<Element label = "Date"  type = "UIDate" Id = "txtwishListDate" isMandatory="true"  property ="expenseDate" />
+	<Element label = ""  type = "UIHidden" Id = "txtHDBStatus"    property ="Status.Code" />
+	<Element label = "Status"  type = "UIText" Id = "txtStatus"  readonly="true"  property ="Status.description" />
+	<Element label = "Manager"  type = "UIText" Id = "txtMgr"  readonly="true"  property ="manager.userId" />
+	
+	
+</Section>
+<Section type ="detail">
+<Element label = ""  type = "UILabel" Id = "lblLineitTitle"  style="bigTitle" value ="Expense_Lines" />
+<Element type = "UITable" rows = "1" cols = "7" style = "listPageTitle" applyStyleonChildren ="true" Id  ="tblTrans" property ="ExpenseVoucherLines[]" >
+<Element type = "UITableHead">
+ <Element type = "UITableRow">
+
+<Element type ="UITableCol" width = "13%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Expense" /></Element>
+<Element type ="UITableCol" width = "5%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="BillNo" /></Element>
+<Element type ="UITableCol" width = "18%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Comments" /></Element>
+<Element type ="UITableCol" width = "18%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Manager_Comments" /></Element>
+<Element type ="UITableCol" width = "12%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="File" /></Element>
+<Element type ="UITableCol" width = "12%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Attachment" /></Element>
+<Element type ="UITableCol" width = "6%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Requested_Amount" /></Element>
+<Element type ="UITableCol" width = "6%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Countered_Amount" /></Element>
+<Element type ="UITableCol" width = "8%"> </Element>
+</Element>  
+ </Element>
+<Element type = "UITableRow"  dataType = "com.rainbow.crm.expensevoucher.model.ExpenseVoucherLine" rendered = "!Object.isDeleted">
+
+<Element type ="UITableCol" width = "15%"><Element label = ""  type = "UIList" Id = "lstExpents"  property ="expenseHead.Id" > 
+<options populator =  "getAllExpenseHeads"> 
+	</options>
+</Element>
+</Element>
+<Element type ="UITableCol" width = "5%"><Element label = ""  type = "UIText" Id = "txtLineCo"  property ="billNumber" size = "10" />  </Element>
+<Element type ="UITableCol" width = "18%"><Element label = ""  type = "UIText" Id = "txtLineMgrComm"  property ="associateComments"  size = "18" />  </Element>
+<Element type ="UITableCol" width = "18%">
+<Element label = ""  type = "UIText" Id = "txtLineAssComm"  property ="managerComments" readonly="true"  size = "18" />  
+</Element>
+<Element type ="UITableCol" width = "12%">
+<If check  = "Controller.isUpdateMode" >
+	<Element label = ""  type = "UIHyperLink" Id = "txtlink"    size="10" property ="fileWithLink" externalise ="false" />
+</If>
+</Element>
+<Element type ="UITableCol" width = "12%">
+<Element label = "" type = "UIFileUpload" Id = "txtPhoto3" property ="file1Data" maxSize="30720"
+   multiple ="false"  fileNameProperty="file1"    />
+</Element>
+<Element type ="UITableCol" width = "6%"><Element label = ""  type = "UIText" Id = "txtLineReqAmt"  property ="requestedAmount"  focusoutJS = "calculateAllExpenses()"  isNumeric= "true"  size = "5"/>  </Element>
+<Element type ="UITableCol" width = "6%"><Element label = ""  type = "UIText" Id = "txtLineCorrAmt"  property ="correctedAmount" readonly="true"  isNumeric= "true" size = "5" />  </Element>
+
+<Element type ="UITableCol" width = "8%">
+	<Element caption = "" style="btn btn-primary" iconStyle="glyphicon glyphicon-plus"  type = "UIButton" Id = "btnAddRow"    fixedAction ="FixedAction.ACTION_ADDTABLEROW"  fixedActionParam =  "this"/>
+	<Element caption = "" style="btn btn-danger" iconStyle="glyphicon glyphicon-minus" type = "UIButton" Id = "btnDelRow"    fixedAction ="FixedAction.ACTION_DELETETABLEROW"  fixedActionParam =  "this"/>
+</Element>
+</Element>
+</Element>
+</Section>
+<Section type ="footer">
+<Element label = "Associate_comments"  type = "UITextArea" Id = "txtAssociateComments"    property ="associateComments" >
+	 <rows>2</rows> <cols>30</cols>
+</Element>
+<Element label = "Manager_Comments"  type = "UITextArea" Id = "txtMgrComments"  readonly="true"  property ="managerComments" >
+	 <rows>2</rows> <cols>30</cols>
+</Element>
+<Element label = "Requested_Total"  type = "UIText" Id = "txtReqTotal"   readonly="true" property ="requestedTotal" />
+<Element label = "Countered_Total"  type = "UIText" Id = "txtCorrectedTotal"   readonly="true" property ="correctedTotal" />
+<Element label = "Approved_Total"  type = "UIText" Id = "txtApprTotal"   readonly="true" property ="approvedTotal" />
+	
+</Section>
+</CoreSection>
+<Section type ="optionalsummary">
+<Element caption = "Create"  type = "UIButton" Id = "btSubmit"   style="btn btn-primary" iconStyle="glyphicon glyphicon-plus"  rendered = "Controller.isCreateMode" fixedAction ="FixedAction.ACTION_CREATE" 
+  fixedActionvalidateFunc="validateforCreate()" fixedActionParam =  "SAVE"  />
+<Element caption = "Update"  type = "UIButton" Id = "btUpdate"   style="btn btn-warning" iconStyle="glyphicon glyphicon-pencil"  rendered = "Object.isOpen"  
+  fixedAction ="FixedAction.ACTION_UPDATE"  fixedActionvalidateFunc="validateforCreate()" fixedActionParam =  "SAVE"  />
+<Element caption = "Cancel"  type = "UIButton" Id = "btCancel"  style="btn btn-warning" iconStyle="glyphicon glyphicon-remove"  fixedAction ="FixedAction.ACTION_PAGEFORWARD" fixedActionParam =  "CANCEL"  />
+</Section>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

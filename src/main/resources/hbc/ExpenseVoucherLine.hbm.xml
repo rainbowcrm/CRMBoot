@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+<class name="com.rainbow.crm.expensevoucher.model.ExpenseVoucherLine" table="EXPENSEVOUCHER_DETAILS" lazy="false">
+	<meta attribute="class-description">
+         This class contains the ExpenseVoucher Line
+      </meta>
+       <id name="id" type="int" column="id">
+      </id>
+      <version name="objectVersion" column="version" type="integer"></version>
+      <many-to-one name="company" column ="company_id" not-null="true" lazy="false" ></many-to-one>
+      <property name="lineNumber" column="LINE_NUMBER" type="integer"/>
+      
+      <many-to-one name="expenseHead" column ="EXPENSE_HEAD_ID" not-null="true" lazy="false" ></many-to-one>
+       <property name="billNumber" column="BILL_NUMBER" type="string"/>
+       <property name="expenseLocation" column="EXPENSE_LOCATION" type="string"/>
+      <property name="requestedAmount" column="REQ_AMOUNT" type="double"/>
+      <property name="correctedAmount" column="CORRECTED_AMOUNT" type="double"/>
+      <property name="approvedAmount" column="APPROVED_AMOUNT" type="double"/>
+      <property name="associateComments" column="SA_COMMENTS" type="string"/>
+      <property name="managerComments" column="MGR_COMMENTS" type="string"/>
+      <property name="file1" column="ATTACHMENT_FILE1" type="string"/>
+      <property name="file2" column="ATTACHMENT_FILE2" type="string"/>
+      <property name="filePath" column="FILE_PATH" type="string"/>
+      <property name="createdDate" column="created_date" type="timestamp" update="false"/>
+      <property name="lastUpdateDate" column="last_updated_date" type="timestamp"/>
+      <property name="createdUser" column="created_by" type="string" update="false"/>
+      <property name="lastUpdateUser" column="last_updated_by" type="string"/>
+      <many-to-one name="expenseVoucherDoc" column ="EXPENSE_VOUCHER_ID" 
+       not-null="true"></many-to-one>  
+</class>
+</hibernate-mapping>
+      

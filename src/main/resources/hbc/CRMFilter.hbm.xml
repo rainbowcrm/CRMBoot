@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.rainbow.crm.filter.model.CRMFilter" table="FILTERS" lazy="false">
+      <meta attribute="class-description">
+         This class contains the Filter Details .. 
+      </meta>
+      <id name="id" type="int" column="id">
+      </id>
+      <version name="objectVersion" column="version" type="integer" ></version>
+      <property name="companyId" column="COMPANY_ID" type="integer"/>
+      <property name="user" column="USER_ID" type="string"/>
+      <property name="name" column="NAME" type="string"/>
+      <property name="page" column="PAGE" type="string"/>
+      <property name="public" column="IS_PUBLIC" type="boolean"/>
+      <property name="deleted" column="is_deleted" type="boolean"/>
+      <property name="createdDate" column="created_date" type="timestamp"/>
+      <property name="lastUpdateDate" column="last_updated_date" type="timestamp"/>
+      <property name="createdUser" column="created_by" type="string"/>
+      <property name="lastUpdateUser" column="last_updated_by" type="string"/>
+      
+      <set name="details" cascade ="all" inverse="true" lazy="false">
+      <key column="FILTER_ID"></key>
+      <one-to-many class="com.rainbow.crm.filter.model.CRMFilterDetails"/>
+      </set> 
+  </class>
+</hibernate-mapping>

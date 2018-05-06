@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.rainbow.crm.division.model.Division" table="DIVISIONS">
+      <meta attribute="class-description">
+         This class contains the Divisions.. .. 
+      </meta>
+      <id name="id" type="int" column="id">
+      </id>
+      <version name="objectVersion" column="version" type="integer"></version>
+      <property name="code" column="division_code" type="string"/>
+      <property name="name" column="division_name" type="string"/>
+      <property name="address1" column="address1" type="string"/>
+      <property name="address2" column="address2" type="string"/>
+      <property name="zipCode" column="zipcode" type="string"/>
+      <property name="city" column="city" type="string"/>
+      <property name="phone" column="phone" type="string"/>
+      <property name="email" column="email" type="string"/>
+      <many-to-one name="company" column ="company_id" not-null="true" lazy="false" ></many-to-one>
+      <property name="divisionType" column="div_type" type="string"/>
+      <property name="manager" column="manager" type="string"/>
+      <property name="area" column="area" type="string"/>
+      <property name="noEmployees" column="no_employees" type="integer"/>
+       <property name="deleted" column="is_deleted" type="boolean"/>
+      <property name="createdDate" column="created_date" type="timestamp" update="false"/>
+      <property name="lastUpdateDate" column="last_updated_date" type="timestamp"/>
+      <property name="createdUser" column="created_by" type="string" update="false"/>
+      <property name="lastUpdateUser" column="last_updated_by" type="string"/>
+</class>
+</hibernate-mapping>

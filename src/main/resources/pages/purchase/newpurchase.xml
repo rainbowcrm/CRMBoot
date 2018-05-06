@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "newDiv" showinFrame ="true" title ="New Purchase | Rainbow CRM" Object = "com.rainbow.crm.purchase.model.Purchase" 
+Controller = "com.rainbow.crm.purchase.controller.PurchaseController">
+<Template type= "Transaction"  name = "TransactionTemplate"></Template>
+<Forwards>
+<Forward key ="CANCEL">rdscontroller?page=purchases</Forward>
+<Forward key ="SAVE">purchases</Forward>
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./scripts/purchases/PurchaseFunc.js</IncludeJS>
+<AjaxGroups>
+<AjaxGroup service ="skuSearch">
+<requestElements event = "">
+<requestElement key = "Name">txtItName</requestElement>
+<requestElement key = "Code">txtCode</requestElement>
+</requestElements>
+<responseElements>
+<!-- <responseElement key = "Name" >txtItem</responseElement>  -->
+<responseElement key = "Code">txtCode</responseElement>
+<responseElement key = "Name">txtItName</responseElement>
+<responseElement key = "PurchasePrice">txtPrice</responseElement>
+
+</responseElements>
+</AjaxGroup>
+
+</AjaxGroups>
+
+<Elements>
+<UIForm Id ="cust" method = "POST" > 
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type ="header">
+	<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
+	<Element label = ""  type = "UIHidden" Id = "hdnUserID"  property ="Id" />
+	<Element label = "Division"  type = "UIList" Id = "lstInvDivision"  isMandatory="true" property ="Division.Id" >
+	<options populator =  "getAllDivisions"> 
+	</options>
+	</Element>
+
+	<Element label = "Bill_No"  type = "UIText" Id = "txtBillNo"  isMandatory="true"  property ="billNumber" />
+	<Element label = "Doc_No"  type = "UIText" Id = "txtDocNo" isMandatory="true" readonly="true"  property ="docNumber" />
+	<Element label = "Date"  type = "UIDate" Id = "txtDate" isMandatory="true"  property ="purchaseDate" />
+	 <Element label = "Vendor"  type = "UILookupDataList" listId="lstvendlkps"  Id = "txtVendorName"  isMandatory="true" property ="Vendor.Name" showLookupAsDialog="true" dialogId="dlgComp"
+  dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" >
+	 <lookupType>vendor</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+</Element>
+	
+</Section>
+<Section type ="detailForSale">
+<Element label = ""  type = "UILabel" Id = "lblLineitTitle"  style="bigTitle" value ="Line_Items" />
+<Element type = "UITable" rows = "1" cols = "7" style = "grid" applyStyleonChildren ="true" Id  ="tblTrans" property ="PurchaseLines[]" >
+<Element type = "UITableHead" style ="listPageTitle">
+ <Element type = "UITableRow">
+
+<Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Code" /></Element>
+<Element type ="UITableCol" width = "25%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Item" /></Element>
+<Element type ="UITableCol" width = "18%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Comments" /></Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Price" /></Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Qty" /></Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Discount" /></Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Total" /></Element>
+<Element type ="UITableCol" width = "5%"> </Element>
+</Element>  
+ </Element>
+<Element type = "UITableRow"  dataType = "com.rainbow.crm.purchase.model.PurchaseLine" rendered = "!Object.getVoided">
+
+<Element type ="UITableCol" width = "10%"><Element label = ""  type = "UIText" Id = "txtCode" size  = "10" property ="Sku.Code" /> </Element>
+<Element type ="UITableCol" width = "25%"><Element label = ""  type = "UILookupDataList" listId="lstItNames"   Id = "txtItName"  size  = "40" property ="Sku.Name" showLookupAsDialog="true" dialogId="dlgIt"
+  dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" >
+	 <lookupType>sku</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+</Element>
+ </Element>
+<Element type ="UITableCol" width = "18%"><Element label = ""  type = "UIText" Id = "txtLineCo"  property ="Comments" size = "30" />  </Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UIText" Id = "txtPrice"  property ="unitPrice"  isNumeric= "true" size = "10" />  </Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UIText" Id = "txtQty"  property ="Qty"   isNumeric= "true" 
+ focusoutJS = "calculateAll()" size = "10"/>  </Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UIText" Id = "txtlineDisc"  property ="lineTotalDisc"  isNumeric= "true" size = "10" />  </Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UIText" Id = "txtlineTotal"  property ="lineTotal" size = "10"  readonly="true" />  </Element>
+
+<Element type ="UITableCol" width = "5%">
+	<Element caption = ""  style="btn btn-primary" iconStyle="glyphicon glyphicon-plus"  type = "UIButton" Id = "btnAddRow"    fixedAction ="FixedAction.ACTION_ADDTABLEROW"  fixedActionParam =  "this"/>
+	<Element caption = ""  style="btn btn-danger" iconStyle="glyphicon glyphicon-minus"  type = "UIButton" Id = "btnDelRow"    fixedAction ="FixedAction.ACTION_DELETETABLEROW"  fixedActionParam =  "this"/>
+</Element>
+</Element>
+</Element>
+</Section>
+<Section type ="brk2"/>
+<Section type ="footer">
+<Element label = "Discount"  type = "UIText" Id = "txtDiscount"   focusoutJS = "calculateAll()" property ="totalDisc"  isNumeric= "true" size = "10" />  
+<Element label = "Tax_Percent"  type = "UIText" Id = "txtTaxPerc"   focusoutJS = "calculateAll()"  property ="taxPerc" isNumeric= "true" size = "10" />
+<Element label = "Tax_Amount"  type = "UIText" Id = "txtTaxAmt"   property ="taxAmount"  readonly="true" isNumeric= "true" size = "10" />
+<Element label = "Realised"  type = "UIBooleanCheckBox" Id = "txtxRealised" hiddenControlId= "hdnRealised"   property ="realised" />
+<Element label = "Comments"  type = "UITextArea" Id = "txtComm"  property ="comments" >
+	 <rows>5</rows> <cols>30</cols>
+</Element>
+<Element label = ""  type = "UICheckBox" Id = "chkCredit"   property ="creditPurchase" >
+	<options> 
+	  <option key ="true"> Credit_Purchase </option>
+	 </options>
+</Element>
+<Element label = "Total_Amount"  type = "UIText" Id = "txtTotalAmt"   property ="netAmount" isNumeric= "true" readonly="true" size = "10" />
+</Section>
+<Section type ="brk3"/>
+</CoreSection>
+<Section type ="summary">
+</Section>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

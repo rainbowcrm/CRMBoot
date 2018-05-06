@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+<class name="com.rainbow.crm.feedback.model.FeedBackLine" table="FEEDBACK_LINES" lazy="false">
+	<meta attribute="class-description">
+         This class contains the FeedBack Line
+      </meta>
+       <id name="id" type="int" column="id">
+      </id>
+      <version name="objectVersion" column="version" type="integer"></version>
+      <many-to-one name="company" column ="company_id" not-null="true" lazy="false" ></many-to-one>
+      <property name="lineNumber" column="LINE_NUMBER" type="integer"/>
+      <many-to-one name="feedBackObjectType" column ="FEEDBACK_ON" not-null="true" lazy="false" ></many-to-one>
+      <property name="feedBackObject" column="OBJECT_ID" type="string"/>
+      <property name="rating" column="RATING" type="integer"/>
+      <many-to-one name="sku" column ="SKU_ID" not-null="false" lazy="false" ></many-to-one>
+      <many-to-one name="associate" column ="ASSOCIATE_ID" not-null="false" lazy="false" ></many-to-one>
+      <many-to-one name="reasonCode" column ="REASON_CODE_ID" not-null="false" lazy="false" ></many-to-one>
+      <property name="deleted" column="IS_DELETED" type="boolean"/>
+      <property name="comments" column="comments" type="string"/>
+      <property name="createdDate" column="created_date" type="timestamp" update="false"/>
+      <property name="lastUpdateDate" column="last_updated_date" type="timestamp"/>
+      <property name="createdUser" column="created_by" type="string" update="false"/>
+      <property name="lastUpdateUser" column="last_updated_by" type="string"/>
+      <many-to-one name="feedBackDoc" column ="FEEDBACK_ID" 
+       not-null="true"></many-to-one>  
+</class>
+</hibernate-mapping>
+      

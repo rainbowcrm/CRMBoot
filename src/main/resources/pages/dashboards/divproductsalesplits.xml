@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "divassocprodsplitspage" showinFrame ="true"  title ="Sales Dashboard| Rainbow CRM" Object = "com.rainbow.crm.dashboard.model.SalesDashbBard" 
+Controller = "com.rainbow.crm.dashboard.controller.SalesDashBoardController">
+<Template type= "General"  name = "GraphTemplate"></Template>
+
+<Elements>
+<UIForm Id ="cust" method = "POST" enctype="multipart/form-data" >
+<Section type= "fullSection">
+<Element type = "UIHidden" Id = "hdngraphId"  property = "graphId"  constantValue="divprodsalessplits"/>
+<Element type = "UIPieChart" Id = "pieChart2"  dataProvider = "divManagerSaleProductsSplits" useGoogleGraph="true" >
+	  <centerX>150</centerX>
+	  <centerY>150</centerY>
+	  <radius>50</radius>
+	  <rangeHeight>270</rangeHeight>
+	  <rangeWidth>500</rangeWidth>
+ 	</Element>
+ 
+	<Element label = "Based_on"  type = "UIList" Id = "lstAggrType"   property ="salespiecriteria" >
+	  <options> 
+	  <option key ="PRODUCT"> Product</option>
+	  <option key ="ITEM"> Item</option>
+	  <option key ="CATEGORY"> Category</option>
+	  <option key ="BRAND"> Brand</option>
+	  </options>
+	</Element>
+	
+
+<Element caption = "Refresh"  type = "UIButton" Id = "btfilterSave" style="btn btn-primary" iconStyle="glyphicon glyphicon-refresh" fixedAction ="FixedAction.ACTION_PLAINSUBMIT"   />
+
+</Section>
+</UIForm>
+</Elements>
+</Page>

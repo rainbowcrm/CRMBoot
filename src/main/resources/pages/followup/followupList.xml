@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "followups" showinFrame ="true" title ="Followup | Rainbow CRM" Object = "com.rainbow.crm.followup.model.Followup" 
+Controller = "com.rainbow.crm.followup.controller.FollowupListController">
+<Template type= "List"  name = "ListTemplate"></Template>
+<Forwards>
+<Forward key ="NEW">rdscontroller?page=newfollowup</Forward>
+<Forward key ="EDIT">rdscontroller?page=newfollowup</Forward>
+</Forwards>
+<AjaxGroups>
+<AjaxGroup service ="filterSearch">
+<requestElements>
+<requestElement key = "filterId">lstSavedFilters</requestElement>
+</requestElements>
+<responseElements>
+<responseElement key = "FilterName" >txtFilterName</responseElement>
+
+<responseElement key = "Sales_Lead" >txtLead</responseElement>
+<responseElement key = "Associate" >txtSalesAss</responseElement>
+<responseElement key = "Result" >txtResult</responseElement>
+<responseElement key = "ResultReason" >txtResultReason</responseElement>
+</responseElements>
+</AjaxGroup>
+</AjaxGroups>
+
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<Elements>
+<Section type ="topBar"></Section>
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<FilterSection>
+<FilterNode>
+  <Element label = "Saved_Filters"  type = "UIList" Id = "lstSavedFilters"   property ="" >
+	<options populator =  "getSavedFiters"> 
+	</options>
+  </Element>
+ </FilterNode>
+<FilterNode>
+   	<Element label = "Filter_Name"  type = "UIText" Id = "txtFilterName"  property ="FilterName" />
+ </FilterNode>
+<FilterNode>
+   	<Element label = "Sales_Lead"  type = "UIText" Id = "txtLead"  property ="Lead.docNumber" />
+ </FilterNode>
+ <FilterNode>
+   	<Element label = "Sales_Associate"  type = "UIText" Id = "txtSalesAss"  property ="salesAssociate" />
+ </FilterNode>
+<FilterNode>
+   	<Element label = "Result"  type = "UIText" Id = "txtResult"  property ="Result.code" />
+ </FilterNode>
+ <FilterNode>
+   	<Element label = "Reson"  type = "UIText" Id = "ResultReason"  property ="ResultReason.Reason" />
+ </FilterNode>
+</FilterSection>
+<ListSection >
+<Columns allowrowselection ="Multiple" uniqueproperty = "Id">
+<SelectionColumn   >
+<Element label = ""  type = "UICheckBox" Id = "idChkSel"  rendered="!Object.isDeleted" property ="Id" />
+<Element label = ""  type = "UIImage" Id = "idChkSel"  rendered="Object.isDeleted" height = "21" weight ="21" src= "./resources/images/deletedRow.jpg" />
+</SelectionColumn>
+<Column title ="Sales_Lead"  sortField="lead.docNumber"  width ="18%">
+<Element label = ""  type = "UINote" Id = "idIdNote"  property ="Lead.docNumber" />
+</Column>
+<Column title ="Sales_Associate"  sortField="salesAssociate"  width ="18%">
+<Element label = ""  type = "UINote" Id = "idIdNote"  property ="salesAssociate" />
+</Column>
+<Column title ="Confidence_Level"  sortField="confidenceLevel.description" width ="18%" >
+<Element label = ""  type = "UINote" Id = "idCt"  property ="confidenceLevel.description" />
+</Column> 
+<Column title ="Result"   sortField="result.description"  width ="18%">
+<Element label = ""  type = "UINote" Id = "idIdNote"  property ="Result.description" />
+</Column>
+<Column title ="Result_Reason"  sortField="resultReason.reason"  width ="18%">
+<Element label = ""  type = "UINote" Id = "idIdNote"  property ="ResultReason.Reason" />
+</Column>   
+<Column title ="Followup_Date"  sortField="followupDate" width ="18%">
+<Element label = ""  type = "UINote" Id = "idIdNote"  property ="followupDate" />
+</Column>
+</Columns>
+</ListSection>
+</CoreSection>
+<Section type ="summary">
+<Element caption = "Add"  type = "UIButton"    Id = "btnAdd"  style="btn btn-primary" iconStyle="glyphicon glyphicon-plus" fixedAction ="FixedAction.ACTION_PAGEFORWARD" fixedActionParam =  "NEW" />
+<Element caption = "Edit"  type = "UIButton"    Id = "btnEdit"  style="btn btn-warning" iconStyle="glyphicon glyphicon-pencil" fixedAction ="FixedAction.ACTION_GOEDITMODE"  fixedActionParam =  "EDIT"  />
+<Element caption = "Delete"  type = "UIButton" Id = "btnDel"  style="btn btn-danger" iconStyle="glyphicon glyphicon-trash"  fixedAction ="FixedAction.ACTION_DELETE"  fixedActionParam =  "DELETE"
+   fixedActionvalidateFunc ="deleteFromList()"/>
+<Element type= "Panel" key= "NavPanel"  style = "sameline" ></Element>
+</Section>
+<Section type ="copyRightSection"/>
+</Elements>
+</Page>
+

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "newsalespitch" showinFrame ="true" title ="New Salespitch | Rainbow CRM" Object = "com.rainbow.crm.salespitch.model.Salespitch" 
+Controller = "com.rainbow.crm.salespitch.controller.SalespitchController">
+<Template type= "CRUD"  name = "CRUDTemplate"></Template>
+<Forwards>
+<Forward key ="CANCEL">rdscontroller?page=salespitches</Forward>
+<Forward key ="SAVE">salespitches</Forward>
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<AjaxGroups>
+<AjaxGroup service ="divisionTerritorySearch">
+<requestElements event = "">
+<requestElement key = "divisionId">lstInvDivision</requestElement>
+</requestElements>
+<responseElements>
+<responseElement key = "territories">txtTerritory</responseElement>
+</responseElements>
+</AjaxGroup>
+</AjaxGroups>
+<Elements>
+<UIForm Id ="cust" method = "POST" >
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type ="detail">
+	<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
+	<Element label = ""  type = "UIHidden" Id = "hdnUserID"  property ="Id" />
+	<Element label = "Division"  type = "UIList" Id = "lstInvDivision"  isMandatory="true" property ="Division.Id" >
+	<options populator =  "getAllDivisions"> 
+	</options>
+	</Element>
+	<Element label = "Sales_Associate"   type = "UILookupDataList" listId="lsthdrAss" Id = "txtLName"  isMandatory="true" size="30" property ="salesAssociate.userId"  showLookupAsDialog="true" dialogId="dlgUser"
+ 	dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" additionalInputControl = "lstInvDivision" >
+ 	<lookupType>user</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+	</Element>
+	<Element label = "Territory"  type = "UIList"  Id = "txtTerritory"   property ="Territory.Id"  >
+	 <options populator =  "getAllTerritories"> 
+	</options>
+	</Element>
+	<Element label = "ype"  type = "UIList" Id = "lstEnqType"   property ="salespitchType.code"  externalise= "true">
+		<options populator =  "getSalespitchTypes"> 
+		</options>
+	</Element>
+	<Element label = "Date"  type = "UIDate" Id = "txtDT"   property ="pitchDate" />
+	<Element label = "Item"   type = "UILookupDataList" listId="lsthdritemlps"  Id = "txtITNearLName"   size="30" property ="Item.name"  showLookupAsDialog="true" dialogId="dlgNearItem"
+ 	dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle"  >
+ 	<lookupType>item</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+	</Element>
+	<Element label = "Title"  type = "UIText" Id = "txtTitle"   property ="title" />
+	<Element label = "Details"  type = "UITextArea" Id = "txtConversation"   property ="details" >
+	 <rows>5</rows> <cols>50</cols>
+	</Element>
+	<Element label = "Comments"  type = "UITextArea" Id = "txtComments"   property ="comments" >
+	 <rows>5</rows> <cols>30</cols>
+	</Element>
+</Section>
+</CoreSection>
+<Section type ="summary">
+</Section>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

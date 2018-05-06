@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "Categories" showinFrame ="true" title ="Product Categories | Rainbow CRM" Object = "com.rainbow.crm.category.model.Category" 
+Controller = "com.rainbow.crm.category.controller.CategoryController">
+<Template type= "DataSheet"  name = "DataSheetTemplate"></Template>
+<Forwards>
+<Forward key ="NEW">rdscontroller?page=categories</Forward>
+<Forward key ="EDIT">rdscontroller?page=categories</Forward>
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<Elements>
+<Section type ="topBar"></Section>
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<FilterSection>
+<FilterNode>
+<Element label = "Category"  type = "UIText" Id = "txtCode"  property ="Name" size ="40"/>
+</FilterNode>
+<FilterNode>
+<Element label = "UOM_Type"  type = "UIList" Id = "lstIndustry"   property ="primaryUOM"  externalise= "true">
+	<options populator =  "getFVUOMswithSelect"> 
+	</options>
+  </Element>
+</FilterNode>
+ <Element caption = "Apply"  type = "UIButton" Id = "btfilterApply"  style="btn btn-primary" iconStyle="glyphicon glyphicon-ok" fixedAction ="FixedAction.ACTION_FILTERAPPLY"   />
+ <Element caption = "Clear"  type = "UIButton" Id = "btfilterClear"    style="btn btn-warning" iconStyle="glyphicon glyphicon-remove" showInPrevCol ="true" fixedAction ="FixedAction.ACTION_FILTERCLEAR"  />
+
+</FilterSection>
+<ListSection Id="tblCols" >
+ <Columns allowrowselection ="Multiple" uniqueproperty = "Id">
+<SelectionColumn  width ="5%"  >
+<Element label = ""  type = "UICheckBox" Id = "idChkSel"  rendered="!Object.isDeleted" property ="Id" />
+<Element label = ""  type = "UIImage" Id = "idChkSel"  rendered="Object.isDeleted" height = "21" weight ="21" src= "./resources/images/deletedRow.jpg" />
+</SelectionColumn>
+<Column title ="Category_Name" sortField="category_name" width ="35%" >
+<Element label = ""  type = "UINote" Id = "idNameNote"  property ="Name" />
+</Column>
+<Column title ="Description" sortField="description" width ="45%" >
+<Element label = ""  type = "UINote" Id = "idDescNote"  property ="Description" />
+</Column>
+ <Column title ="UOM_Type" sortField="primary_uom"  width ="10%" >
+  <Element label = ""  type = "UINote" Id = "idIndusNote"  property ="PrimaryUOMDesc" />
+ </Column>
+  <Column title =""  width ="5%" >
+  <Element label = ""  type = "UINote" Id = "idAdEd"   />
+ </Column>
+</Columns>
+<DataEntryColumns>
+<Column width ="5%">
+<Element label = ""  type = "UIHidden" Id = "idCatID"  size  = "40" property ="Id" />
+</Column>
+<Column width ="35%">
+<Element label = ""  type = "UIText" Id = "idCatName"  size  = "40" property ="Name" />
+<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
+</Column>
+<Column width ="45%">
+<Element label = ""  type = "UIText" Id = "idDesc" size  = "60" property ="Description" />
+</Column>
+<Column width ="10%" >
+<Element label = ""  type = "UIList" Id = "lstPrUOM"   property ="primaryUOM"  externalise= "true">
+	<options populator =  "getFVUOMs"> 
+	</options>
+</Element>
+</Column>
+<Column>
+<Element caption = ""  style="btn btn-primary" iconStyle="glyphicon glyphicon-plus"  type = "UIButton" Id = "btnAddRow"    fixedAction ="FixedAction.ACTION_ADDTABLEROW"   rendered = "Controller.isCreateMode" fixedActionParam =  "this"/>
+<Element caption = "" style="btn btn-danger" iconStyle="glyphicon glyphicon-minus"  type = "UIButton" Id = "btnDelRow"    fixedAction ="FixedAction.ACTION_DELETETABLEROW" rendered = "Controller.isCreateMode"  fixedActionParam =  "this"/>
+</Column>
+</DataEntryColumns>
+</ListSection>
+</CoreSection>
+<Section type ="summary">
+<If check  = "Controller.isReadMode" >
+<Element caption = "Add"  type = "UIButton"    Id = "btnAdd"  style="btn btn-primary" iconStyle="glyphicon glyphicon-plus" fixedAction ="FixedAction.ACTION_GOADDMODE"  fixedActionParam =  "NEW"/>
+<Element caption = "Edit"  type = "UIButton"    Id = "btnEdit"  style="btn btn-warning" iconStyle="glyphicon glyphicon-pencil" fixedAction ="FixedAction.ACTION_GOEDITMODE"  fixedActionParam =  "EDIT"  />
+<Element caption = "Delete"  type = "UIButton" Id = "btnDel" style="btn btn-danger" iconStyle="glyphicon glyphicon-trash"  fixedAction ="FixedAction.ACTION_DELETE"  fixedActionParam =  "DELETE"
+   fixedActionvalidateFunc ="deleteFromList()"/>
+<Element type= "Panel" key= "NavPanel"  style = "sameline" ></Element>
+</If>
+<If check  = "Controller.isCreateorEditMode" >
+ <Element type= "Panel" key= "CRUDPanel"  style = "sameline" ></Element>
+</If>
+</Section>
+<Section type ="copyRightSection"/>
+
+</Elements>
+</Page>

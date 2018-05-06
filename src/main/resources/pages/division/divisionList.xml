@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "DivisionList" showinFrame ="true" title ="Divisions | Rainbow CRM" Object = "com.rainbow.crm.division.model.Division" 
+Controller = "com.rainbow.crm.division.controller.DivisionListController">
+<Template type= "List"  name = "ListTemplate"></Template>
+<Forwards>
+<Forward key ="NEW">rdscontroller?page=newdivision</Forward>
+<Forward key ="EDIT">rdscontroller?page=newdivision</Forward>
+</Forwards>
+<AjaxGroups>
+<AjaxGroup service ="filterSearch">
+<requestElements>
+<requestElement key = "filterId">lstSavedFilters</requestElement>
+</requestElements>
+<responseElements>
+<responseElement key = "FilterName" >txtFilterName</responseElement>
+<responseElement key = "Code" >txtCode</responseElement>
+<responseElement key = "Name" >txtDivis</responseElement>
+<responseElement key = "Manager" >txtAdmin</responseElement>
+<responseElement key = "City" >txtCity</responseElement>
+<responseElement key = "divisionType" >lstDivType</responseElement>
+<responseElement key = "NoEmployees" >txteemplCount</responseElement>
+</responseElements>
+</AjaxGroup>
+</AjaxGroups>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<Elements>
+<Section type ="topBar"></Section>
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<FilterSection>
+<FilterNode>
+  <Element label = "Saved_Filters"  type = "UIList" Id = "lstSavedFilters"   property ="" >
+	<options populator =  "getSavedFiters"> 
+	</options>
+  </Element>
+ </FilterNode>
+<FilterNode>
+   	<Element label = "Filter_Name"  type = "UIText" Id = "txtFilterName"  property ="FilterName" />
+ </FilterNode>
+<FilterNode>
+   	<Element label = "Division_Code"  type = "UIText" Id = "txtCode"  property ="Code" />
+ </FilterNode>
+<FilterNode>
+<Element label = "Division"  type = "UILookupDataList"  Id = "lstDivision"  listId="lstlookupdvns" property ="Division.Name"   >
+	 <lookupType>division</lookupType>
+</Element>
+</FilterNode>
+ <FilterNode>
+  <Element label = "Type"  type = "UIList" Id = "lstDivType"   property ="divisionType" externalise= "true">
+	<options populator =  "getDivisionTypesWithSelect"> 
+	</options>
+  </Element>
+ </FilterNode>
+ <FilterNode>
+   	<Element label = "Manager"  type = "UIText" Id = "txtAdmin"  property ="Manager"  />
+ </FilterNode>
+ <FilterNode>
+   	<Element label = "City"  type = "UIText" Id = "txtCity"  property ="City"  />
+ </FilterNode>
+    <FilterNode operator = ">">
+   	<Element label = "Employees_more_than"  type = "UIText" Id = "txteemplCount"  size ="5"   property ="NoEmployees"/>
+ </FilterNode>
+</FilterSection>
+<ListSection >
+ <Columns allowrowselection ="Multiple" uniqueproperty = "Id">
+<SelectionColumn   >
+<Element label = ""  type = "UICheckBox" Id = "idChkSel"  rendered="!Object.isDeleted" property ="Id" />
+<Element label = ""  type = "UIImage" Id = "idChkSel"  rendered="Object.isDeleted" height = "21" weight ="21" src= "./resources/images/deletedRow.jpg" />
+</SelectionColumn>
+<Column title ="Code" sortField="division_code"  width ="5%" >
+<Element label = ""  type = "UINote" Id = "idCodeNote"   property ="Code" />
+</Column>
+<Column title ="Name" sortField="division_name"  width ="35%" >
+<Element label = ""  type = "UINote" Id = "idNameNote"  property ="Name" />
+</Column>
+ <Column title ="Type"  sortField="div_type" width ="20%" >
+  <Element label = ""  type = "UINote" Id = "idIndusNote"  property ="DivisionTypeDesc" />
+ </Column>
+  <Column title ="Manager" sortField="Manager" width ="20%" >
+  <Element label = ""  type = "UINote" Id = "idIndusNote"  property ="Manager" />
+ </Column>
+  <Column title ="City" sortField="City" width ="20%" >
+  <Element label = ""  type = "UINote" Id = "idIndusNote"   property ="City" />
+ </Column>
+  </Columns>
+</ListSection>
+</CoreSection>
+<Section type ="summary">
+<Element caption = "Add"  type = "UIButton"    Id = "btnAdd"  style="btn btn-primary" iconStyle="glyphicon glyphicon-plus" fixedAction ="FixedAction.ACTION_PAGEFORWARD" fixedActionParam =  "NEW" />
+<Element caption = "Edit"  type = "UIButton"    Id = "btnEdit"  style="btn btn-warning" iconStyle="glyphicon glyphicon-pencil" fixedAction ="FixedAction.ACTION_GOEDITMODE"  fixedActionParam =  "EDIT"  />
+<Element caption = "Delete"  type = "UIButton" Id = "btnDel"  style="btn btn-danger" iconStyle="glyphicon glyphicon-trash" fixedAction ="FixedAction.ACTION_DELETE"  fixedActionParam =  "DELETE"
+   fixedActionvalidateFunc ="deleteFromList()"/>
+<Element type= "Panel" key= "NavPanel"  style = "sameline" ></Element>
+</Section>
+<Section type ="copyRightSection"/>
+</Elements>
+</Page>

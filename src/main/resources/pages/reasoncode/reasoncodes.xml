@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "ReasonCodes" showinFrame ="true" title ="Reason Codes | Rainbow CRM" Object = "com.rainbow.crm.reasoncode.model.ReasonCode" 
+Controller = "com.rainbow.crm.reasoncode.controller.ReasonCodeController">
+<Template type= "DataSheet"  name = "DataSheetTemplate"></Template>
+<Forwards>
+<Forward key ="NEW">rdscontroller?page=reasoncodes</Forward>
+<Forward key ="EDIT">rdscontroller?page=reasoncodes</Forward>
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<Elements>
+<Section type ="topBar"></Section>
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<FilterSection>
+
+<FilterNode>
+<Element label = "Reason"  type = "UIText" Id = "txtCode"  property ="Reason" size ="40"/>
+</FilterNode>
+
+<FilterNode>
+
+<Element label = "Reason_Type"  type = "UIList" Id = "lstType"   property ="reasonType.code"  externalise= "true">
+	<options populator =  "getAllReasonCodeTypesWithSelect"> 
+	</options>
+  </Element>
+</FilterNode>
+
+ <Element caption = "Apply"  type = "UIButton" Id = "btfilterApply"  style="btn btn-primary" iconStyle="glyphicon glyphicon-flash"  fixedAction ="FixedAction.ACTION_FILTERAPPLY"   />
+ <Element caption = "Clear"  type = "UIButton" Id = "btfilterClear"    style="btn btn-warning" iconStyle="glyphicon glyphicon-remove" showInPrevCol ="true" fixedAction ="FixedAction.ACTION_FILTERCLEAR"  />
+
+</FilterSection>
+
+
+<ListSection Id="tblCols" >
+ <Columns allowrowselection ="Multiple" uniqueproperty = "Id">
+<SelectionColumn  width ="5%"  >
+<Element label = ""  type = "UICheckBox" Id = "idChkSel"  rendered="!Object.isDeleted" property ="Id" />
+<Element label = ""  type = "UIImage" Id = "idChkSel"  rendered="Object.isDeleted" height = "21" weight ="21" src= "./resources/images/deletedRow.jpg" />
+</SelectionColumn>
+<Column title ="Type" sortField="reasonType.description" width ="15%" >
+<Element label = ""  type = "UINote" Id = "idNameNote"  property ="reasonType.description" />
+</Column>
+<Column title ="Reason" sortField="reason" width ="15%" >
+<Element label = ""  type = "UINote" Id = "idDescNote"  property ="Reason" />
+</Column>
+ <Column title ="Factor" sortField="factorType.description"  width ="15%" >
+  <Element label = ""  type = "UINote" Id = "idIndusNote"  property ="factorType.description" />
+ </Column>
+ <Column title ="Business_Orientation" sortField="orientation.description"  width ="15%" >
+  <Element label = ""  type = "UINote" Id = "idIndusNote"  property ="orientation.description" />
+ </Column>
+ <Column title ="Accessible_By" sortField="accessibleBy.description"  width ="15%" >
+  <Element label = ""  type = "UINote" Id = "idIndusNote"  property ="accessibleBy.description" />
+ </Column>
+ <Column title ="Use_for_SWOT" sortField="useForSWOTAnalysis"  width ="15%" >
+  <Element label = ""  type = "UINote" Id = "idIndusNote"  property ="useForSWOTAnalysis" />
+ </Column>
+  <Column title =""  width ="10%" >
+  <Element label = ""  type = "UINote" Id = "idAdEd"   />
+ </Column>
+</Columns>
+<DataEntryColumns>
+<Column width ="5%">
+<Element label = ""  type = "UIHidden" Id = "idReasonCodeID"  size  = "40" property ="Id" />
+</Column>
+<Column width ="15%">
+<Element label = ""  type = "UIList" Id = "idCatName"  property ="reasonType.Code" >
+	<options populator =  "getAllReasonCodeTypes"> 
+	</options>
+</Element>
+<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
+</Column>
+<Column width ="15%">
+<Element label = ""  type = "UIText" Id = "idDesc" size  = "30" property ="Reason" />
+</Column>
+<Column width ="15%" >
+<Element label = ""  type = "UIList" Id = "lstfactorType"   property ="factorType.Code"  externalise= "true">
+	<options populator =  "getAllFactors"> 
+	</options>
+</Element>
+</Column>
+<Column width ="15%" >
+<Element label = ""  type = "UIList" Id = "lstOrientationType"   property ="orientation.Code"  externalise= "true">
+	<options populator =  "getAllOrientation"> 
+	</options>
+</Element>
+</Column>
+<Column width ="15%" >
+<Element label = ""  type = "UIList" Id = "lstAccessType"   property ="accessibleBy.Code"  externalise= "true">
+	<options populator =  "getAllAccessibleRoles"> 
+	</options>
+</Element>
+</Column>
+<Column width ="15%">
+<Element label = ""  type = "UIBooleanCheckBox" Id = "idswotAnalys" hiddenControlId= "hdnswotAnalys" size  = "30" property ="useForSWOTAnalysis" />
+</Column>
+
+<Column>
+<Element caption = "" style="btn btn-primary" iconStyle="glyphicon glyphicon-plus"  type = "UIButton" Id = "btnAddRow"    fixedAction ="FixedAction.ACTION_ADDTABLEROW"   rendered = "Controller.isCreateMode" fixedActionParam =  "this"/>
+<Element caption = "" style="btn btn-danger" iconStyle="glyphicon glyphicon-minus" type = "UIButton" Id = "btnDelRow"    fixedAction ="FixedAction.ACTION_DELETETABLEROW" rendered = "Controller.isCreateMode"  fixedActionParam =  "this"/>
+</Column>
+</DataEntryColumns>
+</ListSection>
+</CoreSection>
+<Section type ="summary">
+<If check  = "Controller.isReadMode" >
+<Element caption = "Add"  type = "UIButton"    Id = "btnAdd"  style="btn btn-primary" iconStyle="glyphicon glyphicon-plus" fixedAction ="FixedAction.ACTION_GOADDMODE"  fixedActionParam =  "NEW"/>
+<Element caption = "Edit"  type = "UIButton"    Id = "btnEdit"  style="btn btn-warning" iconStyle="glyphicon glyphicon-pencil" fixedAction ="FixedAction.ACTION_GOEDITMODE"  fixedActionParam =  "EDIT"  />
+<Element caption = "Delete"  type = "UIButton" Id = "btnDel"  style="btn btn-danger" iconStyle="glyphicon glyphicon-trash"  fixedAction ="FixedAction.ACTION_DELETE"  fixedActionParam =  "DELETE"
+   fixedActionvalidateFunc ="deleteFromList()"/>
+<Element type= "Panel" key= "NavPanel"  style = "sameline" ></Element>
+</If>
+<If check  = "Controller.isCreateorEditMode" >
+ <Element type= "Panel" key= "CRUDPanel"  style = "sameline" ></Element>
+</If>
+</Section>
+<Section type ="copyRightSection"/>
+
+</Elements>
+</Page>

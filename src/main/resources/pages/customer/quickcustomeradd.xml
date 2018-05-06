@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "newCustomer" showinFrame ="true" title ="New Customer | Rainbow CRM" Object = "com.rainbow.crm.customer.model.Customer" 
+Controller = "com.rainbow.crm.customer.controller.CustomerController">
+<Template type= "CRUD"  name = "quickAddTemplate"></Template>
+<Forwards>
+
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<Elements>
+<UIForm Id ="cust" method = "POST" >
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type ="header">
+<If check  = "Controller.isReadMode" >
+<Element type ="UILabel" Id="ntMsg" value="Customer_Created">
+</Element>
+</If>
+</Section>
+<Section type ="detail">
+<Element label = ""  type = "UIHidden" Id = "hdnUserID"  property ="Id" />
+<Element label = "First_Name"  type = "UIText" Id = "txtName"  isMandatory="true" size="30" property ="FirstName" />
+<Element label = "Last_Name"  type = "UIText" Id = "txtLName"  isMandatory="true" size="30" property ="LastName" />
+<Element label = "Email"  type = "UIText" Id = "txtemail" size="30" isMandatory="true" property ="Email" />
+<Element label = "Phone"  type = "UIText" Id = "txtPhone" size="30" isMandatory="true" property ="Phone" />
+</Section>
+</CoreSection>
+<Section type ="summary">
+<If check  = "!Controller.isReadMode" >
+<Element caption = "Create"  type = "UIButton" Id = "btSubmit"   style="btn btn-primary" iconStyle="glyphicon glyphicon-plus"  rendered = "Controller.isCreateMode" fixedAction ="FixedAction.ACTION_CREATE" 
+   fixedActionParam =  "SAVE"  />
+<Element caption = "Cancel"  type = "UIButton" Id = "btClose"   style="btn btn-warning" iconStyle="glyphicon glyphicon-remove" fixedAction ="FixedAction.CANCELDIALOG" fixedActionParam="newcustDL"  />
+</If>
+<If check  = "Controller.isReadMode" >
+<Element caption = "Close"  type = "UIButton" Id = "btClose"   style="btn btn-warning" iconStyle="glyphicon glyphicon-remove" onClickJS = "closeCustomerCreateDialog('newcustDL');"  />
+</If>
+</Section>
+</UIForm>
+</Elements>
+</Page>

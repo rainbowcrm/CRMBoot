@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "newContact" showinFrame ="true" title ="New Customer Category | Rainbow CRM" Object = "com.rainbow.crm.custcategory.model.CustCategory" 
+Controller = "com.rainbow.crm.custcategory.controller.CustCategoryController">
+<Template type= "Transaction"  name = "TransactionTemplate"></Template>
+<Forwards>
+<Forward key ="CANCEL">rdscontroller?page=custcategories</Forward>
+<Forward key ="SAVE">custcategories</Forward>
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./scripts/query/QueryFunc.js</IncludeJS>
+<Elements>
+<UIForm Id ="cust" method = "POST"  >
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type ="header">
+	<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
+	<Element label = ""  type = "UIHidden" Id = "hdnUserID"  property ="Id" />
+	<Element label = "Name"  type = "UIText" Id = "txtName"  isMandatory="true" size="30" property ="Name"  />
+	
+	<Element label = "Division"  type = "UIList" Id = "lstInvDivision"  isMandatory="true" property ="Division.Id" >
+	<options populator =  "getAllDivisions"> 
+	</options>
+	</Element>
+  
+  	
+	<Element label = "Eval_from"  type = "UIList" Id = "lstFrom"   property ="evalFrom.code"  externalise= "true">
+		<options populator =  "getEvaluationPeriods"> 
+		</options>
+	</Element>
+	<Element label = "Eval_To"  type = "UIList" Id = "lstTo"   property ="evalTo.code"  externalise= "true">
+		<options populator =  "getEvaluationPeriods"> 
+		</options>
+	</Element>
+	
+	<Element label = "Include_Returns"  type = "UICheckBox" Id = "chkReturns" size="30" property ="incudeReturns" >
+		<options> 
+	  <option key ="true">  </option>
+	 </options>
+	</Element>
+	
+	<Element label = "Comments"  type = "UITextArea" Id = "txtComm"  property ="comments" >
+	 <rows>2</rows> <cols>30</cols>
+	</Element>
+</Section>
+<Section type ="detail">
+
+<Element type ="UITabset" Id = "configSet" style = "uitabstyle" selectedTabStyle= "titleStyleSelected active nav-link" unSelectedTabStyle ="titleStyleUnSelected nav-link" >
+
+<Element type ="UITab" Id= "idGeneral" title = "Aggregates"   >
+
+<Element type = "UITable" rows = "1" cols = "8" style = "grid" applyStyleonChildren ="true" Id  ="tblTrans" property ="aggregateConditions[]" >
+<Element type = "UITableHead" style ="listPageTitle">
+ <Element type = "UITableRow">
+ <Element type ="UITableCol" width = "3%" ><Element label = ""  type = "UILabel" Id = "lblTit1" value ="(" /></Element>
+ <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblTit2" value ="Field" /></Element>
+ <Element type ="UITableCol" width = "3%" ><Element label = ""  type = "UILabel" Id = "lblTit3" value ="Op" /></Element>
+ <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblTit4" value ="Value" /></Element>
+ <Element type ="UITableCol" width = "3%" ><Element label = ""  type = "UILabel" Id = "lblTit1" value =")" /></Element>
+ <Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblTit4" value ="AND/OR" /></Element>
+  <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblTit5" value =".." /></Element>
+</Element>
+</Element>
+<Element type = "UITableRow"  dataType = "com.rainbow.crm.custcategory.model.CustCategoryCondition" >
+
+<Element type ="UITableCol" width = "3%" ><Element type = "UIText"  size="3"  Id= "txtOpBrac"  property ="openBrackets"   /></Element>
+
+<Element type ="UITableCol" width = "20%" >
+<Element type = "UIList"    Id= "lstCritFieldsEntity"   property ="field" >
+<options populator =  "getAllEntityFields"> 
+	</options>
+</Element>
+</Element>
+
+<Element type ="UITableCol" width = "3%" >
+<Element type = "UIList"    Id= "lstOpts"   property ="operator" >
+<options populator =  "getOperators"> 
+	</options>
+</Element>
+</Element>
+
+<Element type ="UITableCol" width = "20%" ><Element type = "UIText"   size ="15" Id= "txtVales" property ="value"   /></Element>
+<Element type ="UITableCol" width = "3%" ><Element type = "UIText"  size="3"  Id= "txtCloseBrac" property ="closeBrackets"   /></Element>
+<Element type ="UITableCol" width = "10%" ><Element type = "UIText" size="5"   Id= "txtandor"  property ="postCondition"   /></Element>
+
+
+
+<Element type ="UITableCol" width = "10%">
+	<Element caption = "AND"  type = "UIButton" Id = "btnAddRow"   onClickJS="addRowQuery(this, ' AND ')"/>
+	<Element caption = "OR"  type = "UIButton" Id = "btnAddORRow"    onClickJS="addRowQuery(this,' OR ')"/>
+	<Element caption = "-"  type = "UIButton" Id = "btnDelRow"    onClickJS="deleteRow(this)"/>
+</Element>
+</Element>
+</Element>
+</Element> <!--  end aggregates -->
+
+<Element type ="UITab" Id= "idWhere" title ="Conditions"   >
+
+<Element type = "UITable" rows = "1" cols = "8" style = "grid" applyStyleonChildren ="true" Id  ="tblWhereTrans" property ="whereConditions[]" >
+<Element type = "UITableHead" style ="listPageTitle">
+ <Element type = "UITableRow">
+ <Element type ="UITableCol" width = "3%" ><Element label = ""  type = "UILabel" Id = "lblWTit1" value ="(" /></Element>
+ <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblWTit2" value ="Field" /></Element>
+ <Element type ="UITableCol" width = "3%" ><Element label = ""  type = "UILabel" Id = "lblWTit3" value ="Op" /></Element>
+ <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblWTit4" value ="Value" /></Element>
+ <Element type ="UITableCol" width = "3%" ><Element label = ""  type = "UILabel" Id = "lblWTit1" value =")" /></Element>
+ <Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblWTit4" value ="AND/OR" /></Element>
+  <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblWTit5" value =".." /></Element>
+</Element>
+</Element>
+<Element type = "UITableRow"  dataType = "com.rainbow.crm.custcategory.model.CustCategoryCondition" >
+
+<Element type ="UITableCol" width = "3%" ><Element type = "UIText"  size="3"  Id= "txtWhOpBrac"  property ="openBrackets"   /></Element>
+
+<Element type ="UITableCol" width = "20%" >
+<Element type = "UIList"    Id= "lstWhCritFieldsEntity"   property ="field" >
+<options populator =  "getAllEntityFields"> 
+	</options>
+</Element>
+</Element>
+
+<Element type ="UITableCol" width = "3%" >
+<Element type = "UIList"    Id= "lstWhOpts"   property ="operator" >
+<options populator =  "getOperators"> 
+	</options>
+</Element>
+</Element>
+
+<Element type ="UITableCol" width = "20%" ><Element type = "UIText"   size ="15" Id= "txtWhVales" property ="value"   /></Element>
+<Element type ="UITableCol" width = "3%" ><Element type = "UIText"  size="3"  Id= "txtWhCloseBrac" property ="closeBrackets"   /></Element>
+<Element type ="UITableCol" width = "10%" ><Element type = "UIText" size="5"   Id= "txtWhandor"  property ="postCondition"   /></Element>
+
+
+
+<Element type ="UITableCol" width = "10%">
+	<Element caption = "AND"  type = "UIButton" Id = "btnWhAddRow"   onClickJS="addRowQuery(this, ' AND ')"/>
+	<Element caption = "OR"  type = "UIButton" Id = "btnWhAddORRow"    onClickJS="addRowQuery(this,' OR ')"/>
+	<Element caption = "-"  type = "UIButton" Id = "btnWhDelRow"    onClickJS="deleteRow(this)"/>
+</Element>
+</Element>
+</Element>
+</Element> <!--  end whre conditions -->
+
+
+</Element>  <!--  end tab set -->
+
+<Element type ="UIDialog" Id = "newprintpop" style= "fullpagepopup" rendered = "Controller.getResultFetched">
+<Element type = "UILabel" Id = "testing" style="fullpage" property = "reportData"></Element>
+
+<Element type = "UIBreak"/>
+
+<Element type = "UITable" rows = "1" cols = "1">
+<Element type = "UITableRow">
+<Element type ="UITableCol" align="right">
+
+<Element caption = "Close"  type = "UIButton" Id = "btClose"   style="btn btn-warning" iconStyle="glyphicon glyphicon-remove" onClickJS = "closeDialog('newprintpop');"  />
+<Element caption = "Print"  type = "UIButton" Id = "btPrintNew"  style="btn btn-primary" iconStyle="glyphicon glyphicon-print" onClickJS = "window.print();"  />
+</Element>
+</Element>
+</Element>
+
+<Element type = "UIStaticText" Id = "static" >
+ &lt;script&gt;
+ var dialog = document.getElementById('newprintpop');
+ if(!dialog.showModal)
+	{
+		dialogPolyfill.registerDialog(dialog);
+	}
+	dialog.showModal();
+ 
+ &lt;/script&gt;
+
+ 
+</Element>
+
+</Element>
+
+
+
+
+</Section>
+</CoreSection>
+<Section type ="summary">
+<Element caption = "View Customers"  type = "UIButton" Id = "btdwLoad"  style="btn btn-primary"  fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam =  "runQuery"    />
+</Section>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

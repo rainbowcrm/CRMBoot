@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "salesdashboard" showinFrame ="true"  title ="Sales Dashboard| Rainbow CRM" Object = "com.rainbow.crm.dashboard.model.SalesDashbBard" 
+Controller = "com.rainbow.crm.dashboard.controller.SalesDashBoardController">
+<Template type= "General"  name = "miniGraphTemplate"></Template>
+
+<Elements>
+<UIForm Id ="cust" method = "POST" enctype="multipart/form-data" >
+<Section type= "fullSection">
+
+<Element type = "UIHidden" Id = "hdngraphId"  property = "graphId"  constantValue="targetanalysis"/>
+<Element type = "UIBarChart" Id = "brChrt"  dataProvider = "salesTargetData"  useGoogleGraph="true">
+	  <xStart>0</xStart>
+	  <yStart>20</yStart>
+	  <rangeHeight>300</rangeHeight>
+	  <rangeWidth>400</rangeWidth>
+	  <marginWidth>30</marginWidth>
+	  <barWidth>30</barWidth>
+	  <noYAxisDivisions>6</noYAxisDivisions>
+	</Element>
+</Section>
+</UIForm>
+</Elements>
+</Page>

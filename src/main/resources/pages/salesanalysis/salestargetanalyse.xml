@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "salestargetanalyse" showinFrame ="true"  title ="Sales Target Analysis| Rainbow CRM" Object = "com.rainbow.crm.salesperiod.model.SalesPeriodAnalyzer" 
+Controller = "com.rainbow.crm.salesperiod.controller.SalesPeriodAnalyzerController">
+<Template type= "General"  name = "GraphTemplate"></Template>
+
+<Elements>
+<UIForm Id ="cust" method = "POST" enctype="multipart/form-data" >
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type= "mainSection">
+<Element type = "UITable" rows = "1" cols = "3"  style = "outlinedTable">
+	<Element type = "UITableRow">
+	<Element type ="UITableCol"><Element label = "Sales_Period"  type = "UIList" Id = "txtcode"    property ="salePeriod"  >
+		<options populator =  "getSalePeriods"> 
+		</options>
+	 </Element>
+	 </Element>
+	 <Element type ="UITableCol">
+	 	<Element label = "Based on"  type = "UIRadioBox" Id = "rdoType"   property ="basedOn" >
+	  <options> 
+	  <option key ="IT"> Item </option>
+	  <option key ="US"> User </option>
+	  <option key ="TR"> Territory </option>
+	  <option key ="BR"> Brand </option>
+	  <option key ="CTG"> Category </option>
+	  <option key ="PRD"> Product </option>
+	  </options>
+	</Element>
+	</Element>
+	 
+	 <Element type ="UITableCol">
+	 	<Element caption = "Analyze"  type = "UIButton" Id = "btnFilterCleas"  style="btn btn-primary" iconStyle="glyphicon glyphicon-flash" fixedAction ="FixedAction.ACTION_READ"   />
+	 </Element>
+</Element>
+</Element>
+</Section>
+<Section type= "displaySection">
+	<Element type = "UIBarChart" Id = "brChrt" useGoogleGraph="true" dataProvider = "salesData" >
+	  <xStart>0</xStart>
+	  <yStart>20</yStart>
+	  <rangeHeight>600</rangeHeight>
+	  <rangeWidth>1000</rangeWidth>
+	  <marginWidth>30</marginWidth>
+	  <barWidth>30</barWidth>
+	  <noYAxisDivisions>6</noYAxisDivisions>
+	</Element>
+</Section>
+</CoreSection>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

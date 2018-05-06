@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "newVendor" showinFrame ="true" title ="New Vendor | Rainbow CRM" Object = "com.rainbow.crm.vendor.model.Vendor" 
+Controller = "com.rainbow.crm.vendor.controller.VendorController">
+<Template type= "CRUD"  name = "CRUDTemplate"></Template>
+<Forwards>
+<Forward key ="CANCEL">rdscontroller?page=vendors</Forward>
+<Forward key ="SAVE">vendors</Forward>
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<Elements>
+<UIForm Id ="cust" method = "POST" > 
+<Section type ="topBar"></Section>
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type ="detail">
+	<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
+	<Element label = ""  type = "UIHidden" Id = "hdnUserID"  property ="Id" />
+	<Element label = "Vendor_Code"  type = "UIText" Id = "txtCode"  isMandatory="true" size="10" property ="Code" />
+	<Element label = "Vendor_Name"  type = "UIText" Id = "txtName"  isMandatory="true" size="30" property ="Name" />
+	<Element label = "Address1"  type = "UIText" Id = "txtAdd1" size="30" property ="Address1" />
+	<Element label = "Address2"  type = "UIText" Id = "txtAdd2" size="30" property ="Address2" />
+	<Element label = "City"  type = "UIText" Id = "txtCity" size="30"  property ="City" />
+	<Element label = "Pin_code"  type = "UIText" Id = "txtPinCode" size="7" property ="ZipCode" />
+	<Element label = "Email"  type = "UIText" Id = "txtemail" size="30" isMandatory="true" property ="Email" />
+	<Element label = "Phone"  type = "UIText" Id = "txtPhone" size="30" isMandatory="true" property ="Phone" />
+	<Element label = "Credit_Limit"  type = "UIText" Id = "txtCreditLimit" size="30"  isNumeric="true"  property ="CreditLimit" />
+</Section>
+</CoreSection>
+<Section type ="summary">
+</Section>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

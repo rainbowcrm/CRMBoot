@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Template id ="loginTemplate" type = "com.techtrade.rads.framework.ui.templates.TemplateType" >
+ <DataType>  </DataType>
+<MetaData>
+<meta charset="UTF-8"/>
+</MetaData>
+  <Renderers>
+ <Renderer>
+ <RendererType>HTML</RendererType>
+ <StyleSheet>./css/build/login.css</StyleSheet>
+ <PageStyle></PageStyle>
+ </Renderer>
+ </Renderers>
+   <fixedActionField>hdnFixedAction</fixedActionField>
+ <SubmitActionField>submitAction</SubmitActionField>
+ <FixedActionParamField>hdnFixedActionParam</FixedActionParamField>
+ <IncludeJS>./resources/js/login.js</IncludeJS>
+ <CRUDFieldMarker>:</CRUDFieldMarker>
+ <Errors showin ="central"  style ="errorStyle" showinTable = "true" tabStyle ="errorStyle">
+   <OddRow>oddRowError</OddRow>
+   <EvenRow>evenRowError</EvenRow>
+   <TitleRow>listPageTitleError</TitleRow>
+ </Errors>
+  <Sections>
+  <CoreSection>
+     <ErrorSection showinTable = "true"  style= "errorStyle" >
+ </ErrorSection>
+  <Section Id = "central" style= "brownribbon" >
+  <ErrorSection showinTable = "true"  style= "errorStyle" >
+ </ErrorSection>
+  </Section>
+  </CoreSection>
+  <Section Id ="copyRightSection"   style= "copyRight" >
+  <Panel key ="copyRightPanel"  Id ="copyRightPanel" > </Panel>  
+ </Section>  
+ </Sections>
+ </Template>
+
+ 

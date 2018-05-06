@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "divmgrdashboard" showinFrame ="true"  title ="Sales Dashboard| Rainbow CRM" Object = "com.rainbow.crm.dashboard.model.SalesDashbBard" 
+Controller = "com.rainbow.crm.dashboard.controller.SalesDashBoardController">
+<Template type= "General"  name = "GraphTemplate"></Template>
+
+<Elements>
+<UIForm Id ="cust" method = "POST" enctype="multipart/form-data" >
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type= "displaySection">
+<Element type = "UITable" rows = "1" cols = "2"  style = "outlinedTable">
+<Element type = "UITableRow" >
+<Element type = "UITableCol" width ="40%" >
+
+ 	<Element type = "UIIFrame" src ="./rdscontroller?page=divassocsalessplits&amp;graphId=divassocsalessplits"  style = "graphWindow">
+	</Element>
+</Element>
+
+<Element type = "UITableCol" width ="50%" >
+		<Element type = "UIIFrame" src ="./rdscontroller?page=divsalehistory&amp;graphId=divsaleshistory"  style = "graphWindow">
+	</Element>
+</Element>
+
+ 	
+
+
+</Element>	
+
+<Element type = "UITableRow" >
+<Element type = "UITableCol" width ="50%" >
+ 	
+	<Element type = "UIIFrame" src ="./rdscontroller?page=divtargetanalysis&amp;graphId=divtargetanalysis"  style="graphWindow">
+	</Element>
+	
+</Element>
+
+<Element type = "UITableCol" width ="50%" >
+
+	
+	<Element type = "UIIFrame" src ="./rdscontroller?page=divsalesleadsplits&amp;graphId=divmgrsalesleadsplits"  style = "graphWindow">
+	</Element>
+</Element>	
+
+
+</Element>
+ 
+</Element>
+</Section>
+</CoreSection>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

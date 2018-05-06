@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "noaccesspage" showinFrame ="true"  title ="No Authorization| Rainbow CRM" Object = "com.rainbow.crm.login.model.DummyObject" 
+Controller = "com.rainbow.crm.login.controller.DummyController">
+<Template type= "General"  name = "generalTemplate"></Template>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<Elements>
+<UIForm Id ="noaccessfrm" method = "POST"  >
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type= "mainSection">
+
+
+</Section>
+</CoreSection>
+<Section type= "summary">
+</Section> 
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

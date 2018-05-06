@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+<class name="com.rainbow.crm.saleslead.model.SalesLead" table="SALES_LEADS" lazy="false">
+	<meta attribute="class-description">
+         This class contains the SalesLeads 
+      </meta>
+       <id name="id" type="int" column="id">
+      </id>
+      <version name="objectVersion" column="version" type="integer"></version>
+      <many-to-one name="company" column ="company_id" not-null="true" lazy="false" ></many-to-one>
+      <many-to-one name="division" column ="division_id" not-null="true" lazy="false" ></many-to-one>
+      <property name="docNumber" column="DOC_NUMBER" type="string"/>
+      <property name="refNo" column="REF_NUMBER" type="string"/>
+      <property name="refDate" column="REF_DATE" type="date"/>
+      <many-to-one name="referall" column ="REFERRAL_ID"  lazy="false" ></many-to-one>
+      <many-to-one name="customer" column ="customer_id"  lazy="false" ></many-to-one>
+      <many-to-one name="territory" column ="territory_id"  lazy="false" ></many-to-one>
+      <property name="releasedDate" column="RELEASED_DATE" type="date"/>
+      <property name="salesWon" column="SALES_WON" type="boolean"/>
+      <many-to-one name="sales" column ="SALES_ID" not-null="false" lazy="false" ></many-to-one>
+      <many-to-one name="status" column ="STATUS" not-null="false" lazy="false" ></many-to-one>
+      <property name="salesAssociate" column="SALES_ASSOCIATE" type="string"/>
+      <many-to-one name="salesAssReason" column ="SALESASS_REASON_ID" not-null="false" lazy="false" ></many-to-one>
+      <many-to-one name="mgrReason" column ="MGR_REASON_ID" not-null="false" lazy="false" ></many-to-one>
+      <property name="closureDate" column="FINAL_DATE" type="date"/>
+      <property name="voided" column="IS_VOIDED" type="boolean"/>
+      <property name="alerted" column="IS_ALERTED" type="boolean"/>
+      <property name="comments" column="comments" type="string"/>
+      <property name="createdDate" column="created_date" type="timestamp" update="false"/>
+      <property name="lastUpdateDate" column="last_updated_date" type="timestamp"/>
+      <property name="createdUser" column="created_by" type="string" update="false"/>
+      <property name="lastUpdateUser" column="last_updated_by" type="string"/>
+       <set   name="salesLeadLines" cascade="all" inverse="true" lazy="false"  order-by="lineNumber" >
+     	 <key column="SALESLEAD_ID"></key>
+      <one-to-many class="com.rainbow.crm.saleslead.model.SalesLeadLine"/>
+      </set>  
+ </class>
+</hibernate-mapping>

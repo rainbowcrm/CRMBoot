@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+<class name="com.rainbow.crm.expensevoucher.model.ExpenseVoucher" table="EXPENSE_VOUCHERS" lazy="false">
+	<meta attribute="class-description">
+         This class contains the ExpenseVouchers 
+      </meta>
+       <id name="id" type="int" column="id">
+      </id>
+      <version name="objectVersion" column="version" type="integer"></version>
+      <many-to-one name="company" column ="company_id" not-null="true" lazy="false" ></many-to-one>
+      <many-to-one name="division" column ="division_id" not-null="true" lazy="false" ></many-to-one>
+      <property name="docNumber" column="DOC_NUMBER" type="string"/>
+      <many-to-one name="salesAssoicate" column ="USER_ID" not-null="true" lazy="false" ></many-to-one>
+      <property name="associateComments" column="SA_COMMENTS" type="string"/>
+      <many-to-one name="manager" column ="MGR_ID"  lazy="false" ></many-to-one>
+      <property name="managerComments" column="MGR_COMMENTS" type="string"/>
+      <many-to-one name="status" column ="STATUS" not-null="false" lazy="false" ></many-to-one>
+      <property name="expenseDate" column="EXPENSE_DATE" type="date"/>
+      <property name="requestedTotal" column="REQ_TOTAL" type="double"/>
+      <property name="correctedTotal" column="CORRECTED_TOTAL" type="double"/>
+      <property name="approvedTotal" column="APPROVED_TOTAL" type="double"/>
+      <property name="createdDate" column="created_date" type="timestamp" update="false"/>
+      <property name="lastUpdateDate" column="last_updated_date" type="timestamp"/>
+      <property name="createdUser" column="created_by" type="string" update="false"/>
+      <property name="lastUpdateUser" column="last_updated_by" type="string"/>
+       <set   name="expenseVoucherLines" cascade="all" inverse="true" lazy="false"  order-by="lineNumber" >
+     	 <key column="EXPENSE_VOUCHER_ID"></key>
+      <one-to-many class="com.rainbow.crm.expensevoucher.model.ExpenseVoucherLine"/>
+      </set>  
+ </class>
+</hibernate-mapping>

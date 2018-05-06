@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "newContact" showinFrame ="true" title ="New Contact | Rainbow CRM" Object = "com.rainbow.crm.followup.model.Followup" 
+Controller = "com.rainbow.crm.followup.controller.FollowupController">
+<Template type= "CRUD"  name = "CRUDTemplate"></Template>
+<Forwards>
+<Forward key ="CANCEL">rdscontroller?page=followups</Forward>
+<Forward key ="SAVE">followups</Forward>
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<Elements>
+<UIForm Id ="cust" method = "POST" >
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>r
+<Section type ="detail">
+	<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
+	<Element label = ""  type = "UIHidden" Id = "hdnUserID"  property ="Id" />
+	<Element label = "Division"  type = "UIList" Id = "lstInvDivision"  isMandatory="true" property ="Division.Id" >
+	<options populator =  "getAllDivisions"> 
+	</options>
+	</Element>
+	<Element label = "Sales_Lead"   type = "UILookupDataList" listId="lsthSalesLead" Id = "txtName"  isMandatory="true" size="30" property ="Lead.docNumber" showLookupAsDialog="true" dialogId="dlgComp"
+ 	dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" additionalInputControl = "lstInvDivision" >
+  	<lookupType>saleslead</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+	 <SupplementaryFields>
+	 	<Field>
+	        <property>salesAssociate</property>
+	        <control>txtLName</control>
+	     </Field>
+	 </SupplementaryFields>
+  	</Element>
+	<Element label = "Sales_Associate"   type = "UILookupDataList" listId="lsthdrAss" Id = "txtLName"  isMandatory="true" size="30" property ="salesAssociate"  showLookupAsDialog="true" dialogId="dlgUser"
+ 	dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" >
+ 	<lookupType>user</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+	</Element>
+	<Element label = "Date"  type = "UIDate" Id = "txtFLPDate" size="30" property ="followupDate" />
+	<Element label = "Finalized"  type = "UICheckBox" Id = "txtAdd2" size="30" property ="finalFollowup" >
+	<options> 
+	  <option key ="true">  </option>
+	 </options>
+	</Element>
+	<Element label = "Next_Followup"  type = "UIDate" Id = "txtAdd1" size="30" property ="nextFollwup" />
+	<Element label = "Confidence_Level"  type = "UIList" Id = "lstContact"   property ="confidenceLevel.code"  externalise= "true">
+		<options populator =  "getConfidenceLevels"> 
+		</options>
+	</Element>
+	<Element label = "Communication_Mode"  type = "UIList" Id = "lstCommMode"   property ="communicationMode.code"  externalise= "true">
+		<options populator =  "getCommunicationModes"> 
+		</options>
+	</Element>
+	<Element label = "Offered_Price"  type = "UIText" Id = "txtOffPrice"  isNumeric="true" size="30" property ="offeredPrice" />
+	<Element label = "Result"  type = "UIList" Id = "lstResult"   property ="result.code"  externalise= "true">
+		<options populator =  "getFollowupResults"> 
+		</options>
+	</Element>
+	<Element label = "Result_Reason"  type = "UIList" Id = "lstResultReason"   property ="resultReason.id"  externalise= "true">
+		<options populator =  "getAllReasons"> 
+		</options>
+	</Element>
+	<Element label = "Comments"  type = "UITextArea" Id = "txtComments"   property ="comments" >
+	 <rows>5</rows> <cols>30</cols>
+	</Element>
+	<Element label = "Conversation"  type = "UITextArea" Id = "txtConversation"   property ="comments" >
+	 <rows>5</rows> <cols>30</cols>
+	</Element>
+</Section>
+</CoreSection>
+<Section type ="summary">
+</Section>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

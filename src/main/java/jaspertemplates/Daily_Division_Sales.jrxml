@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.3.1.final using JasperReports Library version 6.3.1  -->
+<!-- 2017-06-26T20:01:05 -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Daily_Sales" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7b58219a-74b2-49b3-b65c-353bc00168b4">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="CRM"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="278"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="711"/>
+	<parameter name="fromDate" class="java.util.Date"/>
+	<parameter name="toDate" class="java.util.Date"/>
+	<parameter name="companyId" class="java.lang.Integer">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="divisionId" class="java.lang.Integer"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT companies.company_name,
+	divisions.division_name,
+	sales.`Bill_Number`,
+	sales.sales_date,
+	customers.first_name,
+	customers.last_name,
+	skus.sku_code,
+	skus.sku_name,
+	sales_lines.qty,
+	sales_lines.unit_price,
+	sales_lines.line_totdisc,
+	sales_lines.line_total,
+	sales.net_amount,
+	finite_values.description
+FROM sales
+	left outer join customers ON 
+	 sales.customer_id = customers.id ,
+	sales_lines,
+	companies,
+	divisions,
+	skus,
+	finite_values
+WHERE 
+	 sales.id = sales_lines.sales_id 
+	 AND sales.company_id = companies.id 
+	 AND sales.order_type = finite_values.code 
+	 AND sales_lines.sku_id = skus.id 
+	 AND sales.division_id = divisions.id 
+	 AND sales.is_voided <> true 
+	 AND sales_lines.is_voided <> true   
+	 AND  sales.company_id = $P{companyId}
+	 AND sales.sales_date >= $P{fromDate} 
+	 AND sales.sales_date <= $P{toDate} 
+	 AND sales.division_id = $P{divisionId} 
+ORDER BY
+ sales.sales_date]]>
+	</queryString>
+	<field name="company_name" class="java.lang.String"/>
+	<field name="division_name" class="java.lang.String"/>
+	<field name="Bill_Number" class="java.lang.String"/>
+	<field name="sales_date" class="java.sql.Date"/>
+	<field name="first_name" class="java.lang.String"/>
+	<field name="last_name" class="java.lang.String"/>
+	<field name="sku_code" class="java.lang.String"/>
+	<field name="sku_name" class="java.lang.String"/>
+	<field name="qty" class="java.lang.Integer"/>
+	<field name="unit_price" class="java.lang.Float"/>
+	<field name="line_totdisc" class="java.lang.Float"/>
+	<field name="line_total" class="java.lang.Float"/>
+	<field name="net_amount" class="java.lang.Float"/>
+	<field name="description" class="java.lang.String"/>
+	<variable name="net_amount1" class="java.lang.Float" resetType="Group" resetGroup="Group1" calculation="Sum">
+		<variableExpression><![CDATA[$F{net_amount}]]></variableExpression>
+	</variable>
+	<variable name="net_amount2" class="java.lang.Float" resetType="Column" calculation="Sum">
+		<variableExpression><![CDATA[$F{net_amount}]]></variableExpression>
+	</variable>
+	<variable name="net_amount3" class="java.lang.Float" resetType="Group" resetGroup="Group1" calculation="Sum">
+		<variableExpression><![CDATA[$F{net_amount}]]></variableExpression>
+	</variable>
+	<variable name="net_amount4" class="java.lang.Float" resetType="Group" resetGroup="Group1" calculation="Sum">
+		<variableExpression><![CDATA[$F{net_amount}]]></variableExpression>
+	</variable>
+	<variable name="line_total1" class="java.lang.Float" resetType="Group" resetGroup="Group1" calculation="Sum">
+		<variableExpression><![CDATA[$F{line_total}]]></variableExpression>
+	</variable>
+	<variable name="line_total2" class="java.lang.Float" calculation="Sum">
+		<variableExpression><![CDATA[$F{line_total}]]></variableExpression>
+	</variable>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{sales_date}]]></groupExpression>
+		<groupHeader>
+			<band height="30">
+				<textField pattern="MMMM d, yyyy">
+					<reportElement x="0" y="3" width="160" height="23" uuid="3d6b0ed3-0893-4853-b6d9-fd9c1826e680"/>
+					<textElement>
+						<font fontName="Arial" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{sales_date}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="0" y="29" width="561" height="1" uuid="ae9acaac-7cf6-4cbc-ab6a-8d9fa705c9ed"/>
+				</line>
+				<line>
+					<reportElement x="0" y="3" width="561" height="1" uuid="cfb9feb8-3c95-4de1-a3da-efe638a37471"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="26">
+				<staticText>
+					<reportElement x="360" y="0" width="70" height="18" uuid="968394cf-3585-4ede-882d-b151dcfced6c"/>
+					<textElement textAlignment="Left">
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Daily Total:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="450" y="0" width="100" height="18" uuid="0247396f-8832-4e7f-83fd-7a20b17f98e2"/>
+					<textElement textAlignment="Right">
+						<font isBold="true" isUnderline="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{line_total1}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<group name="Group2">
+		<groupExpression><![CDATA[$F{Bill_Number}]]></groupExpression>
+		<groupHeader>
+			<band height="26">
+				<textField>
+					<reportElement x="40" y="6" width="160" height="20" uuid="a4f1e4d6-7f7c-4a79-9995-c75ef8bd687a"/>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{Bill_Number}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="7" width="30" height="18" uuid="c6c7b9f7-8618-4e14-942b-2321e2b62e1d"/>
+					<textElement textAlignment="Left">
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Bill:]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="28">
+				<textField>
+					<reportElement x="450" y="0" width="100" height="20" uuid="135ca400-0382-4e03-87ac-ae20ace0ff12"/>
+					<textElement textAlignment="Right">
+						<font isBold="true" isUnderline="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{net_amount}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="43" splitType="Stretch">
+			<textField>
+				<reportElement x="160" y="12" width="240" height="31" uuid="a37ff43b-f0f2-4a60-9476-24ff150cff5b"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{company_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="160" y="2" width="240" height="30" uuid="2975741c-f71e-4d06-8a1d-63d78cfa23b1"/>
+				<textElement textAlignment="Center">
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[Daily Sales Report]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="32" width="40" height="18" uuid="7e8e7748-394e-4c8e-9cb5-2baddec4da55"/>
+				<textElement textAlignment="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[From:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="140" y="32" width="40" height="18" uuid="c314bcb7-0443-45cf-9ae0-edb1c115b3a2"/>
+				<textElement textAlignment="Left">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[To:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="50" y="30" width="70" height="20" uuid="4652cb6c-f4ab-4497-9917-28970f3f9121"/>
+				<textFieldExpression><![CDATA[$P{fromDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="190" y="30" width="100" height="20" uuid="a8cf4b42-a1ab-4fda-bdde-07607e853011"/>
+				<textFieldExpression><![CDATA[$P{toDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="386" y="31" width="60" height="18" uuid="81aca3bd-a246-4e28-877c-97d402b27c92"/>
+				<textElement textAlignment="Left">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Division:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="450" y="32" width="100" height="17" uuid="b1415c36-2804-411d-b2d3-6784fe3c0409"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{division_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="4" width="100" height="15" uuid="12784e1a-7ff6-4934-8f78-fd771f67639c"/>
+				<textFieldExpression><![CDATA[$F{sku_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="4" width="200" height="15" uuid="382ff2e7-4856-4458-9517-f25c80b0f53b"/>
+				<textFieldExpression><![CDATA[$F{sku_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="4" width="60" height="15" uuid="b4129306-6d42-4ae9-8337-c8a5037044ea"/>
+				<textFieldExpression><![CDATA[$F{qty}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="380" y="4" width="80" height="15" uuid="8584eee4-4531-43c6-bcbc-cf023a9278d5"/>
+				<textFieldExpression><![CDATA[$F{unit_price}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="470" y="4" width="80" height="15" uuid="3e8eb6a4-d76f-4506-97f9-f8ca89fa6c9c"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{line_total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="360" y="0" width="70" height="18" uuid="2df4e0ac-17f3-4bfa-9aa6-e0cdb87d1f83"/>
+				<textElement textAlignment="Left">
+					<font size="12"/>
+				</textElement>
+				<text><![CDATA[Grand Total:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="450" y="0" width="100" height="18" uuid="f965c09a-d674-4a53-97f9-7c9ece6fb688"/>
+				<textElement textAlignment="Right">
+					<font isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{line_total2}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

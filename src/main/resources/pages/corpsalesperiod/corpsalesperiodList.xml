@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "corpsaleperiodList" showinFrame ="true" title ="Corporate Sales Target | Rainbow CRM"  Object = "com.rainbow.crm.corpsalesperiod.model.CorpSalesPeriod" 
+Controller = "com.rainbow.crm.corpsalesperiod.controller.CorpSalesPeriodListController">
+<Template type= "List"  name = "ListTemplate"></Template>
+<Forwards>
+<Forward key ="NEW">rdscontroller?page=newcorpsalesperiod</Forward>
+<Forward key ="EDIT">rdscontroller?page=newcorpsalesperiod</Forward>
+</Forwards>
+<AjaxGroups>
+<AjaxGroup service ="filterSearch">
+<requestElements>
+<requestElement key = "filterId">lstSavedFilters</requestElement>
+</requestElements>
+<responseElements>
+<responseElement key = "FilterName" >txtFilterName</responseElement>
+<responseElement key = "FromDate" >txtFromDate</responseElement>
+<responseElement key = "ToDate" >txtToDate</responseElement>
+</responseElements>
+</AjaxGroup>
+</AjaxGroups>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<Elements>
+<Section type ="topBar"></Section>
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<FilterSection>
+<FilterNode>
+  <Element label = "Saved_Filters"  type = "UIList" Id = "lstSavedFilters"   property ="" >
+	<options populator =  "getSavedFiters"> 
+	</options>
+  </Element>
+ </FilterNode>
+<FilterNode>
+   	<Element label = "Filter_Name"  type = "UIText" Id = "txtFilterName"  property ="FilterName" />
+</FilterNode>
+<FilterNode operator = ">=">
+   	<Element label = "From"  type = "UIDate" Id = "txtFromDate"  property ="fromDate" />
+</FilterNode>
+<FilterNode operator = ">=">
+   	<Element label = "To"  type = "UIDate" Id = "txtToDate"  property ="toDate" />
+</FilterNode>     
+</FilterSection>
+<ListSection >
+ <Columns allowrowselection ="Multiple" uniqueproperty = "Id">
+<SelectionColumn   >
+<Element label = ""  type = "UICheckBox" Id = "idChkSel"  rendered="!Object.isVoided" property ="Id" />
+<Element label = ""  type = "UIImage" Id = "idChkSel"  rendered="Object.isVoided" height = "21" weight ="21" src= "./resources/images/deletedRow.jpg" />
+</SelectionColumn>
+<Column title ="Period"  sortField="period"  width ="25%" >
+<Element label = ""  type = "UINote" Id = "idperiod"  property ="Period" />
+</Column>
+<Column title ="From_Date" sortField="from_date"   width ="15%" >
+<Element label = ""  type = "UINote" Id = "idfrmDate"  property ="FromDate" />
+</Column>
+<Column title ="To_Date"  sortField="to_date"  width ="15%" >
+<Element label = ""  type = "UINote" Id = "idDoc"  property ="ToDate" />
+</Column>
+<Column title ="Total_Target"  sortField="TOTAL_TARGET"  width ="15%" >
+<Element label = ""  type = "UINote" Id = "idVend"  property ="totalTarget" />
+</Column>
+</Columns>
+</ListSection>
+</CoreSection>
+<Section type ="summary">
+<Element caption = "Add"  type = "UIButton"    Id = "btnAdd"  style="btn btn-primary" fixedAction ="FixedAction.ACTION_PAGEFORWARD" fixedActionParam =  "NEW" />
+<Element caption = "Edit"  type = "UIButton"    Id = "btnEdit"  style="btn btn-warning"  fixedAction ="FixedAction.ACTION_GOEDITMODE"  fixedActionParam =  "EDIT"  />
+<Element type= "Panel" key= "NavPanel"  style = "sameline" ></Element>
+</Section>
+<Section type ="copyRightSection"/>
+</Elements>
+</Page>
+
+
+

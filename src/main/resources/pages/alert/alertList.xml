@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "alerts" showinFrame ="true" title ="Alerts | Rainbow CRM" Object = "com.rainbow.crm.alert.model.Alert" 
+Controller = "com.rainbow.crm.alert.controller.AlertListController">
+<Template type= "List"  name = "ListTemplate"></Template>
+<AjaxGroups>
+<AjaxGroup service ="filterSearch">
+<requestElements>
+<requestElement key = "filterId">lstSavedFilters</requestElement>
+</requestElements>
+<responseElements>
+<responseElement key = "FilterName" >txtFilterName</responseElement>
+
+<responseElement key = "Sales_Lead" >txtLead</responseElement>
+<responseElement key = "Associate" >txtSalesAss</responseElement>
+<responseElement key = "Result" >txtResult</responseElement>
+<responseElement key = "ResultReason" >txtResultReason</responseElement>
+</responseElements>
+</AjaxGroup>
+</AjaxGroups>
+
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<Elements>
+<Section type ="topBar"></Section>
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<FilterSection>
+<FilterNode>
+  <Element label = "Saved_Filters"  type = "UIList" Id = "lstSavedFilters"   property ="" >
+	<options populator =  "getSavedFiters"> 
+	</options>
+  </Element>
+ </FilterNode>
+<FilterNode>
+   	<Element label = "Filter_Name"  type = "UIText" Id = "txtFilterName"  property ="FilterName" />
+ </FilterNode>
+<FilterNode>
+   	<Element label = "Owner"  type = "UIText" Id = "txtOwner"  property ="owner.userId" />
+ </FilterNode>
+ <FilterNode>
+   	<Element label = "Type"  type = "UIList" Id = "txtalertType"  property ="type.code" >
+   	<options populator =  "getTypes"> 
+	</options>
+   	</Element>
+ </FilterNode>
+<FilterNode>
+   		<Element label = "Status"  type = "UIList" Id = "txtalertstatus"  property ="status.code" >
+   		<options populator =  "getStatuses"> 
+		</options>
+   	</Element>
+ </FilterNode>
+ <FilterNode>
+   	<Element label = "RaisedBy"  type = "UIText" Id = "txtTaised"  property ="RaisedBy" />
+ </FilterNode>
+</FilterSection>
+<ListSection >
+<Columns allowrowselection ="Multiple" uniqueproperty = "Id">
+<SelectionColumn   >
+<Element label = ""  type = "UICheckBox" Id = "idChkSel"  rendered="!Object.isDeleted" property ="Id" />
+<Element label = ""  type = "UIImage" Id = "idChkSel"  rendered="Object.isDeleted" height = "21" weight ="21" src= "./resources/images/deletedRow.jpg" />
+</SelectionColumn>
+<Column title ="Type"   width ="18%" sortField="type.description"  >
+<Element label = ""  type = "UINote" Id = "idIdNote"   property ="type.description" />
+</Column>
+<Column title ="Alert"   width ="28%" sortField="url"  >
+<Element label = ""  type = "UIHyperLink" Id = "idIdNote"    property ="url"  supplementaryProperty="data"/>
+</Column>
+<Column title ="Owner"  width ="18%"  sortField="owner.userId"  >
+<Element label = ""  type = "UINote" Id = "idCt"  property ="owner.userId" />
+</Column> 
+<Column title ="Status"   width ="18%" sortField="status.description"  >
+<Element label = ""  type = "UINote" Id = "idIdNote"  property ="status.description" />
+</Column>
+<Column title ="Raised_By"   width ="18%" sortField="RaisedBy"  >
+<Element label = ""  type = "UINote" Id = "idIdNote"  property ="RaisedBy" />
+</Column>  
+</Columns>
+</ListSection>
+</CoreSection>
+<Section type ="summary">
+<Element type= "Panel" key= "NavPanel"  style = "sameline" ></Element>
+<Element caption = "Acknowledge"  type = "UIButton"    Id = "btnAck"  style="btn btn-primary" onClickJS ="acknowledgeAlert();" />
+</Section>
+<Section type ="copyRightSection"/>
+</Elements>
+</Page>
+

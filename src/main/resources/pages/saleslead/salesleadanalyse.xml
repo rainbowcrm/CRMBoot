@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "salesleadanalysis" showinFrame ="true"  title ="Sales Lead Analysis| Rainbow CRM" Object = "com.rainbow.crm.saleslead.model.SalesLeadAnalyzer" 
+Controller = "com.rainbow.crm.saleslead.controller.SalesLeadAnalyzerController">
+<Template type= "General"  name = "GraphTemplate"></Template>
+
+<Elements>
+<UIForm Id ="cust" method = "POST" enctype="multipart/form-data" >
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type= "mainSection">
+<Element type = "UITable" rows = "2" cols = "2"  style = "outlinedTable">
+	<Element type = "UITableRow">
+	
+	<Element type ="UITableCol">
+	<Element label = "Division"  type = "UIList" Id = "lstDivision"    property ="division.Id"  >
+	<options populator =  "getAllDivisions"> 
+	</options>
+	 </Element>
+	</Element>
+	
+	
+	<Element type ="UITableCol"><Element label = "From"  type = "UIDate" Id = "txtDate"    property ="fromDate"  >
+	 </Element>
+	 </Element>
+	 <Element type ="UITableCol"><Element label = "To"  type = "UIDate" Id = "txtToDate"    property ="toDate"  >
+	 </Element>
+	 </Element>
+
+	 <Element type ="UITableCol">
+	 	<Element caption = "Analyze"  type = "UIButton" Id = "btnFilterCleas"  style="btn btn-primary" iconStyle="glyphicon glyphicon-flash" fixedAction ="FixedAction.ACTION_READ"   />
+	 </Element>
+</Element>
+</Element>
+</Section>
+<Section type= "displaySection">
+ 	<Element type = "UIBarChart" Id = "brChrt1"  dataProvider = "leadsBarData" >
+	 <xStart>0</xStart>
+	  <yStart>20</yStart>
+	  <rangeHeight>300</rangeHeight>
+	  <rangeWidth>500</rangeWidth>
+	  <marginWidth>30</marginWidth>
+	  <barWidth>30</barWidth>
+	  <noYAxisDivisions>6</noYAxisDivisions>
+ 	</Element>  
+ 	<Element type = "UIPieChart" Id = "pieChart5"   useDonutChart="true"  dataProvider = "salesleadSplits" useGoogleGraph="true" >
+	  <centerX>150</centerX>
+	  <centerY>150</centerY>
+	  <radius>50</radius>
+	  <rangeHeight>300</rangeHeight>
+	  <rangeWidth>500</rangeWidth>
+ 	</Element>  
+ 	
+	 <Element type = "UIPieChart" Id = "brChrt"  dataProvider = "salesReasonSplits" useGoogleGraph="true">
+	  <centerX>150</centerX>
+	  <centerY>150</centerY>
+	  <radius>50</radius>
+	  <rangeHeight>300</rangeHeight>
+	  <rangeWidth>500</rangeWidth>
+ 	</Element>
+ 	<!-- <Element type = "UIPieChart" Id = "brChrt3"  dataProvider = "LowMedSalesData" >
+	  <centerX>150</centerX>
+	  <centerY>150</centerY>
+	  <radius>50</radius>
+	  <rangeHeight>300</rangeHeight>
+	  <rangeWidth>500</rangeWidth>
+ 	</Element>
+ 	<Element type = "UIPieChart" Id = "brChrt4"  dataProvider = "EconSalesData" >
+	  <centerX>150</centerX>
+	  <centerY>150</centerY>
+	  <radius>50</radius>
+	  <rangeHeight>300</rangeHeight>
+	  <rangeWidth>500</rangeWidth>
+ 	</Element>  --> 
+</Section>
+</CoreSection>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

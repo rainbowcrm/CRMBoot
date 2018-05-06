@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+<class name="com.rainbow.crm.salesperiod.model.SalesPeriod" table="SALES_PERIODS" lazy="false">
+	<meta attribute="class-description">
+         This class contains the Sales Periods 
+      </meta>
+       <id name="id" type="int" column="id">
+      </id>
+      <version name="objectVersion" column="version" type="integer"></version>
+      <many-to-one name="company" column ="company_id" not-null="true" lazy="false" ></many-to-one>
+      <many-to-one name="division" column ="division_id"  lazy="false" ></many-to-one>
+      <property name="period" column="period" type="string"/> 
+      <property name="description" column="description" type="string"/>
+      <property name="fromDate" column="from_date" type="date"/>
+      <property name="toDate" column="to_date" type="date"/>
+      <property name="totalTarget" column="TOTAL_TARGET" type="double"/>
+      <property name="additionalTarget" column="ADDITIONAL_TARGET" type="double"/>
+      <property name="voided" column="IS_VOIDED" type="boolean"/>
+      <property name="startAlerted" column="IS_START_ALERTED" type="boolean"/>
+      <property name="endAlerted" column="IS_END_ALERTED" type="boolean"/>
+      <property name="createdDate" column="created_date" type="timestamp" update="false"/>
+      <property name="lastUpdateDate" column="last_updated_date" type="timestamp"/>
+      <property name="createdUser" column="created_by" type="string" update="false"/>
+      <property name="lastUpdateUser" column="last_updated_by" type="string"/>
+      <set   name="salesPeriodLines" cascade="all" inverse="true" lazy="false"  order-by="lineNumber" >
+     	 <key column="SALES_PERIOD_ID"></key>
+      <one-to-many class="com.rainbow.crm.salesperiod.model.SalesPeriodLine"/>
+      </set>
+       <set   name="salesPeriodAssociates" cascade="all" inverse="true" lazy="false"  order-by="lineNumber" >
+     	 <key column="SALES_PERIOD_ID"></key>
+      <one-to-many class="com.rainbow.crm.salesperiod.model.SalesPeriodAssociate"/>
+      </set>
+      <set   name="salesPeriodTerritories" cascade="all" inverse="true" lazy="false"  order-by="lineNumber" >
+     	 <key column="SALES_PERIOD_ID"></key>
+      <one-to-many class="com.rainbow.crm.salesperiod.model.SalesPeriodTerritory"/>
+      </set>
+      <set   name="salesPeriodBrands" cascade="all" inverse="true" lazy="false"  order-by="lineNumber" >
+     	 <key column="SALES_PERIOD_ID"></key>
+      <one-to-many class="com.rainbow.crm.salesperiod.model.SalesPeriodBrand"/>
+      </set>
+       <set   name="salesPeriodCategories" cascade="all" inverse="true" lazy="false"  order-by="lineNumber" >
+     	 <key column="SALES_PERIOD_ID"></key>
+      <one-to-many class="com.rainbow.crm.salesperiod.model.SalesPeriodCategory"/>
+      </set>
+      <set   name="salesPeriodProducts" cascade="all" inverse="true" lazy="false"  order-by="lineNumber" >
+     	 <key column="SALES_PERIOD_ID"></key>
+      <one-to-many class="com.rainbow.crm.salesperiod.model.SalesPeriodProduct"/>
+      </set>
+ </class>
+</hibernate-mapping>

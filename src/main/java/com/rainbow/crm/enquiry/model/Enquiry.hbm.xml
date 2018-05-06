@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.rainbow.crm.enquiry.model.Enquiry" table="ENQUIRIES" lazy="false">
+      <meta attribute="class-description">
+         This class contains the Enquiries 
+      </meta>
+       <id name="id" type="int" column="id">
+      </id>
+      <version name="objectVersion" column="version" type="integer"></version>
+      <many-to-one name="company" column ="company_id" not-null="true" lazy="false" ></many-to-one>
+      <property name="docNumber" column="DOC_NO" type="string"/>
+      <many-to-one name="division" column ="division_id"  lazy="false" ></many-to-one>
+      <many-to-one name="territory" column ="territory_id"  lazy="false" ></many-to-one>
+      <many-to-one name="enquiryType" column ="ENQUIRY_TYPE" not-null="false" lazy="false" ></many-to-one>
+      <many-to-one name="enquirySource" column ="ENQUIRY_SOURCE" not-null="false" lazy="false" ></many-to-one>
+      <many-to-one name="enquiryStatus" column ="ENQUIRY_STATUS" not-null="false" lazy="false" ></many-to-one>
+      <many-to-one name="contact" column ="contact_id"  lazy="false" ></many-to-one>
+      <many-to-one name="customer" column ="customer_id"  lazy="false" ></many-to-one>
+      <many-to-one name="reason" column ="reason_id"  lazy="false" ></many-to-one>
+      <many-to-one name="salesAssociate" column ="SALES_ASSOCIATE"  not-null="false" lazy="false" ></many-to-one>
+      <property name="firstName" column="FIRST_NAME" type="string"/>
+      <property name="lastName" column="LAST_NAME" type="string"/>
+      <property name="phone" column="PHONE" type="string"/>
+      <property name="email" column="EMAIL" type="string"/>
+      <property name="address1" column="ADDRESS1" type="string"/>
+      <property name="address2" column="ADDRESS2" type="string"/>
+      <property name="city" column="CITY" type="string"/>
+      <property name="zipcode" column="ZIPCODE" type="string"/>
+      <property name="enquiry" column="enquiry" type="string"/>
+      <property name="enqDate" column="ENQ_DATE" type="date"/>
+      <many-to-one name="nearestItem" column ="NEAREST_ITEM_ID"  lazy="false" ></many-to-one>
+      <many-to-one name="nearestSku" column ="NEAREST_SKU_ID"  lazy="false" ></many-to-one>
+  	  <property name="comments" column="COMMENTS" type="string"/>
+      <property name="deleted" column="is_deleted" type="boolean"/>
+      <property name="createdDate" column="created_date" type="timestamp" update="false"/>
+      <property name="lastUpdateDate" column="last_updated_date" type="timestamp"/>
+      <property name="createdUser" column="created_by" type="string" update="false"/>
+      <property name="lastUpdateUser" column="last_updated_by" type="string"/>
+      <set   name="enquiryLines" cascade="all" inverse="true" lazy="false"  order-by="lineNumber" >
+     	 <key column="ENQUIRY_ID"></key>
+      <one-to-many class="com.rainbow.crm.enquiry.model.EnquiryLine"/>
+      </set>
+      
+   </class>
+ </hibernate-mapping>

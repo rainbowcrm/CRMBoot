@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "divtargetanalysispage" showinFrame ="true"  title ="Sales Dashboard| Rainbow CRM" Object = "com.rainbow.crm.dashboard.model.SalesDashbBard" 
+Controller = "com.rainbow.crm.dashboard.controller.SalesDashBoardController">
+<Template type= "General"  name = "miniGraphTemplate"></Template>
+
+<Elements>
+<UIForm Id ="cust" method = "POST" enctype="multipart/form-data" >
+<Section type= "fullSection">
+
+<Element type = "UIHidden" Id = "hdngraphId"  property = "graphId"  constantValue="divtargetanalysis"/>
+<Element type = "UIBarChart" Id = "brChrt2"  dataProvider = "divManagersalesTargetData"  useGoogleGraph="true">
+	  <xStart>0</xStart>
+	  <yStart>20</yStart>
+	  <rangeHeight>300</rangeHeight>
+	  <rangeWidth>400</rangeWidth>
+	  <marginWidth>30</marginWidth>
+	  <barWidth>30</barWidth>
+	  <noYAxisDivisions>6</noYAxisDivisions>
+</Element>
+<!-- 
+<Element label = "Based_on"  type = "UIList" Id = "lstAggrType"   property ="classification" >
+	  <options> 
+	  <option key ="TOTAL"> Total</option>
+	  <option key ="ASSCT"> Associate</option>
+	  <option key ="PRODUCT"> Product</option>
+	  <option key ="ITEM"> Item</option>
+	  <option key ="CATEGORY"> Category</option>
+	  <option key ="BRAND"> Brand</option>
+	  <option key ="TRRTRY"> Territory</option>
+	  </options>
+	</Element>
+	
+
+<Element caption = "Refresh"  type = "UIButton" Id = "btfilterSave"  style="button" fixedAction ="FixedAction.ACTION_PLAINSUBMIT"   />
+ -->
+</Section>
+</UIForm>
+</Elements>
+</Page>

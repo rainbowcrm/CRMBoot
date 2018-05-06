@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "query" showinFrame ="true"  title ="Query Builder| Rainbow CRM" Object = "com.rainbow.framework.query.model.Query" 
+Controller = "com.rainbow.framework.query.controller.QueryController">
+<Template type= "General"  name = "generalTemplate"></Template>
+
+<IncludeJS>./scripts/query/QueryFunc.js</IncludeJS>
+<Elements>
+<UIForm Id ="frmdd" method = "POST"  >
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type= "mainSection">
+
+<Element type ="UIDialog" Id = "newprintpop" style= "fullpagepopup" rendered = "Controller.getResultFetched">
+<Element type = "UILabel" Id = "testing" style="fullpage" property = "reportData"></Element>
+
+<Element type = "UIBreak"/>
+
+<Element type = "UITable" rows = "1" cols = "1">
+<Element type = "UITableRow">
+<Element type ="UITableCol" align="right">
+
+<Element caption = "Close"  type = "UIButton" Id = "btClose"   style="btn btn-warning" iconStyle="glyphicon glyphicon-remove" onClickJS = "closeDialog('newprintpop');"  />
+<Element caption = "Print"  type = "UIButton" Id = "btPrintNew"   style="btn btn-primary" iconStyle="glyphicon glyphicon-print" onClickJS = "window.print();"  />
+</Element>
+</Element>
+</Element>
+
+<Element type = "UIStaticText" Id = "static" >
+ &lt;script&gt;
+ var dialog = document.getElementById('newprintpop');
+ if(!dialog.showModal)
+	{
+		dialogPolyfill.registerDialog(dialog);
+	}
+	dialog.showModal();
+ 
+ &lt;/script&gt;
+
+ 
+</Element>
+
+</Element>
+
+
+<Element type = "UITable" rows = "3" cols = "3" style = "grid" applyStyleonChildren ="true" Id  ="tblcommon"  >
+<Element type = "UITableRow"   >
+<Element type = "UITableCol"   align="left" >
+
+<Element label = "Saved_Queries"  type = "UIList" Id = "lstQueries"  property ="id">
+	<options populator =  "getAllSavedQueries"> 
+	</options>
+</Element>
+</Element>
+
+<Element type = "UITableCol"   >
+
+<Element label = ""  type = "UIHidden" Id = "hdnQryId"  />
+<Element label = "Query_Name"  type = "UIText" Id = "txtQryName" property ="name" />
+
+</Element>
+<Element type = "UITableCol"   >
+
+<Element label = "Transaction"  type = "UIList" Id = "lstTrans"  onChangeJS = "submitWithParam('entitychanged')" isMandatory="true" property ="entity" >
+	<options populator =  "getAllEntities"> 
+	</options>
+</Element>
+</Element>
+
+</Element>
+<Element type = "UITableRow"   >
+
+<Element type = "UITableCol"   >
+
+<Element label = "Division"  type = "UIList" Id = "lstInvDivision"  isMandatory="true" property ="Division.Id" >
+	<options populator =  "getAllDivisions"> 
+	</options>
+</Element>
+
+</Element>
+
+
+
+
+
+</Element>
+<Element type = "UITableRow"   >
+<Element type = "UITableCol"   >
+ <Element label = ""  type = "UIRadioBox" Id = "txtDteType"   property ="dateValueType" >
+	  <options> 
+	  <option key ="ABS"> Absolute Dates</option>
+	  </options>
+	</Element>
+</Element>
+
+<Element type = "UITableCol"   >
+
+<Element label = "From"  type = "UIDate" Id = "txtFromDate"  isMandatory="true" property ="fromDate" />
+<Element label = "To"  type = "UIDate" Id = "txtToDate"  isMandatory="true" property ="toDate" />
+</Element>
+</Element>
+
+<Element type = "UITableRow"   >
+<Element type = "UITableCol"   >
+<Element label = ""  type = "UIRadioBox" Id = "txtDteType"   property ="dateValueType" >
+	  <options> 
+	  <option key ="REL"> Relative Dates</option>
+	  </options>
+</Element>
+</Element>
+
+<Element type = "UITableCol"   >
+
+
+<Element label = "From"  type = "UIList" Id = "lstFromDate"  isMandatory="true" property ="fromCriteria.code" >
+<options populator =  "getEvaluationPeriods"> 
+	</options>
+</Element>
+<Element label = "To"  type = "UIList" Id = "lstToDate"  isMandatory="true" property ="toCriteria.code" >
+<options populator =  "getEvaluationPeriods"> 
+	</options>
+</Element>
+
+</Element>
+
+<Element type = "UITableCol"   >
+<Element label = "Result_Display"  type = "UIRadioBox" Id = "rdoResulType"   property ="resultType" >
+	  <options> 
+	  <option key ="LIST"> List</option>
+	  <option key ="AGGREGATED"> Aggregated</option>
+	  </options>
+</Element>
+</Element>
+</Element>
+</Element>
+
+
+
+<Element type ="UITabset" Id = "configSet" style = "uitabstyle" selectedTabStyle= "titleStyleSelected active nav-link" unSelectedTabStyle ="titleStyleUnSelected nav-link" >
+<Element type ="UITab" Id= "idGeneral" title = "List"   >
+
+<Element type = "UITable" rows = "1" cols = "3" style = "grid" applyStyleonChildren ="true" Id  ="tblList"  >
+<Element type = "UITableRow"   >
+<Element type = "UITableCol"  align="left" >
+
+ 
+<Element type = "UIList"  label = "Fields" size="8" multiple="true" Id= "lstAllFieldsEntity"  property = "selectedFields"  >
+<options populator =  "getAllEntityFields"> 
+	</options>
+</Element>
+
+</Element>
+
+
+<Element type = "UITableCol"   >
+<Element type = "UIList"  label = "Sort_By"  Id= "lstSortedFieldsEntity"  property = "sortField"  >
+<options populator =  "getAllEntityFields"> 
+	</options>
+</Element>
+</Element>
+
+<Element type = "UITableCol"   >
+<Element label = ""  type = "UIRadioBox" Id = "rdoSortyBy"   property ="sortDesc" >
+	  <options> 
+	  <option key ="ASC"> ASC</option>
+	  <option key ="DESC"> DESC</option>
+	  </options>
+</Element>
+</Element>
+<!--  end col -->
+
+</Element>
+</Element>
+
+</Element>
+
+<Element type ="UITab" Id= "idcustMgmt" title = "Aggregates"   >
+<Element type = "UITable" rows = "3" cols = "3" style = "grid" applyStyleonChildren ="true" Id  ="tblAggreList"  >
+<Element type = "UITableRow"   >
+
+<Element type = "UITableCol"  >
+<Element type = "UIList"  label = "Aggregation_Type"  Id= "lstAggrType"  property = "aggregationFields.aggregationType"  >
+<options populator =  "getAllAggregationTypes"> 
+	</options>
+</Element>
+</Element>
+
+<Element type = "UITableCol"  >
+<Element type = "UIList"  label = "Field"  Id= "lstGAggFldType"  property = "aggregationFields.aggredatedField"  >
+<options populator =  "getNumericEntityFields"> 
+	</options>
+</Element>
+</Element>
+
+<Element type = "UITableCol"   >
+<Element type = "UIList"  label = "By"  Id= "lstGroupType"  property = "aggregationFields.groupByField"  >
+<options populator =  "getAllEntityFields"> 
+	</options>
+</Element>
+</Element>
+
+
+</Element>
+</Element>
+</Element>
+
+<Element type ="UITab" Id= "idCond" title = "Criteria"   >
+
+<Element type = "UITable" rows = "1" cols = "8" style = "grid" applyStyleonChildren ="true" Id  ="tblTrans" property ="conditions[]" >
+<Element type = "UITableHead" style ="listPageTitle">
+ <Element type = "UITableRow">
+ <Element type ="UITableCol" width = "3%" ><Element label = ""  type = "UILabel" Id = "lblTit1" value ="(" /></Element>
+ <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblTit2" value ="Field" /></Element>
+ <Element type ="UITableCol" width = "3%" ><Element label = ""  type = "UILabel" Id = "lblTit3" value ="Op" /></Element>
+ <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblTit4" value ="Value" /></Element>
+ <Element type ="UITableCol" width = "3%" ><Element label = ""  type = "UILabel" Id = "lblTit1" value =")" /></Element>
+ <Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblTit4" value ="AND/OR" /></Element>
+  <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblTit5" value =".." /></Element>
+</Element>
+</Element>
+<Element type = "UITableRow"  dataType = "com.rainbow.framework.query.model.QueryCondition" >
+
+<Element type ="UITableCol" width = "3%" ><Element type = "UIText"  size="3"  Id= "txtOpBrac"  property ="openBrackets"   /></Element>
+
+<Element type ="UITableCol" width = "20%" >
+<Element type = "UIList"    Id= "lstCritFieldsEntity"   property ="field" >
+<options populator =  "getAllEntityFields"> 
+	</options>
+</Element>
+</Element>
+
+<Element type ="UITableCol" width = "3%" >
+<Element type = "UIList"    Id= "lstOpts"   property ="operator" >
+<options populator =  "getOperators"> 
+	</options>
+</Element>
+</Element>
+
+<Element type ="UITableCol" width = "20%" ><Element type = "UIText"   size ="15" Id= "txtVales" property ="value"   /></Element>
+<Element type ="UITableCol" width = "3%" ><Element type = "UIText"  size="3"  Id= "txtCloseBrac" property ="closeBrackets"   /></Element>
+<Element type ="UITableCol" width = "10%" ><Element type = "UIText" size="5"   Id= "txtandor"  property ="postCondition"   /></Element>
+
+
+
+<Element type ="UITableCol" width = "10%">
+	<Element caption = "AND"  type = "UIButton" Id = "btnAddRow"   onClickJS="addRowQuery(this, ' AND ')"/>
+	<Element caption = "OR"  type = "UIButton" Id = "btnAddORRow"    onClickJS="addRowQuery(this,' OR ')"/>
+	<Element caption = "-"  type = "UIButton" Id = "btnDelRow"    onClickJS="deleteRow(this)"/>
+</Element>
+
+
+
+</Element>
+</Element>
+
+
+</Element>
+
+
+</Element>
+
+
+</Section>
+</CoreSection>
+ 
+ <Section type ="summary"  >
+ <Element caption = "Fetch"  type = "UIButton" Id = "btdwFetch"  style="btn btn-primary"  onClickJS="submitWithParam('fetchQuery')"   />
+ <Element caption = "clear"  type = "UIButton" Id = "btdwClear"  style="btn btn-primary"  onClickJS="submitWithParam('clear')"   />
+<Element caption = "Query"  type = "UIButton" Id = "btdwLoad"  style="btn btn-primary"  onClickJS="submitWithParam('runQuery')"   />
+<Element caption = "Save"  type = "UIButton" Id = "btdwSave"  style="btn btn-primary" iconStyle="glyphicon glyphicon-save-file"  onClickJS="submitWithParam('saveQuery')"   />
+ </Section>
+
+
+</UIForm>
+</Elements>
+</Page>

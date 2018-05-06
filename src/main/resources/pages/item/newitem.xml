@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "newDiv" showinFrame ="true" title ="New SKU | Rainbow CRM" Object = "com.rainbow.crm.item.model.Item" 
+Controller = "com.rainbow.crm.item.controller.ItemController">
+<Template type= "CRUD"  name = "CRUDTemplate"></Template>
+<Forwards>
+<Forward key ="CANCEL">rdscontroller?page=items</Forward>
+<Forward key ="SAVE">items</Forward>
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<Elements>
+<UIForm Id ="cust" method = "POST" > 
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type ="detail">
+	<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
+	<Element label = ""  type = "UIHidden" Id = "hdnUserID"  property ="Id" />
+	<Element label = "Item_Code"  type = "UIText" Id = "txtCode"  isMandatory="true" size="10" property ="Code" />
+	<Element label = "Item_Name"  type = "UIText" Id = "txtName"  isMandatory="true" size="30" property ="Name" />
+	<Element label = "Product"  type = "UILookupDataList"  Id = "txtProduct" isMandatory="true"  property ="Product.Name"  listId="lstprodnames" >
+	 <lookupType>product</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+	</Element>
+	<Element label = "Manufacturer"  type = "UIText" Id = "txtManu"   size="30" property ="Manufacturer" />
+	<Element label = "Item_Class"  type = "UIList" Id = "lstClass"   property ="ItemClass"  externalise= "true">
+	<options populator =  "getItemClassTypes"> 
+	</options>
+   </Element>
+	<Element label = "UOM"  type = "UIList" Id = "lstUOM"    isMandatory="true" property ="UomId" externalise= "true" >
+		<options populator =  "getUOMs"> 
+		</options>
+	</Element>
+	<Element label = "Brand"  type = "UIList" Id = "lstBrand"    isMandatory="true" property ="brand.id" externalise= "true" >
+		<options populator =  "getAllBrands"> 
+		</options>
+	</Element>
+	<Element label = "Purchase_Price"  type = "UIText" Id = "txtPurPrice" size="10" property ="PurchasePrice"  isNumeric="true"  />
+	<Element label = "Max_Price"  type = "UIText" Id = "txtMaxPrice" size="10" property ="MaxPrice"  isNumeric="true"  />
+	<Element label = "Retail_Price"  type = "UIText" Id = "txtRetailPrice" size="10" property ="RetailPrice"  isNumeric="true"  />
+	<Element label = "Wholesale_Price"  type = "UIText" Id = "txtWholPrice" size="10" property ="wholeSalePrice"  isNumeric="true"  />
+	<Element label = "BreakEven_Price"  type = "UIText" Id = "txtBEPrice" size="10" property ="BreakEvenPrice"  isNumeric="true"  />
+	<Element label = "Promotion_Price"  type = "UIText" Id = "txtPromoPrice" size="10" property ="PromotionPrice"  isNumeric="true"  />
+	<Element label = ""  type = "UICheckBox" Id = "chkOnProm"  property ="onPromotion" >
+	<options> 
+	  <option key ="true">On_Promotion</option>
+	 </options>
+	</Element>
+	
+	<Element label = "Specification"  type = "UITextArea" Id = "txtSpec" size="75" property ="Specification" >
+	 <rows>5</rows> <cols>40</cols>
+	</Element>
+	
+</Section>
+</CoreSection>
+<Section type ="summary">
+<Element caption = "Variants"  type = "UIButton" Id = "btnVariants"   style="btn btn-primary" iconStyle="glyphicon glyphicon-tags"  rendered = "Controller.isUpdateMode"  
+  fixedAction ="FixedAction.ACTION_PLAINSUBMIT"  fixedActionParam =  "Variants"  />
+</Section>
+<Section type ="copyRightSection"/>
+
+</UIForm>
+</Elements>
+</Page>

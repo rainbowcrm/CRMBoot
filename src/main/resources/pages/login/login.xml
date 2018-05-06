@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "login"  Object = "com.rainbow.crm.login.model.Login" title ="Login | Rainbow CRM"
+Controller = "com.rainbow.crm.login.controller.LoginController">
+<Template type= "General"  name = "loginTemplate"></Template>
+<Forwards>
+<Forward key ="REFRESH">rdscontroller?page=login</Forward>
+</Forwards>
+<!-- 
+    <div class="container">
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+    </div>
+// -->
+<Elements>
+<UIForm  Id ="genCC" method = "POST" style="form-signin">
+<CoreSection style ="central">
+
+<Section type ="central">
+
+<Element type = "UIDiv" style = "container center-block">
+<Element type = "UIHeader" level ="1" style = "text-center text-primary" value = "Primus Solutions CRM" />
+<Element type = "UIBreak"/>
+<Element type = "UIBreak"/>
+</Element>
+
+<Element type = "UIDiv" style = "container center-block">
+	<Element type = "UIDiv" style = "jumbotron center-block login-div">
+	<ErrorSection>
+</ErrorSection>
+		<Element type = "UIHeader" level ="2" style = "form-signin-heading" value = "Please sign in" />
+    <Element type = "UIDiv" style = "form-group">
+	  	<Element  type = "UILabel" value = "Email address" style="sr-only" />
+		  <Element label = ""  type = "UIText" Id = "txtUsername"  placeholder="Email address" property = "Username" style="form-control"/>
+    </Element>
+    <Element type = "UIDiv" style = "form-group">
+	  	<Element  type = "UILabel" value = "Password"    style="sr-only" />
+		<!-- <Element type = "UINote" value = "&lt;input type='password' id='txtPassword' class='form-control'  property = &quot;Password&quot; placeholder='Password' required
+		/&gt;" />  -->
+		
+	  	<Element label = ""  type = "UIPassword" Id = "txtPassword" placeholder="Pasword" property = "Password" style="form-control"/>
+		</Element>
+    <Element type = "UIDiv" style = "form-group">
+	  	<Element type = "UIDiv" style = "checkbox">
+	  	<Element type = "UINote" value = "&lt;label&gt;
+            &lt;input type='checkbox' value='remember-me'&gt; Remember me
+          &lt;/label&gt;" />
+		  </Element>
+    </Element>
+		<Element caption = "Sign_In"  type = "UIButton" Id = "btSubmit"   style="btn btn-lg btn-primary btn-block" fixedAction ="FixedAction.ACTION_PLAINSUBMIT"  />
+		<Element type = "UIDiv" style = "checkbox">
+		<Element  type = "UIHyperLink" text = "Forgot_Password" style="link" />
+		<Element type = "UIBreak"/>
+		<Element  type = "UIHyperLink" text = "Start_My_Trial" link = "./rdscontroller?page=selfcompcreate" />
+		</Element>
+	</Element>
+</Element>
+
+<!--  
+<Element type = "UIPagaragraph" />
+<Element type = "UINote" value = "staticdata" />
+<Element type = "UIHeader" level ="1" style = "test "value = "header" />
+ -->
+<Element  Id = "divBack" type = "UIDiv" style = "backstretch">
+<Element type = "UIBreak"/>
+</Element>
+</Section>
+<Element type = "UIDiv" style = "container center-block">
+<Section type ="copyRightSection"/>
+</Element>
+</CoreSection>
+</UIForm>
+</Elements>
+</Page>

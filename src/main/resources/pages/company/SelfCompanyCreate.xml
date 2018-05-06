@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "CompanyCRUD" showinFrame ="true" title ="New Company | Rainbow CRM" Object = "com.rainbow.crm.company.model.GuestCompany" 
+Controller = "com.rainbow.crm.company.controller.CompanyController">
+<Template type= "CRUD"  name = "guestTemplate"></Template>
+<Forwards>
+<Forward key ="CANCEL">rdscontroller?page=login</Forward>
+<Forward key ="SAVE">login</Forward>
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<AjaxGroups>
+<AjaxGroup service ="countryStateSearch">
+<requestElements>
+<requestElement key = "countryCode">lstCountry</requestElement>
+</requestElements>
+<responseElements>
+<responseElement key = "stateList" >lstState</responseElement>
+</responseElements>
+</AjaxGroup>
+</AjaxGroups>
+
+<Elements>
+<UIForm Id ="cust" method = "POST" >
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type ="detail">
+	<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
+	<Element label = "" type = "UIHidden" Id = "hdnId" property ="Id" />
+	<Element label = "" type = "UIHidden" Id = "hdnCode" property ="Code" />
+	<If check  = "Controller.isCreateMode" >
+	<Element label = "Company_Code"  type = "UIText" Id = "txtCode"  isMandatory="true" size="10" property ="Code" />
+	</If>
+	<If check  = "Controller.isUpdateMode" >
+	<Element label = "Company_Code"  type = "UILabel" Id = "txtCode" style ="bolded"   size="10" property ="Code" externalise ="false" />
+	</If>
+	<Element label = "Company_Name"  type = "UIText" Id = "txtName"  isMandatory="true" size="40" property ="Name" />
+	<Element label = "Industry"  type = "UIList" Id = "lstIndustry"   property ="IndustryType"  externalise= "true">
+	<options populator =  "getIndustryTypes"> 
+	</options>
+  </Element>
+  <Element label = "Business"  type = "UIList" Id = "lstBusiness"   property ="BusinessType"  externalise= "true">
+	<options populator =  "getBusinessTypes"> 
+	</options>
+   </Element>
+	<Element label = "Address1"  type = "UIText" Id = "txtAdd1" size="30" property ="Address1" />
+	<Element label = "Address2"  type = "UIText" Id = "txtAdd2" size="30" property ="Address2" />
+	<Element label = "City"  type = "UIText" Id = "txtCity" size="30"  property ="City" />
+	<Element label = "Pin_code"  type = "UIText" Id = "txtPinCode" size="7" property ="ZipCode" />
+	<Element label = "Country"  type = "UIList" Id = "lstCountry"   property ="Country" externalise= "true" >
+		<options populator =  "getCountries"> 
+		</options>
+	</Element>
+	<Element label = "State_Province"  type = "UIList" Id = "lstState"   property ="State"  externalise= "true">
+		<options populator =  "getStates"> 
+		</options>
+	</Element>
+	<Element label = "Administrator"  type = "UIText" Id = "txtAdmin" isMandatory="true"  size="25" property ="AdminName" />
+	<Element label = "Phone"  type = "UIText" Id = "txtPhone" size="11"  property ="Phone"  isNumeric="true"  />
+	<Element label = "No_Divisions"  type = "UIText" Id = "txtDivisions" size="5"  property ="NoDivisions"  isNumeric="true"  />
+	<Element label = "No_Licenses"  type = "UIText" Id = "txtLicenses" size="5" property ="NoUsers"  isNumeric="true"  />
+	<!-- <Element label = "Activate_on"  type = "UIText" readonly="true" Id = "txtActivate"    isMandatory="true"  property ="ActivationDate" />
+	<Element label = "Expires_on"  type = "UIText" Id = "txtExpire"   readonly="true" property ="ServiceExpiryDate" />  -->
+	<Element label = "Admin_UserName"  type = "UIText"  Id = "txtAdminUserName"    isMandatory="true"  property ="adminUser" />
+	<Element label = "Admin_Password"  type = "UIPassword" Id = "txtAdminPw"   readonly="true" property ="adminPassword" />
+	<Element label = "Confirm_Password"  type = "UIPassword" Id = "txtConfirmPwd"   readonly="true" property ="adminConfirmPassword" />
+	<Element label = "Email"  type = "UIText" Id = "txtemail"    property ="adminEmail" />
+</Section>
+</CoreSection>
+<Section type ="optionalSummary">
+<Element caption = "Create"  type = "UIButton" Id = "btSubmit"   style="btn btn-primary" iconStyle="glyphicon glyphicon-plus" rendered = "Controller.isCreateMode" fixedAction ="FixedAction.ACTION_CREATE" 
+  fixedActionvalidateFunc="validateforCreate()" fixedActionParam =  "SAVE"  />
+<Element caption = "Cancel"  type = "UIButton" Id = "btCancel"  style="btn btn-warning" iconStyle="glyphicon glyphicon-remove"  fixedAction ="FixedAction.ACTION_PAGEFORWARD" fixedActionParam =  "CANCEL"  />
+</Section>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

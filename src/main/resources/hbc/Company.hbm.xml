@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+   <class name="com.rainbow.crm.company.model.Company" table="COMPANIES">
+      <meta attribute="class-description">
+         This class contains the Companies .. 
+      </meta>
+      <id name="id" type="int" column="id">
+      </id>
+      <version name="objectVersion" column="version" type="integer"></version>
+      <property name="code" column="company_code" type="string"/>
+      <property name="name" column="company_name" type="string"/>
+      <property name="address1" column="address1" type="string"/>
+      <property name="address2" column="address2" type="string"/>
+      <property name="zipCode" column="zipcode" type="string"/>
+      <property name="city" column="city" type="string"/>
+      <property name="phone" column="phone" type="string"/>
+      <property name="industryType" column="industry_type" type="string"/>
+      <property name="businessType" column="business_type" type="string"/>
+      <property name="state" column="state" type="string"/>
+      <property name="country" column="country" type="string"/>
+      <property name="adminName" column="admin_name" type="string"/>
+      <property name="noDivisions" column="no_divisions" type="integer"/>
+      <property name="noUsers" column="no_users" type="integer"/>
+      <property name="registrationDate" column="registration_date" type="date"/>
+      <property name="activationDate" column="activation_date" type="date"/>
+      <property name="serviceExpiryDate" column="service_expiry_date" type="date"/>
+      <property name="active" column="is_active" type="boolean"/>
+      <property name="deleted" column="is_deleted" type="boolean"/>
+      <property name="createdDate" column="created_date" type="timestamp" update="false" />
+      <property name="lastUpdateDate" column="last_updated_date" type="timestamp"/>
+      <property name="createdUser" column="created_by" type="string" update="false" />
+      <property name="lastUpdateUser" column="last_updated_by" type="string"/>
+        
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "newcorpsalesperiod" showinFrame ="true" title ="New Corp Sales Period | Rainbow CRM" Object = "com.rainbow.crm.corpsalesperiod.model.CorpSalesPeriod" 
+Controller = "com.rainbow.crm.corpsalesperiod.controller.CorpSalesPeriodController">
+<Template type= "Transaction"  name = "TransactionTemplate"></Template>
+<Forwards>
+<Forward key ="CANCEL">rdscontroller?page=corpsalesperiodlist</Forward>
+<Forward key ="SAVE">corpsalesperiodlist</Forward>
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./scripts/salesperiod/SalesPeriodFunc.js</IncludeJS>
+<AjaxGroups>
+<AjaxGroup service ="itemSearch">
+<requestElements event = "">
+<requestElement key = "Name">txtItName</requestElement>
+<requestElement key = "Code">txtCode</requestElement>
+</requestElements>
+<responseElements>
+<!-- <responseElement key = "Name" >txtItem</responseElement>  -->
+<responseElement key = "Code">txtCode</responseElement>
+<responseElement key = "Name">txtItName</responseElement>
+<responseElement key = "RetailPrice">txtPrice</responseElement>
+
+</responseElements>
+</AjaxGroup>
+
+</AjaxGroups>
+
+<Elements>
+<UIForm Id ="cust" method = "POST" > 
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type ="header">
+	<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
+	<Element label = ""  type = "UIHidden" Id = "hdnUserID"  property ="Id" />
+	<Element label = "Period"  type = "UIText" Id = "txtPeriod"  isMandatory="true"  property ="Period" />
+	<Element label = "Description"  type = "UIText" Id = "txtDesc" isMandatory="true"   property ="description" />
+	<Element label = "From_Date"  type = "UIDate" Id = "txtDate" isMandatory="true"  property ="fromDate" />
+	<Element label = "To_Date"  type = "UIDate" Id = "txtToDate" isMandatory="true"  property ="toDate" />
+	<Element label = "Additional_Target"  type = "UIText" Id = "txtAdditional"   focusoutJS = "calculateAll()" property ="additionalTarget"  isNumeric= "true" size = "10" />
+<!-- 	<Element label = ""  type = "UILabel" Id = "txtbl2"  />
+	<Element label = ""  type = "UILabel" Id = "txtbl1"  />  
+ -->
+ 	<Element label = "Total_Amount"  type = "UIText" Id = "txtTotalAmt"   property ="totalTarget" isNumeric= "true" readonly="true" size = "10" />
+	 	
+</Section>
+<Section type ="detail">
+<Element type ="UITabset" Id = "impexp" style = "uitabstyle" selectedTabStyle= "titleStyleSelected active nav-link" unSelectedTabStyle ="titleStyleUnSelected nav-link" >
+<Element type ="UITab" Id= "idLine" title = "Line_Item_Targets" showinTable = "false" >
+<Element type = "UITable" rows = "1" cols = "7" style = "listPageTitle" applyStyleonChildren ="true" Id  ="tblTrans" property ="CorpSalesPeriodLines[]" >
+<Element type = "UITableHead">
+ <Element type = "UITableRow">
+
+<Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Code" /></Element>
+<Element type ="UITableCol" width = "22" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Item" /></Element>
+<Element type ="UITableCol" width = "18%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Comments" /></Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Price" /></Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Qty" /></Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Total" /></Element>
+<Element type ="UITableCol" width = "7%"> </Element>
+</Element>  
+ </Element>
+<Element type = "UITableRow"  dataType = "com.rainbow.crm.corpsalesperiod.model.CorpSalesPeriodLine" rendered = "!Object.getVoided">
+
+<Element type ="UITableCol" width = "10%"><Element label = ""  type = "UIText" Id = "txtCode" size  = "10" property ="Item.Code" /> </Element>
+<Element type ="UITableCol" width = "25%"><Element label = ""  type = "UILookupDataList" listId="lsthdritemslp"  Id = "txtItName"  size  = "35" property ="Item.Name" showLookupAsDialog="true" dialogId="dlgIt"
+  dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" >
+	 <lookupType>item</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+</Element>
+ </Element>
+<Element type ="UITableCol" width = "18%"><Element label = ""  type = "UIText" Id = "txtLineCo"  property ="Comments" size = "30" />  </Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UIText" Id = "txtPrice"  property ="targetPrice"  isNumeric= "true" size = "10" />  </Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UIText" Id = "txtQty"  property ="Qty"   isNumeric= "true" 
+ focusoutJS = "calculateAll()" size = "10"/>  </Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UIText" Id = "txtlineTotal"  property ="lineTotal" size = "10"  readonly="true" />  </Element>
+
+<Element type ="UITableCol" width = "5%">
+	<Element caption = "+"  type = "UIButton" Id = "btnAddRow"    fixedAction ="FixedAction.ACTION_ADDTABLEROW"  fixedActionParam =  "this"/>
+	<Element caption = "-"  type = "UIButton" Id = "btnDelRow"    fixedAction ="FixedAction.ACTION_DELETETABLEROW"  fixedActionParam =  "this"/>
+</Element>
+</Element>
+</Element>
+</Element>
+
+<!--  Division Tab starts -->
+ <Element type ="UITab" Id= "idSalesDivs" title = "Division" showinTable = "false" >
+<Element type= "UIDiv" align = "center" width="60%">
+<Element type = "UITable" rows = "1" cols = "3" style = "listPageTitle" applyStyleonChildren ="true" Id  ="tblPerDivisis" property ="CorpSalesPeriodDivisions[]" >
+<Element type = "UITableHead">
+ <Element type = "UITableRow">
+
+<Element type ="UITableCol" width = "25%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Division" /></Element>
+<Element type ="UITableCol" width = "18%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Comments" /></Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Total" /></Element>
+<Element type ="UITableCol" width = "5%"> </Element>
+</Element>  
+ </Element>
+<Element type = "UITableRow"  dataType = "com.rainbow.crm.corpsalesperiod.model.CorpSalesPeriodDivision" rendered = "!Object.isVoided">
+
+<Element type ="UITableCol" width = "25%">
+<Element label = "" type = "UILookupDataList" listId="lsthDivNamelkps"  Id = "txtDivisionName"  size  = "35" property ="Division.Name" showLookupAsDialog="true" dialogId="dlgBrandIt"
+  dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" >
+	 <lookupType>division</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+</Element>
+</Element>
+<Element type ="UITableCol" width = "18%"><Element label = ""  type = "UIText" Id = "txtDiviLineCo"  property ="Comments" size = "30" />  </Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UIText" Id = "txtDivlineTotal"  property ="lineTotal" size = "10"   />  </Element>
+
+<Element type ="UITableCol" width = "5%">
+	<Element caption = "+"  type = "UIButton" Id = "btnAddRow"    fixedAction ="FixedAction.ACTION_ADDTABLEROW"  fixedActionParam =  "this"/>
+	<Element caption = "-"  type = "UIButton" Id = "btnDelRow"    fixedAction ="FixedAction.ACTION_DELETETABLEROW"  fixedActionParam =  "this"/>
+</Element>
+</Element>
+</Element>
+</Element>
+</Element>
+
+
+<!--  Division Tab ends -->
+
+<!--  Brand Tab Starts -->
+
+ <Element type ="UITab" Id= "idSalesBrands" title = "Brands" showinTable = "false" >
+<Element type= "UIDiv" align = "center" width="60%">
+<Element type = "UITable" rows = "1" cols = "3" style = "listPageTitle" applyStyleonChildren ="true" Id  ="tblPerBrands" property ="CorpSalesPeriodBrands[]" >
+<Element type = "UITableHead">
+ <Element type = "UITableRow">
+
+<Element type ="UITableCol" width = "25%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Brand" /></Element>
+<Element type ="UITableCol" width = "18%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Comments" /></Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Total" /></Element>
+<Element type ="UITableCol" width = "5%"> </Element>
+</Element>  
+ </Element>
+<Element type = "UITableRow"  dataType = "com.rainbow.crm.corpsalesperiod.model.CorpSalesPeriodBrand" rendered = "!Object.isVoided">
+
+<Element type ="UITableCol" width = "25%">
+<Element label = ""  type = "UILookupDataList" listId="lsthdrBrandlkps"   Id = "txtBrandName"  size  = "35" property ="Brand.Name" showLookupAsDialog="true" dialogId="dlgBrandIt"
+  dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" >
+	 <lookupType>brand</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+</Element>
+</Element>
+<Element type ="UITableCol" width = "18%"><Element label = ""  type = "UIText" Id = "txtBrandLineCo"  property ="Comments" size = "30" />  </Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UIText" Id = "txtBrandlineTotal"  property ="lineTotal" size = "10"   />  </Element>
+
+<Element type ="UITableCol" width = "5%">
+	<Element caption = "+"  type = "UIButton" Id = "btnAddRow"    fixedAction ="FixedAction.ACTION_ADDTABLEROW"  fixedActionParam =  "this"/>
+	<Element caption = "-"  type = "UIButton" Id = "btnDelRow"    fixedAction ="FixedAction.ACTION_DELETETABLEROW"  fixedActionParam =  "this"/>
+</Element>
+</Element>
+</Element>
+</Element>
+</Element>
+
+
+<!--  Brand Tab Ends -->
+
+<!--  Category tab begins -->
+<Element type ="UITab" Id= "idSalesCategory" title = "Category" showinTable = "false" >
+
+<Element type= "UIDiv" align = "center" width="60%">
+<Element type = "UITable" rows = "1" cols = "3" style = "listPageTitle" applyStyleonChildren ="true" Id  ="tblPerCategory" property ="corpSalesPeriodCategories[]" >
+<Element type = "UITableHead">
+ <Element type = "UITableRow">
+
+<Element type ="UITableCol" width = "25%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Category" /></Element>
+<Element type ="UITableCol" width = "18%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Comments" /></Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Total" /></Element>
+<Element type ="UITableCol" width = "5%"> </Element>
+</Element>  
+ </Element>
+<Element type = "UITableRow"  dataType = "com.rainbow.crm.corpsalesperiod.model.CorpSalesPeriodCategory" rendered = "!Object.isVoided">
+
+<Element type ="UITableCol" width = "25%">
+<Element label = ""  type = "UILookupDataList" listId="lsthdrCatgNames"  Id = "txtCategoryName"  size  = "35" property ="Category.Name" showLookupAsDialog="true" dialogId="dlgCategIt"
+  dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" >
+	 <lookupType>category</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+</Element>
+</Element>
+<Element type ="UITableCol" width = "18%"><Element label = ""  type = "UIText" Id = "txtCategoLineCo"  property ="Comments" size = "30" />  </Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UIText" Id = "txtCategolineTotal"  property ="lineTotal" size = "10"   />  </Element>
+
+<Element type ="UITableCol" width = "5%">
+	<Element caption = "+"  type = "UIButton" Id = "btnAddRow"    fixedAction ="FixedAction.ACTION_ADDTABLEROW"  fixedActionParam =  "this"/>
+	<Element caption = "-"  type = "UIButton" Id = "btnDelRow"    fixedAction ="FixedAction.ACTION_DELETETABLEROW"  fixedActionParam =  "this"/>
+</Element>
+</Element>
+</Element>
+</Element>
+</Element>
+<!--  Category Tab ends -->
+
+<!--  Product Tab Begins  -->
+
+<Element type ="UITab" Id= "idSalesProduct" title = "Product" showinTable = "false" >
+<Element type= "UIDiv" align = "center" width="60%">
+<Element type = "UITable" rows = "1" cols = "3" style = "listPageTitle" applyStyleonChildren ="true" Id  ="tblPerProd" property ="corpSalesPeriodProducts[]" >
+<Element type = "UITableHead">
+ <Element type = "UITableRow">
+
+<Element type ="UITableCol" width = "25%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Product" /></Element>
+<Element type ="UITableCol" width = "18%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Comments" /></Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Total" /></Element>
+<Element type ="UITableCol" width = "5%"> </Element>
+</Element>  
+ </Element>
+<Element type = "UITableRow"  dataType = "com.rainbow.crm.corpsalesperiod.model.CorpSalesPeriodProduct" rendered = "!Object.isVoided">
+
+<Element type ="UITableCol" width = "25%">
+<Element label = ""  type = "UILookupDataList" listId="lsthdrPrdctNames"  Id = "txtProdName"  size  = "35" property ="Product.Name" showLookupAsDialog="true" dialogId="dlgProdIt"
+  dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" >
+	 <lookupType>product</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+</Element>
+</Element>
+<Element type ="UITableCol" width = "18%"><Element label = ""  type = "UIText" Id = "txtProdLineCo"  property ="Comments" size = "30" />  </Element>
+<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UIText" Id = "txtProdlineTotal"  property ="lineTotal" size = "10"   />  </Element>
+
+<Element type ="UITableCol" width = "5%">
+	<Element caption = "+"  type = "UIButton" Id = "btnAddRow"    fixedAction ="FixedAction.ACTION_ADDTABLEROW"  fixedActionParam =  "this"/>
+	<Element caption = "-"  type = "UIButton" Id = "btnDelRow"    fixedAction ="FixedAction.ACTION_DELETETABLEROW"  fixedActionParam =  "this"/>
+</Element>
+</Element>
+</Element>
+</Element>
+</Element>
+
+
+<!--  Product Tab ends -->
+
+</Element>
+</Section>
+<Section type ="brk3"/>
+</CoreSection>
+<Section type ="summary">
+</Section>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

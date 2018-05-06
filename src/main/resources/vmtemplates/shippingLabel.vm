@@ -1,0 +1,110 @@
+<html>
+<body>
+<table width= "100%">
+
+<td align ="right">
+$To
+</td>
+</tr>
+<tr>
+<td align ="right">
+<b>$reciptent </b>
+</td>
+</tr>
+<tr>
+<td align ="right">
+$recaddress1
+</td>
+</tr>
+<tr>
+<td align ="right">
+$recaddress2
+</td>
+</tr>
+<tr>
+<td align ="right">
+$reccity
+</td>
+</tr>
+<tr>
+<td align ="right">
+$reczipCode
+</td>
+</tr>
+<tr>
+<td align ="right">
+$recphone
+</td>
+</tr>
+</table>
+
+<table width="100%" border="0" >
+<tr>
+<td align ="left">
+$From
+</td>
+</tr>
+<tr>
+<td align ="left">
+<b>
+$company - $divisionName
+</b>
+</td>
+</tr>
+<tr>
+<td align ="left">
+$address1
+</td>
+</tr>
+<tr>
+<td align ="left">
+$address2
+</td>
+</tr>
+<tr>
+<td align ="left">
+$city
+</td>
+</tr>
+<tr>
+<td align ="left">
+$zipCode
+</td>
+</tr>
+<tr>
+<td align ="left">
+$phone
+</td>
+</tr>
+</table>
+<br>
+ <table width="100%" border="1" >
+   <tr>
+     <td>
+	 Sl No
+	 </td>
+	 <td>
+	 Item
+	 </td>
+	 <td>
+	 Qty
+	 </td>
+  </tr>
+  #foreach ($line in $lines)
+	<tr>
+     <td>
+	 $line.lineNumber
+	 </td>
+	 <td>
+	 $line.sku.name
+	 </td>
+	 <td>
+	 $line.Qty
+	 </td>
+    </tr>
+#end	
+<table>
+
+
+</body>
+ </html>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "itemimages" showinFrame ="true"  title ="Item Images| Rainbow CRM" Object = "com.rainbow.crm.item.model.ItemImageSet" 
+Controller = "com.rainbow.crm.item.controller.ItemImageController">
+<Template type= "General"  name = "generalTemplate"></Template>
+ <IncludeJS>./resources/js/ImageUpload.js</IncludeJS>
+ <IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<AjaxGroups>
+<AjaxGroup service ="skuSearch">
+<requestElements event = "">
+<requestElement key = "Barcode">txtBarcode</requestElement>
+<requestElement key = "Code">txtcode</requestElement>
+<requestElement key = "Name">txtItem</requestElement>
+</requestElements>
+<responseElements>
+<!-- <responseElement key = "Name" >txtItem</responseElement>  -->
+<responseElement key = "Barcode">txtBarcode</responseElement>
+<responseElement key = "Code">txtcode</responseElement>
+<responseElement key = "Name">txtItem</responseElement>
+<responseElement key = "Color" >txtColor</responseElement>
+<responseElement key = "Size" >txtSize</responseElement>
+<responseElement key = "Specification" >txtSpecification</responseElement>
+</responseElements>
+</AjaxGroup>
+
+</AjaxGroups>
+<Elements>
+<UIForm Id ="cust" method = "POST" enctype="multipart/form-data" >
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type= "mainSection">
+<Element type = "UITable" rows = "1" cols = "3"  style = "outlinedTable">
+	<Element type = "UITableRow">
+	<Element type ="UITableCol"><Element label = "Item_Code"  type = "UIText" Id = "txtcode"    property ="Sku.Code"  /> </Element>
+	<Element type ="UITableCol"><Element label = "Barcode"    type = "UIText" Id = "txtBarcode"    property ="Sku.Barcode"   /></Element>
+	<Element type ="UITableCol">
+	<Element label = "Item_Name"  type = "UILookupDataList"  Id = "txtItem"  property ="Sku.Name"  >
+	 <lookupType>sku</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+	</Element>
+	</Element> 
+	</Element>
+	<Element type = "UITableRow">
+	<Element type ="UITableCol"><Element label = "Color"  type = "UIText" Id = "txtColor"    property ="Sku.Color" /></Element>
+	<Element type ="UITableCol"><Element label = "Size"  type = "UIText" Id = "txtSize"    property ="Sku.Size" /></Element>
+	<Element type ="UITableCol">
+	  <Element label = "Specification"  type = "UITextArea" Id = "txtSpecification" property ="Sku.Specification"  > 
+		<rows>5</rows> <cols>40</cols>
+	</Element> 
+	</Element>
+	</Element>
+</Element>
+<Element type = "UIDiv" style="childSectionStyle">
+<Element type = "UITable" rows = "1" cols = "3"  style = "outlinedTable">
+<Element type = "UITableRow">
+<Element type ="UITableCol">
+  <Element label = "Image1" type = "UIFileUpload" Id = "txtPhoto1" property ="Image1"  fileNameProperty="fileName1"
+   maxSize = "30720" multiple ="false" onChangeJS ="readURL(this,'idIMG1')" accept= ".png, .jpg, .jpeg" /> 
+  <Element label = ""  type = "UIImage" Id = "idIMG1"  height = "200" weight ="200" src= "#" property ="filewithPath1" />
+</Element>
+<Element type ="UITableCol">
+  <Element label = "Image2" type = "UIFileUpload" Id = "txtPhoto2" fileNameProperty="fileName2" 
+  property ="Image2" maxSize ="30720" multiple ="false" onChangeJS ="readURL(this,'idIMG2')" accept= ".png, .jpg, .jpeg" />
+    <Element label = ""  type = "UIImage" Id = "idIMG2"  height = "200" weight ="200" src= "#" property ="filewithPath2"  /> 
+</Element>
+<Element type ="UITableCol">
+  <Element label = "Image2" type = "UIFileUpload" Id = "txtPhoto3" property ="Image3" maxSize="30720"
+   multiple ="false"  fileNameProperty="fileName3"  onChangeJS ="readURL(this,'idIMG3')" accept= ".png, .jpg, .jpeg"  />
+   <Element label = ""  type = "UIImage" Id = "idIMG3"  height = "200" weight ="200" src= "#" property ="filewithPath3" /> 
+</Element>
+ 
+</Element>
+</Element>
+</Element>
+</Section>
+</CoreSection>
+<Section type= "summary">
+<Element caption = "Delete_All"  type = "UIButton" Id = "btnFilterDelete"  style="btn btn-danger" iconStyle="glyphicon glyphicon-trash" fixedAction ="FixedAction.ACTION_DELETE"   />
+<Element caption = "Fetch_Images"  type = "UIButton" Id = "btnFetchAll"  style="btn btn-primary" iconStyle="glyphicon glyphicon-cloud-download" fixedAction ="FixedAction.ACTION_READ"   />
+<Element caption = "Submit"  type = "UIButton" Id = "btfilterSave"  style="btn btn-primary" iconStyle="glyphicon glyphicon-save-file" fixedAction ="FixedAction.ACTION_UPDATE"   />
+<Element caption = "Clear"  type = "UIButton" Id = "btnFilterClear"  style="btn btn-warning" iconStyle="glyphicon glyphicon-remove" onClickJS ="clearAll();"  />
+</Section> 
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

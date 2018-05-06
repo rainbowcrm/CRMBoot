@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "CustomerList" showinFrame ="true" title ="Customer List | Rainbow CRM" Object = "com.techtrade.rads.framework.test.Customer" 
+Controller = "com.techtrade.rads.framework.test.CustomerListController">
+<Template type= "List"  name = "ListTemplate"></Template>
+<Forwards>
+<Forward key ="NEW">rdscontroller?page=CSXML</Forward>
+<Forward key ="EDIT">rdscontroller?page=CSXML</Forward>
+<Forward key ="REFRESH">rdscontroller?page=CLXML</Forward>
+</Forwards>
+
+<IncludeJS>./resources/js/customer.js</IncludeJS>
+<IncludeJS>./resources/js/page3.js</IncludeJS>
+
+<Elements>
+<Section type ="leftsideBar"></Section>
+<FilterSection  >
+ <FilterNode>
+   	<Element label = "First Name"  type = "UIText" Id = "txtFirstName"  property ="FirstName" />
+ </FilterNode>
+ <FilterNode>
+   	<Element label = "Last Name"  type = "UIText" Id = "txtLastName"  property ="LastName" rendered = "true" />
+ </FilterNode>
+ <FilterNode>
+   	<Element label = "Last Name"  type = "UIText" Id = "txtLastName"  property ="LastName" rendered = "true" />
+ </FilterNode>
+  <FilterNode>
+ <Element label = "State"  type = "UIList" Id = "lstState"   property ="State" >
+	<options populator =  "getStates"> 
+	</options>
+</Element>
+</FilterNode>
+<FilterNode>
+<Element label = "SalesMan"  type = "UILookupText"  Id = "txtSalesman"  property ="SalesMan" >
+	 <lookupType>salesMan</lookupType>
+</Element>
+</FilterNode>
+</FilterSection>
+
+<ListSection >
+
+
+<!-- <TitleRow colspan = "6"  title = "Customers"></TitleRow>  -->
+ <Columns allowrowselection ="Multiple" uniqueproperty = "Id:FirstName">
+ <!--  <Column title ="select" Id ="chk" control ="UICheckBox" width ="5%" >
+  </Column>  -->
+  <UniqueColumn  id = "idSel" property = "Id:FirstName"  ></UniqueColumn>
+  <Column title ="Id"  id = "idId" control ="UINote" property = "Id" width ="5%">
+  </Column>
+  <Column title ="Name" id = "idName" control ="UINote" property = "FirstName" width ="27%" >
+  </Column>
+  <Column title ="Age" id = "idAge" control ="UINote" property = "Age"  width ="27%" >
+  </Column>
+  <Column title ="Sex" id = "idSex" control ="UINote" property = "Sex" width ="10%" >
+  </Column>
+  <Column title ="State"  id = "idState" control ="UINote" property = "State" width ="27%">
+  </Column>
+ </Columns>
+ </ListSection>
+<Section type ="summary">
+
+<Element caption = "Delete"  type = "UIButton" Id = "btnDel"  style="btn btn-danger" iconStyle="glyphicon glyphicon-trash"  fixedAction ="FixedAction.ACTION_DELETE"  fixedActionParam =  "DELETE"/>
+<Element caption = "Promote"  type = "UIButton" Id = "btnPromote"  style="btn btn-primary"  onClickJS ="promote();" /> 
+<Element caption = "Move out"  type = "UIButton" Id = "btnMove"  style="btn btn-primary" onClickJS ="moveToZone();" />
+<Element caption = "Add"  type = "UIButton"    Id = "btnAdd"  style="btn btn-primary" iconStyle="glyphicon glyphicon-plus" fixedAction ="FixedAction.ACTION_PAGEFORWARD" fixedActionParam =  "NEW" />
+<Element caption = "Edit"  type = "UIButton"    Id = "btnEdit"  style="btn btn-warning" iconStyle="glyphicon glyphicon-pencil" fixedAction ="FixedAction.ACTION_GOEDITMODE"  fixedActionParam =  "CSXML"  />
+<Element caption = "Refresh"  type = "UIButton"    Id = "btnRefresh"  style="btn btn-primary" iconStyle="glyphicon glyphicon-refresh" fixedAction ="FixedAction.ACTION_PAGEFORWARD" fixedActionParam =  "REFRESH" />
+ <Element type= "Panel" key= "NavPanel"  style = "sameline" ></Element>
+</Section>
+</Elements>
+</Page>

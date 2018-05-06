@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "CustomerCRUD" showinFrame ="true" Object = "com.techtrade.rads.framework.test.Supplier" 
+Controller = "com.techtrade.rads.framework.test.SupplierController">
+<Template type= "CRUD"  name = "CRUDTemplate"></Template>
+<Forwards>
+<Forward key ="SAVE">CLXML</Forward>
+<Forward key ="CANCEL">CSXML</Forward>
+</Forwards>
+<Elements>
+<UIForm id ="sup" method = "POST"  enctype="multipart/form-data">
+<Section type ="leftsideBar"></Section>
+<Section type ="detail">
+<Element label = "id" type = "UIText" Id = "txtID" property ="Id" />
+<Element label = "Name" type = "UIText" Id = "txtName" property ="Name" />
+<Element label = "Age" type = "UIText" Id = "txtAge" property ="Age" />
+<Element label = "Photo" type = "UIFileUpload" Id = "txtPhoto" property ="Photo" multiple ="false" maxSize= "4098" />
+<Element label = "City"  type = "UIList" Id = "lstCity"   property ="City" >
+	<options populator =  "getCities"> 
+	</options>
+</Element>
+<Element label = "Address"  type = "UITextArea" Id = "txtAddress"     property ="FullAddress" > 
+	     <rows>5</rows> <cols>40</cols>
+</Element>
+</Section>
+
+<Section type ="summary">
+<!--  Set in Template <Element type= "Panel" key= "CRUDPanel"  style = "bottom" ></Element>  -->
+</Section>
+
+</UIForm>
+</Elements>
+</Page>  

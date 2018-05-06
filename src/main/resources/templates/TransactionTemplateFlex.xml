@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Template id ="simpleTransFlex" type = "com.techtrade.rads.framework.ui.templates.TransactionTemplateType" >
+ <DataType   > ModelObject
+ </DataType>
+ <MetaData>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+ </MetaData>
+ <Renderers>
+ <Renderer>
+ <RendererType>HTML</RendererType>
+ <StyleSheet>./css/display.css</StyleSheet>
+  <PageStyle>pagestyle</PageStyle>
+ </Renderer>
+ </Renderers>
+ <fixedActionField>hdnFixedAction</fixedActionField>
+ <SubmitActionField>submitAction</SubmitActionField>
+ <FixedActionParamField>hdnFixedActionParam</FixedActionParamField>
+ <IncludeJS>./resources/js/general.js</IncludeJS>
+ <IncludeJS>./resources/js/dialog-polyfill.js</IncludeJS>
+ <IncludeJS>./resources/js/date-polyfill.js</IncludeJS>
+ <Errors showin ="Header" style ="errorStyle"></Errors>
+ 
+ <Sections>
+ <Section Id ="leftsideBar"  style ="leftnav"  >
+  <Panel key ="menuPanel"  Id ="leftnav" > </Panel>  
+ </Section>   
+ <Section Id ="header" style ="transheaderStyle"  showinTable = "false" >
+   <noRows>-1</noRows>
+  <noCols>3</noCols> 
+  </Section>
+ <Section Id ="detail" showinTable = "false"  style= "transdetailStyle" >
+  <noRows>-1</noRows>
+  <noCols>2</noCols>
+ </Section>
+ <Section Id ="summary" showinTable = "true"  style= "summaryStyle" >
+ <noRows>1</noRows>
+ <noCols>1</noCols> 
+ <Panel key ="CRUDPanel"  Id ="crudPanel" > </Panel>  
+ </Section>
+ </Sections>
+ 
+ 
+ 
+ 
+<!--   <Panels>
+ <Panel key ="leftNavPanel"  Id ="leftnav" style ="leftnav"> </Panel> 
+ </Panels>
+ 
+ <HeaderSection showinTable = "false" stlye= "headerStyle"> 
+  <Panel>A </Panel>
+  <noRows>-1</noRows>
+  <noCols>3</noCols> 
+ </HeaderSection>
+ 
+ <DetailSection showinTable = "false" stlye= "detailStyle">
+   <Panel>A </Panel>
+  <noRows>10</noRows>
+  <noCols>2</noCols> 
+ </DetailSection>
+ 
+ <SummarySection showinTable = "false" stlye= "summaryStyle">
+	<Panel>B</Panel> 
+	<noRows>1</noRows>
+    <noCols>1</noCols> 
+    <tabStyle>tabsummary</tabStyle>
+ </SummarySection> -->
+ 
+</Template> 

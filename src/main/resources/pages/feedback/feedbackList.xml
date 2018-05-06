@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "feedbackList" showinFrame ="true" title ="Sales Leads | Rainbow CRM"  Object = "com.rainbow.crm.feedback.model.FeedBack" 
+Controller = "com.rainbow.crm.feedback.controller.FeedBackListController">
+<Template type= "List"  name = "ListTemplate"></Template>
+<Forwards>
+<Forward key ="NEW">rdscontroller?page=newfeedback</Forward>
+<Forward key ="EDIT">rdscontroller?page=newfeedback</Forward>
+</Forwards>
+<AjaxGroups>
+<AjaxGroup service ="filterSearch">
+<requestElements>
+<requestElement key = "filterId">lstSavedFilters</requestElement>
+</requestElements>
+<responseElements>
+<responseElement key = "FilterName" >txtFilterName</responseElement>
+<responseElement key = "DocNo" >txtDocNo</responseElement>
+<responseElement key = "Division.Name" >txtDivision</responseElement>
+<responseElement key = "Customer.Phone" >txtCustomerPhone</responseElement>
+<responseElement key = "Customer.FirstName" >txtCustomer</responseElement>
+<responseElement key = "Sales.billNumber" >txtSalesBill</responseElement>
+<responseElement key = "FromDate" >txtFromDate</responseElement>
+<responseElement key = "ToDate" >txtToDate</responseElement>
+</responseElements>
+</AjaxGroup>
+</AjaxGroups>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<Elements>
+<Section type ="topBar"></Section>
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<FilterSection>
+<FilterNode>
+  <Element label = "Saved_Filters"  type = "UIList" Id = "lstSavedFilters"   property ="" >
+	<options populator =  "getSavedFiters"> 
+	</options>
+  </Element>
+ </FilterNode>
+<FilterNode>
+   	<Element label = "Filter_Name"  type = "UIText" Id = "txtFilterName"  property ="FilterName" />
+</FilterNode>
+<FilterNode>
+   	<Element label = "Doc_No"  type = "UIText" Id = "txtDocNo"  property ="DocNo" />
+</FilterNode>
+<FilterNode>
+   	<Element label = "Sales_Bill"  type = "UIText" Id = "txtSalesBill"  property ="Sales.billNumber" />
+</FilterNode>
+<FilterNode>
+<Element label = "Division"   type = "UILookupDataList" listId="lsthdrDivlist"   Id = "txtDivision"  property ="Division.Name" showLookupAsDialog="true" dialogId="dlgComp"
+  dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" >
+	 <lookupType>division</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+</Element>
+</FilterNode>
+<FilterNode>
+   	<Element label = "Customer_Phone"  type = "UIText" Id = "txtCustomerPhone"  property ="Customer.Phone" />
+</FilterNode>
+<FilterNode>
+   	<Element label = "Customer"  type = "UIText" Id = "txtCustomer"  property ="Customer.FirstName" />
+</FilterNode>
+<FilterNode operator = ">=">
+   	<Element label = "From"  type = "UIDate" Id = "txtFromDate"  property ="releasedDate" />
+</FilterNode>
+<FilterNode operator = ">=">
+   	<Element label = "To"  type = "UIDate" Id = "txtToDate"  property ="releasedDate" />
+</FilterNode>     
+</FilterSection>
+<ListSection >
+ <Columns allowrowselection ="Multiple" uniqueproperty = "Id">
+<SelectionColumn   >
+<Element label = ""  type = "UICheckBox" Id = "idChkSel"  rendered="!Object.isDeleted" property ="Id" />
+<Element label = ""  type = "UIImage" Id = "idChkSel"  rendered="Object.isDeleted" height = "21" weight ="21" src= "./resources/images/deletedRow.jpg" />
+</SelectionColumn>
+<Column title ="Doc_Number" sortField="docNumber" width ="20%" >
+<Element label = ""  type = "UINote" Id = "idDoc"  property ="DocNumber" />
+</Column>
+<Column title ="Date"  sortField="feedBackDate"  width ="20%" >
+<Element label = ""  type = "UINote" Id = "idDt"  property ="feedBackDate" />
+</Column>
+<Column title ="Customer" sortField="customer.firstName"  width ="20%" >
+<Element label = ""  type = "UINote" Id = "idCust"  property ="Customer.fullName" />
+</Column>
+<Column title ="Phone" sortField="customer.phone"  width ="10%" >
+<Element label = ""  type = "UINote" Id = "idPhone"  property ="Customer.Phone" />
+</Column> 
+<Column title ="Captured_By" sortField="capturedBy.userId"  width ="15%" >
+<Element label = ""  type = "UINote" Id = "capturer"  property ="capturedBy.userId" />
+</Column>
+<Column title ="Sales_Bill"  sortField="sales.billNumber"  width ="10%" >
+<Element label = ""  type = "UINote" Id = "idAmt"  property ="sales.billNumber" />
+</Column>
+</Columns>
+</ListSection>
+</CoreSection>
+<Section type ="summary">
+<Element caption = "Add"  type = "UIButton"    Id = "btnAdd"  style="btn btn-primary" iconStyle="glyphicon glyphicon-plus" fixedAction ="FixedAction.ACTION_PAGEFORWARD" fixedActionParam =  "NEW" />
+<Element caption = "Edit"  type = "UIButton"    Id = "btnEdit"  style="btn btn-warning" iconStyle="glyphicon glyphicon-pencil" fixedAction ="FixedAction.ACTION_GOEDITMODE"  fixedActionParam =  "EDIT"  />
+<Element type= "Panel" key= "NavPanel"  style = "sameline" ></Element>
+</Section>
+<Section type ="copyRightSection"/>
+</Elements>
+</Page>
+
+
+

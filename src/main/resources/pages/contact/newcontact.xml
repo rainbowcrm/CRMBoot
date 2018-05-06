@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "newContact" showinFrame ="true" title ="New Contact | Rainbow CRM" Object = "com.rainbow.crm.contact.model.Contact" 
+Controller = "com.rainbow.crm.contact.controller.ContactController">
+<Template type= "CRUD"  name = "CRUDTemplate"></Template>
+<Forwards>
+<Forward key ="CANCEL">rdscontroller?page=contacts</Forward>
+<Forward key ="SAVE">contacts</Forward>
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<Elements>
+<UIForm Id ="cust" method = "POST" >
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type ="detail">
+	<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
+	<Element label = ""  type = "UIHidden" Id = "hdnUserID"  property ="Id" />
+	<Element label = "First_Name"  type = "UIText" Id = "txtName"  isMandatory="true" size="30" property ="FirstName" />
+	<Element label = "Last_Name"  type = "UIText" Id = "txtLName"  isMandatory="true" size="30" property ="LastName" />
+	<Element label = "Address1"  type = "UIText" Id = "txtAdd1" size="30" property ="Address1" />
+	<Element label = "Address2"  type = "UIText" Id = "txtAdd2" size="30" property ="Address2" />
+	<Element label = "City"  type = "UIText" Id = "txtCity" size="30"  property ="City" />
+	<Element label = "Pin_code"  type = "UIText" Id = "txtPinCode" size="7" property ="ZipCode" />
+	<Element label = "Email"  type = "UIText" Id = "txtemail" size="30" isMandatory="true" property ="Email" />
+	<Element label = "Phone"  type = "UIText" Id = "txtPhone" size="30" isMandatory="true" property ="Phone" />
+	<Element label = "Contact_Type"  type = "UIList" Id = "lstContact"   property ="ContactType.code"  externalise= "true">
+		<options populator =  "getContactTypes"> 
+		</options>
+	</Element>
+</Section>
+</CoreSection>
+<Section type ="summary">
+</Section>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

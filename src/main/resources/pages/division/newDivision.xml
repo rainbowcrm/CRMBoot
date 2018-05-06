@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "newDiv" showinFrame ="true" title ="New Company | Rainbow CRM" Object = "com.rainbow.crm.division.model.Division" 
+Controller = "com.rainbow.crm.division.controller.DivisionController">
+<Template type= "CRUD"  name = "CRUDTemplate"></Template>
+<Forwards>
+<Forward key ="CANCEL">rdscontroller?page=divisions</Forward>
+<Forward key ="SAVE">divisions</Forward>
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<Elements>
+<UIForm Id ="cust" method = "POST" > 
+<Section type ="topBar"></Section>
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type ="detail">
+	<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
+	<Element label = ""  type = "UIHidden" Id = "hdnUserID"  property ="Id" />
+	
+	<Element label = "Division_Code"  type = "UIText" Id = "txtCode"  isMandatory="true" size="10" property ="Code" />
+	<Element label = "Division_Name"  type = "UIText" Id = "txtName"  isMandatory="true" size="30" property ="Name" />
+	<Element label = "Address1"  type = "UIText" Id = "txtAdd1" size="30" property ="Address1" />
+	<Element label = "Address2"  type = "UIText" Id = "txtAdd2" size="30" property ="Address2" />
+	<Element label = "City"  type = "UIText" Id = "txtCity" size="30"  property ="City" />
+	<Element label = "Pin_code"  type = "UIText" Id = "txtPinCode" size="7" property ="ZipCode" />
+	<Element label = "Email"  type = "UIText" Id = "txtemail" size="30"  property ="Email" />
+	<Element label = "Phone"  type = "UIText" Id = "txtPhone" size="30"  property ="Phone" />
+	<Element label = "Manager"  type = "UIText" Id = "txtMgr" size="30"  property ="Manager" />
+	<Element label = "Type"  type = "UIList" Id = "lstType"  isMandatory="true"  property ="DivisionType" externalise= "true">
+	<options populator =  "Controller.getDivisionTypes"> 
+	</options>
+    </Element>
+    <Element label = "No_Employees"  type = "UIText" Id = "txtEmps" size="5" property ="NoEmployees"  isNumeric="true"  />
+	<Element label = "Area"  type = "UIText" Id = "txtArea" size="30"  property ="Area" />
+</Section>
+</CoreSection>
+<Section type ="summary">
+</Section>
+<Section type ="copyRightSection"/>
+
+</UIForm>
+</Elements>
+</Page>

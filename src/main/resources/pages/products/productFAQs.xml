@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "productfaqs" showinFrame ="true"  title ="Product FAQ| Rainbow CRM" Object = "com.rainbow.crm.product.model.ProductFAQSet" 
+Controller = "com.rainbow.crm.product.controller.ProductFAQController">
+<Template type= "Transaction"  name = "TransactionTemplate"></Template>
+<Forwards>
+<Forward key ="CANCEL">rdscontroller?page=products</Forward>
+<Forward key ="SAVE">productfaqs</Forward>
+</Forwards>
+ <IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<AjaxGroups>
+ <AjaxGroup service ="skuSearch">
+<requestElements event = "">
+<requestElement key = "Name">txtItName</requestElement>
+ <requestElement key = "Code">txtCode</requestElement>
+<requestElement key = "Division">lstInvDivision</requestElement>
+</requestElements>
+<responseElements>
+
+<responseElement key = "Code">txtCode</responseElement>
+<responseElement key = "Name">txtItName</responseElement>
+<responseElement key = "RetailPrice">txtPrice</responseElement>
+<responseElement key = "SalesAssociates">lstAssociate</responseElement>
+</responseElements>
+</AjaxGroup> 
+
+</AjaxGroups>
+<Elements>
+<UIForm Id ="cust" method = "POST" enctype="multipart/form-data" >
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type= "header">
+	<Element label = "Product"  type = "UILookupDataList" listId="lsthdrAss"  style ="fiftyper" Id = "txtItem"    property ="product.Name"  >
+	 <lookupType>product</lookupType>
+
+	</Element>
+	<Element caption = "Fetch"  type = "UIButton" Id = "btnFetchAll"  style="button" fixedAction ="FixedAction.ACTION_READ"   />	
+	
+</Section>
+<Section type ="detailCRUDStyleForPage">
+<!-- 
+<Element type = "UIDiv" style="detail"> -->
+<Element type ="UITabset" Id = "impexp" style = "uitabstyle" selectedTabStyle= "titleStyleSelected active nav-link" unSelectedTabStyle ="titleStyleUnSelected nav-link" >
+<Element type ="UITab" Id= "idLine" title = "FAQs" showinTable = "false" >
+
+
+<Element type = "UITable" rows = "1" cols = "7" style = "listPageTitle" applyStyleonChildren ="true" Id  ="tblTrans" property ="productFAQs[]" >
+<Element type = "UITableHead">
+ <Element type = "UITableRow">
+
+<Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Question" /></Element>
+<Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Answer" /></Element>
+<Element type ="UITableCol" width = "20%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Author" /></Element>
+<Element type ="UITableCol" width = "20%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Comments" /></Element>
+<Element type ="UITableCol" width = "5%"> </Element>
+</Element>  <!--  Table Row End -->
+ </Element> <!--  Table Head End  -->
+ 
+ <Element type = "UITableRow"  dataType = "com.rainbow.crm.product.model.ProductFAQ" rendered = "!Object.isDeleted">
+ 
+ <Element type ="UITableCol" width = "20%"><Element label = ""  type = "UITextArea" Id = "txtQuestion" size  = "10" property ="Question" > 
+ <rows>2</rows> <cols>50</cols>
+ </Element></Element>
+ <Element type ="UITableCol" width = "20%"><Element label = ""  type = "UITextArea" Id = "txtAnswer" size  = "10" property ="Answer" >
+ <rows>3</rows> <cols>50</cols> 
+ </Element></Element>
+ <Element type ="UITableCol" width = "20%">
+ 
+ <Element label = ""  type = "UILookupText"  Id = "lstHeaderAssociate"  property ="author.userId"  
+  showLookupAsDialog="true" dialogId="dlghdrSalesMan"  dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" >
+	 <lookupType>user</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+  </Element>
+ 
+  </Element>
+ 
+ <Element type ="UITableCol" width = "20%"><Element label = ""  type = "UIText" Id = "txtComments" size  = "15" property ="Comments" /> </Element>
+ 
+ <Element type ="UITableCol" width = "5%">
+	<Element caption = "+"  type = "UIButton" Id = "btnAddRow"    fixedAction ="FixedAction.ACTION_ADDTABLEROW"  fixedActionParam =  "this"/>
+	<Element caption = "-"  type = "UIButton" Id = "btnDelRow"    fixedAction ="FixedAction.ACTION_DELETETABLEROW"  fixedActionParam =  "this"/>
+</Element>
+ 
+ </Element>
+ 
+ </Element> <!--  Table Ends -->
+
+</Element>  <!--  Tab Ends -->
+
+<Element type ="UITab" Id= "idPriceRange" title = "Price_Range" showinTable = "false" >
+
+<Element type = "UITable" rows = "4" cols = "7" style = "listPageTitle halftable" applyStyleonChildren ="true"  Id  ="tblTrans" property ="productPriceRanges[]" >
+<Element type = "UITableHead">
+ <Element type = "UITableRow">
+<Element type ="UITableCol" width = "30%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Class" /></Element>
+<Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Min_Price" /></Element>
+<Element type ="UITableCol" width = "10%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Max_Price" /></Element>
+</Element>
+</Element> <!--  Table head ends -->
+<Element type = "UITableRow"  dataType = "com.rainbow.crm.product.model.ProductPriceRange" rendered = "!Object.isDeleted">
+<Element type ="UITableCol" width = "30%"><Element label = ""  type = "UIText" Id = "txtPrcclassdesc"  readonly = "true" property = "itemClass.description" /></Element>
+<Element type ="UITableCol" width = "10%"><Element label = ""  type = "UIText" Id = "txtPrcminVal"  property = "minPrice" /></Element>
+<Element type ="UITableCol" width = "10%"><Element label = ""  type = "UIText" Id = "txtPrcmaxVal"  property = "maxPrice" /></Element>
+</Element>
+
+</Element>  <!--  Table Price Range ends  -->
+
+</Element> <!--  tab price range ends -->
+
+<Element type ="UITab" Id= "idTabAttributes" title = "Attributes" showinTable = "false" >
+<Element type = "UITable" rows = "1" cols = "3" style = "listPageTitle halftable" applyStyleonChildren ="true"  Id  ="tblTransProdAttr"
+    property ="productAttributes[]" >
+<Element type = "UITableHead">
+<Element type = "UITableRow">
+<Element type ="UITableCol" width = "30%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Attribute" /></Element>
+<Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Type" /></Element>
+<Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="" /></Element>
+</Element>
+</Element>  <!--  Table Head  -->
+
+<Element type = "UITableRow"  dataType = "com.rainbow.crm.product.model.ProductAttribute" rendered = "!Object.isDeleted">
+<Element type ="UITableCol" width = "30%"><Element label = ""  type = "UIText" Id = "txtAttrName"  property = "attribute" /></Element>
+<Element type ="UITableCol" width = "10%"><Element label = ""  type = "UIList" Id = "txtAttrType"  property = "valueType.code" >
+  <options populator =  "getAllDataTypes"> 
+	</options>
+  </Element></Element>
+ <Element type ="UITableCol" width = "5%">
+	<Element caption = "+"  type = "UIButton" Id = "btnAddRow"    fixedAction ="FixedAction.ACTION_ADDTABLEROW"  fixedActionParam =  "this"/>
+	<Element caption = "-"  type = "UIButton" Id = "btnDelRow"    fixedAction ="FixedAction.ACTION_DELETETABLEROW"  fixedActionParam =  "this"/>
+</Element>
+</Element>
+
+
+
+</Element> <!--  Table for Attributes end -->
+</Element>  <!--  Tab ends -->
+
+
+
+</Element>
+
+<!-- </Element> -->
+</Section>
+</CoreSection>
+<Section type= "optionalsummary">
+
+<Element caption = "Submit"  type = "UIButton" Id = "btfilterSave"  style="button" fixedAction ="FixedAction.ACTION_UPDATE"   />
+<Element caption = "Clear"  type = "UIButton" Id = "btnFilterClear"  style="button" onClickJS ="clearAll();"  />
+</Section> 
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

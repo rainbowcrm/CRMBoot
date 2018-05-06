@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "newEnquiry" showinFrame ="true" title ="New Enquiry | Rainbow CRM" Object = "com.rainbow.crm.enquiry.model.Enquiry" 
+Controller = "com.rainbow.crm.enquiry.controller.EnquiryController">
+<Template type= "Transaction"  name = "TransactionTemplate"></Template>
+<Forwards>
+<Forward key ="CANCEL">rdscontroller?page=enquiries</Forward>
+<Forward key ="SAVE">enquiries</Forward>
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<AjaxGroups>
+<AjaxGroup service ="divisionTerritorySearch">
+<requestElements event = "">
+<requestElement key = "divisionId">lstInvDivision</requestElement>
+</requestElements>
+<responseElements>
+<responseElement key = "territories">txtTerritory</responseElement>
+</responseElements>
+</AjaxGroup>
+<AjaxGroup service ="customerSearch">
+<requestElements >
+<requestElement key = "Phone">txtPhone</requestElement>
+<requestElement key = "Email">txtEmail</requestElement>
+</requestElements>
+<responseElements>
+<responseElement key = "Phone">txtPhone</responseElement>
+<responseElement key = "Email">txtEmail</responseElement>
+<responseElement key = "FullName">txtCustomerName</responseElement>
+</responseElements>
+</AjaxGroup>
+<AjaxGroup service ="skuSearch">
+<requestElements event = "">
+<requestElement key = "Name">txtItName</requestElement>
+<requestElement key = "Code">txtCode</requestElement>
+</requestElements>
+<responseElements>
+<!-- <responseElement key = "Name" >txtItem</responseElement>  -->
+<responseElement key = "Code">txtCode</responseElement>
+<responseElement key = "Name">txtItName</responseElement>
+<responseElement key = "RetailPrice">txtPrice</responseElement>
+
+</responseElements>
+</AjaxGroup>
+
+</AjaxGroups>
+<Elements>
+<UIForm Id ="cust" method = "POST" >
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type ="header">
+	<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
+	<Element label = ""  type = "UIHidden" Id = "hdnUserID"  property ="Id" />
+	<Element label = "Division"  type = "UIList" Id = "lstInvDivision"  property ="Division.Id" >
+	<options populator =  "getAllDivisionsWithSelect"> 
+	</options>
+	</Element>
+	<Element label = "Date"  type = "UIDate" Id = "txtDT"  isMandatory="true"  property ="enqDate" />
+	<Element label = "Doc_No"  type = "UIText" Id = "txtDocNo"  isMandatory="true"  readonly="true" property ="docNumber" />
+	<!-- <Element label = "Territory"  type = "UIList"  Id = "txtTerritory"   property ="Territory.Id"  >
+	 <options populator =  "getAllTerritories"> 
+	</options>
+	</Element> -->
+	<Element label = "Enquiry_Type"  type = "UIList" Id = "lstEnqType"  isMandatory="true"   property ="enquiryType.code"  externalise= "true">
+		<options populator =  "getEnquiryTypes"> 
+		</options>
+	</Element>
+	<Element label = "Enquiry_Source"  type = "UIList" Id = "lstEnqSource" isMandatory="true"   property ="enquirySource.code"  externalise= "true">
+		<options populator =  "getEnquirySources"> 
+		</options>
+	</Element>
+	
+	
+	
+	<!-- <Element label = "Nearest_Item"  type = "UILookupText" Id = "txtITNearLName"   size="30" property ="nearestItem.name"  showLookupAsDialog="true" dialogId="dlgNearItem"
+ 	dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle"  >
+ 	<lookupType>item</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+	</Element>
+	<Element label = "Nearest_Sku"  type = "UILookupText" Id = "txtSKUNearLName"   size="30" property ="nearestSku.name"  showLookupAsDialog="true" dialogId="dlgNearSku"
+ 	dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle"  >
+ 	<lookupType>sku</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+	</Element> -->
+	
+	<Element label = "First_Name"  type = "UIText" Id = "txtSRCFirstName"   isMandatory="true"  property ="firstName" />
+	<Element label = "Last_Name"  type = "UIText" Id = "txtSRCLastName"  isMandatory="true"    property ="lastName" />
+	<Element label = "Phone"  type = "UIText" Id = "txtSRCPhone"   isMandatory="true"  property ="phone" />
+	<Element label = "Email"  type = "UIText" Id = "txtSRCEmail" isMandatory="true"    property ="email" />
+	<Element label = "Address1"  type = "UIText" Id = "txtSRCAddress1"   property ="address1" />
+	<Element label = "Address1"  type = "UIText" Id = "txtSRCAddress2"   property ="address2" />
+	<Element label = "City"  type = "UIText" Id = "txtSRCCity"   property ="city" />
+	<Element label = "Zipcode"  type = "UIText" Id = "txtSRCEmail"   property ="email" />
+	<Element label = "Enquiry"  type = "UITextArea" Id = "txtConversation"  isMandatory="true"  property ="enquiry" >
+	 <rows>5</rows> <cols>25</cols>
+	</Element>
+	<Element label = ""  type = "UIHidden" Id = "hdnenqStatus"    property ="enquiryStatus.code" />
+	<Element label = "Status"  type = "UIText" Id = "txtEnqStatus"   readonly="true" property ="enquiryStatus.description" />
+	<Element label = "Reason"  type = "UIList" Id = "lstmgrMgrStatus"    property ="reason.id" >
+			<options populator =  "getAllReasons"> 
+			</options>
+		</Element>
+</Section>
+<Section type ="detailForSale">
+<Element type = "UITable" rows = "1" cols = "4" style = "grid" applyStyleonChildren ="true" Id  ="tblTrans" property ="EnquiryLines[]" >
+<Element type = "UITableHead" style ="listPageTitle">
+ <Element type = "UITableRow">
+
+<Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Code" /></Element>
+<Element type ="UITableCol" width = "25%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Item" /></Element>
+<Element type ="UITableCol" width = "10%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Retail_Price" /></Element>
+<Element type ="UITableCol" width = "10%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Qty" /></Element>
+<Element type ="UITableCol" width = "25%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Comments" /></Element>
+
+<Element type ="UITableCol" width = "10%"> </Element>
+</Element>  
+ </Element>
+<Element type = "UITableRow"  dataType = "com.rainbow.crm.enquiry.model.EnquiryLine" rendered = "!Object.isDeleted">
+
+<Element type ="UITableCol" width = "10%"><Element label = ""  type = "UIText" Id = "txtCode" size  = "10" property ="Sku.Code" /> </Element>
+<Element type ="UITableCol" width = "25%"><Element label = ""   type = "UILookupDataList" listId="lstitemlkps"  Id = "txtItName"  size  = "30" property ="Sku.Name" showLookupAsDialog="true" dialogId="dlgItSKU"
+  dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" >
+	 <lookupType>sku</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+	 	 <SupplementaryFields>
+	     <Field>
+	        <property>code</property>
+	        <control>txtCode</control>
+	     </Field>
+	 </SupplementaryFields>
+	 
+</Element>
+ </Element>
+
+<Element type ="UITableCol" width = "10%"><Element label = ""  type = "UIText" Id = "txtPrice"  property ="Sku.item.retailPrice" readonly= "true" size = "10" />  </Element>
+<Element type ="UITableCol" width = "10%"><Element label = ""  type = "UIText" Id = "txtQty"  property ="Qty"   isNumeric= "true"  size = "10"/>  </Element>
+<Element type ="UITableCol" width = "25%"><Element label = ""  type = "UIText" Id = "txtLineCo"  property ="Comments" size = "15" />  </Element>
+<Element type ="UITableCol" width = "10%">
+	<Element caption = "" style="btn btn-primary" iconStyle="glyphicon glyphicon-plus"  type = "UIButton" Id = "btnAddRow"    fixedAction ="FixedAction.ACTION_ADDTABLEROW"  fixedActionParam =  "this"/>
+	<Element caption = "" style="btn btn-danger" iconStyle="glyphicon glyphicon-minus" type = "UIButton" Id = "btnDelRow"    fixedAction ="FixedAction.ACTION_DELETETABLEROW"  fixedActionParam =  "this"/>
+</Element>
+</Element>
+</Element>
+</Section>
+<Section type ="footer">
+<Element label = "Contact_Phone"  type = "UIText" Id = "txtContactPhone"   property ="contact.Phone" />
+	<Element label = "Contact_Email"  type = "UIText" Id = "txtContactEmail"   property ="contact.Email" />
+	 <Element label = "Contact_Name"   type = "UILookupDataList" listId="lsthdrcontacts"  Id = "txtContactName"  property ="contact.FullName" showLookupAsDialog="true" dialogId="dlgContact"
+  dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" >
+	 <lookupType>contact</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+	 <SupplementaryFields>
+	     <Field>
+	        <property>phone</property>
+	        <control>txtContactPhone</control>
+	     </Field>
+	     <Field>
+	        <property>email</property>
+	        <control>txtContactEmail</control>
+	     </Field>
+	 </SupplementaryFields>
+	</Element>
+	
+	<Element label = "Sales_Associate"  type = "UILookupDataList" listId="lsthdrAss"  Id = "txtLName"  size="30" property ="salesAssociate.userId"  showLookupAsDialog="true" dialogId="dlgUser"
+ 	dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" additionalInputControl = "lstInvDivision" >
+ 	<lookupType>user</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+	</Element>
+
+	<Element label = "Comments"  type = "UITextArea" Id = "txtComments"   property ="comments" >
+	 <rows>5</rows> <cols>30</cols>
+	</Element>
+	<Element label = "Customer_Phone"  type = "UIText" Id = "txtPhone"   property ="Customer.Phone" />
+	<Element label = "Customer_Email"  type = "UIText" Id = "txtEmail"   property ="Customer.Email" />
+	 <Element label = "Customer_Name"  type = "UILookupText"  Id = "txtCustomerName"  isMandatory="true" property ="Customer.FullName" showLookupAsDialog="true" dialogId="dlgCustomer"
+  dialogStyle ="dialogStyle" frameStyle="lookupFrameStyle" >
+	 <lookupType>customer</lookupType>
+	 <height>300</height>
+	 <width>290</width>
+	 <SupplementaryFields>
+	     <Field>
+	        <property>phone</property>
+	        <control>txtPhone</control>
+	     </Field>
+	     <Field>
+	        <property>email</property>
+	        <control>txtEmail</control>
+	     </Field>
+	 </SupplementaryFields>
+	</Element>
+	<Element caption = "New Customer"  type = "UIButton"   showInPrevCol ="true" Id = "btnNewCustomer"  style="btn btn-primary" iconStyle="glyphicon glyphicon-plus" onClickJS = "createNewCustomer('newcustDL',this);"  />
+	<Element type ="UIDialog" Id = "newcustDL" style= "widepopup" >
+	<Element type = "UIIFrame" src ="./rdscontroller?page=quickcustomeradd" style ="quickcustaddstyle">
+	</Element>
+	</Element>
+
+</Section>
+</CoreSection>
+<Section type ="summary">
+<Element caption = "Generate_Lead"  type = "UIButton"    Id = "btnShipped"  style="btn btn-primary" fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam ="GenerateLead"   />
+</Section>
+<Section type ="copyRightSection"/>
+</UIForm>
+</Elements>
+</Page>

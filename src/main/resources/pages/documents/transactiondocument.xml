@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "transactiondocument" showinFrame ="true" title ="Document" Object = "com.rainbow.crm.transactiondocuments.model.TransactionDocument" 
+Controller = "com.rainbow.crm.transactiondocuments.controller.TransactionDocumentController">
+<Template type= "General"  name = "PrintDocTemplate"></Template>
+<Forwards>
+</Forwards>
+<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
+<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<Elements>
+<UIForm Id ="cust" method = "POST" >
+<CoreSection>
+<Section type ="mainSection">
+<Element label = ""  type = "UILabel" Id = "hdnUserID"  property ="document" />
+<Element label = ""  type = "UIHidden" Id = "docType"  property ="docType" />
+<Element label = ""  type = "UIHidden" Id = "txtid"  property ="pk" />
+</Section>
+</CoreSection>
+<Section type ="summary">
+<Element type = "UIBreak"/>
+
+<Element type = "UITable" rows = "1" cols = "1">
+<Element type = "UITableRow">
+<Element type ="UITableCol" align="right">
+
+<Element caption = "Close"  type = "UIButton" Id = "btClose"   style="btn btn-warning" iconStyle="glyphicon glyphicon-remove" onClickJS = "closeDialog('newprintpop');"  />
+<Element caption = "Print"  type = "UIButton" Id = "btPrintNew"   style="btn btn-primary" iconStyle="glyphicon glyphicon-print" onClickJS = "window.print();"  />
+</Element>
+</Element>
+</Element>
+</Section>
+</UIForm>
+</Elements>
+</Page>

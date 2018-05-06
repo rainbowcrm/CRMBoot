@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "salesreturnSearch" title ="Search Sales | Rainbow CRM"  Object = "com.rainbow.crm.sales.model.SalesReturnSearch" 
+Controller = "com.rainbow.crm.sales.controller.SalesReturnSearchController">
+<Template type= "General"  name = "generalTemplate"></Template>
+
+<Elements>
+<UIForm Id ="lookupFrm" method = "POST" >
+<Section type ="topBar"></Section> 
+<Section type ="leftsideBarApp"></Section>
+<Section type ="shortCutBar"></Section>
+<CoreSection>
+<ErrorSection>
+</ErrorSection>
+<Section type= "mainSection">
+<Element type = "UITable" rows = "1" cols = "3" rendered = "Controller.isReturnAllowed"  style = "outlinedTable">
+<Element type = "UITableRow">
+<Element type ="UITableCol">	
+<Element label = "Division"  type = "UIList" Id = "lstInvDivision"  isMandatory="true" property ="Division.Id" >
+	<options populator =  "getAllDivisions"> 
+	</options>
+</Element>
+</Element>
+
+<Element type ="UITableCol">
+<Element label = "Bill_Number"  type = "UIText" Id = "txtQryName" property= "originalBilllNumber" />
+</Element>
+
+<Element type ="UITableCol">
+<Element caption = "Search"  type = "UIButton" Id = "btnFilterDelete"  style="btn btn-primary" iconStyle="glyphicon glyphicon-search" fixedAction ="FixedAction.ACTION_PLAINSUBMIT"   />
+</Element>
+
+</Element>
+</Element>
+</Section>
+</CoreSection>
+
+</UIForm>
+</Elements>
+</Page>

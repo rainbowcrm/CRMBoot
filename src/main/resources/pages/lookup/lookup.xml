@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "lookup" title ="Lookup Values | Rainbow CRM"  Object = "com.techtrade.rads.framework.model.simple.LookupObject" >
+<Template type= "lookup"  name = "LookupTemplate"></Template>
+<SearchFieldId>txtSearch</SearchFieldId>
+<listFieldId>lstOptions</listFieldId>
+<Elements>
+<UIForm Id ="lookupFrm" method = "POST" >
+<Section type ="querySection">
+<Element label = ""  type = "UIHidden" Id = "additionalParam"  property="additionalParam"  />
+<Element label = ""  type = "UIHidden" Id = "additionalFields"  property="additionalFields"   />
+<Element label = ""  type = "UIHidden" Id = "additionalControls"  property="additionalControls"   />
+<Element label = "" type = "UIText" Id = "txtSearch" />
+<Element caption = "Search"  type = "UIButton"    Id = "btnSearch" property ="X" style="btn btn-primary" iconStyle="glyphicon glyphicon-search" fixedAction ="FixedAction.ACTION_PLAINSUBMIT"  />
+
+</Section>
+<Section type ="ListSection">
+<Element label = "" type = "UINote" value="&lt;br&gt;" />
+<Element label = "" type = "UIList" Id = "lstOptions" size = "10" property ="Y"  style="lookupMultiSelect"/>
+<Element label = "" type = "UINote" value="&lt;br&gt;" />
+<Element label = "" type = "UINote" value="&lt;br&gt;" />
+</Section>
+<Section type ="summarySection">
+ <Element caption = "Close"  type = "UIButton" Id = "btfilterApply"  style="btn btn-warning" iconStyle="glyphicon glyphicon-remove"  fixedAction ="FixedAction.CLOSELOOKUPDIALOG"   />
+<Element caption = "Cancel"  type = "UIButton" Id = "btfilterClear"    style="btn btn-primary" fixedAction ="FixedAction.CANCELDIALOG"  />
+</Section>
+</UIForm>
+</Elements>
+</Page>

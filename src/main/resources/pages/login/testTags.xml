@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "login"  Object = "com.rainbow.crm.login.model.Login" title ="Login | Rainbow CRM"
+Controller = "com.rainbow.crm.login.controller.LoginController">
+<Template type= "General"  name = "loginTemplate"></Template>
+<Forwards>
+<Forward key ="REFRESH">rdscontroller?page=login</Forward>
+</Forwards>
+<Elements>
+	<UIForm  Id ="genCC" method = "POST" style="form-signin">
+<CoreSection style ="central">
+<Section type ="central">
+<Element type = "UIStaticText">
+This is a static content
+&lt;script&gt;
+alert('ddd');
+&lt;/script&gt;
+</Element>
+
+<Element type = "UIParagraph">
+<Element type = "UIStaticText">
+This is inside a paragraph
+</Element>
+<input type="UIEmail" id="inputEmail" class="form-control" placeholder="Email address"  required = "true" autofocus ="true"/>
+
+<Element caption = "Sign In"  type = "UIButton" Id = "btSubmit"   style="btn btn-lg btn-primary btn-block" fixedAction ="FixedAction.ACTION_PLAINSUBMIT"  />
+<Element type = "UIDiv" style = "checkbox">
+		<Element  type = "UILabel" value = "Forgot Password?" style="link" />
+		</Element>
+</Element>
+
+
+</Section>
+</CoreSection>
+</UIForm>
+</Elements>
+</Page>
