@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+        xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:p="http://www.springframework.org/schema/p"
+        xmlns:jms="http://www.springframework.org/schema/jms"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/jms
+        http://www.springframework.org/schema/jms/spring-jms.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+    <tx:annotation-driven transaction-manager="transactionManager" />
+
+    <bean id="destination" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="messageReader" />
+    </bean>
+
+    <jms:listener-container connection-factory="connectionFactory">
+        <jms:listener destination="messageReader" ref="messageReceiver" />
+    </jms:listener-container>
+
+    <bean id="messageReceiver" class="com.rainbow.crm.common.messaging.CRMMessageReceiver">
+    </bean>
+
+    <bean id="connectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="tcp://localhost:61616"/>
+    </bean>
+
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="connectionFactory"/>
+        <property name="defaultDestination" ref="destination"/>
+    </bean>
+
+    <bean id="ICategoryService" class="com.rainbow.crm.category.service.CategoryService">
+    </bean>
+    <bean id="IExpenseHeadService" class="com.rainbow.crm.expensehead.service.ExpenseHeadService">
+    </bean>
+    <bean id="IBrandService" class="com.rainbow.crm.brand.service.BrandService">
+    </bean>
+    <bean id="IDataLoaderService" class="com.rainbow.framework.setup.service.DataLoaderService">
+    </bean>
+    <bean id="IConfigService" class="com.rainbow.crm.config.service.ConfigService">
+    </bean>
+    <bean id="ISkuService" class="com.rainbow.crm.item.service.SkuService">
+    </bean>
+    <bean id="IItemService" class="com.rainbow.crm.item.service.ItemService">
+    </bean>
+    <bean id="IItemAttributeService" class="com.rainbow.crm.item.service.ItemAttributeService">
+    </bean>
+    <bean id="IInventoryService" class="com.rainbow.crm.inventory.service.InventoryService">
+    </bean>
+    <bean id="IDivisionService" class="com.rainbow.crm.division.service.DivisionService">
+    </bean>
+    <bean id="ICompanyService" class="com.rainbow.crm.company.service.CompanyService">
+    </bean>
+    <bean id="IProductService" class="com.rainbow.crm.product.service.ProductService">
+    </bean>
+    <bean id="IProductFAQService" class="com.rainbow.crm.product.service.ProductFAQService">
+    </bean>
+    <bean id="IItemProfileService" class="com.rainbow.crm.profile.service.ItemProfileService">
+    </bean>
+    <bean id="IVendorService" class="com.rainbow.crm.vendor.service.VendorService">
+    </bean>
+    <bean id="IUserService" class="com.rainbow.crm.user.service.UserService">
+    </bean>
+    <bean id="ICustomerService" class="com.rainbow.crm.customer.service.CustomerService">
+    </bean>
+    <bean id="ICarrierService" class="com.rainbow.crm.carrier.service.CarrierService">
+    </bean>
+    <bean id="IAddressService" class="com.rainbow.crm.address.service.AddressService">
+    </bean>
+    <bean id="IContactService" class="com.rainbow.crm.contact.service.ContactService">
+    </bean>
+    <bean id="IFollowupService" class="com.rainbow.crm.followup.service.FollowupService">
+    </bean>
+    <bean id="IFeedBackService" class="com.rainbow.crm.feedback.service.FeedBackService">
+    </bean>
+    <bean id="IEnquiryService" class="com.rainbow.crm.enquiry.service.EnquiryService">
+    </bean>
+    <bean id="IDocumentService" class="com.rainbow.crm.document.service.DocumentService">
+    </bean>
+    <bean id="ISalespitchService" class="com.rainbow.crm.salespitch.service.SalespitchService">
+    </bean>
+    <bean id="IDashBoardService" class="com.rainbow.crm.dashboard.service.DashBoardService">
+    </bean>
+    <bean id="IReportService" class="com.rainbow.crm.reports.service.ReportService">
+    </bean>
+    <bean id="ICustCategoryService" class="com.rainbow.crm.custcategory.service.CustCategoryService">
+    </bean>
+    <bean id="IAlertService" class="com.rainbow.crm.alert.service.AlertService">
+    </bean>
+    <bean id="ILoyaltyService" class="com.rainbow.crm.loyalty.service.LoyaltyService">
+    </bean>
+    <bean id="IPurchaseService" class="com.rainbow.crm.purchase.service.PurchaseService">
+    </bean>
+    <bean id="IReasonCodeService" class="com.rainbow.crm.reasoncode.service.ReasonCodeService">
+    </bean>
+    <bean id="IPromotionService" class="com.rainbow.crm.promotion.service.PromotionService">
+    </bean>
+    <bean id="ISalesPeriodService" class="com.rainbow.crm.salesperiod.service.SalesPeriodService">
+    </bean>
+    <bean id="ICorpSalesPeriodService" class="com.rainbow.crm.corpsalesperiod.service.CorpSalesPeriodService">
+    </bean>
+    <bean id="ITopicService" class="com.rainbow.crm.topic.service.TopicService">
+    </bean>
+    <bean id="ISalesPortfolioService" class="com.rainbow.crm.salesportfolio.service.SalesPortfolioService">
+    </bean>
+    <bean id="ISalesService" class="com.rainbow.crm.sales.service.SalesService">
+    </bean>
+    <bean id="IWishListService" class="com.rainbow.crm.wishlist.service.WishListService">
+    </bean>
+    <bean id="ISWOTAnalysisService" class="com.rainbow.crm.swot.service.SWOTAnalysisService">
+    </bean>
+    <bean id="IQueryService" class="com.rainbow.framework.query.service.QueryService">
+    </bean>
+    <bean id="ISalesLeadService" class="com.rainbow.crm.saleslead.service.SalesLeadService">
+    </bean>
+    <bean id="IExpenseVoucherService" class="com.rainbow.crm.expensevoucher.service.ExpenseVoucherService">
+    </bean>
+    <bean id="ITerritoryService" class="com.rainbow.crm.territory.service.TerritoryService">
+    </bean>
+    <bean id="IDistributionOrderService" class="com.rainbow.crm.distributionorder.service.DistributionOrderService">
+    </bean>
+
+    <bean id="CategoryDAO" class="com.rainbow.crm.category.dao.CategoryDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="ExpenseHeadDAO" class="com.rainbow.crm.expensehead.dao.ExpenseHeadDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <bean id="BrandDAO" class="com.rainbow.crm.brand.dao.BrandDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <bean id="InventoryDAO" class="com.rainbow.crm.inventory.dao.InventoryDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <bean id="ProductDAO" class="com.rainbow.crm.product.dao.ProductDAO">
+        <!--  <property name="sessionFactory" ref="sessionFactory"></property> -->
+    </bean>
+    <bean id="ProductFAQDAO" class="com.rainbow.crm.product.dao.ProductFAQDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="ProductPriceRangeDAO" class="com.rainbow.crm.product.dao.ProductPriceRangeDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="ProductAttributeDAO" class="com.rainbow.crm.product.dao.ProductAttributeDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="ItemAttributeDAO" class="com.rainbow.crm.item.dao.ItemAttributeDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="SkuDAO" class="com.rainbow.crm.item.dao.SkuDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <bean id="ItemDAO" class="com.rainbow.crm.item.dao.ItemDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <bean id="VendorDAO" class="com.rainbow.crm.vendor.dao.VendorDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="TopicDAO" class="com.rainbow.crm.topic.dao.TopicDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="CompanyDAO" class="com.rainbow.crm.company.dao.CompanyDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="CustomerDAO" class="com.rainbow.crm.customer.dao.CustomerDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="CarrierDAO" class="com.rainbow.crm.carrier.dao.CarrierDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="AddressDAO" class="com.rainbow.crm.address.dao.AddressDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="ContactDAO" class="com.rainbow.crm.contact.dao.ContactDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="FollowupDAO" class="com.rainbow.crm.followup.dao.FollowupDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="FeedBackDAO" class="com.rainbow.crm.feedback.dao.FeedBackDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="EnquiryDAO" class="com.rainbow.crm.enquiry.dao.EnquiryDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="DocumentDAO" class="com.rainbow.crm.document.dao.DocumentDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="SalespitchDAO" class="com.rainbow.crm.salespitch.dao.SalespitchDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="CustCategoryDAO" class="com.rainbow.crm.custcategory.dao.CustCategoryDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="AlertDAO" class="com.rainbow.crm.alert.dao.AlertDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="LoyaltyDAO" class="com.rainbow.crm.loyalty.dao.LoyaltyDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="PurchaseDAO" class="com.rainbow.crm.purchase.dao.PurchaseDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="ReasonCodeDAO" class="com.rainbow.crm.reasoncode.dao.ReasonCodeDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="PromotionDAO" class="com.rainbow.crm.promotion.dao.PromotionDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="SalesPeriodDAO" class="com.rainbow.crm.salesperiod.dao.SalesPeriodDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="CorpSalesPeriodDAO" class="com.rainbow.crm.corpsalesperiod.dao.CorpSalesPeriodDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="SalesPortfolioDAO" class="com.rainbow.crm.salesportfolio.dao.SalesPortfolioDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="SalesDAO" class="com.rainbow.crm.sales.dao.SalesDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="WishListDAO" class="com.rainbow.crm.wishlist.dao.WishListDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="UserDAO" class="com.rainbow.crm.user.dao.UserDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="SalesLeadDAO" class="com.rainbow.crm.saleslead.dao.SalesLeadDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="ExpenseVoucherDAO" class="com.rainbow.crm.expensevoucher.dao.ExpenseVoucherDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="TerritoryDAO" class="com.rainbow.crm.territory.dao.TerritoryDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="QueryDAO" class="com.rainbow.framework.query.dao.QueryDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+    <bean id="DistributionOrderDAO" class="com.rainbow.crm.distributionorder.dao.DistributionOrderDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName"  value="com.mysql.jdbc.Driver"></property>
+        <property name="url" value="jdbc:mysql://localhost:3306/CRMSAAS"></property>
+        <property name="username" value="root"></property>
+        <property name="password" value="password"></property>
+        <!--   <property name="defaultAutoCommit" value="false" />  -->
+    </bean>
+
+    <bean id="sessionFactory"  class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"></property>
+
+        <property name="mappingResources">
+            <list>
+                <value>com/rainbow/crm/common/finitevalue/FiniteValue.hbm.xml</value>
+                <value>com/rainbow/crm/user/model/User.hbm.xml</value>
+                <value>com/rainbow/crm/company/model/Company.hbm.xml</value>
+                <value>com/rainbow/crm/division/model/Division.hbm.xml</value>
+                <value>com/rainbow/crm/brand/model/Brand.hbm.xml</value>
+                <value>com/rainbow/crm/category/model/Category.hbm.xml</value>
+                <value>com/rainbow/crm/reasoncode/model/ReasonCode.hbm.xml</value>
+                <value>com/rainbow/crm/expensehead/model/ExpenseHead.hbm.xml</value>
+                <value>com/rainbow/crm/inventory/model/Inventory.hbm.xml</value>
+                <value>com/rainbow/crm/product/model/Product.hbm.xml</value>
+                <value>com/rainbow/crm/product/model/ProductFAQ.hbm.xml</value>
+                <value>com/rainbow/crm/product/model/ProductPriceRange.hbm.xml</value>
+                <value>com/rainbow/crm/product/model/ProductAttribute.hbm.xml</value>
+                <value>com/rainbow/crm/uom/model/UOM.hbm.xml</value>
+                <value>com/rainbow/crm/item/model/Sku.hbm.xml</value>
+                <value>com/rainbow/crm/item/model/Item.hbm.xml</value>
+                <value>com/rainbow/crm/item/model/ItemAttribute.hbm.xml</value>
+                <value>com/rainbow/crm/vendor/model/Vendor.hbm.xml</value>
+                <value>com/rainbow/crm/carrier/model/Carrier.hbm.xml</value>
+                <value>com/rainbow/crm/customer/model/Customer.hbm.xml</value>
+                <value>com/rainbow/crm/address/model/Address.hbm.xml</value>
+                <value>com/rainbow/crm/contact/model/Contact.hbm.xml</value>
+                <value>com/rainbow/crm/promotion/model/Promotion.hbm.xml</value>
+                <value>com/rainbow/crm/promotion/model/PromotionLine.hbm.xml</value>
+                <value>com/rainbow/crm/purchase/model/Purchase.hbm.xml</value>
+                <value>com/rainbow/crm/purchase/model/PurchaseLine.hbm.xml</value>
+                <value>com/rainbow/framework/query/model/Query.hbm.xml</value>
+                <value>com/rainbow/framework/query/model/QueryCondition.hbm.xml</value>
+                <value>com/rainbow/crm/territory/model/Territory.hbm.xml</value>
+                <value>com/rainbow/crm/territory/model/TerritoryLine.hbm.xml</value>
+                <value>com/rainbow/crm/feedback/model/FeedBack.hbm.xml</value>
+                <value>com/rainbow/crm/feedback/model/FeedBackLine.hbm.xml</value>
+                <value>com/rainbow/crm/corpsalesperiod/model/CorpSalesPeriod.hbm.xml</value>
+                <value>com/rainbow/crm/corpsalesperiod/model/CorpSalesPeriodLine.hbm.xml</value>
+                <value>com/rainbow/crm/corpsalesperiod/model/CorpSalesPeriodDivision.hbm.xml</value>
+                <value>com/rainbow/crm/corpsalesperiod/model/CorpSalesPeriodBrand.hbm.xml</value>
+                <value>com/rainbow/crm/corpsalesperiod/model/CorpSalesPeriodCategory.hbm.xml</value>
+                <value>com/rainbow/crm/corpsalesperiod/model/CorpSalesPeriodProduct.hbm.xml</value>
+                <value>com/rainbow/crm/salesperiod/model/SalesPeriod.hbm.xml</value>
+                <value>com/rainbow/crm/salesperiod/model/SalesPeriodLine.hbm.xml</value>
+                <value>com/rainbow/crm/salesperiod/model/SalesPeriodAssociate.hbm.xml</value>
+                <value>com/rainbow/crm/salesperiod/model/SalesPeriodTerritory.hbm.xml</value>
+                <value>com/rainbow/crm/salesperiod/model/SalesPeriodBrand.hbm.xml</value>
+                <value>com/rainbow/crm/salesperiod/model/SalesPeriodCategory.hbm.xml</value>
+                <value>com/rainbow/crm/salesperiod/model/SalesPeriodProduct.hbm.xml</value>
+                <value>com/rainbow/crm/salesportfolio/model/SalesPortfolio.hbm.xml</value>
+                <value>com/rainbow/crm/salesportfolio/model/SalesPortfolioLine.hbm.xml</value>
+                <value>com/rainbow/crm/sales/model/Sales.hbm.xml</value>
+                <value>com/rainbow/crm/sales/model/SalesLine.hbm.xml</value>
+                <value>com/rainbow/crm/wishlist/model/WishList.hbm.xml</value>
+                <value>com/rainbow/crm/wishlist/model/WishListLine.hbm.xml</value>
+                <value>com/rainbow/crm/expensevoucher/model/ExpenseVoucher.hbm.xml</value>
+                <value>com/rainbow/crm/expensevoucher/model/ExpenseVoucherLine.hbm.xml</value>
+                <value>com/rainbow/crm/saleslead/model/SalesLead.hbm.xml</value>
+                <value>com/rainbow/crm/saleslead/model/SalesLeadLine.hbm.xml</value>
+                <value>com/rainbow/crm/topic/model/Topic.hbm.xml</value>
+                <value>com/rainbow/crm/topic/model/TopicLine.hbm.xml</value>
+                <value>com/rainbow/crm/distributionorder/model/DistributionOrder.hbm.xml</value>
+                <value>com/rainbow/crm/distributionorder/model/DistributionOrderLine.hbm.xml</value>
+                <value>com/rainbow/crm/followup/model/Followup.hbm.xml</value>
+                <value>com/rainbow/crm/enquiry/model/Enquiry.hbm.xml</value>
+                <value>com/rainbow/crm/enquiry/model/EnquiryLine.hbm.xml</value>
+                <value>com/rainbow/crm/document/model/Document.hbm.xml</value>
+                <value>com/rainbow/crm/salespitch/model/Salespitch.hbm.xml</value>
+                <value>com/rainbow/crm/custcategory/model/CustCategory.hbm.xml</value>
+                <value>com/rainbow/crm/custcategory/model/CustCategoryCondition.hbm.xml</value>
+                <value>com/rainbow/crm/alert/model/Alert.hbm.xml</value>
+                <value>com/rainbow/crm/loyalty/model/Loyalty.hbm.xml</value>
+            </list>
+        </property>
+
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+
+                <!--     <prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</prop>
+                     <prop key="hibernate.cache.use_second_level_cache">true</prop>
+                      <prop key="hibernate.cache.use_query_cache">true</prop>
+                     <prop key="net.sf.ehcache.configurationResourceName">egCacheCfg.xml</prop> -->
+                <prop key="hibernate.show_sql">true</prop>
+
+
+            </props>
+        </property>
+    </bean>
+
+    <bean id="template" class="org.springframework.orm.hibernate5.HibernateTemplate">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
+
+    <bean id="cacheManager"
+          class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean"
+          p:shared="true"/>
+
+    <bean id="transactionInterceptor"
+          class="org.springframework.transaction.interceptor.TransactionInterceptor">
+        <property name="transactionManager" ref="transactionManager" />
+        <property name="transactionAttributes">
+            <props>
+                <prop key="save">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+
+
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate5.HibernateTransactionManager"
+          p:sessionFactory-ref="sessionFactory">
+
+    </bean>
+
+</beans>

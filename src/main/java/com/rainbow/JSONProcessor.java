@@ -1,4 +1,4 @@
-package com.primus;
+package com.rainbow;
 
 import java.io.BufferedReader;
 import java.io.IOException;

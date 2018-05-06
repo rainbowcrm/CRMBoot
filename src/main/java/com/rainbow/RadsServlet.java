@@ -1,4 +1,4 @@
-package com.primus;
+package com.rainbow;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.primus.ApplicationManager;
+import com.rainbow.ApplicationManager;
 import com.techtrade.rads.framework.context.IRadsContext;
 import com.techtrade.rads.framework.controller.abstracts.DataSheetController;
 import com.techtrade.rads.framework.controller.abstracts.GeneralController;

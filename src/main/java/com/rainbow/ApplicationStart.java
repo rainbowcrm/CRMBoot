@@ -1,4 +1,4 @@
-package com.primus;
+package com.rainbow;
 
 import java.util.Arrays;
 
@@ -8,9 +8,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ImportResource;
 
 @ServletComponentScan
 @SpringBootApplication
+@ImportResource("applicationContext.xml")
 public class ApplicationStart {
 
     public static void main(String[] args) {

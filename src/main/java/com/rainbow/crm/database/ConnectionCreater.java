@@ -1,5 +1,7 @@
 package com.rainbow.crm.database;
 
+import com.rainbow.util.ServiceLibrary;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,23 +16,19 @@ import javax.sql.DataSource;
 
 public class ConnectionCreater {
 
-	static DataSource dataSource  = null ;
+
 	private static void initialize() {
-		try { 
+	/*	try {
 			Context initContext  = new InitialContext();
 			dataSource  = (DataSource)initContext.lookup("java:comp/env/jdbc/mysqldb");
 		}catch(Exception ex) {
 			ex.printStackTrace();
-		}
+		}*/
 	}
 	
 	public static Connection getConnection() throws SQLException{
-		if (dataSource == null)
-			  initialize();
-	//	Log4jWebLifeCycle webLifeCycle = WebLoggerContextUtils.getWebLifeCycle(null);
-             // webLifeCycle.setLoggerContext();
-		 
-		return dataSource.getConnection() ; 
+
+		return ServiceLibrary.services().getSpringBootConnectionCreator().getDataSource().getConnection() ;
 	}
 	
 	public static void close(Connection conn, PreparedStatement statement, ResultSet resultSet )  {

@@ -1,4 +1,4 @@
-package com.primus;
+package com.rainbow;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

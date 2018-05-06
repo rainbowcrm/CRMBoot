@@ -6,16 +6,16 @@
 <hibernate-mapping>
    <class name="com.rainbow.crm.item.model.Item" table="ITEMS">
     <meta attribute="class-description">
-         This class contains the SKUs.. .. 
+         This class contains the Items.. ..
       </meta>
       <id name="id" type="int" column="id">
       </id>
       <version name="objectVersion" column="version" type="integer"></version>
       <property name="code" column="item_code" type="string"/>
       <property name="name" column="item_name" type="string"/>
-      <many-to-one name="company" column ="company_id" not-null="true" lazy="false" ></many-to-one>
+
       <property name="description" column="description" type="string"/>
-      <many-to-one name="product" column ="product_id" not-null="true" lazy="false" ></many-to-one>
+
       <many-to-one name="brand" column ="brand_id" not-null="true" lazy="false" ></many-to-one>
        <property name="manufacturer" column="manufacturer" type="string"/>
        <property name="itemClass" column="item_class" type="string"/>
@@ -29,6 +29,8 @@
       <property name="promotionPrice" column="PROMOTION_PRICE" type="double"/>
       <property name="onPromotion" column="ON_PROMOTION" type="boolean"/>
       <property name="maxDiscount" column="MAX_DISCOUNT" type="double"/>
+      <!--<many-to-one name="company" column ="company_id" not-null="true" lazy="false" ></many-to-one>
+       <many-to-one name="product" column ="product_id" not-null="true" lazy="false" ></many-to-one>-->
       <property name="specification" column="SPECIFICATION" type="string"/>
       <property name="deleted" column="is_deleted" type="boolean"/>
       <property name="createdDate" column="created_date" type="timestamp" update="false"/>

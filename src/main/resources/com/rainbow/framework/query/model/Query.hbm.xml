@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+<class name="com.rainbow.framework.query.model.Query" table="QUERIES" lazy="false">
+	<meta attribute="class-description">
+         This class contains the Queries 
+      </meta>
+       <id name="id" type="int" column="id">
+      </id>
+      
+      <many-to-one name="company" column ="company_id" not-null="true" lazy="false" ></many-to-one>
+      <many-to-one name="division" column ="division_id"  lazy="false" ></many-to-one>
+      <many-to-one name="owner" column ="owner" not-null="true" lazy="false" ></many-to-one>
+      <property name="name" column="name" type="string"/>
+      <property name="entity" column="entity" type="string"/>
+      <property name="fromDate" column="FROM_DATE" type="date"/>
+      <property name="toDate" column="TO_DATE" type="date"/>
+      <many-to-one name="fromCriteria" column ="FROM_CRITERIA" not-null="false" lazy="false" ></many-to-one>
+      <many-to-one name="toCriteria" column ="TO_CRITERIA" not-null="false" lazy="false" ></many-to-one>
+      <property name="dateValueType" column="DATE_VALUE_TYPE" type="string"/>
+   	 <property name="resultType" column="RESULT_TYPE" type="string"/>
+      <property name="selectedFiedsBlob" column="SELECTED_FIELDS" type="string"/>
+      <property name="sortField" column="SORT_FIELD" type="string"/>
+      <property name="sortDesc" column="SORT_DESC" type="string"/>
+      <property name="DateExcluded" column="DATE_EXCLUDED" type="boolean"/>
+      <property name="groupByField" column="GROUP_BY" type="string"/>
+      <property name="aggredatedField" column="AGGREGATION_FIELD" type="string"/>
+      <property name="aggregationType" column="AGGREGATION_TYPE" type="string"/>
+      <property name="deleted" column="IS_DELETED" type="boolean"/>
+      <property name="createdDate" column="created_date" type="timestamp" update="false"/>
+      <property name="lastUpdateDate" column="last_updated_date" type="timestamp"/>
+      <property name="createdUser" column="created_by" type="string" update="false"/>
+      <property name="lastUpdateUser" column="last_updated_by" type="string"/>
+       <set   name="conditions" cascade="all-delete-orphan" inverse="true" lazy="false"  order-by="lineNumber" >
+     	 <key column="QUERY_ID"></key>
+      <one-to-many class="com.rainbow.framework.query.model.QueryCondition"/>
+      </set>  
+ </class>
+</hibernate-mapping>

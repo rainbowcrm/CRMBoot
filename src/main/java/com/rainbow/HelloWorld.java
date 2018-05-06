@@ -1,4 +1,4 @@
-package com.primus.abstracts;
+package com.rainbow.abstracts;
 
 import com.techtrade.rads.framework.ui.controls.UIText;
 import org.springframework.http.MediaType;
