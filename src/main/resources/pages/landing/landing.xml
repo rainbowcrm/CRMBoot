@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "AdminLanding" showinFrame ="true" title ="Admin Portal | Primus WFM" Object = "com.rainbow.common.landing.model.LandingModel"
+      Controller = "com.rainbow.common.landing.controller.LandingController">
+    <Template type= "General"  name = "landingTemplate"></Template>
+    <Forwards>
+        <!-- <Forward key ="NEW">controller?page=compcreate</Forward>
+         <Forward key ="EDIT">controller?page=compcreate</Forward>-->
+    </Forwards>
+
+    <IncludeJS>./js/CRMGeneral.js</IncludeJS>
+    <IncludeJS>./js/RadsLib.js</IncludeJS>
+
+    <Elements>
+        <UIForm Id ="cust" method = "POST" >
+            <Section type ="topBar"></Section>
+            <Section type ="leftsideBarApp"></Section>
+            <Section type ="shortCutBar"></Section>
+
+            <CoreSection>
+                <Section type = "fullPage" >
+                    <Element type = "UIIFrame" src ="./controller?page=divisions" Id="frmFameId" style ="coresectionstyle" >
+                    </Element>
+
+                </Section>
+
+
+
+            </CoreSection>
+
+
+            <Section type ="copyRightSection"/>
+        </UIForm>
+    </Elements>
+</Page>

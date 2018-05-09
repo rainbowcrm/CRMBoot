@@ -17,7 +17,7 @@ public class Item extends CRMBusinessModelObject{
 	Product product;
 	Brand brand; 
 	String manufacturer;
-	UOM uom; // unused .. 
+	//UOM uom; // unused ..
 	int uomId;
 	Double purchasePrice;
 	Double maxPrice;
@@ -75,12 +75,12 @@ public class Item extends CRMBusinessModelObject{
 	public void setManufacturer(String manufacturer) {
 		this.manufacturer = manufacturer;
 	}
-	public UOM getUom() {
+	/*public UOM getUom() {
 		return uom;
 	}
 	public void setUom(UOM uom) {
 		this.uom = uom;
-	}
+	}*/
 	public int getUomId() {
 		return uomId;
 	}
@@ -168,5 +168,8 @@ public class Item extends CRMBusinessModelObject{
 		else
 			return false;
 	}
-	
+
+
+
+
 }

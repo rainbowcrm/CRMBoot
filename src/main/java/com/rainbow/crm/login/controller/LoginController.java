@@ -111,7 +111,7 @@ public class LoginController extends  GeneralController{
 				if (user.getCompany().getId() == 1)
 					res.setNextPageKey("sysadmin"); // newdivision
 				else
-					res.setNextPageKey("alerts"); // newdivision
+					res.setNextPageKey("landing"); // newdivision
 				generateLoginRecord(user.getUserId(),login.isMobileLogin());
 			}else {
 				Logwriter.INSTANCE.debug("Wrong password");
