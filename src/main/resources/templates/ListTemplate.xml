@@ -28,16 +28,16 @@
 
  <Sections>
   <Section Id ="topBar"  style ="topBar"  >
-  <Panel key ="topBar"  Id ="tpBR" > </Panel>  
+<!--  <Panel key ="topBar"  Id ="tpBR" > </Panel>-->
   </Section>
   <Section Id ="shortCutBar"  style ="shortcutbar"  >
-  <Panel key ="shortcutbar"  Id ="scutBR" > </Panel>  
+  <!--<Panel key ="shortcutbar"  Id ="scutBR" > </Panel>-->
   </Section>
   <Section Id ="leftsideBar"  style ="leftnav"  >
   <Panel key ="menuPanel"  Id ="leftnav" > </Panel>  
  </Section>   
   <Section Id ="leftsideBarApp"  style ="leftnav"  >
-  <Panel key ="appMenuPanel"  Id ="leftnav" > </Panel>  
+  <!--<Panel key ="appMenuPanel"  Id ="leftnav" > </Panel>-->
  </Section>   
   <Section Id ="header" style ="headerStyle"  showinTable = "true" >
   </Section>

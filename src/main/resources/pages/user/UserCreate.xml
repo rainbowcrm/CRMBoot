@@ -20,7 +20,7 @@ Controller = "com.rainbow.crm.user.controller.UserController">
 <IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
 <Elements>
 <UIForm Id ="cust" method = "POST" >
-<Section type ="topBar"></Section>
+ 
 <Section type ="leftsideBar"></Section>
 <CoreSection>
 <ErrorSection>

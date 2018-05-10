@@ -20,9 +20,9 @@ Controller = "com.rainbow.crm.profile.controller.CustomerProfileController">
 </AjaxGroups>
 <Elements>
 <UIForm Id ="cust" method = "POST" enctype="multipart/form-data" >
-<Section type ="topBar"></Section> 
-<Section type ="leftsideBarApp"></Section>
-<Section type ="shortCutBar"></Section>
+  
+ 
+ 
 <CoreSection>
 <ErrorSection>
 </ErrorSection>

@@ -6,9 +6,9 @@ Controller = "com.rainbow.crm.profile.controller.ItemProfileController">
 <IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
 <Elements>
 <UIForm Id ="cust" method = "POST" enctype="multipart/form-data" >
-<Section type ="topBar"></Section> 
-<Section type ="leftsideBarApp"></Section>
-<Section type ="shortCutBar"></Section>
+  
+ 
+ 
 <CoreSection>
 <ErrorSection>
 </ErrorSection>

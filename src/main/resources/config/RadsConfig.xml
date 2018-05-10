@@ -290,42 +290,42 @@
         <Panel key ="shortcutbar" showInDiv = "false" >
             <Element type = "UITable" rows = "1" cols = "18">
                 <Element type = "UITableRow">
-                    <Element type = "UITableCol" width ="14%">  </Element>
+
 
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/customer-icon.png" title ="Customers" onClickJS="window.location.href ='controller?page=customers'"/> </Element>
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./images/customer-icon.png" title ="Customers" onClickJS="refreshIFrameSrc('frmFameId','controller?page=customers')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/sales.png" title ="Sales" onClickJS="window.location.href ='controller?page=sales'"/></Element>
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./images/sales.png" title ="Sales" onClickJS="refreshIFrameSrc('frmFameId','controller?page=sales')"/></Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/settings.jpg" title ="Customers"  onClickJS="window.location.href ='controller?page=customers'"/> </Element>
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./images/settings.jpg" title ="Customers"  onClickJS="refreshIFrameSrc('frmFameId','controller?page=customers')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/alerts.png"   title ="Alerts" onClickJS="window.location.href ='controller?page=alerts'"/> </Element>
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./images/alerts.png"   title ="Alerts" onClickJS="refreshIFrameSrc('frmFameId','controller?page=alerts')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/dashboard.png" title ="Dashboard"  onClickJS="window.location.href ='controller?page=topic'"/></Element>
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./images/dashboard.png" title ="Dashboard"  onClickJS="refreshIFrameSrc('frmFameId','controller?page=dashboard')"/></Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/opportunity.png" title ="Sales Leads"  onClickJS="window.location.href ='controller?page=saleslead'"/> </Element>
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./images/opportunity.png" title ="Sales Leads"  onClickJS="refreshIFrameSrc('frmFameId','controller?page=salesleads')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/followups.png" title ="Followups"  onClickJS="window.location.href ='controller?page=followups'"/> </Element>
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./images/followups.png" title ="Followups"  onClickJS="refreshIFrameSrc('frmFameId','controller?page=followups')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/pitchers.ico" title ="Sales Pitches" onClickJS="window.location.href ='controller?page=salespitches'"/> </Element>
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./images/pitchers.ico" title ="Sales Pitches" onClickJS="refreshIFrameSrc('frmFameId','controller?page=salespitches')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/documents.jpg" title ="Documents" onClickJS="window.location.href ='controller?page=documents'"/> </Element>
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./images/documents.jpg" title ="Documents" onClickJS="refreshIFrameSrc('frmFameId','controller?page=documents')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/feedback.png" title ="Feedbacks"  onClickJS="window.location.href ='controller?page=feedbacks'"/> </Element>
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./images/feedback.png" title ="Feedbacks"  onClickJS="refreshIFrameSrc('frmFameId','controller?page=feedbacks')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/items.png" title ="Items" onClickJS="window.location.href ='controller?page=items'"/> </Element>
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./images/items.png" title ="Items" onClickJS="refreshIFrameSrc('frmFameId','controller?page=items')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/discussion.png" title ="Discussions"  onClickJS="window.location.href ='controller?page=topic'"/> </Element>
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./images/discussion.png" title ="Discussions"  onClickJS="refreshIFrameSrc('frmFameId','controller?page=topic')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/inventory_icon.jpg" title ="Inventory" onClickJS="window.location.href ='controller?page=inventory'"/> </Element>
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./images/inventory_icon.jpg" title ="Inventory" onClickJS="refreshIFrameSrc('frmFameId','controller?page=inventory')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/delivery.jpg" title ="Delivery Orders" onClickJS="window.location.href ='controller?page=distributionorders'"/> </Element>
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./images/delivery.jpg" title ="Delivery Orders" onClickJS="refreshIFrameSrc('frmFameId','controller?page=distributionorders')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/enquiry-icon.jpg" title ="Enquiry"  onClickJS="window.location.href ='controller?page=enquiries'"/> </Element>
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./images/enquiry-icon.jpg" title ="Enquiry"  onClickJS="refreshIFrameSrc('frmFameId','controller?page=enquiries')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/product_faq.jpg" title ="Product FAQ" onClickJS="window.location.href ='controller?page=productfaqs'"/> </Element>
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./images/product_faq.jpg" title ="Product FAQ" onClickJS="refreshIFrameSrc('frmFameId','controller?page=productfaqs')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/purchase.png" title ="Purchases" onClickJS="window.location.href ='controller?page=pruchases'"/> </Element>
+                        <Element label="" type= "UIImage" height = "30" width ="30"   src= "./images/purchase.png" title ="Purchases" onClickJS="refreshIFrameSrc('frmFameId','controller?page=purchases')"/> </Element>
                     <!-- <Element type = "UITableCol" width ="5%" align="right">
                             <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/expenses.jpg"  onClickJS="logout();"/> </Element> -->
 
@@ -334,110 +334,110 @@
         </Panel>
         <Panel key = "menuPanel"   showInDiv = "false">
             <Element label = "" type = "UIMenu" Id = "menu00" style="menustyleParent" title="Setup" groupId= "menuGRP01"  >
-                <Element label = "" type = "UIMenu" Id = "menu01" style="menustyle" title="Company" link = "controller?page=sysadmin" iconStyle="fa fa-fw fa-dashboard"  />
-                <Element label = "" type = "UIMenu" Id = "menu02" style="menustyle" title="New Company" link = "controller?page=compcreate" iconStyle="fa fa-fw fa-dashboard"  />
-                <Element label = "" type = "UIMenu" Id = "menu03" style="menustyle" title="Users" link = "controller?page=users" iconStyle="fa fa-fw fa-dashboard"  />
-                <Element label = "" type = "UIMenu" Id = "menu04" style="menustyle" title="New User" link = "controller?page=newuser"  iconStyle="fa fa-fw fa-dashboard" />
-                <Element label = "" type = "UIMenu" Id = "menu04" style="menustyle" title="Audits" link = "controller?page=SLSXML" iconStyle="fa fa-fw fa-dashboard"  />
+                <Element label = "" type = "UIMenu" Id = "menu01" style="menustyle" title="Company" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=sysadmin" iconStyle="fa fa-fw fa-dashboard"  />
+                <Element label = "" type = "UIMenu" Id = "menu02" style="menustyle" title="New Company" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=compcreate" iconStyle="fa fa-fw fa-dashboard"  />
+                <Element label = "" type = "UIMenu" Id = "menu03" style="menustyle" title="Users" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=users" iconStyle="fa fa-fw fa-dashboard"  />
+                <Element label = "" type = "UIMenu" Id = "menu04" style="menustyle" title="New User" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=newuser"  iconStyle="fa fa-fw fa-dashboard" />
+                <Element label = "" type = "UIMenu" Id = "menu04" style="menustyle" title="Audits" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=SLSXML" iconStyle="fa fa-fw fa-dashboard"  />
             </Element>
         </Panel>
         <Panel key = "appMenuPanel"   showInDiv = "false">
             <Element label = "" type = "UIMenu" Id = "menu80" style="menustyleParent" title="Administration" groupId= "menuGRP080"  >
-                <Element label = "" type = "UIMenu" Id = "menu01" style="menustyle" title="Configuration" link = "controller?page=config" iconStyle="fa fa-fw fa-briefcase"  />
-                <Element label = "" type = "UIMenu" Id = "menu01" style="menustyle" title="Data_Setup" link = "controller?page=setup" iconStyle="fa fa-fw fa-download"  />
-                <Element label = "" type = "UIMenu" Id = "menu02" style="menustyle" title="Divisions" link = "controller?page=divisions" iconStyle="fa fa-fw fa-bookmark"  />
-                <Element label = "" type = "UIMenu" Id = "menu03" style="menustyle" title="Users" link = "controller?page=appUsers"  iconStyle="fa fa-fw fa-users" />
-                <Element label = "" type = "UIMenu" Id = "menu04" style="menustyle" title="Reason_Codes" link = "controller?page=reasoncodes"  iconStyle="fa fa-fw fa-plug" />
+                <Element label = "" type = "UIMenu" Id = "menu01" style="menustyle" title="Configuration" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=config" iconStyle="fa fa-fw fa-briefcase"  />
+                <Element label = "" type = "UIMenu" Id = "menu01" style="menustyle" title="Data_Setup" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=setup" iconStyle="fa fa-fw fa-download"  />
+                <Element label = "" type = "UIMenu" Id = "menu02" style="menustyle" title="Divisions" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=divisions" iconStyle="fa fa-fw fa-bookmark"  />
+                <Element label = "" type = "UIMenu" Id = "menu03" style="menustyle" title="Users" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=appUsers"  iconStyle="fa fa-fw fa-users" />
+                <Element label = "" type = "UIMenu" Id = "menu04" style="menustyle" title="Reason_Codes" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=reasoncodes"  iconStyle="fa fa-fw fa-plug" />
             </Element>
 
             <Element label = "" type = "UIMenu" Id = "menu00" style="menustyleParent" title="Setup" groupId= "menuGRP001"  >
-                <Element label = "" type = "UIMenu" Id = "menu04" style="menustyle" title="Vendors" link = "controller?page=vendors"  iconStyle="fa fa-fw fa-money" />
-                <Element label = "" type = "UIMenu" Id = "menu04" style="menustyle" title="Contacts" link = "controller?page=contacts"  iconStyle="fa fa-fw fa-male" />
-                <Element label = "" type = "UIMenu" Id = "menu04" style="menustyle" title="Carriers" link = "controller?page=carriers"  iconStyle="fa fa-fw fa-truck" />
+                <Element label = "" type = "UIMenu" Id = "menu04" style="menustyle" title="Vendors" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=vendors"  iconStyle="fa fa-fw fa-money" />
+                <Element label = "" type = "UIMenu" Id = "menu04" style="menustyle" title="Contacts" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=contacts"  iconStyle="fa fa-fw fa-male" />
+                <Element label = "" type = "UIMenu" Id = "menu04" style="menustyle" title="Carriers" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=carriers"  iconStyle="fa fa-fw fa-truck" />
             </Element>
             <Element label = "" type = "UIMenu" Id = "menu10" style="menustyleParent" title="Merchandise" groupId= "menuGRP002"  >
-                <Element label = "" type = "UIMenu" Id = "menu110" style="menustyle" title="Brands" link = "controller?page=brands"  iconStyle="fa fa-fw fa-compass" />
-                <Element label = "" type = "UIMenu" Id = "menu111" style="menustyle" title="Categories" link = "controller?page=categories"  iconStyle="fa fa-fw fa-fax" />
-                <Element label = "" type = "UIMenu" Id = "menu112" style="menustyle" title="Products" link = "controller?page=products"  iconStyle="fa fa-fw fa-tty" />
-                <Element label = "" type = "UIMenu" Id = "menu116" style="menustyle" title="Product_FAQ" link = "controller?page=productfaqs" iconStyle="fa fa-fw fa-question"  />
+                <Element label = "" type = "UIMenu" Id = "menu110" style="menustyle" title="Brands" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=brands"  iconStyle="fa fa-fw fa-compass" />
+                <Element label = "" type = "UIMenu" Id = "menu111" style="menustyle" title="Categories" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=categories"  iconStyle="fa fa-fw fa-fax" />
+                <Element label = "" type = "UIMenu" Id = "menu112" style="menustyle" title="Products" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=products"  iconStyle="fa fa-fw fa-tty" />
+                <Element label = "" type = "UIMenu" Id = "menu116" style="menustyle" title="Product_FAQ" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=productfaqs" iconStyle="fa fa-fw fa-question"  />
 
                 <!-- TBD
-                 <Element label = "" type = "UIMenu" Id = "menu13" style="menustyle" title="UOMs" link = "controller?page=uoms"   />
+                 <Element label = "" type = "UIMenu" Id = "menu13" style="menustyle" title="UOMs" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=uoms"   />
                  -->
-                <Element label = "" type = "UIMenu" Id = "menu113" style="menustyle" title="Items" link = "controller?page=items"  iconStyle="fa fa-fw fa-tag" />
-                <Element label = "" type = "UIMenu" Id = "menu114" style="menustyle" title="SKU" link = "controller?page=skus" iconStyle="fa fa-fw fa-tags"  />
-                <Element label = "" type = "UIMenu" Id = "menu115" style="menustyle" title="Item Images" link = "controller?page=itemimages"  iconStyle="fa fa-fw fa-photo" />
-                <Element label = "" type = "UIMenu" Id = "menu117" style="menustyle" title="Item_Profile" link = "controller?page=itemprofile" iconStyle="fa fa-fw fa-id-badge"  />
+                <Element label = "" type = "UIMenu" Id = "menu113" style="menustyle" title="Items" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=items"  iconStyle="fa fa-fw fa-tag" />
+                <Element label = "" type = "UIMenu" Id = "menu114" style="menustyle" title="SKU" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=skus" iconStyle="fa fa-fw fa-tags"  />
+                <Element label = "" type = "UIMenu" Id = "menu115" style="menustyle" title="Item Images" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=itemimages"  iconStyle="fa fa-fw fa-photo" />
+                <Element label = "" type = "UIMenu" Id = "menu117" style="menustyle" title="Item_Profile" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=itemprofile" iconStyle="fa fa-fw fa-id-badge"  />
             </Element>
             <Element label = "" type = "UIMenu" Id = "menu20" style="menustyleParent" title="Customer_Management" groupId= "menuGRP003"  >
-                <Element label = "" type = "UIMenu" Id = "menu05" style="menustyle" title="Customers" link = "controller?page=customers"  iconStyle="fa fa-fw fa-female" />
-                <Element label = "" type = "UIMenu" Id = "menu05" style="menustyle" title="Loyalty" link = "controller?page=loyatylist"  iconStyle="fa fa-fw fa-magnet" />
-                <Element label = "" type = "UIMenu" Id = "menu05" style="menustyle" title="Wish_List" link = "controller?page=wishlist" iconStyle="fa fa-fw fa-magic"  />
-                <Element label = "" type = "UIMenu" Id = "menu117" style="menustyle" title="Customer_Profile" link = "controller?page=customerprofile" iconStyle="fa fa-fw fa-user"  />
+                <Element label = "" type = "UIMenu" Id = "menu05" style="menustyle" title="Customers" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=customers"  iconStyle="fa fa-fw fa-female" />
+                <Element label = "" type = "UIMenu" Id = "menu05" style="menustyle" title="Loyalty" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=loyatylist"  iconStyle="fa fa-fw fa-magnet" />
+                <Element label = "" type = "UIMenu" Id = "menu05" style="menustyle" title="Wish_List" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=wishlist" iconStyle="fa fa-fw fa-magic"  />
+                <Element label = "" type = "UIMenu" Id = "menu117" style="menustyle" title="Customer_Profile" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=customerprofile" iconStyle="fa fa-fw fa-user"  />
             </Element>
             <Element label = "" type = "UIMenu" Id = "menu600" style="menustyleParent" title="Corporate_WorkBench" groupId= "menuGRP0060"  >
-                <Element label = "" type = "UIMenu" Id = "menu601" style="menustyle" title="Corp_Sales_Period" link = "controller?page=corpsalesperiodlist" iconStyle="fa fa-fw fa-calendar"   />
-                <Element label = "" type = "UIMenu" Id = "menu602" style="menustyle" title="Sales_Period_Analysis" link = "controller?page=corpsalesperiodAnalysis"   iconStyle="fa fa-fw fa-bar-chart" />
-                <Element label = "" type = "UIMenu" Id = "menu602" style="menustyle" title="Corp_Dashboard" link = "controller?page=corpadmindashboard" iconStyle="fa fa-fw fa-dashboard"  />
+                <Element label = "" type = "UIMenu" Id = "menu601" style="menustyle" title="Corp_Sales_Period" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=corpsalesperiodlist" iconStyle="fa fa-fw fa-calendar"   />
+                <Element label = "" type = "UIMenu" Id = "menu602" style="menustyle" title="Sales_Period_Analysis" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=corpsalesperiodAnalysis"   iconStyle="fa fa-fw fa-bar-chart" />
+                <Element label = "" type = "UIMenu" Id = "menu602" style="menustyle" title="Corp_Dashboard" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=corpadmindashboard" iconStyle="fa fa-fw fa-dashboard"  />
             </Element>
 
             <Element label = "" type = "UIMenu" Id = "menu300" style="menustyleParent" title="Sales_Planning" groupId= "menuGRP0040"  >
-                <Element label = "" type = "UIMenu" Id = "menu3001" style="menustyle" title="Territories" link = "controller?page=territories"  iconStyle="fa fa-fw fa-industry" />
-                <Element label = "" type = "UIMenu" Id = "menu05" style="menustyle" title="Categories" link = "controller?page=custcategories"  iconStyle="fa fa-fw fa-bookmark" />
-                <Element label = "" type = "UIMenu" Id = "menu301" style="menustyle" title="Sales_Associate_PortFolio" link = "controller?page=salesportfoliolist"  iconStyle="fa fa-fw fa-suitcase" />
-                <Element label = "" type = "UIMenu" Id = "menu302" style="menustyle" title="Sales_Period" link = "controller?page=salesperiodlist"  iconStyle="fa fa-fw fa-calendar" />
-                <Element label = "" type = "UIMenu" Id = "menu303" style="menustyle" title="Expense_Heads" link = "controller?page=expenseheads"  iconStyle="fa fa-fw fa-cubes" />
+                <Element label = "" type = "UIMenu" Id = "menu3001" style="menustyle" title="Territories" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=territories"  iconStyle="fa fa-fw fa-industry" />
+                <Element label = "" type = "UIMenu" Id = "menu05" style="menustyle" title="Categories" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=custcategories"  iconStyle="fa fa-fw fa-bookmark" />
+                <Element label = "" type = "UIMenu" Id = "menu301" style="menustyle" title="Sales_Associate_PortFolio" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=salesportfoliolist"  iconStyle="fa fa-fw fa-suitcase" />
+                <Element label = "" type = "UIMenu" Id = "menu302" style="menustyle" title="Sales_Period" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=salesperiodlist"  iconStyle="fa fa-fw fa-calendar" />
+                <Element label = "" type = "UIMenu" Id = "menu303" style="menustyle" title="Expense_Heads" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=expenseheads"  iconStyle="fa fa-fw fa-cubes" />
             </Element>
             <Element label = "" type = "UIMenu" Id = "menu30" style="menustyleParent" title="Salesforce_WorkBench" groupId= "menuGRP004"  >
-                <Element label = "" type = "UIMenu" Id = "menu301" style="menustyle" title="Alerts" link = "controller?page=alerts"  iconStyle="fa fa-fw fa-bullhorn" />
-                <Element label = "" type = "UIMenu" Id = "menu3011" style="menustyle" title="Discussions" link = "controller?page=topic"  iconStyle="fa fa-fw fa-comment" />
-                <Element label = "" type = "UIMenu" Id = "menu302" style="menustyle" title="Documents" link = "controller?page=documents"  iconStyle="fa fa-fw fa-clone" />
-                <Element label = "" type = "UIMenu" Id = "menu34" style="menustyle" title="Sales_Leads" link = "controller?page=saleslead" iconStyle="fa fa-fw fa-eye"  />
-                <Element label = "" type = "UIMenu" Id = "menu35" style="menustyle" title="Followups" link = "controller?page=followups"  iconStyle="fa fa-fw fa-exchange" />
-                <Element label = "" type = "UIMenu" Id = "menu36" style="menustyle" title="Expense_Vouchers" link = "controller?page=expensevouchers"  iconStyle="fa fa-fw fa-cutlery" />
-                <Element label = "" type = "UIMenu" Id = "menu36" style="menustyle" title="Enquiries" link = "controller?page=enquiries"  iconStyle="fa fa-fw fa-envelope" />
-                <Element label = "" type = "UIMenu" Id = "menu36" style="menustyle" title="Sales_Pitches" link = "controller?page=salespitches"  iconStyle="fa fa-fw fa-gift" />
-                <Element label = "" type = "UIMenu" Id = "menu361" style="menustyle" title="Feedbacks" link = "controller?page=feedbacks"  iconStyle="fa fa-fw fa-history" />
-                <Element label = "" type = "UIMenu" Id = "menu367" style="menustyle" title="Dashboard" link = "controller?page=dashboard"  iconStyle="fa fa-fw fa-dashboard" />
+                <Element label = "" type = "UIMenu" Id = "menu301" style="menustyle" title="Alerts" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=alerts"  iconStyle="fa fa-fw fa-bullhorn" />
+                <Element label = "" type = "UIMenu" Id = "menu3011" style="menustyle" title="Discussions" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=topic"  iconStyle="fa fa-fw fa-comment" />
+                <Element label = "" type = "UIMenu" Id = "menu302" style="menustyle" title="Documents" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=documents"  iconStyle="fa fa-fw fa-clone" />
+                <Element label = "" type = "UIMenu" Id = "menu34" style="menustyle" title="Sales_Leads" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=saleslead" iconStyle="fa fa-fw fa-eye"  />
+                <Element label = "" type = "UIMenu" Id = "menu35" style="menustyle" title="Followups" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=followups"  iconStyle="fa fa-fw fa-exchange" />
+                <Element label = "" type = "UIMenu" Id = "menu36" style="menustyle" title="Expense_Vouchers" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=expensevouchers"  iconStyle="fa fa-fw fa-cutlery" />
+                <Element label = "" type = "UIMenu" Id = "menu36" style="menustyle" title="Enquiries" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=enquiries"  iconStyle="fa fa-fw fa-envelope" />
+                <Element label = "" type = "UIMenu" Id = "menu36" style="menustyle" title="Sales_Pitches" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=salespitches"  iconStyle="fa fa-fw fa-gift" />
+                <Element label = "" type = "UIMenu" Id = "menu361" style="menustyle" title="Feedbacks" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=feedbacks"  iconStyle="fa fa-fw fa-history" />
+                <Element label = "" type = "UIMenu" Id = "menu367" style="menustyle" title="Dashboard" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=dashboard"  iconStyle="fa fa-fw fa-dashboard" />
             </Element>
             <Element label = "" type = "UIMenu" Id = "menu70" style="menustyleParent" title="Manager_Workbench" groupId= "menuGRP005"  >
-                <Element label = "" type = "UIMenu" Id = "menu0701" style="menustyle" title="Open_Expenditure" link = "controller?page=openexpenses"  iconStyle="fa fa-fw fa-suitcase" />
-                <Element label = "" type = "UIMenu" Id = "menu071" style="menustyle" title="Queries" link = "controller?page=queries"  iconStyle="fa fa-fw fa-road" />
-                <Element label = "" type = "UIMenu" Id = "menu072" style="menustyle" title="Dashboard" link = "controller?page=divmgrdashboard"  iconStyle="fa fa-fw fa-dashboard" />
-                <Element label = "" type = "UIMenu" Id = "menu073" style="menustyle" title="Promotions" link = "controller?page=promotionslist"  iconStyle="fa fa-fw fa-star" />
-                <Element label = "" type = "UIMenu" Id = "menu073" style="menustyle" title="SWOT_Analysis" link = "controller?page=swotanalysis"   iconStyle="fa fa-fw fa-tachometer"/>
-                <!--  <Element label = "" type = "UIMenu" Id = "menu074" style="menustyle" title="Marketing_Campaign" link = "controller?page=campaign"   /> -->
+                <Element label = "" type = "UIMenu" Id = "menu0701" style="menustyle" title="Open_Expenditure" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=openexpenses"  iconStyle="fa fa-fw fa-suitcase" />
+                <Element label = "" type = "UIMenu" Id = "menu071" style="menustyle" title="Queries" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=queries"  iconStyle="fa fa-fw fa-road" />
+                <Element label = "" type = "UIMenu" Id = "menu072" style="menustyle" title="Dashboard" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=divmgrdashboard"  iconStyle="fa fa-fw fa-dashboard" />
+                <Element label = "" type = "UIMenu" Id = "menu073" style="menustyle" title="Promotions" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=promotionslist"  iconStyle="fa fa-fw fa-star" />
+                <Element label = "" type = "UIMenu" Id = "menu073" style="menustyle" title="SWOT_Analysis" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=swotanalysis"   iconStyle="fa fa-fw fa-tachometer"/>
+                <!--  <Element label = "" type = "UIMenu" Id = "menu074" style="menustyle" title="Marketing_Campaign" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=campaign"   /> -->
             </Element>
             <Element label = "" type = "UIMenu" Id = "menu30" style="menustyleParent" title="Analytics" groupId= "menuGRP006"  >
-                <Element label = "" type = "UIMenu" Id = "menu032" style="menustyle" title="Sales_Period_Analysis" link = "controller?page=salesperiodAnalysis" iconStyle="fa fa-fw fa-bar-chart"  />
-                <Element label = "" type = "UIMenu" Id = "menu033" style="menustyle" title="Product_Analysis" link = "controller?page=productanalysis" iconStyle="fa fa-fw fa-pie-chart"  />
-                <Element label = "" type = "UIMenu" Id = "menu035" style="menustyle" title="Salesforce_Analysis" link = "controller?page=salesforceanalysis"   />
-                <Element label = "" type = "UIMenu" Id = "menu036" style="menustyle" title="Saleslead_Analysis" link = "controller?page=salesleadanalysis"   />
-                <Element label = "" type = "UIMenu" Id = "menu034" style="menustyle" title="Sales_Trend" link = "controller?page=salestrend"  iconStyle="fa fa-fw fa-area-chart"   />
-                <Element label = "" type = "UIMenu" Id = "menu036" style="menustyle" title="FeedBack_Analysis" link = "controller?page=feedbackanalysis"   />
+                <Element label = "" type = "UIMenu" Id = "menu032" style="menustyle" title="Sales_Period_Analysis" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=salesperiodAnalysis" iconStyle="fa fa-fw fa-bar-chart"  />
+                <Element label = "" type = "UIMenu" Id = "menu033" style="menustyle" title="Product_Analysis" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=productanalysis" iconStyle="fa fa-fw fa-pie-chart"  />
+                <Element label = "" type = "UIMenu" Id = "menu035" style="menustyle" title="Salesforce_Analysis" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=salesforceanalysis"   />
+                <Element label = "" type = "UIMenu" Id = "menu036" style="menustyle" title="Saleslead_Analysis" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=salesleadanalysis"   />
+                <Element label = "" type = "UIMenu" Id = "menu034" style="menustyle" title="Sales_Trend" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=salestrend"  iconStyle="fa fa-fw fa-area-chart"   />
+                <Element label = "" type = "UIMenu" Id = "menu036" style="menustyle" title="FeedBack_Analysis" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=feedbackanalysis"   />
             </Element>
             <Element label = "" type = "UIMenu" Id = "menu40" style="menustyleParent" title="Operations" groupId= "menuGRP007"  >
-                <Element label = "" type = "UIMenu" Id = "menu41" style="menustyle" title="Stock" link = "controller?page=inventory"  iconStyle="fa fa-fw fa-compass" />
-                <Element label = "" type = "UIMenu" Id = "menu42" style="menustyle" title="Purchase_Orders" link = "controller?page=purchases"  iconStyle="fa fa-fw fa-reorder" />
-                <Element label = "" type = "UIMenu" Id = "menu43" style="menustyle" title="Sales_Orders" link = "controller?page=sales"   iconStyle="fa fa-fw fa-shopping-cart"/>
-                <Element label = "" type = "UIMenu" Id = "menu44" style="menustyle" title="Delivery_Orders" link = "controller?page=distributionorders"  iconStyle="fa fa-fw fa-bus" />
+                <Element label = "" type = "UIMenu" Id = "menu41" style="menustyle" title="Stock" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=inventory"  iconStyle="fa fa-fw fa-compass" />
+                <Element label = "" type = "UIMenu" Id = "menu42" style="menustyle" title="Purchase_Orders" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=purchases"  iconStyle="fa fa-fw fa-reorder" />
+                <Element label = "" type = "UIMenu" Id = "menu43" style="menustyle" title="Sales_Orders" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=sales"   iconStyle="fa fa-fw fa-shopping-cart"/>
+                <Element label = "" type = "UIMenu" Id = "menu44" style="menustyle" title="Delivery_Orders" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=distributionorders"  iconStyle="fa fa-fw fa-bus" />
                 <Element label = "" type = "UIMenu" Id = "menu400" style="menustyleParent" title="Returns" groupId= "menuGRP0071"  >
-                    <Element label = "" type = "UIMenu" Id = "menu401" style="menustyle" title="Sales_Returns" link = "controller?page=salesreturns"   iconStyle="fa fa-fw fa-exchange" />
-                    <!-- <Element label = "" type = "UIMenu" Id = "menu402" style="menustyle" title="Purchase Returns" link = "controller?page=purchasereturns"   />  -->
+                    <Element label = "" type = "UIMenu" Id = "menu401" style="menustyle" title="Sales_Returns" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=salesreturns"   iconStyle="fa fa-fw fa-exchange" />
+                    <!-- <Element label = "" type = "UIMenu" Id = "menu402" style="menustyle" title="Purchase Returns" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=purchasereturns"   />  -->
                 </Element>
             </Element>
             <Element label = "" type = "UIMenu" Id = "menu50" style="menustyleParent" title="Reports" groupId= "menuGRP008"  >
-                <Element label = "" type = "UIMenu" Id = "menu51" style="menustyle" title="Daily_Sales_Report" link = "controller?page=salesreport"  iconStyle="fa fa-fw fa-dashboard" />
-                <Element label = "" type = "UIMenu" Id = "menu52" style="menustyle" title="Sales_Item_Report" link = "controller?page=salesreport&amp;reportType=DailyItemSales"  iconStyle="fa fa-fw fa-dashboard" />
-                <Element label = "" type = "UIMenu" Id = "menu53" style="menustyle" title="Sales_Product_Report" link = "controller?page=salesreport&amp;reportType=DailyProductSales"   iconStyle="fa fa-fw fa-dashboard"/>
-                <Element label = "" type = "UIMenu" Id = "menu53" style="menustyle" title="Sales_Category_Report" link = "controller?page=salesreport&amp;reportType=DailyCategorySales"   iconStyle="fa fa-fw fa-dashboard"/>
-                <Element label = "" type = "UIMenu" Id = "menu54" style="menustyle" title="Sales_Brand_Report" link = "controller?page=salesreport&amp;reportType=DailyBrandSales"  iconStyle="fa fa-fw fa-dashboard" />
-                <Element label = "" type = "UIMenu" Id = "menu55" style="menustyle" title="Sales_Associate_Report" link = "controller?page=salesreport&amp;reportType=DailyAssociateSales"  iconStyle="fa fa-fw fa-dashboard" />
-                <!-- <Element label = "" type = "UIMenu" Id = "menu52" style="menustyle" title="Sales_Category_Report" link = "controller?page=report"   />
-                <Element label = "" type = "UIMenu" Id = "menu52" style="menustyle" title="Sales_Brand_Report" link = "controller?page=report"   />
-                <Element label = "" type = "UIMenu" Id = "menu52" style="menustyle" title="Sales_Product_Report" link = "controller?page=report"   />
+                <Element label = "" type = "UIMenu" Id = "menu51" style="menustyle" title="Daily_Sales_Report" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=salesreport"  iconStyle="fa fa-fw fa-dashboard" />
+                <Element label = "" type = "UIMenu" Id = "menu52" style="menustyle" title="Sales_Item_Report" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=salesreport&amp;reportType=DailyItemSales"  iconStyle="fa fa-fw fa-dashboard" />
+                <Element label = "" type = "UIMenu" Id = "menu53" style="menustyle" title="Sales_Product_Report" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=salesreport&amp;reportType=DailyProductSales"   iconStyle="fa fa-fw fa-dashboard"/>
+                <Element label = "" type = "UIMenu" Id = "menu53" style="menustyle" title="Sales_Category_Report" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=salesreport&amp;reportType=DailyCategorySales"   iconStyle="fa fa-fw fa-dashboard"/>
+                <Element label = "" type = "UIMenu" Id = "menu54" style="menustyle" title="Sales_Brand_Report" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=salesreport&amp;reportType=DailyBrandSales"  iconStyle="fa fa-fw fa-dashboard" />
+                <Element label = "" type = "UIMenu" Id = "menu55" style="menustyle" title="Sales_Associate_Report" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=salesreport&amp;reportType=DailyAssociateSales"  iconStyle="fa fa-fw fa-dashboard" />
+                <!-- <Element label = "" type = "UIMenu" Id = "menu52" style="menustyle" title="Sales_Category_Report" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=report"   />
+                <Element label = "" type = "UIMenu" Id = "menu52" style="menustyle" title="Sales_Brand_Report" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=report"   />
+                <Element label = "" type = "UIMenu" Id = "menu52" style="menustyle" title="Sales_Product_Report" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=report"   />
 
-                <Element label = "" type = "UIMenu" Id = "menu52" style="menustyle" title="Customer_Summary" link = "controller?page=report"   />  -->
+                <Element label = "" type = "UIMenu" Id = "menu52" style="menustyle" title="Customer_Summary" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=report"   />  -->
 
             </Element>
         </Panel>

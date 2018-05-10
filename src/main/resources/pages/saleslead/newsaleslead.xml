@@ -47,9 +47,9 @@ Controller = "com.rainbow.crm.saleslead.controller.SalesLeadController">
 
 <Elements>
 <UIForm Id ="cust" method = "POST" > 
-<Section type ="topBar"></Section> 
-<Section type ="leftsideBarApp"></Section>
-<Section type ="shortCutBar"></Section> 
+  
+ 
+  
 <CoreSection>
 <ErrorSection>
 </ErrorSection>

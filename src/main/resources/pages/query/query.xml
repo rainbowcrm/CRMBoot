@@ -6,9 +6,9 @@ Controller = "com.rainbow.framework.query.controller.QueryController">
 <IncludeJS>./scripts/query/QueryFunc.js</IncludeJS>
 <Elements>
 <UIForm Id ="frmdd" method = "POST"  >
-<Section type ="topBar"></Section> 
-<Section type ="leftsideBarApp"></Section>
-<Section type ="shortCutBar"></Section>
+  
+ 
+ 
 <CoreSection>
 <ErrorSection>
 </ErrorSection>

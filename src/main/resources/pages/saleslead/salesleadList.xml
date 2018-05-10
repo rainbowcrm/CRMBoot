@@ -25,9 +25,9 @@ Controller = "com.rainbow.crm.saleslead.controller.SalesLeadListController">
 <IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
 <IncludeJS>./scripts/sales/SalesLead.js</IncludeJS>
 <Elements>
-<Section type ="topBar"></Section>
-<Section type ="leftsideBarApp"></Section>
-<Section type ="shortCutBar"></Section>
+ 
+ 
+ 
 <CoreSection>
 <ErrorSection>
 </ErrorSection>

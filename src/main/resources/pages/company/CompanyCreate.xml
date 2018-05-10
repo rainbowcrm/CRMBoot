@@ -21,7 +21,7 @@ Controller = "com.rainbow.crm.company.controller.CompanyController">
 
 <Elements>
 <UIForm Id ="cust" method = "POST" >
-<Section type ="topBar"></Section>
+ 
 <Section type ="leftsideBar"></Section>
 <CoreSection>
 <ErrorSection>

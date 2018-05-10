@@ -4,9 +4,9 @@ Controller = "com.rainbow.crm.config.controller.ConfigController">
 <Template type= "General"  name = "generalTemplate"></Template>
 <Elements>
 <UIForm Id ="frmdd" method = "POST"  >
-<Section type ="topBar"></Section> 
-<Section type ="leftsideBarApp"></Section>
-<Section type ="shortCutBar"></Section>
+  
+ 
+ 
 <CoreSection>
 <ErrorSection>
 </ErrorSection>

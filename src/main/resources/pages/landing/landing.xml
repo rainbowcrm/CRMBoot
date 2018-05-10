@@ -16,6 +16,7 @@
             <Section type ="leftsideBarApp"></Section>
             <Section type ="shortCutBar"></Section>
 
+
             <CoreSection>
                 <Section type = "fullPage" >
                     <Element type = "UIIFrame" src ="./controller?page=divisions" Id="frmFameId" style ="coresectionstyle" >

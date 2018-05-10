@@ -13,9 +13,9 @@ Controller = "com.rainbow.crm.document.controller.DocumentController">
 </AjaxGroups>
 <Elements>
 <UIForm Id ="cust" method = "POST"   enctype="multipart/form-data" >
-<Section type ="topBar"></Section> 
-<Section type ="leftsideBarApp"></Section>
-<Section type ="shortCutBar"></Section>
+  
+ 
+ 
 <CoreSection>
 <ErrorSection>
 </ErrorSection>

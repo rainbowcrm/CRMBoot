@@ -5,9 +5,9 @@ Controller = "com.rainbow.crm.login.controller.DummyController">
 <IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
 <Elements>
 <UIForm Id ="noaccessfrm" method = "POST"  >
-<Section type ="topBar"></Section> 
-<Section type ="leftsideBarApp"></Section>
-<Section type ="shortCutBar"></Section>
+  
+ 
+ 
 <CoreSection>
 <ErrorSection>
 </ErrorSection>

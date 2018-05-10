@@ -24,9 +24,9 @@ Controller = "com.rainbow.crm.inventory.controller.InventoryController">
 </AjaxGroups>
 
 <Elements>
-<Section type ="topBar"></Section>
-<Section type ="leftsideBarApp"></Section>
-<Section type ="shortCutBar"></Section>
+ 
+ 
+ 
 <CoreSection>
 <ErrorSection>
 </ErrorSection>
