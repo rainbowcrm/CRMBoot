@@ -3,8 +3,8 @@
 Controller = "com.rainbow.crm.followup.controller.FollowupListController">
 <Template type= "List"  name = "ListTemplate"></Template>
 <Forwards>
-<Forward key ="NEW">rdscontroller?page=newfollowup</Forward>
-<Forward key ="EDIT">rdscontroller?page=newfollowup</Forward>
+<Forward key ="NEW">controller?page=newfollowup</Forward>
+<Forward key ="EDIT">controller?page=newfollowup</Forward>
 </Forwards>
 <AjaxGroups>
 <AjaxGroup service ="filterSearch">
@@ -22,7 +22,7 @@ Controller = "com.rainbow.crm.followup.controller.FollowupListController">
 </AjaxGroup>
 </AjaxGroups>
 
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <Elements>
  
  

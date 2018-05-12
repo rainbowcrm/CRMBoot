@@ -3,11 +3,11 @@
 Controller = "com.rainbow.crm.vendor.controller.VendorController">
 <Template type= "CRUD"  name = "CRUDTemplate"></Template>
 <Forwards>
-<Forward key ="CANCEL">rdscontroller?page=vendors</Forward>
+<Forward key ="CANCEL">controller?page=vendors</Forward>
 <Forward key ="SAVE">vendors</Forward>
 </Forwards>
-<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/RadsLib.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <Elements>
 <UIForm Id ="cust" method = "POST" > 
  

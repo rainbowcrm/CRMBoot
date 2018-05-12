@@ -22,7 +22,7 @@ Controller = "com.rainbow.crm.dashboard.controller.SalesDashBoardController">
 	  <rangeHeight>300</rangeHeight>
 	  <rangeWidth>500</rangeWidth>
  	</Element>  -->  
- 	<Element type = "UIIFrame" src ="./rdscontroller?page=adminsalessplits&amp;graphId=adminassocsalessplits"  style = "graphWindow">
+ 	<Element type = "UIIFrame" src ="./controller?page=adminsalessplits&amp;graphId=adminassocsalessplits"  style = "graphWindow">
 	</Element>
 </Element>
 
@@ -36,10 +36,10 @@ Controller = "com.rainbow.crm.dashboard.controller.SalesDashBoardController">
 	  <barWidth>30</barWidth>
 	  <noYAxisDivisions>6</noYAxisDivisions>
 	</Element> 
- 	<Element type = "UIIFrame" src ="./rdscontroller?page=divproductsalesplits&amp;graphId=divprodsalessplits"  style="graphWindow">
+ 	<Element type = "UIIFrame" src ="./controller?page=divproductsalesplits&amp;graphId=divprodsalessplits"  style="graphWindow">
 	</Element> -->
 	
-	<Element type = "UIIFrame" src ="./rdscontroller?page=divsalesleadsplits&amp;graphId=adminmgrsalesleadsplits"  style = "graphWindow">
+	<Element type = "UIIFrame" src ="./controller?page=divsalesleadsplits&amp;graphId=adminmgrsalesleadsplits"  style = "graphWindow">
 	</Element> 
 </Element>	
  	
@@ -62,7 +62,7 @@ Controller = "com.rainbow.crm.dashboard.controller.SalesDashBoardController">
 	  <noXAxisDivisions>6</noXAxisDivisions>
 	</Element> -->
 	
-	<Element type = "UIIFrame" src ="./rdscontroller?page=divtargetanalysis&amp;graphId=admintargetanalysis"  style="graphWindow">
+	<Element type = "UIIFrame" src ="./controller?page=divtargetanalysis&amp;graphId=admintargetanalysis"  style="graphWindow">
 	</Element> 
 	
 </Element>
@@ -75,9 +75,9 @@ Controller = "com.rainbow.crm.dashboard.controller.SalesDashBoardController">
 	  <rangeHeight>300</rangeHeight>
 	  <rangeWidth>500</rangeWidth>
  	</Element>   
- 	<Element type = "UIIFrame" src ="./rdscontroller?page=divsalesleadsplits&amp;graphId=divmgrsalesleadsplits"  style = "graphWindow">
+ 	<Element type = "UIIFrame" src ="./controller?page=divsalesleadsplits&amp;graphId=divmgrsalesleadsplits"  style = "graphWindow">
 	</Element>  -->
-	<Element type = "UIIFrame" src ="./rdscontroller?page=divsalehistory&amp;graphId=adminsaleshistory"  style = "graphWindow">
+	<Element type = "UIIFrame" src ="./controller?page=divsalehistory&amp;graphId=adminsaleshistory"  style = "graphWindow">
 	</Element>
 </Element>
 

@@ -2,7 +2,7 @@
 <Page id = "noaccesspage" showinFrame ="true"  title ="No Authorization| Rainbow CRM" Object = "com.rainbow.crm.login.model.DummyObject" 
 Controller = "com.rainbow.crm.login.controller.DummyController">
 <Template type= "General"  name = "generalTemplate"></Template>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <Elements>
 <UIForm Id ="noaccessfrm" method = "POST"  >
   

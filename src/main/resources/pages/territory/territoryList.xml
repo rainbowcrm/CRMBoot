@@ -3,8 +3,8 @@
 Controller = "com.rainbow.crm.territory.controller.TerritoryListController">
 <Template type= "List"  name = "ListTemplate"></Template>
 <Forwards>
-<Forward key ="NEW">rdscontroller?page=newterritory</Forward>
-<Forward key ="EDIT">rdscontroller?page=newterritory</Forward>
+<Forward key ="NEW">controller?page=newterritory</Forward>
+<Forward key ="EDIT">controller?page=newterritory</Forward>
 </Forwards>
 <AjaxGroups>
 <AjaxGroup service ="filterSearch">
@@ -18,7 +18,7 @@ Controller = "com.rainbow.crm.territory.controller.TerritoryListController">
 </responseElements>
 </AjaxGroup>
 </AjaxGroups>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
 
 <Elements>
  

@@ -3,13 +3,13 @@
 Controller = "com.techtrade.rads.framework.test.CustomerListController">
 <Template type= "List"  name = "ListTemplate"></Template>
 <Forwards>
-<Forward key ="NEW">rdscontroller?page=CSXML</Forward>
-<Forward key ="EDIT">rdscontroller?page=CSXML</Forward>
-<Forward key ="REFRESH">rdscontroller?page=CLXML</Forward>
+<Forward key ="NEW">controller?page=CSXML</Forward>
+<Forward key ="EDIT">controller?page=CSXML</Forward>
+<Forward key ="REFRESH">controller?page=CLXML</Forward>
 </Forwards>
 
-<IncludeJS>./resources/js/customer.js</IncludeJS>
-<IncludeJS>./resources/js/page3.js</IncludeJS>
+<IncludeJS>./js/customer.js</IncludeJS>
+<IncludeJS>./js/page3.js</IncludeJS>
 
 <Elements>
 <Section type ="leftsideBar"></Section>

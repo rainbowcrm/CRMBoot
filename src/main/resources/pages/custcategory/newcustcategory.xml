@@ -3,12 +3,12 @@
 Controller = "com.rainbow.crm.custcategory.controller.CustCategoryController">
 <Template type= "Transaction"  name = "TransactionTemplate"></Template>
 <Forwards>
-<Forward key ="CANCEL">rdscontroller?page=custcategories</Forward>
+<Forward key ="CANCEL">controller?page=custcategories</Forward>
 <Forward key ="SAVE">custcategories</Forward>
 </Forwards>
-<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
-<IncludeJS>./scripts/query/QueryFunc.js</IncludeJS>
+<IncludeJS>./js/RadsLib.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/query/QueryFunc.js</IncludeJS>
 <Elements>
 <UIForm Id ="cust" method = "POST"  >
   

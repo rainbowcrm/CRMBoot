@@ -14,7 +14,7 @@
    <fixedActionField>hdnFixedAction</fixedActionField>
  <SubmitActionField>submitAction</SubmitActionField>
  <FixedActionParamField>hdnFixedActionParam</FixedActionParamField>
- <IncludeJS>./resources/js/login.js</IncludeJS>
+ <IncludeJS>./js/login.js</IncludeJS>
  <CRUDFieldMarker>:</CRUDFieldMarker>
  <Errors showin ="central"  style ="errorStyle" showinTable = "true" tabStyle ="errorStyle">
    <OddRow>oddRowError</OddRow>

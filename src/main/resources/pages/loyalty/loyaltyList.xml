@@ -17,7 +17,7 @@ Controller = "com.rainbow.crm.loyalty.controller.LoyaltyListController">
 </AjaxGroup>
 </AjaxGroups>
 
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <Elements>
  
  

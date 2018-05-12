@@ -3,8 +3,8 @@
 Controller = "com.rainbow.crm.purchase.controller.PurchaseListController">
 <Template type= "List"  name = "ListTemplate"></Template>
 <Forwards>
-<Forward key ="NEW">rdscontroller?page=newpurchase</Forward>
-<Forward key ="EDIT">rdscontroller?page=newpurchase</Forward>
+<Forward key ="NEW">controller?page=newpurchase</Forward>
+<Forward key ="EDIT">controller?page=newpurchase</Forward>
 </Forwards>
 <AjaxGroups>
 <AjaxGroup service ="filterSearch">
@@ -23,7 +23,7 @@ Controller = "com.rainbow.crm.purchase.controller.PurchaseListController">
 </responseElements>
 </AjaxGroup>
 </AjaxGroups>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <Elements>
  
  

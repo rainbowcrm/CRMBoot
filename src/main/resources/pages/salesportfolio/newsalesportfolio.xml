@@ -3,12 +3,12 @@
 Controller = "com.rainbow.crm.salesportfolio.controller.SalesPortfolioController">
 <Template type= "Transaction"  name = "TransactionTemplate"></Template>
 <Forwards>
-<Forward key ="CANCEL">rdscontroller?page=salesportfoliolist</Forward>
+<Forward key ="CANCEL">controller?page=salesportfoliolist</Forward>
 <Forward key ="SAVE">salesportfoliolist</Forward>
 </Forwards>
-<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
-<IncludeJS>./scripts/salesportfolio/SalesPortFolio.js</IncludeJS>
+<IncludeJS>./js/RadsLib.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/salesportfolio/SalesPortFolio.js</IncludeJS>
 <AjaxGroups>
 
 

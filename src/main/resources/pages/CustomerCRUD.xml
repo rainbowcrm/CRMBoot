@@ -3,11 +3,11 @@
 Controller = "com.techtrade.rads.framework.test.CustomerController">
 <Template type= "CRUD"  name = "CRUDTemplate"></Template>
 <Forwards>
-<!-- <Forward key ="NEW">rdscontroller?page=CSXML</Forward>  -->
-<Forward key ="CANCEL">rdscontroller?page=CLXML</Forward>
+<!-- <Forward key ="NEW">controller?page=CSXML</Forward>  -->
+<Forward key ="CANCEL">controller?page=CLXML</Forward>
 </Forwards>
-<IncludeJS>./resources/js/general.js</IncludeJS>
-<IncludeJS>./resources/js/page3.js</IncludeJS>
+<IncludeJS>./js/general.js</IncludeJS>
+<IncludeJS>./js/page3.js</IncludeJS>
 <Elements>
 <UIForm Id ="cust" method = "POST"  >
 <Section type ="leftsideBar"></Section>

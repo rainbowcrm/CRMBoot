@@ -3,11 +3,11 @@
 Controller = "com.rainbow.crm.company.controller.CompanyController">
 <Template type= "CRUD"  name = "guestTemplate"></Template>
 <Forwards>
-<Forward key ="CANCEL">rdscontroller?page=login</Forward>
+<Forward key ="CANCEL">controller?page=login</Forward>
 <Forward key ="SAVE">login</Forward>
 </Forwards>
-<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/RadsLib.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <AjaxGroups>
 <AjaxGroup service ="countryStateSearch">
 <requestElements>

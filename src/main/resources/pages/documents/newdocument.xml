@@ -3,11 +3,11 @@
 Controller = "com.rainbow.crm.document.controller.DocumentController">
 <Template type= "CRUD"  name = "CRUDTemplate"></Template>
 <Forwards>
-<Forward key ="CANCEL">rdscontroller?page=documents</Forward>
+<Forward key ="CANCEL">controller?page=documents</Forward>
 <Forward key ="SAVE">documents</Forward>
 </Forwards>
-<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/RadsLib.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <AjaxGroups>
 
 </AjaxGroups>

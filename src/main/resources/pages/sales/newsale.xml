@@ -3,12 +3,12 @@
 Controller = "com.rainbow.crm.sales.controller.SalesController">
 <Template type= "Transaction"  name = "TransactionTemplate"></Template>
 <Forwards>
-<Forward key ="CANCEL">rdscontroller?page=sales</Forward>
+<Forward key ="CANCEL">controller?page=sales</Forward>
 <Forward key ="SAVE">sales</Forward>
 </Forwards>
-<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
-<IncludeJS>./scripts/sales/SalesFunc.js</IncludeJS>
+<IncludeJS>./js/RadsLib.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/sales/SalesFunc.js</IncludeJS>
 <AjaxGroups>
 <AjaxGroup service ="customerSearch">
 <requestElements >
@@ -137,14 +137,14 @@ Controller = "com.rainbow.crm.sales.controller.SalesController">
 	<Element label = "Ask_For_Feedback"  type = "UIBooleanCheckBox" Id = "txtBoolAskFeedBack" hiddenControlId= "hdnReferencible"   property ="referencible" />	
 
 	<Element type ="UIDialog" Id = "newcustDL" style= "widepopup" >
-	<Element type = "UIIFrame" src ="./rdscontroller?page=quickcustomeradd" style ="fullPageFrameStyle">
+	<Element type = "UIIFrame" src ="./controller?page=quickcustomeradd" style ="fullPageFrameStyle">
 	</Element>
 	</Element>
 </Section>
 
 <Section type ="detailForSale">
 <Element type ="UIDialog" Id = "newprintpop" style= "fullpagepopup" >
-<Element type = "UIIFrame" Id= "printFRM" src ="./rdscontroller?page=transactiondocument" style ="fullPageFrameStyle">
+<Element type = "UIIFrame" Id= "printFRM" src ="./controller?page=transactiondocument" style ="fullPageFrameStyle">
 </Element>
 </Element>
 <Element type ="UITabset" Id = "impexp" style = "uitabstyle" selectedTabStyle= "titleStyleSelected active nav-link" unSelectedTabStyle ="titleStyleUnSelected nav-link" >

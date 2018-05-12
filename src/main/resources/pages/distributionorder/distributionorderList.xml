@@ -3,8 +3,8 @@
 Controller = "com.rainbow.crm.distributionorder.controller.DistributionOrderListController">
 <Template type= "List"  name = "ListTemplate"></Template>
 <Forwards>
-<Forward key ="NEW">rdscontroller?page=newdistributionorder</Forward>
-<Forward key ="EDIT">rdscontroller?page=newdistributionorder</Forward>
+<Forward key ="NEW">controller?page=newdistributionorder</Forward>
+<Forward key ="EDIT">controller?page=newdistributionorder</Forward>
 </Forwards>
 <AjaxGroups>
 <AjaxGroup service ="filterSearch">
@@ -22,8 +22,8 @@ Controller = "com.rainbow.crm.distributionorder.controller.DistributionOrderList
 </responseElements>
 </AjaxGroup>
 </AjaxGroups>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
-<IncludeJS>./scripts/sales/DistributionOrder.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/sales/DistributionOrder.js</IncludeJS>
 <Elements>
  
  

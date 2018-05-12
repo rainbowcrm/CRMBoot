@@ -3,11 +3,11 @@
 Controller = "com.rainbow.crm.enquiry.controller.EnquiryController">
 <Template type= "Transaction"  name = "TransactionTemplate"></Template>
 <Forwards>
-<Forward key ="CANCEL">rdscontroller?page=enquiries</Forward>
+<Forward key ="CANCEL">controller?page=enquiries</Forward>
 <Forward key ="SAVE">enquiries</Forward>
 </Forwards>
-<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/RadsLib.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <AjaxGroups>
 <AjaxGroup service ="divisionTerritorySearch">
 <requestElements event = "">
@@ -198,7 +198,7 @@ Controller = "com.rainbow.crm.enquiry.controller.EnquiryController">
 	</Element>
 	<Element caption = "New Customer"  type = "UIButton"   showInPrevCol ="true" Id = "btnNewCustomer"  style="btn btn-primary" iconStyle="glyphicon glyphicon-plus" onClickJS = "createNewCustomer('newcustDL',this);"  />
 	<Element type ="UIDialog" Id = "newcustDL" style= "widepopup" >
-	<Element type = "UIIFrame" src ="./rdscontroller?page=quickcustomeradd" style ="quickcustaddstyle">
+	<Element type = "UIIFrame" src ="./controller?page=quickcustomeradd" style ="quickcustaddstyle">
 	</Element>
 	</Element>
 

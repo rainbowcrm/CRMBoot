@@ -3,7 +3,7 @@
 Controller = "com.rainbow.framework.query.controller.QueryController">
 <Template type= "General"  name = "generalTemplate"></Template>
 
-<IncludeJS>./scripts/query/QueryFunc.js</IncludeJS>
+<IncludeJS>./js/query/QueryFunc.js</IncludeJS>
 <Elements>
 <UIForm Id ="frmdd" method = "POST"  >
   

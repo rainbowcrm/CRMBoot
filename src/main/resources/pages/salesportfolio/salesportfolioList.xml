@@ -3,8 +3,8 @@
 Controller = "com.rainbow.crm.salesportfolio.controller.SalesPortfolioListController">
 <Template type= "List"  name = "ListTemplate"></Template>
 <Forwards>
-<Forward key ="NEW">rdscontroller?page=newsalesportfolio</Forward>
-<Forward key ="EDIT">rdscontroller?page=newsalesportfolio</Forward>
+<Forward key ="NEW">controller?page=newsalesportfolio</Forward>
+<Forward key ="EDIT">controller?page=newsalesportfolio</Forward>
 </Forwards>
 <AjaxGroups>
 <AjaxGroup service ="filterSearch">
@@ -20,7 +20,7 @@ Controller = "com.rainbow.crm.salesportfolio.controller.SalesPortfolioListContro
 </responseElements>
 </AjaxGroup>
 </AjaxGroups>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <Elements>
  
  

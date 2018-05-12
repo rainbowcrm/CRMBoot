@@ -3,7 +3,7 @@
 Controller = "com.rainbow.crm.login.controller.LoginController">
 <Template type= "General"  name = "loginTemplate"></Template>
 <Forwards>
-<Forward key ="REFRESH">rdscontroller?page=login</Forward>
+<Forward key ="REFRESH">controller?page=login</Forward>
 </Forwards>
 <Elements>
 	<UIForm  Id ="genCC" method = "POST" style="form-signin">

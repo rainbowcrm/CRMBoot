@@ -15,9 +15,9 @@
  <fixedActionField>hdnFixedAction</fixedActionField>
  <SubmitActionField>submitAction</SubmitActionField>
  <FixedActionParamField>hdnFixedActionParam</FixedActionParamField>
- <IncludeJS>./resources/js/general.js</IncludeJS>
- <IncludeJS>./resources/js/dialog-polyfill.js</IncludeJS>
- <IncludeJS>./resources/js/date-polyfill.js</IncludeJS>
+ <IncludeJS>./js/general.js</IncludeJS>
+ <IncludeJS>./js/dialog-polyfill.js</IncludeJS>
+ <IncludeJS>./js/date-polyfill.js</IncludeJS>
  <Errors showin ="Header" style ="errorStyle"></Errors>
  
  <Sections>

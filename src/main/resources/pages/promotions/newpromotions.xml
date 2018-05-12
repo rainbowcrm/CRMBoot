@@ -3,12 +3,12 @@
 Controller = "com.rainbow.crm.promotion.controller.PromotionController">
 <Template type= "Transaction"  name = "TransactionTemplate"></Template>
 <Forwards>
-<Forward key ="CANCEL">rdscontroller?page=promotionslist</Forward>
+<Forward key ="CANCEL">controller?page=promotionslist</Forward>
 <Forward key ="SAVE">promotionslist</Forward>
 </Forwards>
-<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
-<IncludeJS>./scripts/salesportfolio/SalesPortFolio.js</IncludeJS>
+<IncludeJS>./js/RadsLib.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/salesportfolio/SalesPortFolio.js</IncludeJS>
 <AjaxGroups>
 
 

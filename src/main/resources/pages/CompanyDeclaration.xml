@@ -3,10 +3,10 @@
 Controller = "com.techtrade.rads.framework.test.CustomerController">
 <Template type= "General"  name = "generalTemplate"></Template>
 <Forwards>
-<!-- <Forward key ="NEW">rdscontroller?page=CSXML</Forward>  -->
-<Forward key ="DONE">rdscontroller?page=CLXML</Forward>
-<Forward key ="ADD">rdscontroller?page=CSXML</Forward>
-<Forward key ="CANCEL">rdscontroller?page=SSXML</Forward>
+<!-- <Forward key ="NEW">controller?page=CSXML</Forward>  -->
+<Forward key ="DONE">controller?page=CLXML</Forward>
+<Forward key ="ADD">controller?page=CSXML</Forward>
+<Forward key ="CANCEL">controller?page=SSXML</Forward>
 </Forwards>
 
 <Elements>

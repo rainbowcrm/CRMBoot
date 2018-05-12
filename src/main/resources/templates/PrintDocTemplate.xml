@@ -15,8 +15,8 @@
  <SubmitActionField>submitAction</SubmitActionField>
  <FixedActionParamField>hdnFixedActionParam</FixedActionParamField>
   
- <IncludeJS>./resources/js/RadsLib.js</IncludeJS>
- <IncludeJS>./resources/js/dialog-polyfill.js</IncludeJS>
+ <IncludeJS>./js/RadsLib.js</IncludeJS>
+ <IncludeJS>./js/dialog-polyfill.js</IncludeJS>
  <Sections>
   <CoreSection>
  <Section Id = "mainSection" >

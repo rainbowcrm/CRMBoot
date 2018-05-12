@@ -2,8 +2,8 @@
 <Page id = "itemprofile" showinFrame ="true"  title ="Item Profile| Rainbow CRM" Object = "com.rainbow.crm.profile.model.ItemProfile" 
 Controller = "com.rainbow.crm.profile.controller.ItemProfileController">
 <Template type= "Transaction"  name = "TransactionTemplate"></Template>
-<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/RadsLib.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <Elements>
 <UIForm Id ="cust" method = "POST" enctype="multipart/form-data" >
   

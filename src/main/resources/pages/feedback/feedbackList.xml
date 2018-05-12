@@ -3,8 +3,8 @@
 Controller = "com.rainbow.crm.feedback.controller.FeedBackListController">
 <Template type= "List"  name = "ListTemplate"></Template>
 <Forwards>
-<Forward key ="NEW">rdscontroller?page=newfeedback</Forward>
-<Forward key ="EDIT">rdscontroller?page=newfeedback</Forward>
+<Forward key ="NEW">controller?page=newfeedback</Forward>
+<Forward key ="EDIT">controller?page=newfeedback</Forward>
 </Forwards>
 <AjaxGroups>
 <AjaxGroup service ="filterSearch">
@@ -23,7 +23,7 @@ Controller = "com.rainbow.crm.feedback.controller.FeedBackListController">
 </responseElements>
 </AjaxGroup>
 </AjaxGroups>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <Elements>
  
  

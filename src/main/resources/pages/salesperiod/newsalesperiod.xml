@@ -3,12 +3,12 @@
 Controller = "com.rainbow.crm.salesperiod.controller.SalesPeriodController">
 <Template type= "Transaction"  name = "TransactionTemplate"></Template>
 <Forwards>
-<Forward key ="CANCEL">rdscontroller?page=salesperiodlist</Forward>
+<Forward key ="CANCEL">controller?page=salesperiodlist</Forward>
 <Forward key ="SAVE">salesperiodlist</Forward>
 </Forwards>
-<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
-<IncludeJS>./scripts/salesperiod/SalesPeriodFunc.js</IncludeJS>
+<IncludeJS>./js/RadsLib.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/salesperiod/SalesPeriodFunc.js</IncludeJS>
 <AjaxGroups>
 <AjaxGroup service ="itemSearch">
 <requestElements event = "">

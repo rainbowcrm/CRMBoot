@@ -3,8 +3,8 @@
 Controller = "com.rainbow.crm.custcategory.controller.CustCategoryListController">
 <Template type= "List"  name = "ListTemplate"></Template>
 <Forwards>
-<Forward key ="NEW">rdscontroller?page=newcustcategory</Forward>
-<Forward key ="EDIT">rdscontroller?page=newcustcategory</Forward>
+<Forward key ="NEW">controller?page=newcustcategory</Forward>
+<Forward key ="EDIT">controller?page=newcustcategory</Forward>
 </Forwards>
 <AjaxGroups>
 <AjaxGroup service ="filterSearch">
@@ -20,7 +20,7 @@ Controller = "com.rainbow.crm.custcategory.controller.CustCategoryListController
 </AjaxGroup>
 </AjaxGroups>
 
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <Elements>
  
  

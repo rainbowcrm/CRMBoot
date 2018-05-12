@@ -3,10 +3,10 @@
 Controller = "com.rainbow.crm.user.controller.UserController">
 <Template type= "CRUD"  name = "CRUDTemplate"></Template>
 <Forwards>
-<Forward key ="CANCEL">rdscontroller?page=appUsers</Forward>
+<Forward key ="CANCEL">controller?page=appUsers</Forward>
 <Forward key ="SAVE">appUsers</Forward>
 </Forwards>
-<IncludeJS>./scripts/user/User.js</IncludeJS>
+<IncludeJS>./js/user/User.js</IncludeJS>
 <AjaxGroups>
 <AjaxGroup service ="companySearchUsrCreate">
 <requestElements>
@@ -17,7 +17,7 @@ Controller = "com.rainbow.crm.user.controller.UserController">
 </responseElements>
 </AjaxGroup>
 </AjaxGroups>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <Elements>
 <UIForm Id ="cust" method = "POST" >
  

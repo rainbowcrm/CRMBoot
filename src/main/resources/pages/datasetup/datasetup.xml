@@ -2,7 +2,7 @@
 <Page id = "datasetup" showinFrame ="true"  title ="Data Setup| Rainbow CRM" Object = "com.rainbow.framework.setup.model.DataLoader" 
 Controller = "com.rainbow.framework.setup.controller.DataSetupController">
 <Template type= "General"  name = "generalTemplate"></Template>
- <IncludeJS>./resources/js/DataDULoad.js</IncludeJS>
+ <IncludeJS>./js/DataDULoad.js</IncludeJS>
 <Elements>
 <UIForm Id ="frmdd" method = "POST" enctype="multipart/form-data" >
   

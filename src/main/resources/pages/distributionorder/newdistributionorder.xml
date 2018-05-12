@@ -3,11 +3,11 @@
 Controller = "com.rainbow.crm.distributionorder.controller.DistributionOrderController">
 <Template type= "Transaction"  name = "TransactionTemplate"></Template>
 <Forwards>
-<Forward key ="CANCEL">rdscontroller?page=distributionorders</Forward>
+<Forward key ="CANCEL">controller?page=distributionorders</Forward>
 <Forward key ="SAVE">distributionorders</Forward>
 </Forwards>
-<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/RadsLib.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <AjaxGroups>
 <AjaxGroup service ="customerSearch">
 <requestElements >
@@ -62,7 +62,7 @@ Controller = "com.rainbow.crm.distributionorder.controller.DistributionOrderCont
 	<Element label = "Status"  type = "UIText" Id = "txtStatus"  readonly="true"  property ="Status.description" />
 	<Element label = ""  type = "UIHidden" Id = "hdnStatusID"  readonly="true"  property ="Status.code" />
 	<Element type ="UIDialog" Id = "newprintpop" style= "fullpagepopup" >
-	<Element type = "UIIFrame" Id= "printFRM" src ="./rdscontroller?page=transactiondocument" style ="fullPageFrameStyle">
+	<Element type = "UIIFrame" Id= "printFRM" src ="./controller?page=transactiondocument" style ="fullPageFrameStyle">
 	</Element>
 	</Element>
 </Section>

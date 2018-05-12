@@ -2,8 +2,8 @@
 <Page id = "itemimages" showinFrame ="true"  title ="Item Images| Rainbow CRM" Object = "com.rainbow.crm.item.model.ItemImageSet" 
 Controller = "com.rainbow.crm.item.controller.ItemImageController">
 <Template type= "General"  name = "generalTemplate"></Template>
- <IncludeJS>./resources/js/ImageUpload.js</IncludeJS>
- <IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+ <IncludeJS>./js/ImageUpload.js</IncludeJS>
+ <IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <AjaxGroups>
 <AjaxGroup service ="skuSearch">
 <requestElements event = "">

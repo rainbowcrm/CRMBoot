@@ -3,12 +3,12 @@
 Controller = "com.rainbow.crm.purchase.controller.PurchaseController">
 <Template type= "Transaction"  name = "TransactionTemplate"></Template>
 <Forwards>
-<Forward key ="CANCEL">rdscontroller?page=purchases</Forward>
+<Forward key ="CANCEL">controller?page=purchases</Forward>
 <Forward key ="SAVE">purchases</Forward>
 </Forwards>
-<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
-<IncludeJS>./scripts/purchases/PurchaseFunc.js</IncludeJS>
+<IncludeJS>./js/RadsLib.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/purchases/PurchaseFunc.js</IncludeJS>
 <AjaxGroups>
 <AjaxGroup service ="skuSearch">
 <requestElements event = "">

@@ -3,11 +3,11 @@
 Controller = "com.rainbow.crm.saleslead.controller.SalesLeadExtendedController">
 <Template type= "Transaction"  name = "TransactionTemplate"></Template>
 <Forwards>
-<Forward key ="CANCEL">rdscontroller?page=saleslead</Forward>
+<Forward key ="CANCEL">controller?page=saleslead</Forward>
 <Forward key ="SAVE">saleslead</Forward>
 </Forwards>
-<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/RadsLib.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <AjaxGroups>
 <AjaxGroup service ="customerSearch">
 <requestElements >

@@ -22,7 +22,7 @@ Controller = "com.rainbow.crm.dashboard.controller.SalesDashBoardController">
 	  <rangeHeight>300</rangeHeight>
 	  <rangeWidth>500</rangeWidth>
  	</Element>  -->  
- 	<Element type = "UIIFrame" src ="./rdscontroller?page=salesportfoliosplits&amp;graphId=portfoliosplits"  style = "graphWindow">
+ 	<Element type = "UIIFrame" src ="./controller?page=salesportfoliosplits&amp;graphId=portfoliosplits"  style = "graphWindow">
 	</Element>
 </Element>
 
@@ -36,7 +36,7 @@ Controller = "com.rainbow.crm.dashboard.controller.SalesDashBoardController">
 	  <barWidth>30</barWidth>
 	  <noYAxisDivisions>6</noYAxisDivisions>
 	</Element>  -->
- 	<Element type = "UIIFrame" src ="./rdscontroller?page=salesdashboardtargetdata&amp;graphId=targetanalysis"  style="graphWindow">
+ 	<Element type = "UIIFrame" src ="./controller?page=salesdashboardtargetdata&amp;graphId=targetanalysis"  style="graphWindow">
 	</Element>
 	
 </Element>	
@@ -61,7 +61,7 @@ Controller = "com.rainbow.crm.dashboard.controller.SalesDashBoardController">
 	  <noXAxisDivisions>6</noXAxisDivisions>
 	</Element> -->
 	
-	<Element type = "UIIFrame" src ="./rdscontroller?page=salesdashboardsaleshistory&amp;graphId=saleshistory"  style="graphWindow">
+	<Element type = "UIIFrame" src ="./controller?page=salesdashboardsaleshistory&amp;graphId=saleshistory"  style="graphWindow">
 	</Element>
 	
 </Element>
@@ -80,7 +80,7 @@ Controller = "com.rainbow.crm.dashboard.controller.SalesDashBoardController">
 	  <noXAxisDivisions>6</noXAxisDivisions>
 	</Element> -->
 	
-	<Element type = "UIIFrame" src ="./rdscontroller?page=salesleadssplits&amp;graphId=leadsplits"  style="graphWindow">
+	<Element type = "UIIFrame" src ="./controller?page=salesleadssplits&amp;graphId=leadsplits"  style="graphWindow">
 	</Element>
 	
 </Element>

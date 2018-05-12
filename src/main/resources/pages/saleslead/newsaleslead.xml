@@ -3,11 +3,11 @@
 Controller = "com.rainbow.crm.saleslead.controller.SalesLeadController">
 <Template type= "Transaction"  name = "TransactionTemplate"></Template>
 <Forwards>
-<Forward key ="CANCEL">rdscontroller?page=saleslead</Forward>
+<Forward key ="CANCEL">controller?page=saleslead</Forward>
 <Forward key ="SAVE">saleslead</Forward>
 </Forwards>
-<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/RadsLib.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <AjaxGroups>
 <AjaxGroup service ="customerSearch">
 <requestElements >
@@ -115,7 +115,7 @@ Controller = "com.rainbow.crm.saleslead.controller.SalesLeadController">
 	</Element>
 	<Element caption = "New Customer"  type = "UIButton"    Id = "btnNewCustomer"  style="btn btn-primary" iconStyle="glyphicon glyphicon-plus" onClickJS = "createNewCustomer('newcustDL',this);"  />
 	<Element type ="UIDialog" Id = "newcustDL" style= "widepopup" >
-	<Element type = "UIIFrame" src ="./rdscontroller?page=quickcustomeradd" style ="lookupFrameStyle">
+	<Element type = "UIIFrame" src ="./controller?page=quickcustomeradd" style ="lookupFrameStyle">
 	</Element>
 	</Element>
 	

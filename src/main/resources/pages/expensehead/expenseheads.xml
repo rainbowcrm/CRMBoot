@@ -3,11 +3,11 @@
 Controller = "com.rainbow.crm.expensehead.controller.ExpenseHeadController">
 <Template type= "DataSheet"  name = "DataSheetTemplate"></Template>
 <Forwards>
-<Forward key ="NEW">rdscontroller?page=expenseheads</Forward>
-<Forward key ="EDIT">rdscontroller?page=expenseheads</Forward>
+<Forward key ="NEW">controller?page=expenseheads</Forward>
+<Forward key ="EDIT">controller?page=expenseheads</Forward>
 </Forwards>
-<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/RadsLib.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <Elements>
  
  

@@ -3,11 +3,11 @@
 Controller = "com.rainbow.crm.expensevoucher.controller.ExpenseVoucherController">
 <Template type= "Transaction"  name = "TransactionTemplate"></Template>
 <Forwards>
-<Forward key ="CANCEL">rdscontroller?page=openexpenses</Forward>
+<Forward key ="CANCEL">controller?page=openexpenses</Forward>
 <Forward key ="SAVE">openexpenses</Forward>
 </Forwards>
-<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/RadsLib.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <AjaxGroups>
 </AjaxGroups>
 

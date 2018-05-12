@@ -2,10 +2,10 @@
 <Page id = "topics" showinFrame ="true"  title ="Topics | Rainbow CRM" Object = "com.rainbow.crm.topic.model.TopicSet" 
 Controller = "com.rainbow.crm.topic.controller.TopicSetController">
 <Template type= "General"  name = "generalTemplate"></Template>
-<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
-<IncludeJS>./scripts/salesportfolio/SalesPortFolio.js</IncludeJS>
-<IncludeJS>./scripts/topic/topic.js</IncludeJS>
+<IncludeJS>./js/RadsLib.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/salesportfolio/SalesPortFolio.js</IncludeJS>
+<IncludeJS>./js/topic/topic.js</IncludeJS>
 <AjaxGroups>
 </AjaxGroups>
 

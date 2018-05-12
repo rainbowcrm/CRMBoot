@@ -18,7 +18,7 @@ Controller = "com.rainbow.crm.alert.controller.AlertListController">
 </AjaxGroup>
 </AjaxGroups>
 
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <Elements>
  
  

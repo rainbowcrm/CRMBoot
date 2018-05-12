@@ -16,12 +16,12 @@ Controller = "com.rainbow.crm.dashboard.controller.SalesDashBoardController">
 <Element type = "UITableRow" >
 <Element type = "UITableCol" width ="40%" >
 
- 	<Element type = "UIIFrame" src ="./rdscontroller?page=divassocsalessplits&amp;graphId=divassocsalessplits"  style = "graphWindow">
+ 	<Element type = "UIIFrame" src ="./controller?page=divassocsalessplits&amp;graphId=divassocsalessplits"  style = "graphWindow">
 	</Element>
 </Element>
 
 <Element type = "UITableCol" width ="50%" >
-		<Element type = "UIIFrame" src ="./rdscontroller?page=divsalehistory&amp;graphId=divsaleshistory"  style = "graphWindow">
+		<Element type = "UIIFrame" src ="./controller?page=divsalehistory&amp;graphId=divsaleshistory"  style = "graphWindow">
 	</Element>
 </Element>
 
@@ -33,7 +33,7 @@ Controller = "com.rainbow.crm.dashboard.controller.SalesDashBoardController">
 <Element type = "UITableRow" >
 <Element type = "UITableCol" width ="50%" >
  	
-	<Element type = "UIIFrame" src ="./rdscontroller?page=divtargetanalysis&amp;graphId=divtargetanalysis"  style="graphWindow">
+	<Element type = "UIIFrame" src ="./controller?page=divtargetanalysis&amp;graphId=divtargetanalysis"  style="graphWindow">
 	</Element>
 	
 </Element>
@@ -41,7 +41,7 @@ Controller = "com.rainbow.crm.dashboard.controller.SalesDashBoardController">
 <Element type = "UITableCol" width ="50%" >
 
 	
-	<Element type = "UIIFrame" src ="./rdscontroller?page=divsalesleadsplits&amp;graphId=divmgrsalesleadsplits"  style = "graphWindow">
+	<Element type = "UIIFrame" src ="./controller?page=divsalesleadsplits&amp;graphId=divmgrsalesleadsplits"  style = "graphWindow">
 	</Element>
 </Element>	
 

@@ -3,10 +3,10 @@
 Controller = "com.rainbow.crm.item.controller.ItemAttributeController">
 <Template type= "Transaction"  name = "TransactionTemplate"></Template>
 <Forwards>
-<Forward key ="CANCEL">rdscontroller?page=itemattributes</Forward>
+<Forward key ="CANCEL">controller?page=itemattributes</Forward>
 <Forward key ="SAVE">itemattributes</Forward>
 </Forwards>
- <IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+ <IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <AjaxGroups>
 </AjaxGroups>
 <Elements>

@@ -3,11 +3,11 @@
 Controller = "com.rainbow.crm.salespitch.controller.SalespitchController">
 <Template type= "CRUD"  name = "CRUDTemplate"></Template>
 <Forwards>
-<Forward key ="CANCEL">rdscontroller?page=salespitches</Forward>
+<Forward key ="CANCEL">controller?page=salespitches</Forward>
 <Forward key ="SAVE">salespitches</Forward>
 </Forwards>
-<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/RadsLib.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <AjaxGroups>
 <AjaxGroup service ="divisionTerritorySearch">
 <requestElements event = "">

@@ -2,8 +2,8 @@
 <Page id = "customerprofile" showinFrame ="true"  title ="Customer Profile| Rainbow CRM" Object = "com.rainbow.crm.profile.model.CustomerProfile" 
 Controller = "com.rainbow.crm.profile.controller.CustomerProfileController">
 <Template type= "Transaction"  name = "TransactionTemplate"></Template>
-<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/RadsLib.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <AjaxGroups>
 <AjaxGroup service ="customerSearch">
 <requestElements >

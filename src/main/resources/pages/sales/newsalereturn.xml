@@ -3,12 +3,12 @@
 Controller = "com.rainbow.crm.sales.controller.SalesController">
 <Template type= "Transaction"  name = "TransactionTemplate"></Template>
 <Forwards>
-<Forward key ="CANCEL">rdscontroller?page=salesreturns</Forward>
+<Forward key ="CANCEL">controller?page=salesreturns</Forward>
 <Forward key ="SAVE">salesreturns</Forward>
 </Forwards>
-<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
-<IncludeJS>./scripts/sales/SalesFunc.js</IncludeJS>
+<IncludeJS>./js/RadsLib.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/sales/SalesFunc.js</IncludeJS>
 <AjaxGroups>
 <AjaxGroup service ="customerSearch">
 <requestElements >
@@ -78,7 +78,7 @@ Controller = "com.rainbow.crm.sales.controller.SalesController">
 
 <Section type ="detail">
 <Element type ="UIDialog" Id = "newprintpop" style= "fullpagepopup" >
-<Element type = "UIIFrame" Id= "printFRM" src ="./rdscontroller?page=transactiondocument" style ="lookupFrameStyle">
+<Element type = "UIIFrame" Id= "printFRM" src ="./controller?page=transactiondocument" style ="lookupFrameStyle">
 </Element>
 </Element>
 <Element type ="UITabset" Id = "impexp" style = "uitabstyle" selectedTabStyle= "titleStyleSelected active nav-link" unSelectedTabStyle ="titleStyleUnSelected nav-link" >

@@ -3,11 +3,11 @@
 Controller = "com.rainbow.crm.wishlist.controller.WishListController">
 <Template type= "Transaction"  name = "TransactionTemplate"></Template>
 <Forwards>
-<Forward key ="CANCEL">rdscontroller?page=wishlist</Forward>
+<Forward key ="CANCEL">controller?page=wishlist</Forward>
 <Forward key ="SAVE">wishlist</Forward>
 </Forwards>
-<IncludeJS>./resources/js/RadsLib.js</IncludeJS>
-<IncludeJS>./scripts/CRMGeneral.js</IncludeJS>
+<IncludeJS>./js/RadsLib.js</IncludeJS>
+<IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <AjaxGroups>
 <AjaxGroup service ="customerSearch">
 <requestElements >
@@ -77,7 +77,7 @@ Controller = "com.rainbow.crm.wishlist.controller.WishListController">
 	</Element>
 	<Element caption = "New_Customer"  type = "UIButton" style="btn btn-primary" iconStyle="glyphicon glyphicon-plus"   showInPrevCol ="true"   Id = "btnNewCustomer"  onClickJS = "createNewCustomer('newcustDL',this);"  />
 	<Element type ="UIDialog" Id = "newcustDL" style= "widepopup" showInPrevCol ="true" >
-	<Element type = "UIIFrame" src ="./rdscontroller?page=quickcustomeradd" style ="lookupFrameStyle">
+	<Element type = "UIIFrame" src ="./controller?page=quickcustomeradd" style ="lookupFrameStyle">
 	</Element>
 	</Element>
 		<Element label = "Associate"  type = "UILookupDataList"  Id = "lstHeaderAssociate"  property ="associate.userId"    listId="lsthdrAss"  additionalInputControl = "lstInvDivision">
