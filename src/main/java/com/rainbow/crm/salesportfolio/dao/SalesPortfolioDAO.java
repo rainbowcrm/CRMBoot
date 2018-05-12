@@ -36,13 +36,16 @@ public class SalesPortfolioDAO  extends HibernateDAO{
 
 	public List<Object> getPortfoliosforsku(int divisionId, int itemId, int productId, int brandId, int categoryId) {
 		Session session = openSession(false);
-		Query query = session.createQuery(" from SalesPortfolio parent  left join   SalesPortfolioLine as line with parent.id = line.salesPortfolioDoc.id " + 
+		Query query = session.createQuery(" from SalesPortfolio parent  left outer join   parent.salesPortfolioLines  line  " +
 		    "  where parent.division.id = :divisionId and  parent.voided = false and parent.expired= false  and(  " +
 		     " ( line.portfolioType.code = 'SPFITEM' and line.portfolioKey = :itemId ) or " +
 			"  ( line.portfolioType.code = 'SPFPROD' and line.portfolioKey = :productId ) or " +
 			" ( line.portfolioType.code = 'SPFBRAND' and line.portfolioKey = :brandId ) or " +
 			"  ( line.portfolioType.code = 'SPFCATG' and line.portfolioKey = :categoryId )  " +
 				" )" );
+
+		/*Query query = session.createQuery(" from SalesPortfolio parent  left outer join   parent.salesPortfolioLines  line  " +
+				"  where parent.division.id = :divisionId and  parent.voided = false and parent.expired= false " );*/
 		try {
 		query.setCacheable(true);
 		query.setParameter("divisionId", divisionId);

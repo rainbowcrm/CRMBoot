@@ -37,7 +37,7 @@ Controller = "com.rainbow.crm.product.controller.ProductFAQController">
 	 <lookupType>product</lookupType>
 
 	</Element>
-	<Element caption = "Fetch"  type = "UIButton" Id = "btnFetchAll"  style="button" fixedAction ="FixedAction.ACTION_READ"   />	
+	<Element caption = "Fetch"  type = "UIButton" Id = "btnFetchAll" iconStyle="glyphicon glyphicon-search"  style="button" fixedAction ="FixedAction.ACTION_READ"   />
 	
 </Section>
 <Section type ="detailCRUDStyleForPage">

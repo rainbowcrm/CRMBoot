@@ -19,11 +19,14 @@ public class Logwriter {
 	public  static void logException(String message , Class currentClass , Exception ex)
 	{
 		LogManager.getLogger(currentClass).error(message,ex);
+		ex.printStackTrace();
 	}
 
 	public  static void error(Exception ex)
 	{
+
 		LogManager.getLogger(INSTANCE.getClass()).error(ex);
+		ex.printStackTrace();
 	}
 
 	public  static void debug(String message)

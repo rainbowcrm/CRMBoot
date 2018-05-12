@@ -15,6 +15,8 @@
     <Pages>
         <Page id = "landing" definition ="/resources/pages/landing/landing.xml" modelclass = "com.rainbow.common.landing.model.LandingModel" >
         </Page>
+        <Page id = "noaccesslanding" definition ="/resources/pages/landing/noaccesslanding.xml" modelclass = "com.rainbow.common.landing.model.LandingModel" >
+        </Page>
         <Page id = "login" definition ="/resources/pages/login/login.xml" modelclass = "com.rainbow.crm.login.model.Login" >
         </Page>
         <Page id = "noaccesspage" definition ="/resources/pages/login/noaccesspage.xml" modelclass = "com.rainbow.crm.login.model.DummyObject" >

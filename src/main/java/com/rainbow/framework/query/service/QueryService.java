@@ -13,6 +13,8 @@ import java.util.StringTokenizer;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
+import org.apache.velocity.runtime.RuntimeConstants;
+import org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader;
 import org.springframework.util.StringUtils;
 
 import com.rainbow.crm.common.CRMAppConfig;
@@ -327,8 +329,12 @@ public class QueryService implements IQueryService{
         try {
         User user = context.getLoggedInUser();
         Company company= CommonUtil.getCompany(context.getLoggedinCompany());
-        VelocityEngine ve = CommonUtil.getVelocityEngine();
-        Template t = ve.getTemplate("queryResult.vm" );
+        //VelocityEngine ve = CommonUtil.getVelocityEngine();
+			VelocityEngine ve = new VelocityEngine();
+        ve.setProperty(RuntimeConstants.RESOURCE_LOADER, "classpath");
+		ve.setProperty("classpath.resource.loader.class", ClasspathResourceLoader.class.getName());
+		ve.init();
+        Template t = ve.getTemplate("vmtemplates//queryResult.vm" );
         VelocityContext velocityContext = new VelocityContext();
         velocityContext.put("companyName", company.getName());
         velocityContext.put("title", externalize.externalize(context, "Query_Result"));

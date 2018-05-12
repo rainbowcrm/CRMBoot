@@ -28,8 +28,7 @@ public class SkuAjaxService implements IAjaxLookupService {
 	@Override
 	public String lookupValues(Map<String, String> searchFields,
 			IRadsContext ctx) {
-		CRMContext context = (CRMContext) ctx;
-		String code = searchFields.get("Code");
+		CRMContext context = (CRMContext) ctx;String code = searchFields.get("Code");
 		String barCode = searchFields.get("Barcode");
 		String itName = searchFields.get("Name");
 		String divisionId = searchFields.get("Division");

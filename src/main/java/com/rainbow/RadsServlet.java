@@ -530,9 +530,10 @@ public class RadsServlet extends HttpServlet {
 
             write(resp,page,page,object) ;
         } catch(RadsAuthenticationException ex){
-            resp.sendError(401);
+            resp.sendRedirect("./controller?page=login");
         }catch(RadsAuthorizationException ex){
-            resp.sendError(403);
+            resp.sendRedirect("./controller?page=noaccesspage");
+
         }catch (RadsException ex) {
             ex.printStackTrace();
             throw new ServletException(ex.getMessage());
