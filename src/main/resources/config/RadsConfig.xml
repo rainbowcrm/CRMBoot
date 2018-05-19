@@ -5,12 +5,14 @@
     </ExternalizeFacade>
     <Properties>
         <appURL>http://localhost:8080/</appURL>
+        <!--<appURL>http://pharmacrm.duckdns.org:10500/</appURL>-->
         <settings>com.rainbow.crm.common.CRMDefaultSettings</settings>
         <portalPrefix></portalPrefix>
         <!-- AWS entry <appURL>http://ec2-35-154-225-199.ap-south-1.compute.amazonaws.com:8080/</appURL>
         <portalPrefix>primuscrm</portalPrefix>  -->
         <bootstrapFolder>./vendor</bootstrapFolder>
         <useGoogleforGraphs>false</useGoogleforGraphs>
+        <controllerName>controller</controllerName>
     </Properties>
     <Pages>
         <Page id = "landing" definition ="/resources/pages/landing/landing.xml" modelclass = "com.rainbow.common.landing.model.LandingModel" >

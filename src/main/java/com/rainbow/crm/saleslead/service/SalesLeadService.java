@@ -211,9 +211,9 @@ public class SalesLeadService extends AbstractionTransactionService implements I
 			parameters.put("HeaderNote","Please find the quotation based on our reference");
 			parameters.put("LeadId", lead.getId());
 			Connection connection  = ConnectionCreater.getConnection() ;
-			URL resource = this.getClass().getResource("/jaspertemplates/QuotationFormat1.jrxml");
+			InputStream resource = this.getClass().getResourceAsStream("/jaspertemplates/QuotationFormat1.jrxml");
 			
-			JasperDesign jasperDesign = JRXmlLoader.load(resource.getPath());
+			JasperDesign jasperDesign = JRXmlLoader.load(resource);
 	        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign); 
 	        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, connection);
 	        byte[] output = JasperExportManager.exportReportToPdf(jasperPrint); 

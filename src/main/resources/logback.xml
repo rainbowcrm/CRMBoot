@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
 
-<!--z    <property name="DEV_HOME" value="/apps/pharma/logs" />-->
-    <property name="DEV_HOME" value="c:/apps/CRMBoot/logs" />
+   <!-- <property name="DEV_HOME" value="/apps/crm/logs" /> -->
+    <property name="DEV_HOME" value="c:/apps/CRMBoot/logs" /> -->
 
     <appender name="FILE-AUDIT"
               class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -30,8 +30,22 @@
         <appender-ref ref="FILE-AUDIT" />
     </logger>
 
+
+    <!--<root level="info">
+        <appender-ref ref="FILE-AUDIT" />
+    </root>
+
+    <root level="trace">
+        <appender-ref ref="FILE-AUDIT" />
+    </root>-->
+
+    <root level="debug">
+        <appender-ref ref="FILE-AUDIT" />
+    </root>
+
     <root level="error">
         <appender-ref ref="FILE-AUDIT" />
     </root>
+
 
 </configuration>

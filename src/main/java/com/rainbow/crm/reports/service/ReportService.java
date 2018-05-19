@@ -1,5 +1,6 @@
 package com.rainbow.crm.reports.service;
 
+import java.io.InputStream;
 import java.net.URL;
 import java.sql.Connection;
 import java.util.HashMap;
@@ -31,41 +32,42 @@ public class ReportService  implements IReportService{
 		parameters.put("companyId", context.getLoggedinCompany());
 		parameters.put("companyName", context.getLoggedInUser().getCompany().getName());
 		Connection connection  = ConnectionCreater.getConnection() ;
-		URL resource = null;
+		InputStream resource = null;
 		if(report.getDivision() == null || report.getDivision().getId() == -1 ) {
 			if(Utils.isNull(report.getReportType()) || "DailySales".equalsIgnoreCase(report.getReportType()))
-				resource = this.getClass().getResource("/jaspertemplates/Daily_Sales.jrxml");
+				resource = this.getClass().getResourceAsStream("/jaspertemplates/Daily_Sales.jrxml");
 			else if ("DailyItemSales".equalsIgnoreCase(report.getReportType()))  
-				resource = this.getClass().getResource("/jaspertemplates/Daily_Item_Sale.jrxml");
+				resource = this.getClass().getResourceAsStream("/jaspertemplates/Daily_Item_Sale.jrxml");
 			else if ("DailyProductSales".equalsIgnoreCase(report.getReportType()))  
-				resource = this.getClass().getResource("/jaspertemplates/Daily_Product_Sale.jrxml");
+				resource = this.getClass().getResourceAsStream("/jaspertemplates/Daily_Product_Sale.jrxml");
 			else if ("DailyCategorySales".equalsIgnoreCase(report.getReportType()))  
-				resource = this.getClass().getResource("/jaspertemplates/Daily_Category_Sale.jrxml");
+				resource = this.getClass().getResourceAsStream("/jaspertemplates/Daily_Category_Sale.jrxml");
 			else if ("DailyBrandSales".equalsIgnoreCase(report.getReportType()))  
-				resource = this.getClass().getResource("/jaspertemplates/Daily_Brand_Sale.jrxml");
+				resource = this.getClass().getResourceAsStream("/jaspertemplates/Daily_Brand_Sale.jrxml");
 			else if ("DailyAssociateSales".equalsIgnoreCase(report.getReportType()))  
-				resource = this.getClass().getResource("/jaspertemplates/Daily_Associate_Sale.jrxml");
+				resource = this.getClass().getResourceAsStream("/jaspertemplates/Daily_Associate_Sale.jrxml");
 		}else {
 			IDivisionService divisionService = (IDivisionService)SpringObjectFactory.INSTANCE.getInstance("IDivisionService");
 			Division div = (Division)divisionService.getById(report.getDivision().getId());
 			report.setDivision(div);
 			if(Utils.isNull(report.getReportType()) || "DailySales".equalsIgnoreCase(report.getReportType()))
-				resource = this.getClass().getResource("/jaspertemplates/Daily_Division_Sales.jrxml");
+				resource = this.getClass().getResourceAsStream("/jaspertemplates/Daily_Division_Sales.jrxml");
 			else if ("DailyItemSales".equalsIgnoreCase(report.getReportType()))  
-				resource = this.getClass().getResource("/jaspertemplates/Daily_Division_Item_Sale.jrxml");
+				resource = this.getClass().getResourceAsStream("/jaspertemplates/Daily_Division_Item_Sale.jrxml");
 			else if ("DailyProductSales".equalsIgnoreCase(report.getReportType()))  
-				resource = this.getClass().getResource("/jaspertemplates/Daily_Division_Product_Sale.jrxml");
+				resource = this.getClass().getResourceAsStream("/jaspertemplates/Daily_Division_Product_Sale.jrxml");
 			else if ("DailyCategorySales".equalsIgnoreCase(report.getReportType()))  
-				resource = this.getClass().getResource("/jaspertemplates/Daily_Division_Category_Sale.jrxml");
+				resource = this.getClass().getResourceAsStream("/jaspertemplates/Daily_Division_Category_Sale.jrxml");
 			else if ("DailyBrandSales".equalsIgnoreCase(report.getReportType()))  
-				resource = this.getClass().getResource("/jaspertemplates/Daily_Division_Brand_Sale.jrxml");
+				resource = this.getClass().getResourceAsStream("/jaspertemplates/Daily_Division_Brand_Sale.jrxml");
 			else if ("DailyAssociateSales".equalsIgnoreCase(report.getReportType()))  
-				resource = this.getClass().getResource("/jaspertemplates/Daily_Division_Associate_Sale.jrxml");
+				resource = this.getClass().getResourceAsStream("/jaspertemplates/Daily_Division_Associate_Sale.jrxml");
+
 			parameters.put("divisionId", report.getDivision().getId());
 			parameters.put("divisionName", report.getDivision().getName());
 		}
 		
-		JasperDesign jasperDesign = JRXmlLoader.load(resource.getPath());
+		JasperDesign jasperDesign = JRXmlLoader.load(resource);
         JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign); 
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, connection);
         byte[] output = JasperExportManager.exportReportToPdf(jasperPrint); 

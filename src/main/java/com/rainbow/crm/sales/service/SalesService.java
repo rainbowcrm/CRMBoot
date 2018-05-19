@@ -1,6 +1,7 @@
 package com.rainbow.crm.sales.service;
 
 import java.io.File;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.StringWriter;
 import java.net.URL;
@@ -707,13 +708,12 @@ public class SalesService extends AbstractionTransactionService implements ISale
 			parameters.put("HeaderNote","Sales Invoice");
 			parameters.put("LeadId", sales.getId());
 			Connection connection  = ConnectionCreater.getConnection() ;
-			URL resource = this.getClass().getResource("/jaspertemplates/InvoiceFormat_1.jrxml");
-			
-			JasperDesign jasperDesign = JRXmlLoader.load(resource.getPath());
+			InputStream resource = this.getClass().getResourceAsStream("/jaspertemplates/InvoiceFormat_1.jrxml");
+			JasperDesign jasperDesign = JRXmlLoader.load(resource);
 	        JasperReport jasperReport = JasperCompileManager.compileReport(jasperDesign); 
 	        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, connection);
 	        byte[] output = JasperExportManager.exportReportToPdf(jasperPrint); 
-	      // JasperViewer.viewReport(jasperPrint); 
+	      // JasperViewer.viewReport(jasperPrint);
 	        return output; 
 	        
 			

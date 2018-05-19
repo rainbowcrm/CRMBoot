@@ -160,7 +160,8 @@ function showLookupDialogWithAdditionalFields(id,curControl,additionalControl,ad
 	console.log('additionalFields=' + additionalFields + ": id=" + id); 
 	clickedCellIndex= index;
 	var dialog = document.getElementById(id);  
-
+    console.log('element by id =' + document.getElementById('idFRM' +id)) ;
+    console.log('element by id contentwindow =' + document.getElementById('idFRM' +id).contentWindow) ;
 	if( additionalControl != null &&  additionalControl != '' &&  additionalControl != 'undefined' && additionalControl != 'null')
 		document.getElementById('idFRM' +id).contentWindow.document.getElementById('additionalParam').value = document.getElementById(additionalControl).value;
 	
