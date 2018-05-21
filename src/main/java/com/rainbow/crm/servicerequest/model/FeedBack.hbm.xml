@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping>
+<class name="com.rainbow.crm.servicerequest.model.ServiceRequest" table="SERVICE_REQUEST" lazy="false">
+	<meta attribute="class-description">
+         This class contains the Service  Request
+      </meta>
+       <id name="id" type="int" column="id">
+      </id>
+      <version name="objectVersion" column="version" type="integer"></version>
+      <many-to-one name="company" column ="company_id" not-null="true" lazy="false" ></many-to-one>
+      <many-to-one name="division" column ="division_id" not-null="true" lazy="false" ></many-to-one>
+      <property name="docNumber" column="DOC_NO" type="string"/>
+      <many-to-one name="customer" column ="customer_id"  lazy="false" ></many-to-one>
+      <property name="serviceRequestDate" column="SERVICE_REQUEST_DATE" type="date"/>
+      <property name="serviceCompletionDate" column="SERVICE_COMPLETION_DATE" type="date"/>
+      <many-to-one name="serviceAssociate" column ="SERVICE_ASSOCIATE" not-null="true" lazy="false" ></many-to-one>
+      <many-to-one name="sales" column ="SALES_ID" not-null="false" lazy="false" ></many-to-one>
+      <many-to-one name="serviceStatus" column ="SERVICE_STATUS" not-null="false" lazy="false" ></many-to-one>
+      <many-to-one name="serviceType" column ="SERVICE_TYPE" not-null="false" lazy="false" ></many-to-one>
+      <many-to-one name="visitMode" column ="VISIT_MODE" not-null="false" lazy="false" ></many-to-one>
+      <property name="paidService" column="PAID_SERVICE" type="boolean"/>
+      <property name="serviceCharge" column="SERVICE_CHARGE" type="double"/>
+      <property name="serviceTax" column="SERVICE_TAX" type="double"/>
+      <property name="totalCharge" column="TOTAL_CHARGE" type="double"/>
+      <property name="deleted" column="IS_DELETED" type="boolean"/>
+      <property name="comments" column="comments" type="string"/>
+      <property name="createdDate" column="created_date" type="timestamp" update="false"/>
+      <property name="lastUpdateDate" column="last_updated_date" type="timestamp"/>
+      <property name="createdUser" column="created_by" type="string" update="false"/>
+      <property name="lastUpdateUser" column="last_updated_by" type="string"/>
+       <set   name="serviceRequestLines" cascade="all" inverse="true" lazy="false"  order-by="lineNumber" >
+     	 <key column="FEEDBACK_ID"></key>
+      <one-to-many class="com.rainbow.crm.servicerequest.model.ServiceRequestLine"/>
+      </set>  
+ </class>
+</hibernate-mapping>
