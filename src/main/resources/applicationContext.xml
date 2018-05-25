@@ -78,6 +78,8 @@
     </bean>
     <bean id="IFeedBackService" class="com.rainbow.crm.feedback.service.FeedBackService">
     </bean>
+    <bean id="IServiceRequestService" class="com.rainbow.crm.servicerequest.service.ServiceRequestService">
+    </bean>
     <bean id="IEnquiryService" class="com.rainbow.crm.enquiry.service.EnquiryService">
     </bean>
     <bean id="IDocumentService" class="com.rainbow.crm.document.service.DocumentService">
@@ -190,6 +192,9 @@
     <bean id="FeedBackDAO" class="com.rainbow.crm.feedback.dao.FeedBackDAO">
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
+    <bean id="ServiceRequestDAO" class="com.rainbow.crm.servicerequest.dao.ServiceRequestDAO">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
     <bean id="EnquiryDAO" class="com.rainbow.crm.enquiry.dao.EnquiryDAO">
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
@@ -296,6 +301,8 @@
                 <value>com/rainbow/crm/territory/model/TerritoryLine.hbm.xml</value>
                 <value>com/rainbow/crm/feedback/model/FeedBack.hbm.xml</value>
                 <value>com/rainbow/crm/feedback/model/FeedBackLine.hbm.xml</value>
+                <value>com/rainbow/crm/servicerequest/model/ServiceRequest.hbm.xml</value>
+                <value>com/rainbow/crm/servicerequest/model/ServiceRequestLine.hbm.xml</value>
                 <value>com/rainbow/crm/corpsalesperiod/model/CorpSalesPeriod.hbm.xml</value>
                 <value>com/rainbow/crm/corpsalesperiod/model/CorpSalesPeriodLine.hbm.xml</value>
                 <value>com/rainbow/crm/corpsalesperiod/model/CorpSalesPeriodDivision.hbm.xml</value>

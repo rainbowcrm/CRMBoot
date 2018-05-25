@@ -70,6 +70,8 @@
         </Page>
         <Page id = "feedbacks" definition ="/resources/pages/feedback/feedbackList.xml" modelclass = "com.rainbow.crm.feedback.model.FeedBack" >
         </Page>
+        <Page id = "servicerequests" definition ="/resources/pages/servicerequest/servicerequestList.xml" modelclass = "com.rainbow.crm.servicerequest.model.ServiceRequest" >
+        </Page>
         <Page id = "dashboard" definition ="/resources/pages/dashboards/salesdashboard.xml" modelclass = "com.rainbow.crm.dashboard.model.SalesDashBoard" >
         </Page>
         <Page id = "divmgrdashboard" definition ="/resources/pages/dashboards/divmgrdashboard.xml"  accessCode ="MANAGER:DASHBOARD" modelclass = "com.rainbow.crm.dashboard.model.SalesDashBoard" >
@@ -164,6 +166,8 @@
         <Page id = "newsalespitch" definition ="/resources/pages/salespitch/newsalespitch.xml" modelclass = "com.rainbow.crm.salespitch.model.Salespitch" >
         </Page>
         <Page id = "newfeedback" definition ="/resources/pages/feedback/newfeedback.xml" modelclass = "com.rainbow.crm.feedback.model.FeedBack" >
+        </Page>
+        <Page id = "newservicerequest" definition ="/resources/pages/servicerequest/newservicerequest.xml" modelclass = "com.rainbow.crm.servicerequest.model.ServiceRequest" >
         </Page>
         <Page id = "newsku" definition ="/resources/pages/item/newsku.xml"  accessCode ="MERCH:SKUS" modelclass = "com.rainbow.crm.item.model.Sku" >
         </Page>
@@ -430,8 +434,10 @@
                 <Element label = "" type = "UIMenu" Id = "menu42" style="menustyle" title="Purchase_Orders" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=purchases"  iconStyle="fa fa-fw fa-reorder" />
                 <Element label = "" type = "UIMenu" Id = "menu43" style="menustyle" title="Sales_Orders" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=sales"   iconStyle="fa fa-fw fa-shopping-cart"/>
                 <Element label = "" type = "UIMenu" Id = "menu44" style="menustyle" title="Delivery_Orders" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=distributionorders"  iconStyle="fa fa-fw fa-bus" />
+                <Element label = "" type = "UIMenu" Id = "menu45" style="menustyle" title="Service_Requests" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=servicerequests"   iconStyle="fa fa-fw fa-exchange" />
+
                 <Element label = "" type = "UIMenu" Id = "menu400" style="menustyleParent" title="Returns" groupId= "menuGRP0071"  >
-                    <Element label = "" type = "UIMenu" Id = "menu401" style="menustyle" title="Sales_Returns" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=salesreturns"   iconStyle="fa fa-fw fa-exchange" />
+                <Element label = "" type = "UIMenu" Id = "menu401" style="menustyle" title="Sales_Returns" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=salesreturns"   iconStyle="fa fa-fw fa-exchange" />
                     <!-- <Element label = "" type = "UIMenu" Id = "menu402" style="menustyle" title="Purchase Returns" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=purchasereturns"   />  -->
                 </Element>
             </Element>

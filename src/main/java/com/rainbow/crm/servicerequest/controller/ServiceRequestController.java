@@ -59,13 +59,9 @@ public class ServiceRequestController extends CRMTransactionController{
 			ServiceRequest serviceRequest = (ServiceRequest) getObject();
 			Sales sales = serviceRequest.getSales(); 
 			if (sales != null) {		
-				if(sales.getSalesMan() != null ) {
-					ans.put(sales.getSalesMan().getUserId(), sales.getSalesMan().getUserId());
-				}
+
 				for(SalesLine line : sales.getSalesLines()) {
-					if(line.getUser() != null ) {
-						ans.put(line.getUser().getUserId(), line.getUser().getUserId());
-					}
+
 					if(line.getSku() != null ) {
 						ans.put(String.valueOf(line.getSku().getId()), line.getSku().getName());
 					}
@@ -76,17 +72,7 @@ public class ServiceRequestController extends CRMTransactionController{
 	
 	}
 	
-	public Map <String, String > getReasonCodes() {
-		IReasonCodeService reasonCodeService = (IReasonCodeService)SpringObjectFactory.INSTANCE.getInstance("IReasonCodeService");
-		Map<String,String > ans = new HashMap<String,String> ();
-		List<ReasonCode> reasons = reasonCodeService.getAllReasonsforType(new FiniteValue(CRMConstants.REASON_TYPE.FEEDBACK_REASON), (CRMContext) getContext());
-		reasons.forEach( reasonCode ->  {
-			ans.put(String.valueOf(reasonCode. getId()),reasonCode.getReason());
-		});
 
-		
-		return ans;
-	}
 
 	
 	

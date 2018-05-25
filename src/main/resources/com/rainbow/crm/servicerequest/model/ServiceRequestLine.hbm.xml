@@ -4,9 +4,9 @@
  "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
 
 <hibernate-mapping>
-<class name="com.rainbow.crm.feedback.model.FeedBackLine" table="FEEDBACK_LINES" lazy="false">
+<class name="com.rainbow.crm.servicerequest.model.ServiceRequestLine" table="SERVICE_LINES" lazy="false">
 	<meta attribute="class-description">
-         This class contains the FeedBack Line
+         This class contains the Service Request Line
       </meta>
        <id name="id" type="int" column="id">
       </id>
@@ -26,7 +26,7 @@
       <property name="lastUpdateDate" column="last_updated_date" type="timestamp"/>
       <property name="createdUser" column="created_by" type="string" update="false"/>
       <property name="lastUpdateUser" column="last_updated_by" type="string"/>
-      <many-to-one name="feedBackDoc" column ="FEEDBACK_ID" 
+      <many-to-one name="serviceRequestDoc" column ="SERVICE_ID"
        not-null="true"></many-to-one>  
 </class>
 </hibernate-mapping>

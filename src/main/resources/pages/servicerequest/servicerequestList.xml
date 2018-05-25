@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Page id = "feedbackList" showinFrame ="true" title ="Sales Leads | Rainbow CRM"  Object = "com.rainbow.crm.feedback.model.FeedBack"
-Controller = "com.rainbow.crm.feedback.controller.FeedBackListController">
+<Page id = "servicerequestList" showinFrame ="true" title ="Service Request | Rainbow CRM"  Object = "com.rainbow.crm.servicerequest.model.ServiceRequest"
+Controller = "com.rainbow.crm.servicerequest.controller.ServiceRequestListController">
 <Template type= "List"  name = "ListTemplate"></Template>
 <Forwards>
-<Forward key ="NEW">controller?page=newfeedback</Forward>
-<Forward key ="EDIT">controller?page=newfeedback</Forward>
+<Forward key ="NEW">controller?page=newservicerequest</Forward>
+<Forward key ="EDIT">controller?page=newservicerequest</Forward>
 </Forwards>
 <AjaxGroups>
 <AjaxGroup service ="filterSearch">

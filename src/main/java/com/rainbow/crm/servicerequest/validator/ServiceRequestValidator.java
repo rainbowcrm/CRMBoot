@@ -47,9 +47,9 @@ public class ServiceRequestValidator extends CRMValidator {
 		if (serviceRequest.getCompany() == null){
 			errors.add(getErrorforCode(CommonErrorCodes.FIELD_EMPTY,externalize.externalize(context, "Company"))) ;
 		}
-		if (serviceRequest.getCapturedBy() == null){
+		/*if (serviceRequest.getCapturedBy() == null){
 			errors.add(getErrorforCode(CommonErrorCodes.FIELD_EMPTY,externalize.externalize(context, "Captured_By"))) ;
-		}
+		}*/
 		if(Utils.isNull(serviceRequest.getServiceRequestDate())) {
 			errors.add(getErrorforCode(CommonErrorCodes.FIELD_EMPTY,externalize.externalize(context, "Date"))) ;
 		}
@@ -57,12 +57,7 @@ public class ServiceRequestValidator extends CRMValidator {
 			errors.add(getErrorforCode(CommonErrorCodes.FIELD_EMPTY,externalize.externalize(context, "Line_Items"))) ;
 		}else {
 			for (ServiceRequestLine line : serviceRequest.getServiceRequestLines()) {
-				if (line.getServiceRequestObjectType() == null ) {
-					errors.add(getErrorforCode(CommonErrorCodes.FIELD_EMPTY,externalize.externalize(context, "Type"))) ;
-				}
-				if(line.getRating() <0  || line.getRating() > 10 ) {
-					errors.add(getErrorforCode(ServiceRequestErrorCodes.RATING_RANGE_ERROR)) ;
-				}
+
 			}
 		}
 	}

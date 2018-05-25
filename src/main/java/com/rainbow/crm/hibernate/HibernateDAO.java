@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.ServletContext;
 
+import com.rainbow.crm.servicerequest.model.ServiceRequest;
+import com.rainbow.crm.servicerequest.model.ServiceRequestLine;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -166,6 +168,8 @@ public  abstract class HibernateDAO  extends ORMDAO{
     		configuration.addClass(SalesLine.class).addResource("com/rainbow/crm/sales/model/SalesLine.hbm.xml");
     		configuration.addClass(FeedBack.class).addResource("com/rainbow/crm/feedback/model/FeedBack.hbm.xml");
     		configuration.addClass(FeedBackLine.class).addResource("com/rainbow/crm/feedback/model/FeedBackLine.hbm.xml");
+			configuration.addClass(ServiceRequest.class).addResource("com/rainbow/crm/servicerequest/model/ServiceRequest.hbm.xml");
+			configuration.addClass(ServiceRequestLine.class).addResource("com/rainbow/crm/servicerequest/model/ServiceRequestLine.hbm.xml");
     		configuration.addClass(Topic.class).addResource("com/rainbow/crm/topic/model/Topic.hbm.xml");
     		configuration.addClass(TopicLine.class).addResource("com/rainbow/crm/topic/model/TopicLine.hbm.xml");
     		configuration.addClass(WishList.class).addResource("com/rainbow/crm/wishlist/model/WishList.hbm.xml");

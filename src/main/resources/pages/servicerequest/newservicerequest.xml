@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id="newservicerequest" showinFrame="true" title="New Service Request | Rainbow CRM"
+      Object="com.rainbow.crm.servicerequest.model.ServiceRequest"
+      Controller="com.rainbow.crm.servicerequest.controller.ServiceRequestController">
+    <Template type="Transaction" name="TransactionTemplate"></Template>
+    <Forwards>
+        <Forward key="CANCEL">controller?page=servicerequest</Forward>
+        <Forward key="SAVE">feedbacks</Forward>
+    </Forwards>
+    <IncludeJS>./js/RadsLib.js</IncludeJS>
+    <IncludeJS>./js/CRMGeneral.js</IncludeJS>
+    <AjaxGroups>
+        <AjaxGroup service="feedbackObjectSearch">
+            <requestElements event="">
+                <requestElement key="BillNo">txtSale</requestElement>
+                <requestElement key="ObjectType">txAlobjettype</requestElement>
+            </requestElements>
+            <responseElements>
+                <!-- <responseElement key = "Name" >txtItem</responseElement>  -->
+                <responseElement key="objects">txtObject</responseElement>
+            </responseElements>
+        </AjaxGroup>
+        <!--<AjaxGroup service ="feedbackReasons">
+        <requestElements event = "">
+        <requestElement key = "rating">txtRating</requestElement>
+        </requestElements>
+        <responseElements>
+        <responseElement key = "reasonCodes">lstReasonCode</responseElement>
+        </responseElements>
+        </AjaxGroup>-->
+    </AjaxGroups>
+
+    <Elements>
+        <UIForm Id="cust" method="POST">
+
+
+            <CoreSection>
+                <ErrorSection>
+                </ErrorSection>
+                <Section type="header">
+                    <Element label="" type="UIHidden" Id="hdnVersion" property="ObjectVersion"/>
+                    <Element label="" type="UIHidden" Id="hdnUserID" property="Id"/>
+                    <Element label="Division" type="UIList" Id="lstInvDivision" isMandatory="true"
+                             property="Division.Id">
+                        <options populator="getAllDivisions">
+                        </options>
+                    </Element>
+                    <Element label="Doc_No" type="UIText" Id="txtDocNo" isMandatory="true" readonly="true"
+                             property="docNumber"/>
+                    <Element label="Date" type="UIDate" Id="txtwishListDate" isMandatory="true"
+                             property="feedBackDate"/>
+                    <Element label="Captured_By" type="UILookupDataList" listId="lsthdrAss" Id="txtCaptUser"
+                             property="capturedBy.userId" showLookupAsDialog="true" dialogId="dlgIt"
+                             dialogStyle="dialogStyle" frameStyle="lookupFrameStyle"
+                             additionalInputControl="lstInvDivision">
+                        <lookupType>user</lookupType>
+                        <height>300</height>
+                        <width>290</width>
+                    </Element>
+                    <Element label="Communication_Mode" type="UIList" Id="lstCommMode"
+                             property="communicationMode.code">
+                        <options populator="getAllCommunicationModes">
+                        </options>
+                    </Element>
+
+                    <Element label="Sales_Bill" type="UILookupDataList" listId="lsthdrSalesBilld" Id="txtSale"
+                             isMandatory="true" property="Sales.BillNumber" showLookupAsDialog="true" dialogId="dlgComp"
+                             dialogStyle="dialogStyle" frameStyle="lookupFrameStyle"
+                             additionalInputControl="lstInvDivision">
+                        <lookupType>sales</lookupType>
+                        <height>300</height>
+                        <width>290</width>
+                        <SupplementaryFields>
+                            <Field>
+                                <property>customer.phone</property>
+                                <control>txtPhone</control>
+                            </Field>
+                            <Field>
+                                <property>customer.email</property>
+                                <control>txtEmail</control>
+                            </Field>
+                            <Field>
+                                <property>customer.fullName</property>
+                                <control>txtCustomerName</control>
+                            </Field>
+                        </SupplementaryFields>
+                    </Element>
+                    <Element label="Customer_Phone" type="UIText" Id="txtPhone" readonly="true"
+                             property="Customer.Phone"/>
+                    <Element label="Email" type="UIText" Id="txtEmail" readonly="true" property="Customer.Email"/>
+                    <Element label="Name" type="UIText" Id="txtCustomerName" readonly="true"
+                             property="Customer.FullName"/>
+
+
+                </Section>
+                <Section type="detail">
+                    <Element label="" type="UILabel" Id="lblLineitTitle" style="bigTitle" value="Line_Items"/>
+
+                    <Element type="UITable" rows="1" cols="7" style="listPageTitle" applyStyleonChildren="true"
+                             Id="tblTrans" property="ServiceRequestLines[]">
+                        <Element type="UITableHead">
+                            <Element type="UITableRow">
+
+
+                                <Element type="UITableCol" width="20%">
+                                    <Element label="" type="UILabel" Id="lblCode" value="Item"/>
+                                </Element>
+                                <Element type="UITableCol" width="35%">
+                                    <Element label="" type="UILabel" Id="lblCode" value="Complaint"/>
+                                </Element>
+                                <Element type="UITableCol" width="35%">
+                                    <Element label="" type="UILabel" Id="lblCode" value="Resolution"/>
+                                </Element>
+
+                                <Element type="UITableCol" width="5%"></Element>
+                            </Element>
+                        </Element>
+                        <Element type="UITableRow" dataType="com.rainbow.crm.servicerequest.model.ServiceRequestLine"
+                                 rendered="!Object.isDeleted">
+
+
+                            <Element type="UITableCol" width="20%">
+                                <Element label="" type="UIList" Id="txtObject" property="feedBackObject">
+                                    <options populator="getAllObjects">
+                                    </options>
+                                </Element>
+                            </Element>
+                            <Element type="UITableCol" width="35%">
+                                <Element label="" type="UIText" Id="txtLineCo" property="customerNotes" size="50"/>
+                            </Element>
+                            <Element type="UITableCol" width="35%">
+                                <Element label="" type="UIText" Id="txtLineTechnical" property="technicianNotes"
+                                         size="50"/>
+                            </Element>
+
+
+                            <Element type="UITableCol" width="5%">
+                                <Element caption="" style="btn btn-primary" iconStyle="glyphicon glyphicon-plus"
+                                         type="UIButton" Id="btnAddRow" fixedAction="FixedAction.ACTION_ADDTABLEROW"
+                                         fixedActionParam="this"/>
+                                <Element caption="" style="btn btn-danger" iconStyle="glyphicon glyphicon-minus"
+                                         type="UIButton" Id="btnDelRow" fixedAction="FixedAction.ACTION_DELETETABLEROW"
+                                         fixedActionParam="this"/>
+                            </Element>
+                        </Element>
+                    </Element>
+
+
+                </Section>
+                <Section type="brk3"/>
+            </CoreSection>
+            <Section type="summary">
+            </Section>
+            <Section type="copyRightSection"/>
+        </UIForm>
+    </Elements>
+</Page>
