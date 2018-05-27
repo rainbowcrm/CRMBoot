@@ -132,7 +132,8 @@ Controller = "com.rainbow.crm.sales.controller.SalesController">
 	</Element>
 	
 	
-	<Element caption = "New_Customer"  type = "UIButton" style="btn btn-primary" iconStyle="glyphicon glyphicon-plus"    Id = "btnNewCustomer" showInPrevCol ="true"  onClickJS = "createNewCustomer('newcustDL',this);"  />
+	<Element caption = "New_Customer"  type = "UIButton" style="btn btn-primary" iconStyle="glyphicon glyphicon-plus"
+			 Id = "btnNewCustomer" showInPrevCol ="true"  onClickJS = "createNewCustomer('newcustDL',this);"  />
 	
 	<Element label = "Ask_For_Feedback"  type = "UIBooleanCheckBox" Id = "txtBoolAskFeedBack" hiddenControlId= "hdnReferencible"   property ="referencible" />	
 

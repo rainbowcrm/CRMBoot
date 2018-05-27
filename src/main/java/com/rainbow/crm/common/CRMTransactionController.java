@@ -12,6 +12,7 @@ import com.rainbow.crm.abstratcs.model.CRMModelObject;
 import com.rainbow.crm.company.model.Company;
 import com.rainbow.crm.company.service.ICompanyService;
 import com.rainbow.crm.config.service.ConfigurationManager;
+import com.rainbow.crm.database.GeneralSQLs;
 import com.rainbow.crm.database.LoginSQLs;
 import com.rainbow.crm.division.model.Division;
 import com.rainbow.crm.division.service.IDivisionService;
@@ -40,6 +41,18 @@ public abstract class CRMTransactionController extends TransactionController {
 	@Override
 	public List<RadsError> adapttoUI(ModelObject modelObject) {
 		return  getService().adaptToUI((CRMContext)getContext(),modelObject);
+	}
+
+	public Map<String,String> getFiniteValues(String groupCode)
+	{
+		return GeneralSQLs.getFiniteValues(groupCode);
+
+	}
+
+	public Map<String,String> getFiniteValuesWithSelect(String groupCode)
+	{
+		return GeneralSQLs.getFiniteValuesWithSelect(groupCode);
+
 	}
 
 	@Override

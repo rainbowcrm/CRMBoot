@@ -48,20 +48,21 @@
                     <Element label="Doc_No" type="UIText" Id="txtDocNo" isMandatory="true" readonly="true"
                              property="docNumber"/>
                     <Element label="Date" type="UIDate" Id="txtwishListDate" isMandatory="true"
-                             property="feedBackDate"/>
-                    <Element label="Captured_By" type="UILookupDataList" listId="lsthdrAss" Id="txtCaptUser"
-                             property="capturedBy.userId" showLookupAsDialog="true" dialogId="dlgIt"
+                             property="serviceRequestDate"/>
+
+                    <Element label="Date" type="UIDate" Id="txtCompletion" isMandatory="false"
+                             property="serviceCompletionDate"/>
+
+
+                    <Element label="Associate" type="UILookupDataList" listId="lsthdrAss" Id="txtCaptUser"
+                             property="serviceAssociate.userId" showLookupAsDialog="true" dialogId="dlgIt"
                              dialogStyle="dialogStyle" frameStyle="lookupFrameStyle"
                              additionalInputControl="lstInvDivision">
                         <lookupType>user</lookupType>
                         <height>300</height>
                         <width>290</width>
                     </Element>
-                    <Element label="Communication_Mode" type="UIList" Id="lstCommMode"
-                             property="communicationMode.code">
-                        <options populator="getAllCommunicationModes">
-                        </options>
-                    </Element>
+
 
                     <Element label="Sales_Bill" type="UILookupDataList" listId="lsthdrSalesBilld" Id="txtSale"
                              isMandatory="true" property="Sales.BillNumber" showLookupAsDialog="true" dialogId="dlgComp"
@@ -90,6 +91,24 @@
                     <Element label="Email" type="UIText" Id="txtEmail" readonly="true" property="Customer.Email"/>
                     <Element label="Name" type="UIText" Id="txtCustomerName" readonly="true"
                              property="Customer.FullName"/>
+                    <Element caption = "New_Customer"  type = "UIButton" style="btn btn-primary"
+                             iconStyle="glyphicon glyphicon-plus"    Id = "btnNewCustomer" showInPrevCol ="true"  onClickJS = "createNewCustomer('newcustDL',this);"  />
+
+
+
+
+
+                    <Element type ="UIDialog" Id = "newcustDL" style= "widepopup" >
+                        <Element type = "UIIFrame" src ="./controller?page=quickcustomeradd" style ="fullPageFrameStyle">
+                        </Element>
+                    </Element>
+
+                    <Element label="Status" type="UIText" Id="txtStatus" readonly="true" property="serviceStatus.description"/>
+
+                    <Element label = "Visit_Type"  type = "UIList" Id = "lstVistType"   property ="visitMode.code"  externalise= "true">
+                        <options populator="getFiniteValues" populatorParam="SERVVSMD">
+                        </options>
+                    </Element>
 
 
                 </Section>
