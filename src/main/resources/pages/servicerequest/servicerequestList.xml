@@ -18,8 +18,7 @@ Controller = "com.rainbow.crm.servicerequest.controller.ServiceRequestListContro
 <responseElement key = "Customer.Phone" >txtCustomerPhone</responseElement>
 <responseElement key = "Customer.FirstName" >txtCustomer</responseElement>
 <responseElement key = "Sales.billNumber" >txtSalesBill</responseElement>
-<responseElement key = "FromDate" >txtFromDate</responseElement>
-<responseElement key = "ToDate" >txtToDate</responseElement>
+<responseElement key = "ServiceRequestDate" >txtFromDate</responseElement>
 </responseElements>
 </AjaxGroup>
 </AjaxGroups>
@@ -62,11 +61,9 @@ Controller = "com.rainbow.crm.servicerequest.controller.ServiceRequestListContro
    	<Element label = "Customer"  type = "UIText" Id = "txtCustomer"  property ="Customer.FirstName" />
 </FilterNode>
 <FilterNode operator = ">=">
-   	<Element label = "From"  type = "UIDate" Id = "txtFromDate"  property ="releasedDate" />
+   	<Element label = "Requested_Date"  type = "UIDate" Id = "txtFromDate"  property ="serviceRequestDate" />
 </FilterNode>
-<FilterNode operator = ">=">
-   	<Element label = "To"  type = "UIDate" Id = "txtToDate"  property ="releasedDate" />
-</FilterNode>     
+
 </FilterSection>
 <ListSection >
  <Columns allowrowselection ="Multiple" uniqueproperty = "Id">
@@ -78,16 +75,16 @@ Controller = "com.rainbow.crm.servicerequest.controller.ServiceRequestListContro
 <Element label = ""  type = "UINote" Id = "idDoc"  property ="DocNumber" />
 </Column>
 <Column title ="Date"  sortField="feedBackDate"  width ="20%" >
-<Element label = ""  type = "UINote" Id = "idDt"  property ="feedBackDate" />
+<Element label = ""  type = "UINote" Id = "idDt"  property ="serviceRequestDate" />
 </Column>
 <Column title ="Customer" sortField="customer.firstName"  width ="20%" >
 <Element label = ""  type = "UINote" Id = "idCust"  property ="Customer.fullName" />
 </Column>
-<Column title ="Phone" sortField="customer.phone"  width ="10%" >
-<Element label = ""  type = "UINote" Id = "idPhone"  property ="Customer.Phone" />
+<Column title ="Status" sortField="serviceStatus.description"  width ="10%" >
+<Element label = ""  type = "UINote" Id = "idPhone"  property ="serviceStatus.description" />
 </Column> 
-<Column title ="Captured_By" sortField="capturedBy.userId"  width ="15%" >
-<Element label = ""  type = "UINote" Id = "capturer"  property ="capturedBy.userId" />
+<Column title ="Associate" sortField="capturedBy.userId"  width ="15%" >
+<Element label = ""  type = "UINote" Id = "capturer"  property ="serviceAssociate.userId" />
 </Column>
 <Column title ="Sales_Bill"  sortField="sales.billNumber"  width ="10%" >
 <Element label = ""  type = "UINote" Id = "idAmt"  property ="sales.billNumber" />

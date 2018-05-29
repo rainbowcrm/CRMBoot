@@ -39,7 +39,17 @@ public class CRMConstants {
 	public final static String FV_ORIENTATION= "BUSORIEN";
 	public final static String FV_PRICESOURCE= "PRICSRC";
 	public final static String FV_BUNDLEPRICING= "BUNDPRC";
-	
+	public final static String FV_SERVICESTATUS= "BUNDPRC";
+
+
+	public final static class SERVICE_STATUS {
+		public final static String REGISTERED ="SRVSTREG";
+		public final static String ASSIGNED ="SRVSTASSN";
+		public final static String IN_PROGRESS ="SRVSTIN";
+		public final static String COMPLETED ="SRVSTCMP";
+		public final static String REJECTED ="SRVSTRJC";
+
+	}
 
 	public final static class BUNDLE_PRICING {
 		public final static String FIXED_PRICE ="FIXBDPRC";

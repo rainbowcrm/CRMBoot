@@ -235,6 +235,19 @@ public class ServiceRequestService extends AbstractionTransactionService impleme
 			}
 		}
 
+		if (object.getServiceAssociate() != null && !Utils.isNullString(object.getServiceAssociate().getUserId()))  {
+
+			IUserService userService =(IUserService) SpringObjectFactory.INSTANCE.getInstance("IUserService");
+			User user =(User) userService.getById(object.getServiceAssociate().getUserId());
+			if (user == null)  {
+				ans.add(CRMValidator.getErrorforCode(context.getLocale(), ServiceRequestErrorCodes.FIELD_NOT_VALID , "Associate"));
+			}else
+			{
+				object.setServiceAssociate(user);
+			}
+
+		}
+
 		if (object.getCustomer() != null) {
 			String phone = object.getCustomer().getPhone();
 			ICustomerService customerService = (ICustomerService) SpringObjectFactory.INSTANCE.getInstance("ICustomerService");
@@ -258,7 +271,7 @@ public class ServiceRequestService extends AbstractionTransactionService impleme
 				line.setCompany(company);
 				line.setLineNumber(lineNo ++);
 				ISkuService skuService = (ISkuService)SpringObjectFactory.INSTANCE.getInstance("ISkuService");
-					Sku sku = (Sku)skuService.getById(line.getSku().getName());
+					Sku sku = (Sku)skuService.getByName(company.getId(),line.getSku().getName());
 					if(sku != null)
 						line.setSku(sku);
 					else
@@ -277,6 +290,7 @@ public class ServiceRequestService extends AbstractionTransactionService impleme
 			String bKey = NextUpGenerator.getNextNumber("ServiceRequest", context, serviceRequest.getDivision());
 			serviceRequest.setDocNumber(bKey);
 		}
+		updateStatus(serviceRequest,null,context);
 		if (!Utils.isNullSet(serviceRequest.getServiceRequestLines())) {
 			int pk = GeneralSQLs.getNextPKValue("ServiceRequest") ;
 			serviceRequest.setId(pk);
@@ -290,12 +304,33 @@ public class ServiceRequestService extends AbstractionTransactionService impleme
 		return result; 
 	}
 
+	private void updateStatus(ServiceRequest serviceRequest, ServiceRequest oldObject , CRMContext context)
+	{
+		if (serviceRequest.getServiceStatus() == null   )  {
+			serviceRequest.setServiceStatus( new FiniteValue(CRMConstants.SERVICE_STATUS.REGISTERED));
+			if(serviceRequest.getServiceAssociate() != null )
+			{
+				serviceRequest.setServiceStatus( new FiniteValue(CRMConstants.SERVICE_STATUS.ASSIGNED));
+			}
+		} else  if (oldObject != null)
+		{
+			if(oldObject.getServiceStatus().equals(CRMConstants.SERVICE_STATUS.REGISTERED)  &&  serviceRequest.getServiceAssociate() != null )
+			{
+				serviceRequest.setServiceStatus( new FiniteValue(CRMConstants.SERVICE_STATUS.ASSIGNED));
+			} else
+				serviceRequest.setServiceStatus( new FiniteValue(CRMConstants.SERVICE_STATUS.REGISTERED));
+		}
+
+
+
+	}
 	
 	@Override
 	public TransactionResult update(CRMModelObject object, CRMContext context) {
 		ServiceRequest serviceRequest = (ServiceRequest)object ;
 		ServiceRequest oldObject = (ServiceRequest)getById(serviceRequest.getPK());
 		//ServiceRequest oldInvObj = (ServiceRequest)oldObject.clone();
+		updateStatus(serviceRequest,oldObject,context);
 		if (!Utils.isNullSet(serviceRequest.getServiceRequestLines())) {
 			int  ct = 0;
 			Iterator it = oldObject.getServiceRequestLines().iterator() ;

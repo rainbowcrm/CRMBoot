@@ -4,8 +4,8 @@
       Controller="com.rainbow.crm.servicerequest.controller.ServiceRequestController">
     <Template type="Transaction" name="TransactionTemplate"></Template>
     <Forwards>
-        <Forward key="CANCEL">controller?page=servicerequest</Forward>
-        <Forward key="SAVE">feedbacks</Forward>
+        <Forward key="CANCEL">controller?page=servicerequests</Forward>
+        <Forward key="SAVE">servicerequests</Forward>
     </Forwards>
     <IncludeJS>./js/RadsLib.js</IncludeJS>
     <IncludeJS>./js/CRMGeneral.js</IncludeJS>
@@ -18,6 +18,18 @@
             <responseElements>
                 <!-- <responseElement key = "Name" >txtItem</responseElement>  -->
                 <responseElement key="objects">txtObject</responseElement>
+            </responseElements>
+        </AjaxGroup>
+        <AjaxGroup service ="skuSearch">
+            <requestElements event = "">
+                <requestElement key = "Name">txtItName</requestElement>
+                <requestElement key = "Code">txtCode</requestElement>
+                <requestElement key = "Division">lstInvDivision</requestElement>
+            </requestElements>
+            <responseElements>
+
+                <responseElement key = "Code">txtCode</responseElement>
+                <responseElement key = "Name">txtItName</responseElement>
             </responseElements>
         </AjaxGroup>
         <!--<AjaxGroup service ="feedbackReasons">
@@ -50,7 +62,7 @@
                     <Element label="Date" type="UIDate" Id="txtwishListDate" isMandatory="true"
                              property="serviceRequestDate"/>
 
-                    <Element label="Date" type="UIDate" Id="txtCompletion" isMandatory="false"
+                    <Element label="Completion_Date" type="UIDate" Id="txtCompletion" isMandatory="false"
                              property="serviceCompletionDate"/>
 
 
@@ -98,12 +110,17 @@
 
 
 
-                    <Element type ="UIDialog" Id = "newcustDL" style= "widepopup" >
+                    <Element type ="UIDialog" Id = "newcustDL" style= "widepopup" showInPrevCol="true" >
                         <Element type = "UIIFrame" src ="./controller?page=quickcustomeradd" style ="fullPageFrameStyle">
                         </Element>
                     </Element>
 
                     <Element label="Status" type="UIText" Id="txtStatus" readonly="true" property="serviceStatus.description"/>
+
+                    <Element label = "Service_Type"  type = "UIList" Id = "lstVistType"   property ="serviceType.code"  externalise= "true">
+                        <options populator="getFiniteValues" populatorParam="SERVTYPE">
+                        </options>
+                    </Element>
 
                     <Element label = "Visit_Type"  type = "UIList" Id = "lstVistType"   property ="visitMode.code"  externalise= "true">
                         <options populator="getFiniteValues" populatorParam="SERVVSMD">
@@ -121,13 +138,12 @@
                             <Element type="UITableRow">
 
 
-                                <Element type="UITableCol" width="20%">
-                                    <Element label="" type="UILabel" Id="lblCode" value="Item"/>
-                                </Element>
-                                <Element type="UITableCol" width="35%">
+                                <Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Code" /></Element>
+                                <Element type ="UITableCol" width = "20%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Item" /></Element>
+                                <Element type="UITableCol" width="30%">
                                     <Element label="" type="UILabel" Id="lblCode" value="Complaint"/>
                                 </Element>
-                                <Element type="UITableCol" width="35%">
+                                <Element type="UITableCol" width="30%">
                                     <Element label="" type="UILabel" Id="lblCode" value="Resolution"/>
                                 </Element>
 
@@ -137,17 +153,21 @@
                         <Element type="UITableRow" dataType="com.rainbow.crm.servicerequest.model.ServiceRequestLine"
                                  rendered="!Object.isDeleted">
 
-
-                            <Element type="UITableCol" width="20%">
-                                <Element label="" type="UIList" Id="txtObject" property="feedBackObject">
-                                    <options populator="getAllObjects">
-                                    </options>
-                                </Element>
+                            <Element type ="UITableCol" width = "10%"><Element label = ""  type = "UIText" Id = "txtCode" size  = "10" property ="Sku.Code" /> </Element>
+                            <Element type ="UITableCol" width = "20%" > <Element label = ""  type = "UILookupDataList"  Id = "txtItName"  listId="dtlistItName"  isMandatory="true" property ="Sku.Name"  >
+                                <lookupType>sku</lookupType>
+                                <SupplementaryFields>
+                                    <Field>
+                                        <property>code</property>
+                                        <control>txtCode</control>
+                                    </Field>
+                                </SupplementaryFields>
                             </Element>
-                            <Element type="UITableCol" width="35%">
+                            </Element>
+                            <Element type="UITableCol" width="30%">
                                 <Element label="" type="UIText" Id="txtLineCo" property="customerNotes" size="50"/>
                             </Element>
-                            <Element type="UITableCol" width="35%">
+                            <Element type="UITableCol" width="30%">
                                 <Element label="" type="UIText" Id="txtLineTechnical" property="technicianNotes"
                                          size="50"/>
                             </Element>
