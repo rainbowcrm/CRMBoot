@@ -19,6 +19,7 @@ import com.techtrade.rads.framework.model.abstracts.RadsError;
 import com.techtrade.rads.framework.model.graphdata.BarChartData;
 import com.techtrade.rads.framework.model.graphdata.GaugeChartData;
 import com.techtrade.rads.framework.model.graphdata.PieChartData;
+import com.techtrade.rads.framework.ui.abstracts.PageResult;
 
 public interface IServiceRequestService extends ITransactionService{
 
@@ -30,6 +31,9 @@ public interface IServiceRequestService extends ITransactionService{
 	public List<ServiceRequestLine> getLinesforItem(Item item, CRMContext  context, Date fromDate, Date toDate);
 
 	public List<ServiceRequestLine> getLinesforCustomer(Customer customer, CRMContext  context, Date fromDate, Date toDate);
-	
+
+	public PageResult completeServiceRequest( ServiceRequest request, CRMContext context);
+
+	public PageResult rejectServiceRequest( ServiceRequest request, CRMContext context);
 
 }

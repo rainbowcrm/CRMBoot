@@ -27,6 +27,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 
+import com.techtrade.rads.framework.ui.abstracts.PageResult;
 import net.sf.jasperreports.engine.JRExporter;
 import net.sf.jasperreports.engine.JRExporterParameter;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -121,7 +122,28 @@ import com.techtrade.rads.framework.utils.Utils;
 @Transactional
 public class ServiceRequestService extends AbstractionTransactionService implements IServiceRequestService{
 
-	
+
+	@Override
+	public PageResult completeServiceRequest(ServiceRequest request, CRMContext context) {
+		PageResult result = new PageResult();
+		adaptfromUI(context,request);
+		request.setServiceStatus(new FiniteValue(CRMConstants.SERVICE_STATUS.COMPLETED));
+		super.update(request,context);
+		result.setResult(TransactionResult.Result.SUCCESS);
+		result.setNextPageKey("servicerequests");
+		return result;
+	}
+
+	@Override
+	public PageResult rejectServiceRequest(ServiceRequest request, CRMContext context) {
+		PageResult result = new PageResult();
+		adaptfromUI(context,request);
+		request.setServiceStatus(new FiniteValue(CRMConstants.SERVICE_STATUS.REJECTED));
+		super.update(request,context);
+		result.setResult(TransactionResult.Result.SUCCESS);
+		result.setNextPageKey("servicerequests");
+		return result;
+	}
 
 	@Override
 	public List<ServiceRequestLine> getLinesforItem(Item item, CRMContext context,

@@ -304,39 +304,39 @@
 
 
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30" style="threedimage"   src= "./images/customer-icon.png" title ="Customers" onClickJS="refreshIFrameSrc('frmFameId','controller?page=customers')"/> </Element>
+                        <Element label="" type= "UIImage"  style="threedimage"   src= "./images/customer-icon.png" title ="Customers" onClickJS="refreshIFrameSrc('frmFameId','controller?page=customers')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"  style="threedimage" src= "./images/sales.png" title ="Sales" onClickJS="refreshIFrameSrc('frmFameId','controller?page=sales')"/></Element>
+                        <Element label="" type= "UIImage"   style="threedimage" src= "./images/sales.png" title ="Sales" onClickJS="refreshIFrameSrc('frmFameId','controller?page=sales')"/></Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30" style="threedimage"   src= "./images/settings.jpg" title ="Customers"  onClickJS="refreshIFrameSrc('frmFameId','controller?page=customers')"/> </Element>
+                        <Element label="" type= "UIImage"  style="threedimage"   src= "./images/settings.jpg" title ="Customers"  onClickJS="refreshIFrameSrc('frmFameId','controller?page=customers')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"  style="threedimage" src= "./images/alerts.png"   title ="Alerts" onClickJS="refreshIFrameSrc('frmFameId','controller?page=alerts')"/> </Element>
+                        <Element label="" type= "UIImage"   style="threedimage" src= "./images/alerts.png"   title ="Alerts" onClickJS="refreshIFrameSrc('frmFameId','controller?page=alerts')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"  style="threedimage" src= "./images/dashboard.png" title ="Dashboard"  onClickJS="refreshIFrameSrc('frmFameId','controller?page=dashboard')"/></Element>
+                        <Element label="" type= "UIImage"   style="threedimage" src= "./images/dashboard.png" title ="Dashboard"  onClickJS="refreshIFrameSrc('frmFameId','controller?page=dashboard')"/></Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"  style="threedimage" src= "./images/opportunity.png" title ="Sales Leads"  onClickJS="refreshIFrameSrc('frmFameId','controller?page=salesleads')"/> </Element>
+                        <Element label="" type= "UIImage"   style="threedimage" src= "./images/opportunity.png" title ="Sales Leads"  onClickJS="refreshIFrameSrc('frmFameId','controller?page=salesleads')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   style="threedimage" src= "./images/followups.png" title ="Followups"  onClickJS="refreshIFrameSrc('frmFameId','controller?page=followups')"/> </Element>
+                        <Element label="" type= "UIImage"   style="threedimage" src= "./images/followups.png" title ="Followups"  onClickJS="refreshIFrameSrc('frmFameId','controller?page=followups')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   style="threedimage" src= "./images/pitchers.ico" title ="Sales Pitches" onClickJS="refreshIFrameSrc('frmFameId','controller?page=salespitches')"/> </Element>
+                        <Element label="" type= "UIImage"    style="threedimage" src= "./images/pitchers.ico" title ="Sales Pitches" onClickJS="refreshIFrameSrc('frmFameId','controller?page=salespitches')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   style="threedimage" src= "./images/documents.jpg" title ="Documents" onClickJS="refreshIFrameSrc('frmFameId','controller?page=documents')"/> </Element>
+                        <Element label="" type= "UIImage"    style="threedimage" src= "./images/documents.jpg" title ="Documents" onClickJS="refreshIFrameSrc('frmFameId','controller?page=documents')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   style="threedimage" src= "./images/feedback.png" title ="Feedbacks"  onClickJS="refreshIFrameSrc('frmFameId','controller?page=feedbacks')"/> </Element>
+                        <Element label="" type= "UIImage"    style="threedimage" src= "./images/feedback.png" title ="Feedbacks"  onClickJS="refreshIFrameSrc('frmFameId','controller?page=feedbacks')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   style="threedimage" src= "./images/items.png" title ="Items" onClickJS="refreshIFrameSrc('frmFameId','controller?page=items')"/> </Element>
+                        <Element label="" type= "UIImage"    style="threedimage" src= "./images/items.png" title ="Items" onClickJS="refreshIFrameSrc('frmFameId','controller?page=items')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   style="threedimage" src= "./images/discussion.png" title ="Discussions"  onClickJS="refreshIFrameSrc('frmFameId','controller?page=topic')"/> </Element>
+                        <Element label="" type= "UIImage"    style="threedimage" src= "./images/discussion.png" title ="Discussions"  onClickJS="refreshIFrameSrc('frmFameId','controller?page=topic')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   style="threedimage" src= "./images/inventory_icon.jpg" title ="Inventory" onClickJS="refreshIFrameSrc('frmFameId','controller?page=inventory')"/> </Element>
+                        <Element label="" type= "UIImage"    style="threedimage" src= "./images/inventory_icon.jpg" title ="Inventory" onClickJS="refreshIFrameSrc('frmFameId','controller?page=inventory')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   style="threedimage" src= "./images/delivery.jpg" title ="Delivery Orders" onClickJS="refreshIFrameSrc('frmFameId','controller?page=distributionorders')"/> </Element>
+                        <Element label="" type= "UIImage"    style="threedimage" src= "./images/delivery.jpg" title ="Delivery Orders" onClickJS="refreshIFrameSrc('frmFameId','controller?page=distributionorders')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   style="threedimage" src= "./images/enquiry-icon.jpg" title ="Enquiry"  onClickJS="refreshIFrameSrc('frmFameId','controller?page=enquiries')"/> </Element>
+                        <Element label="" type= "UIImage"   style="threedimage" src= "./images/enquiry-icon.jpg" title ="Enquiry"  onClickJS="refreshIFrameSrc('frmFameId','controller?page=enquiries')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   style="threedimage" src= "./images/product_faq.jpg" title ="Product FAQ" onClickJS="refreshIFrameSrc('frmFameId','controller?page=productfaqs')"/> </Element>
+                        <Element label="" type= "UIImage"   style="threedimage" src= "./images/product_faq.jpg" title ="Product FAQ" onClickJS="refreshIFrameSrc('frmFameId','controller?page=productfaqs')"/> </Element>
                     <Element type = "UITableCol" width ="5%" align="center">
-                        <Element label="" type= "UIImage" height = "30" width ="30"   style="threedimage" src= "./images/purchase.png" title ="Purchases" onClickJS="refreshIFrameSrc('frmFameId','controller?page=purchases')"/> </Element>
+                        <Element label="" type= "UIImage"    style="threedimage" src= "./images/purchase.png" title ="Purchases" onClickJS="refreshIFrameSrc('frmFameId','controller?page=purchases')"/> </Element>
                     <!-- <Element type = "UITableCol" width ="5%" align="right">
                             <Element label="" type= "UIImage" height = "30" width ="30"   src= "./resources/images/expenses.jpg"  onClickJS="logout();"/> </Element> -->
 

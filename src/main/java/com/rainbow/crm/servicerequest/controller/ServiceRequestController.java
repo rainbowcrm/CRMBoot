@@ -37,6 +37,21 @@ import com.techtrade.rads.framework.ui.abstracts.PageResult;
 import com.techtrade.rads.framework.utils.Utils;
 
 public class ServiceRequestController extends CRMTransactionController{
+	@Override
+	public PageResult submit(ModelObject object, String actionParam) {
+		IServiceRequestService serviceRequestService  = (IServiceRequestService) SpringObjectFactory.INSTANCE.getInstance("IServiceRequestService");
+		if("complete".equalsIgnoreCase(actionParam))
+		{
+			return serviceRequestService.completeServiceRequest((ServiceRequest)object,(CRMContext)getContext());
+
+		}
+		if("complete".equalsIgnoreCase(actionParam))
+		{
+			return serviceRequestService.rejectServiceRequest((ServiceRequest)object,(CRMContext)getContext());
+		}
+
+		return super.submit(object, actionParam);
+	}
 
 	public IServiceRequestService getService() {
 		IServiceRequestService serv = (IServiceRequestService) SpringObjectFactory.INSTANCE.getInstance("IServiceRequestService");

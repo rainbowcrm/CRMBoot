@@ -189,6 +189,8 @@
                 <Section type="brk3"/>
             </CoreSection>
             <Section type="summary">
+                <Element caption = "Create_DO"  type = "UIButton"    Id = "btnComplete"  style="btn btn-primary" rendered = "Controller.isUpdateMode" fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam ="Complete"   />
+                <Element caption = "Create_DO"  type = "UIButton"    Id = "btnReject"  style="btn btn-primary" rendered = "Controller.isUpdateMode" fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam ="Reject"   />
             </Section>
             <Section type="copyRightSection"/>
         </UIForm>

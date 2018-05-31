@@ -14,15 +14,15 @@ ul {
   list-style-type: none; }
 
 .menustyle {
-  font-size: 17px;
+  font-size: 1vw;
   color: #f4f4f4;
   list-style-type: none;
   text-align: left;
   display: block;
-  padding: 15px; }
+  padding: .5vw }
 
 .menustyle:first-child {
-  margin-top: 5px; }
+  margin-top: .5vw }
 
 .menustyle:hover {
   cursor: hand;
@@ -38,7 +38,7 @@ ul {
   padding: 5px;
   padding-top: 5px;
   padding-bottom: 15px; }
-  .menustyleParent.open:before {
+/*  .menustyleParent.open:before {
     content: "\f139"; }
 
 .menustyleParent:before {
@@ -50,7 +50,7 @@ ul {
   color: #f4f4f4;
   font-size: 13px;
   position: absolute;
-  right: 1px; }
+  right: 1px; }*/
 
 .menustyleParent:hover {
   cursor: hand; }
