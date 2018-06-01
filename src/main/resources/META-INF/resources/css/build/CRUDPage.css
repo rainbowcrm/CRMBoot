@@ -41,7 +41,7 @@ div.panel-default {
   background: rgba(244, 244, 244, 0.8); }
 
 body, div.topBar {
-  min-width: 1024px !important; }
+   }
 
 .glyphicon {
   padding-right: 2px !important; }
@@ -397,7 +397,7 @@ img.roundedImage  {
 img.threedimage  {
 
     box-shadow: 3px 3px grey;
-    height:auto;
+    height:30px;
     width:100%;
     display:block;
     vertical-align:top;
