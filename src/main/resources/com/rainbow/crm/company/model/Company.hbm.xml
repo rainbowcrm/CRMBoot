@@ -28,6 +28,7 @@
       <property name="registrationDate" column="registration_date" type="date"/>
       <property name="activationDate" column="activation_date" type="date"/>
       <property name="serviceExpiryDate" column="service_expiry_date" type="date"/>
+      <property name="logo" column="LOGO" type="string"/>
       <property name="active" column="is_active" type="boolean"/>
       <property name="deleted" column="is_deleted" type="boolean"/>
       <property name="createdDate" column="created_date" type="timestamp" update="false" />

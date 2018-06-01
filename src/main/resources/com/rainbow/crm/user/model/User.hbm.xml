@@ -21,6 +21,7 @@
       <property name="address1" column="address1" type="string"/>
       <property name="address2" column="address2" type="string"/>
       <property name="zipCode" column="zipcode" type="string"/>
+      <property name="photo" column="PHOTO" type="string"/>
       <property name="city" column="city" type="string"/>
       <property name="active" column="is_active" type="boolean"/>
       <property name="deleted" column="is_deleted" type="boolean"/>

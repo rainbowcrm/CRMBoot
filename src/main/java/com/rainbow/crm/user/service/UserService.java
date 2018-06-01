@@ -1,14 +1,14 @@
 package com.rainbow.crm.user.service;
 
+import java.io.ByteArrayInputStream;
 import java.util.List;
 
+import com.rainbow.crm.common.*;
+import com.rainbow.crm.logger.Logwriter;
+import com.rainbow.util.ServiceLibrary;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.rainbow.crm.abstratcs.model.CRMModelObject;
-import com.rainbow.crm.common.AbstractService;
-import com.rainbow.crm.common.CRMContext;
-import com.rainbow.crm.common.CRMDBException;
-import com.rainbow.crm.common.SpringObjectFactory;
 import com.rainbow.crm.company.model.Company;
 import com.rainbow.crm.company.service.ICompanyService;
 import com.rainbow.crm.division.model.Division;
@@ -22,6 +22,7 @@ import com.techtrade.rads.framework.model.abstracts.RadsError;
 import com.techtrade.rads.framework.model.transaction.TransactionResult;
 import com.techtrade.rads.framework.ui.components.SortCriteria;
 import com.techtrade.rads.framework.utils.Utils;
+import sun.misc.BASE64Decoder;
 
 public class UserService  extends AbstractService implements IUserService{
 	
@@ -31,7 +32,19 @@ public class UserService  extends AbstractService implements IUserService{
 	}
 	@Override
 	public Object getById(Object PK) {
-		return (User)getDAO().getById(PK);
+		User  user=  (User)getDAO().getById(PK);
+		adaptToUI(user,null);
+		return user ;
+	}
+
+	public List<RadsError> adaptToUI(ModelObject model, CRMContext context) {
+		User user = (User) model ;
+		String serverURL = ServiceLibrary.services().getApplicationManager().getDocServer();
+		user.setFileWithLink(serverURL + user.getPhoto());
+		user.setFileWithoutLink(user.getPhoto());
+		return null;
+
+
 	}
 
 	@Override
@@ -42,7 +55,38 @@ public class UserService  extends AbstractService implements IUserService{
 			return  getDAO().listData("User" ,from, to, whereCondition);
 	}
 
-	
+
+	private boolean uploadFile(User object, CRMContext context)
+	{
+		if(Utils.isNullString(object.getFileName())) {
+			if(!Utils.isNullString(object.getFileWithoutLink()))
+				object.setPhoto(object.getFileWithoutLink());
+			return false;
+		}
+		String fileExtn = CommonUtil.getFileExtn(object.getFileName());
+		String fileName =  new String("usr" + object.getPrefix());
+		fileName.replace(" ", "_")    ;
+		//	doc.setDocName(fileName +  "."  + fileExtn);
+		object.setPhoto( "//" +  context.getLoggedinCompanyCode() +  "//usr//" + fileName +  "."  + fileExtn );
+		//customer.setPhotoFile(fileName +  "."  + fileExtn );
+		if(object.getImage() != null)
+			CommonUtil.uploadFile(object.getImage(), fileName +  "."  + fileExtn  , context, "usr");
+		else{
+			byte[] imageByte;
+			try  {
+				BASE64Decoder decoder = new BASE64Decoder();
+				imageByte = decoder.decodeBuffer(object.getBase64Image());
+				ByteArrayInputStream bis = new ByteArrayInputStream(imageByte);
+				bis.close();
+				CommonUtil.uploadFile(imageByte, fileName +  "."  + fileExtn  , context, "usr");
+			}catch(Exception ex) {
+				Logwriter.error(ex);
+			}
+		}
+
+		return true;
+	}
+
 
 	@Override
 	@Transactional 
@@ -50,9 +94,17 @@ public class UserService  extends AbstractService implements IUserService{
 		ICompanyService companyService = (ICompanyService)SpringObjectFactory.INSTANCE.getInstance("ICompanyService");
 		Company company = companyService.findByName(((User)user).getCompany().getName());
 		((User)user).setCompany(company);
+		uploadFile((User) user,context);
 		return super.update(user,context);
 	}
-	
+
+	@Override
+	@Transactional
+	public TransactionResult create(CRMModelObject object, CRMContext context) {
+		uploadFile((User) object,context);
+		return super.create(object, context);
+	}
+
 	@Override
 	@Transactional 
 	public TransactionResult batchUpdate(List<CRMModelObject> users, CRMContext context) throws CRMDBException {

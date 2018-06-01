@@ -19,7 +19,7 @@ Controller = "com.rainbow.crm.user.controller.UserController">
 </AjaxGroups>
 <IncludeJS>./js/CRMGeneral.js</IncludeJS>
 <Elements>
-<UIForm Id ="cust" method = "POST" >
+<UIForm Id ="cust" method = "POST" enctype="multipart/form-data">
  
  
  
@@ -56,6 +56,11 @@ Controller = "com.rainbow.crm.user.controller.UserController">
 	<options populator =  "Controller.getRoleTypes"> 
 	</options>
     </Element>
+	<Element label = "Photo" type = "UIFileUpload" Id = "txtPhoto3" property ="image" maxSize="30720"
+			 multiple ="false"  fileNameProperty="fileName"   onChangeJS ="readURL(this,'idIMG3')" accept= ".png, .jpg, .jpeg, .gif"  />
+	<Element label = ""  type = "UIImage" Id = "idIMG3"  height = "200" weight ="200" src= "#" property ="fileWithLink" />
+	<Element label = ""  type = "UIHidden" Id = "idHdnGFileWithLink"   property ="fileWithLink" />
+	<Element label = ""  type = "UIHidden" Id = "idHdnGFileWithoutLink"   property ="fileWithoutLink" />
 	
 </Section>
 </CoreSection>

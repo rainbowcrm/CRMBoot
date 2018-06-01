@@ -33,6 +33,8 @@ public class Company extends CRMModelObject{
 	Date activationDate;
 	Date serviceExpiryDate;
 	boolean isActive;
+
+	String logo ;
 	
 	@RadsPropertySet(isPK=true)
 	public int getId() {
@@ -158,8 +160,15 @@ public class Company extends CRMModelObject{
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
-	
-	
+
+	public String getLogo() {
+		return logo;
+	}
+
+	public void setLogo(String logo) {
+		this.logo = logo;
+	}
+
 	public String getIndustryTypeDesc() {
 		return FiniteValueManager.INSTANCE.getFiniteValueDesc(industryType);
 	}

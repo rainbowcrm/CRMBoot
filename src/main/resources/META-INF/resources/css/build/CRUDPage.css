@@ -392,6 +392,7 @@ input[type=file] {
 
 img.roundedImage  {
     border-radius: 50%;
+    vertical-align :top;
 }
 
 img.threedimage  {

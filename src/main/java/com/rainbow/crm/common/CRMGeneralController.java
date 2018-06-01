@@ -13,6 +13,7 @@ import com.rainbow.crm.database.LoginSQLs;
 import com.rainbow.crm.division.model.Division;
 import com.rainbow.crm.division.service.IDivisionService;
 import com.rainbow.crm.user.model.User;
+import com.rainbow.util.ServiceLibrary;
 import com.techtrade.rads.framework.context.IRadsContext;
 import com.techtrade.rads.framework.controller.abstracts.GeneralController;
 import com.techtrade.rads.framework.ui.abstracts.UIPage;
@@ -54,5 +55,26 @@ public abstract class CRMGeneralController  extends GeneralController{
 		return ans;
 	}
 
+	public String  getLogo() {
+		if(((CRMContext) getContext()).getLoggedinCompany() >0 ) {
+			Company company  = CommonUtil.getCompany(((CRMContext) getContext()).getLoggedinCompany());
+			String logo =  company.getLogo() ;  //./images/logo1.gif
+			if (Utils.isNull(logo))
+				return "./images/logo1.gif";
+			else  {
+				String serverURL = ServiceLibrary.services().getApplicationManager().getDocServer();
+				return serverURL + logo;
+			}
+		}
+		return "./images/logo1.gif";
+
+	}
+
+	public String getUserPhoto()
+	{
+		String serverURL = ServiceLibrary.services().getApplicationManager().getDocServer();
+		String photo =  ((CRMContext) getContext()).getLoggedInUser().getPhoto();
+		return serverURL  + photo ;
+	}
 
 }

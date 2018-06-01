@@ -24,6 +24,7 @@ public class User extends CRMBusinessModelObject {
 	String city;
 	String phone;
 	String email;
+	String photo;
 	boolean isActive=true;
     Division division;
 	 
@@ -110,6 +111,9 @@ public class User extends CRMBusinessModelObject {
 		this.city = city;
 	}
 	public String getPrefix() {
+		if (Utils.isNullString(prefix)  && !Utils.isNullString(userId))  {
+			prefix = userId.substring(0,userId.indexOf('@')-1);
+		}
 		return prefix;
 	}
 	public void setPrefix(String prefix) {
@@ -129,6 +133,15 @@ public class User extends CRMBusinessModelObject {
 	public void setDivision(Division division) {
 		this.division = division;
 	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
 	@Override
 	public Object getPK() {
 		return null;
@@ -142,6 +155,52 @@ public class User extends CRMBusinessModelObject {
 		else
 			return false;
 	}
-	
-	
+
+
+	byte[] image;
+	String fileName;
+	String fileWithLink;
+	String fileWithoutLink;
+
+	String base64Image;
+
+	public byte[] getImage() {
+		return image;
+	}
+
+	public void setImage(byte[] image) {
+		this.image = image;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getFileWithLink() {
+		return fileWithLink;
+	}
+
+	public void setFileWithLink(String fileWithLink) {
+		this.fileWithLink = fileWithLink;
+	}
+
+	public String getFileWithoutLink() {
+		return fileWithoutLink;
+	}
+
+	public void setFileWithoutLink(String fileWithoutLink) {
+		this.fileWithoutLink = fileWithoutLink;
+	}
+
+	public String getBase64Image() {
+		return base64Image;
+	}
+
+	public void setBase64Image(String base64Image) {
+		this.base64Image = base64Image;
+	}
 }
