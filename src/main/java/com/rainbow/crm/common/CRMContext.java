@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import com.rainbow.crm.company.model.Company;
+import com.rainbow.crm.company.service.ICompanyService;
 import com.rainbow.crm.user.model.User;
 import com.techtrade.rads.framework.context.IRadsContext;
 import com.techtrade.rads.framework.ui.abstracts.UIPage;
@@ -16,6 +18,7 @@ public class CRMContext implements IRadsContext,Serializable{
 	boolean authorized =true;
 	String authenticationToken;
 	int loggedinCompany;
+	Company company ;
 	Timestamp logginTime;
 	Timestamp logoffTime;
 	String loggedinCompanyCode;
@@ -192,12 +195,18 @@ public class CRMContext implements IRadsContext,Serializable{
 	public void setReFetchAfterWrite(boolean reFetchAfterWrite) {
 		this.reFetchAfterWrite = reFetchAfterWrite;
 	}
-	
-	
 
 
+	public Company getCompany() {
+		if (company == null )
+		{
+			ICompanyService companyService = (ICompanyService)SpringObjectFactory.INSTANCE.getInstance("ICompanyService");
+			company = (Company)companyService.getById(loggedinCompany);
+		}
+		return company;
+	}
 
-	
-	
-
+	public void setCompany(Company company) {
+		this.company = company;
+	}
 }

@@ -416,6 +416,16 @@
                 <Element label = "" type = "UIMenu" Id = "menu602" style="menustyle" title="Corp_Dashboard" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=corpadmindashboard" iconStyle="fa fa-fw fa-dashboard"  />
             </Element>
 
+            <Element label = "" type = "UIMenu" Id = "menu90" style="menustyleParent" title="CRM" groupId= "menuGRP009"  >
+                <Element label = "" type = "UIMenu" Id = "menu936" style="menustyle" title="Enquiries" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=enquiries"  iconStyle="fa fa-fw fa-envelope" />
+                <Element label = "" type = "UIMenu" Id = "menu934" style="menustyle" title="Sales_Leads" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=saleslead" iconStyle="fa fa-fw fa-eye"  />
+                <Element label = "" type = "UIMenu" Id = "menu935" style="menustyle" title="Followups" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=followups"  iconStyle="fa fa-fw fa-exchange" />
+                <Element label = "" type = "UIMenu" Id = "menu933" style="menustyle" title="Calendar" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=calendar"  iconStyle="fa fa-fw fa-calendar" />
+                <Element label = "" type = "UIMenu" Id = "menu932" style="menustyle" title="Dashboard" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=crmdashboard"  iconStyle="fa fa-fw fa-dashboard" />
+
+
+            </Element>
+
             <Element label = "" type = "UIMenu" Id = "menu300" style="menustyleParent" title="Sales_Planning" groupId= "menuGRP0040"  >
                 <Element label = "" type = "UIMenu" Id = "menu3001" style="menustyle" title="Territories" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=territories"  iconStyle="fa fa-fw fa-industry" />
                 <Element label = "" type = "UIMenu" Id = "menu05" style="menustyle" title="Categories" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=custcategories"  iconStyle="fa fa-fw fa-bookmark" />
@@ -427,10 +437,9 @@
                 <Element label = "" type = "UIMenu" Id = "menu301" style="menustyle" title="Alerts" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=alerts"  iconStyle="fa fa-fw fa-bullhorn" />
                 <Element label = "" type = "UIMenu" Id = "menu3011" style="menustyle" title="Discussions" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=topic"  iconStyle="fa fa-fw fa-comment" />
                 <Element label = "" type = "UIMenu" Id = "menu302" style="menustyle" title="Documents" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=documents"  iconStyle="fa fa-fw fa-clone" />
-                <Element label = "" type = "UIMenu" Id = "menu34" style="menustyle" title="Sales_Leads" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=saleslead" iconStyle="fa fa-fw fa-eye"  />
-                <Element label = "" type = "UIMenu" Id = "menu35" style="menustyle" title="Followups" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=followups"  iconStyle="fa fa-fw fa-exchange" />
+
                 <Element label = "" type = "UIMenu" Id = "menu36" style="menustyle" title="Expense_Vouchers" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=expensevouchers"  iconStyle="fa fa-fw fa-cutlery" />
-                <Element label = "" type = "UIMenu" Id = "menu36" style="menustyle" title="Enquiries" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=enquiries"  iconStyle="fa fa-fw fa-envelope" />
+
                 <Element label = "" type = "UIMenu" Id = "menu36" style="menustyle" title="Sales_Pitches" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=salespitches"  iconStyle="fa fa-fw fa-gift" />
                 <Element label = "" type = "UIMenu" Id = "menu361" style="menustyle" title="Feedbacks" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=feedbacks"  iconStyle="fa fa-fw fa-history" />
                 <Element label = "" type = "UIMenu" Id = "menu367" style="menustyle" title="Dashboard" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=dashboard"  iconStyle="fa fa-fw fa-dashboard" />

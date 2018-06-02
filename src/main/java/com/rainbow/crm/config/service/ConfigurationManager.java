@@ -28,6 +28,7 @@ public class ConfigurationManager {
 	public static final String TOLERANCE_WISHLIST_SALESLEAD = "TOLWSHSLSLEAD";
 	public static final String REDUCE_LOYALTY_RETURNS = "RDCLYLTRT";
 	public static final String LEAD_EMAIL_TEMPLATE = "LDEMAIL";
+	public static final String CUST_CREATIONENQ = "CUSTCRENQ";
 	
 	public static final String TRACK_INVENTORY = "TRCKINVEN";
 	public static final String ALLOW_INVENTORY_TRANSFERS = "ALLWTRAN";

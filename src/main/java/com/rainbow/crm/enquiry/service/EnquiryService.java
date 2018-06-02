@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import com.rainbow.crm.config.service.ConfigurationManager;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -188,9 +189,31 @@ public class EnquiryService extends AbstractionTransactionService implements IEn
 	public TransactionResult generateLead(Enquiry enquiry,CRMContext context) {
 		TransactionResult result = new TransactionResult();
 		adaptfromUI(context, enquiry);
+
 		if( enquiry.getCustomer() == null) {
-			result.addError(CRMValidator.getErrorforCode(context.getLocale(), EnquiryErrorCodes.CUSTOMER_MANDATORY));
-			return result;
+			String allowCustCreation = ConfigurationManager.getConfig(ConfigurationManager.CUST_CREATIONENQ, context);
+			if("true".equalsIgnoreCase(allowCustCreation)) {
+				Customer customer = new Customer() ;
+				customer.setFirstName(enquiry.getFirstName());
+				customer.setLastName(enquiry.getLastName());
+				customer.setEmail(enquiry.getEmail());
+				customer.setPhone(enquiry.getPhone());
+				customer.setCompany(context.getCompany());
+				ICustomerService customerService = (ICustomerService)SpringObjectFactory.INSTANCE.getInstance("ICustomerService");
+				TransactionResult customerResult = customerService.create(customer,context);
+				if(customerResult.getResult().equals(TransactionResult.Result.SUCCESS))  {
+					Customer newCustomer = customerService.getByPhone(context.getLoggedinCompany(),customer.getPhone()) ;
+					enquiry.setCustomer(newCustomer);
+				} else {
+					result.addError(CRMValidator.getErrorforCode(context.getLocale(), EnquiryErrorCodes.CUST_CREATION_FAILURE));
+					return result;
+
+				}
+
+			}else {
+				result.addError(CRMValidator.getErrorforCode(context.getLocale(), EnquiryErrorCodes.CUSTOMER_MANDATORY));
+				return result;
+			}
 		}
 		if( enquiry.getDivision() == null) {
 			result.addError(CRMValidator.getErrorforCode(context.getLocale(), EnquiryErrorCodes.DIVISION_MANDATORY));
