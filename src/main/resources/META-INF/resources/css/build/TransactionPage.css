@@ -536,6 +536,22 @@ iframe.lookupFrameStyle {
   background-color: #69BB7B;
   font-size: 13px; }
 
+.btn-warning {
+  color: #fff;
+  background-color: #f0ad4e;
+  border-color: #eea236; }
+
+.btn-error {
+   color: #fff;
+   background-color: #f53d3d;
+   border-color: #eea236; }
+
+.btn-success {
+    color: #fff;
+    background-color: #69BB7B;
+    border-color: #eea236; }
+
+
 .nav-tabs .nav-link {
   float: left; }
 
@@ -548,3 +564,4 @@ span.titleStyleUnSelected:hover {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.24);
   color: #222;
   cursor: hand; }
+

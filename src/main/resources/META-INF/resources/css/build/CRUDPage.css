@@ -504,6 +504,23 @@ th.listPageTitle {
   font-size: 13px;
   background: #00abff; }
 
+.btn-warning {
+  color: #fff;
+  background-color: #f0ad4e;
+  border-color: #eea236; }
+
+.btn-error {
+   color: #fff;
+   background-color: #f53d3d;
+   border-color: #eea236; }
+
+.btn-success {
+    color: #fff;
+    background-color: #69BB7B;
+    border-color: #eea236; }
+
+
+
 .outlinedTable textarea {
   height: 50px; }
 

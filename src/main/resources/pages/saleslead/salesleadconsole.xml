@@ -67,11 +67,12 @@ Controller = "com.rainbow.crm.saleslead.controller.SalesLeadExtendedController">
 	<Element label = "Status"  type = "UIText" Id = "txtStatus"  readonly="true"  property ="Status.description" />
 	<Element label = "Ref_No"  type = "UIText" Id = "txtRefNo"    readonly="true" property ="refNo" />
 	<Element label = "Ref_Date"  type = "UIDate" Id = "txtREfDate" readonly="true"  property ="refDate" />
+	<Element label = "Next_Followup"  type = "UIDate" Id = "txtnextfollwupDate"   property ="nextFollowupDate" />
 	<!-- <Element label = ""  type = "UILabel" Id = "lblFree2"  style="bigTitle" value ="" />  -->
 	<Element label = "Customer_Phone"  type = "UIText" Id = "txtPhone"   readonly="true" property ="Customer.Phone" />
 	<Element label = "Customer_Email"  type = "UIText" Id = "txtEmail"   readonly="true"  property ="Customer.Email" />
 	 <Element label = "Customer_Name"  type = "UIText"  Id = "txtCustomerName"  isMandatory="true" property ="Customer.FullName">
-	<Element label = "Next_Followup"  type = "UIDate" Id = "txtnextfollwupDate" readonly="true"  property ="nextFollowupDate" />
+
 	</Element>
 	
 </Section>
@@ -116,7 +117,7 @@ Controller = "com.rainbow.crm.saleslead.controller.SalesLeadExtendedController">
 <Element type ="UITableCol" width = "20%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Confidence_Level" /></Element>
 <Element type ="UITableCol" width = "10%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="OfferedPrice" /></Element>
 <Element type ="UITableCol" width = "20%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Result" /></Element>
-<Element type ="UITableCol" width = "20%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Result_Reason" /></Element>
+<Element type ="UITableCol" width = "20%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Status" /></Element>
 
 </Element>  
  </Element>
@@ -128,7 +129,7 @@ Controller = "com.rainbow.crm.saleslead.controller.SalesLeadExtendedController">
 <Element type ="UITableCol" width = "20%"><Element label = ""  type = "UIText" Id = "txtFLComments"  property ="confidenceLevel.description" readonly = "true" size = "20" />  </Element>
 <Element type ="UITableCol" width = "10%"><Element label = ""  type = "UIText" Id = "txtFLPrice"  property ="offeredPrice"  readonly = "true" size = "10" />  </Element>
 <Element type ="UITableCol" width = "20%"><Element label = ""  type = "UIText" Id = "txtFLQty"  property ="result.description"  readonly = "true"  size = "20"/>  </Element>
-<Element type ="UITableCol" width = "20%"><Element label = ""  type = "UIText" Id = "txtFLlineDisc"  property ="resultReason.description"  readonly = "true" size = "20" />  </Element>
+<Element type ="UITableCol" width = "20%"><Element label = ""  type = "UIText" Id = "txtFLlineDisc"  property ="status.description"  readonly = "true" size = "20" />  </Element>
 
 </Element>
 </Element>
@@ -141,9 +142,9 @@ Controller = "com.rainbow.crm.saleslead.controller.SalesLeadExtendedController">
 <Section type ="optionalsummary"> 
 <Element caption = "Print_Quote"  type = "UIButton"    Id = "btnShipped"  style="btn btn-primary" iconStyle="glyphicon glyphicon-print"  fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam ="printquote"   />
 <Element caption = "Email_Quote"  type = "UIButton"    Id = "btnemailQout"  style="btn btn-primary" iconStyle="glyphicon glyphicon-export"  fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam ="emailQuote"   />
-<Element caption = "Schedule_Followup"  type = "UIButton"    Id = "btnShipped"  style="btn btn-primary" iconStyle="glyphicon glyphicon-print"  fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam ="schedulefollowup"   />
+<Element caption = "Schedule_Followup"  type = "UIButton"    Id = "btnShipped"  style="btn btn-success" iconStyle="glyphicon glyphicon-print"  fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam ="schedulefollowup"   />
 <Element caption = "Close"  type = "UIButton"    Id = "btnClose"  style="btn btn-primary" iconStyle="glyphicon glyphicon-ok"  fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam ="closelead"   />
-<Element caption = "Renounce"  type = "UIButton"    Id = "btnRenounce"  style="btn btn-warning" iconStyle="glyphicon glyphicon-remove"  fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam ="renounce"   />
+<Element caption = "Renounce"  type = "UIButton"    Id = "btnRenounce"  style="btn btn-error" iconStyle="glyphicon glyphicon-remove"  fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam ="renounce"   />
 <Element caption = "Generate_Sales_Order"  type = "UIButton"    Id = "btngensales"  style="btn btn-primary" iconStyle="glyphicon glyphicon-star"  fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam ="gensales"   />
 </Section>
 <Section type ="copyRightSection"/>

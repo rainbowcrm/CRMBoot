@@ -1,5 +1,6 @@
 package com.rainbow.crm.followup.service;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -45,16 +46,35 @@ public class FollowupService extends AbstractService implements IFollowupService
 	
 	@Override
 	public Object getById(Object PK) {
-		return getDAO().getById(PK);
+		Followup followup = (Followup) getDAO().getById(PK);
+		if (followup !=null && followup.getLead() != null )
+			followup.setDivision(followup.getLead().getDivision());
+		return  followup ;
 	}
 
 	@Override
 	public TransactionResult createFollowup(SalesLeadExtended salesLeadExtended, SalesLead lead, CRMContext context) {
+		TransactionResult result = new TransactionResult();
+
 		Followup followup = new Followup();
 		followup.setCompany(context.getCompany());
 		followup.setLead(lead);
 		followup.setFollowupDate(salesLeadExtended.getNextFollowupDate());
-		return null;
+		followup.setCommunicationMode(new FiniteValue(CRMConstants.COMMUNICATION_MODE.VISIT_TO_CUSTOMER));
+		followup.setResult(new FiniteValue(CRMConstants.FOLLOWUP_RESULT.PENDING));
+		followup.setStatus( new FiniteValue(CRMConstants.FOLLOWUP_STATUS.SCHEDULED));
+		followup.setSalesAssociate(lead.getSalesAssociate());
+		followup.setDivision(lead.getDivision());
+		double decimal = 0.0 ;
+		for (SalesLeadLine line : lead.getSalesLeadLines() ) {
+			decimal += line.getNegotiatedPrice();
+
+		}
+		followup.setOfferedPrice(decimal);
+		//massageData(followup,context);
+		create(followup,context);
+		result.setResult(TransactionResult.Result.SUCCESS);
+		return result;
 	}
 
 	@Override

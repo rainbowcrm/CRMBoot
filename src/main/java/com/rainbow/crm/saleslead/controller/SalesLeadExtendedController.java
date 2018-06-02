@@ -74,6 +74,12 @@ public class SalesLeadExtendedController extends CRMTransactionController{
 			}
 		}else if ("schedulefollowup".equalsIgnoreCase(actionParam)) {
 			IFollowupService followupService = (IFollowupService) SpringObjectFactory.INSTANCE.getInstance("IFollowupService");
+			TransactionResult transactionResult =  followupService.createFollowup(leadExtended,lead,(CRMContext) getContext()) ;
+			leadExtended= service.getSalesLeadWithExtension(lead.getId(),context);
+			result.setResult(Result.SUCCESS);
+			result.setObject(leadExtended);
+
+			return result;
 		}
 		else if ("emailQuote".equalsIgnoreCase(actionParam)) {
 			try { 

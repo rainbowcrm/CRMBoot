@@ -39,8 +39,25 @@ public class CRMConstants {
 	public final static String FV_ORIENTATION= "BUSORIEN";
 	public final static String FV_PRICESOURCE= "PRICSRC";
 	public final static String FV_BUNDLEPRICING= "BUNDPRC";
-	public final static String FV_SERVICESTATUS= "BUNDPRC";
+	public final static String FV_SERVICESTATUS= "SERVSTAT";
+	public final static String FV_FOLLOWUPSTATUS= "FLPSTATUS";
 
+	public  final static class COMMUNICATION_MODE  {
+		public final static String PHONE ="PHONE";
+		public final static String EMAIL ="EMAIL";
+		public final static String VISIT_TO_CUSTOMER ="PERSVISIT";
+		public final static String VISIT_BY_CUSTOMER ="PREMVISIT";
+
+	}
+
+	public  final static class FOLLOWUP_STATUS  {
+		public final static String SCHEDULED ="FLPSCHLD";
+		public final static String OPEN ="FLPELPSD";
+		public final static String COMPLETED ="FLPCMPLTD";
+		public final static String SKIPPED ="FLPSKP";
+		public final static String ABORT ="FLPABRT";
+
+	}
 
 	public final static class SERVICE_STATUS {
 		public final static String REGISTERED ="SRVSTREG";

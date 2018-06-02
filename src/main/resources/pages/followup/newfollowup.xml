@@ -15,7 +15,7 @@ Controller = "com.rainbow.crm.followup.controller.FollowupController">
  
 <CoreSection>
 <ErrorSection>
-</ErrorSection>r
+</ErrorSection>
 <Section type ="detail">
 	<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
 	<Element label = ""  type = "UIHidden" Id = "hdnUserID"  property ="Id" />
@@ -42,7 +42,7 @@ Controller = "com.rainbow.crm.followup.controller.FollowupController">
 	 <width>290</width>
 	</Element>
 	<Element label = "Date"  type = "UIDate" Id = "txtFLPDate" size="30" property ="followupDate" />
-	<Element label="Status" type="UIText" Id="txtStatus" readonly="true" property="serviceStatus.description"/>
+	<Element label="Status" type="UIText" Id="txtStatus" readonly="true" property="status.description"/>
 	<Element label = "Finalized"  type = "UIBooleanCheckBox" Id = "txtAdd2" hiddenControlId= "hdnfinalfollow"   property ="finalFollowup" />
 	<!--<Element label = "Finalized"  type = "UICheckBox" Id = "txtAdd2" size="30" property ="finalFollowup" >
 	<options> 
@@ -75,7 +75,23 @@ Controller = "com.rainbow.crm.followup.controller.FollowupController">
 	</Element>
 </Section>
 </CoreSection>
-<Section type ="summary">
+<Section type ="optionalSummary">
+	<Element caption = "Create"  type = "UIButton" Id = "btSubmit"   style="btn btn-primary" iconStyle="glyphicon glyphicon-plus"  rendered = "Controller.isCreateMode" fixedAction ="FixedAction.ACTION_CREATE"
+			 fixedActionvalidateFunc="validateforCreate()" fixedActionParam =  "SAVE"  />
+
+	<Element caption = "Update"  type = "UIButton" Id = "btUpdate"   style="btn btn-primary" iconStyle="glyphicon glyphicon-flash"  rendered = "Controller.isUpdateMode"
+			 fixedAction ="FixedAction.ACTION_UPDATE"  fixedActionvalidateFunc="validateforCreate()" fixedActionParam =  "SAVE"  />
+
+	<Element caption = "Abort"  type = "UIButton"    Id = "btnAbort"  style="btn btn-error" rendered = "Controller.isScheduledVisit"
+			 iconStyle="glyphicon glyphicon-print"  fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam ="abort"   />
+
+	<Element caption = "Complete"  type = "UIButton"    Id = "btnShipped"  style="btn btn-success" rendered = "Controller.isScheduledVisit"
+			 iconStyle="glyphicon glyphicon-print"  fixedAction ="FixedAction.ACTION_PLAINSUBMIT" fixedActionParam ="complete"   />
+
+
+	<Element caption = "Cancel"  type = "UIButton" Id = "btCancel"  style="btn btn-warning" iconStyle="glyphicon glyphicon-remove"  fixedAction ="FixedAction.ACTION_PAGEFORWARD" fixedActionParam =  "CANCEL"  />
+
+
 </Section>
 <Section type ="copyRightSection"/>
 </UIForm>
