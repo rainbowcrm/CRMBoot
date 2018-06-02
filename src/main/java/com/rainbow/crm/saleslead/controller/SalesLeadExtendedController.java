@@ -20,6 +20,7 @@ import com.rainbow.crm.common.SpringObjectFactory;
 import com.rainbow.crm.common.finitevalue.FiniteValue;
 import com.rainbow.crm.database.LoginSQLs;
 import com.rainbow.crm.enquiry.validator.EnquiryErrorCodes;
+import com.rainbow.crm.followup.service.IFollowupService;
 import com.rainbow.crm.logger.Logwriter;
 import com.rainbow.crm.sales.model.Sales;
 import com.rainbow.crm.saleslead.model.SalesLead;
@@ -71,7 +72,10 @@ public class SalesLeadExtendedController extends CRMTransactionController{
 			{
 				Logwriter.INSTANCE.error(ex);
 			}
-		}else if ("emailQuote".equalsIgnoreCase(actionParam)) {
+		}else if ("schedulefollowup".equalsIgnoreCase(actionParam)) {
+			IFollowupService followupService = (IFollowupService) SpringObjectFactory.INSTANCE.getInstance("IFollowupService");
+		}
+		else if ("emailQuote".equalsIgnoreCase(actionParam)) {
 			try { 
 			byte[] byteArray = service.printQuotation((SalesLead) object) ;
 			FileDataSource source = new FileDataSource(new File(lead.getDocNumber() +"+_quote.pdf"));

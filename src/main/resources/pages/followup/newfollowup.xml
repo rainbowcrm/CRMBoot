@@ -42,11 +42,13 @@ Controller = "com.rainbow.crm.followup.controller.FollowupController">
 	 <width>290</width>
 	</Element>
 	<Element label = "Date"  type = "UIDate" Id = "txtFLPDate" size="30" property ="followupDate" />
-	<Element label = "Finalized"  type = "UICheckBox" Id = "txtAdd2" size="30" property ="finalFollowup" >
+	<Element label="Status" type="UIText" Id="txtStatus" readonly="true" property="serviceStatus.description"/>
+	<Element label = "Finalized"  type = "UIBooleanCheckBox" Id = "txtAdd2" hiddenControlId= "hdnfinalfollow"   property ="finalFollowup" />
+	<!--<Element label = "Finalized"  type = "UICheckBox" Id = "txtAdd2" size="30" property ="finalFollowup" >
 	<options> 
 	  <option key ="true">  </option>
 	 </options>
-	</Element>
+	</Element>-->
 	<Element label = "Next_Followup"  type = "UIDate" Id = "txtAdd1" size="30" property ="nextFollwup" />
 	<Element label = "Confidence_Level"  type = "UIList" Id = "lstContact"   property ="confidenceLevel.code"  externalise= "true">
 		<options populator =  "getConfidenceLevels"> 

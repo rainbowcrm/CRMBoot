@@ -25,6 +25,7 @@ import com.rainbow.crm.division.model.Division;
 import com.rainbow.crm.hibernate.ORMDAO;
 import com.rainbow.crm.reasoncode.model.ReasonCode;
 import com.rainbow.crm.saleslead.model.SalesLead;
+import com.rainbow.crm.saleslead.model.SalesLeadExtended;
 import com.rainbow.crm.saleslead.model.SalesLeadLine;
 import com.rainbow.crm.saleslead.service.ISalesLeadService;
 import com.rainbow.crm.followup.dao.FollowupDAO;
@@ -45,6 +46,15 @@ public class FollowupService extends AbstractService implements IFollowupService
 	@Override
 	public Object getById(Object PK) {
 		return getDAO().getById(PK);
+	}
+
+	@Override
+	public TransactionResult createFollowup(SalesLeadExtended salesLeadExtended, SalesLead lead, CRMContext context) {
+		Followup followup = new Followup();
+		followup.setCompany(context.getCompany());
+		followup.setLead(lead);
+		followup.setFollowupDate(salesLeadExtended.getNextFollowupDate());
+		return null;
 	}
 
 	@Override

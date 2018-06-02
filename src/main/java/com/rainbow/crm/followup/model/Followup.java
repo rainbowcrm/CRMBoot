@@ -23,6 +23,9 @@ public class Followup extends CRMBusinessModelObject{
 	FiniteValue confidenceLevel;
 	
 	FiniteValue communicationMode;
+
+	FiniteValue status;
+
 	Double offeredPrice;
 	String salesAssociate ;
 	Date nextFollwup;
@@ -71,6 +74,17 @@ public class Followup extends CRMBusinessModelObject{
 	public void setCommunicationMode(FiniteValue communicationMode) {
 		this.communicationMode = communicationMode;
 	}
+
+	@RadsPropertySet(usePKForJSON=true,usePKForMap=true,usePKForXML=true)
+	public FiniteValue getStatus() {
+		return status;
+	}
+
+	@RadsPropertySet(usePKForJSON=true,usePKForMap=true,usePKForXML=true)
+	public void setStatus(FiniteValue status) {
+		this.status = status;
+	}
+
 	public Double getOfferedPrice() {
 		return offeredPrice;
 	}

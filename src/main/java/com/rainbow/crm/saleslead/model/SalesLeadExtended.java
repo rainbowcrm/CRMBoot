@@ -1,6 +1,7 @@
 package com.rainbow.crm.saleslead.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import com.rainbow.crm.document.model.Document;
@@ -10,7 +11,9 @@ public class SalesLeadExtended extends SalesLead {
 
 	List<Followup> followups;
 	List<Document > documents;
-	
+
+	Date nextFollowupDate;
+
 	public List<Followup> getFollowups() {
 		return followups;
 	}
@@ -60,5 +63,13 @@ public class SalesLeadExtended extends SalesLead {
 		extended.setAlerted(lead.isAlerted());
 		extended.setSalesWon(lead.isSalesWon());
 		return extended;
+	}
+
+	public Date getNextFollowupDate() {
+		return nextFollowupDate;
+	}
+
+	public void setNextFollowupDate(Date nextFollowupDate) {
+		this.nextFollowupDate = nextFollowupDate;
 	}
 }

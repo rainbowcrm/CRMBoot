@@ -15,6 +15,7 @@
       <property name="conversation" column="conversation" type="string"/>
       <many-to-one name="confidenceLevel" column ="CONFIDENCE_LEVEL" not-null="false" lazy="false" ></many-to-one>
       <many-to-one name="communicationMode" column ="COMMUNICATION_MODE" not-null="false" lazy="false" ></many-to-one>
+      <many-to-one name="status" column ="STATUS" not-null="false" lazy="false" ></many-to-one>
       <property name="offeredPrice" column="OFFERED_PRICE" type="double"/>
       <property name="salesAssociate" column="SALES_ASSOCIATE" type="string"/>
       <property name="followupDate" column="FOLLOWUP_DATE" type="date"/>
