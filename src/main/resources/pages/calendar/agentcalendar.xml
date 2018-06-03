@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id="apptCalendar" showinFrame="true" title="Appointment Calendar  | Primus CRM"
+      Controller="com.primus.crm.appointment.controller.AppointmentController">
+    <Template type="StaticHTML" ></Template>
+    <HTMLFile>./calendar/agentcalendar.html</HTMLFile>
+</Page>

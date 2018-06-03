@@ -177,6 +177,12 @@ public class FollowupService extends AbstractService implements IFollowupService
 	}
 
 	@Override
+	public List<Followup> getFollowupsforDateRange(Date startDt, Date endDate, CRMContext context) {
+		FollowupDAO dao = (FollowupDAO)getDAO();
+		return dao.getFollowupsBetweenDays(startDt,endDate,context.getLoggedinCompany());
+	}
+
+	@Override
 	public List<Followup> findBySalesLead(SalesLead lead) {
 		FollowupDAO dao = (FollowupDAO)getDAO();
 		return		dao.getFollowupsforSalesLead(lead.getId());

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id="apptCalendar" showinFrame="true" title="CRM Calendar  | Primus CRM"
+      Controller="com.rainbow.crm.followup.controller.FollowupController">
+    <Template type="StaticHTML" ></Template>
+    <HTMLFile>./calendar/calendar.html</HTMLFile>
+</Page>

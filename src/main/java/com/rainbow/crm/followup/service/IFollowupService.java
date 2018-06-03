@@ -14,6 +14,8 @@ public interface IFollowupService extends IBusinessService{
 	
 
 	 public List<Followup> getFollowupsforDayforAlerts(Date startDt ) ;
+
+	public List<Followup> getFollowupsforDateRange(Date startDt, Date endDate, CRMContext context ) ;
 	 
 	 public List<Followup> findBySalesLead(SalesLead lead) ;
 

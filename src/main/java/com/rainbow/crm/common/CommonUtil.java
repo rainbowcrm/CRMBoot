@@ -3,6 +3,7 @@ package com.rainbow.crm.common;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -17,33 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+import com.rainbow.crm.followup.model.Followup;
 import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPReply;
@@ -568,6 +543,20 @@ public class CommonUtil {
 		
 		return null ;
 	}
-	
-	
+
+	public static String getFollowupTimeAsString(Followup followup, String dateFormat, String timeFormat)
+	{
+		SimpleDateFormat sdf = new SimpleDateFormat(timeFormat);
+		String timeString = sdf.format(followup.getFollowupDate()) ;
+		/*String hhPart = timeString.substring(0,2);
+		String mmPart = timeString.substring(3,5);
+		appointment.setHh(Integer.parseInt(hhPart));
+		appointment.setMm(Integer.parseInt(mmPart));*/
+
+		SimpleDateFormat dateFormatObj = new SimpleDateFormat(dateFormat);
+		String dateString = dateFormatObj.format(followup.getFollowupDate()) ;
+		return dateString + " " +  timeString ;
+
+
+	}
 }

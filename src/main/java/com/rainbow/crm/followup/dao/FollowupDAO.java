@@ -26,7 +26,19 @@ public class FollowupDAO extends HibernateDAO {
 		closeSession(session,false);
 		return obj;
 	}
-	
+
+
+	public List<Followup> getFollowupsBetweenDays(Date startDt, Date endDate , int company  ) {
+		Session session = openSession(false);
+		Query query = session.createQuery(" from Followup where followupDate >= :startDt    and followupDate <= :endDate  and company.id= :company and deleted =false " ) ;
+		query.setParameter("startDt", startDt);
+		query.setParameter("endDate", endDate);
+		query.setParameter("company", company);
+		List<Followup> lst = query.list();
+		closeSession(session, false);
+		return lst;
+	}
+
 	
 	public List<Followup> getFollowupsforDayforAlerts(Date startDt, long interval) {
 		Session session = openSession(false);

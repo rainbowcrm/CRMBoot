@@ -250,6 +250,8 @@
         </Page>
         <Page id = "newdistributionorder" definition ="/resources/pages/distributionorder/newdistributionorder.xml" modelclass = "com.rainbow.crm.distributionorder.model.DistributionOrder" >
         </Page>
+        <Page id = "calendar" definition ="/resources/pages/calendar/calendar.xml" >
+        </Page>
     </Pages>
     <Panels>
         <Panel key = "CRUDPanel" showInDiv = "false" >
@@ -583,6 +585,9 @@
         <AjaxService service ="feedbackObjectSearch" class = "com.rainbow.crm.feedback.service.FeedbackAjaxObjectsService">
             <key>BillNo</key>
             <key>ObjectType</key>
+        </AjaxService>
+        <AjaxService service ="allfollowups" class = "com.rainbow.crm.followup.service.AllFollowupAjaxService">
+
         </AjaxService>
         <AjaxService service ="itemSearch" class = "com.rainbow.crm.item.service.ItemAjaxService">
             <key>Code</key>
