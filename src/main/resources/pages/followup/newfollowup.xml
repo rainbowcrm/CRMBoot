@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Page id = "newContact" showinFrame ="true" title ="New Contact | Rainbow CRM" Object = "com.rainbow.crm.followup.model.Followup" 
 Controller = "com.rainbow.crm.followup.controller.FollowupController">
-<Template type= "CRUD"  name = "CRUDTemplate"></Template>
+<Template type= "Transaction"  name = "TransactionTemplate"></Template>
 <Forwards>
 <Forward key ="CANCEL">controller?page=followups</Forward>
 <Forward key ="SAVE">followups</Forward>
@@ -16,7 +16,7 @@ Controller = "com.rainbow.crm.followup.controller.FollowupController">
 <CoreSection>
 <ErrorSection>
 </ErrorSection>
-<Section type ="detail">
+<Section type ="header">
 	<Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
 	<Element label = ""  type = "UIHidden" Id = "hdnUserID"  property ="Id" />
 	<Element label = "Division"  type = "UIList" Id = "lstInvDivision"  isMandatory="true" property ="Division.Id" >
@@ -75,7 +75,7 @@ Controller = "com.rainbow.crm.followup.controller.FollowupController">
 	</Element>
 </Section>
 </CoreSection>
-<Section type ="optionalSummary">
+<Section type ="optionalsummary">
 	<Element caption = "Create"  type = "UIButton" Id = "btSubmit"   style="btn btn-primary" iconStyle="glyphicon glyphicon-plus"  rendered = "Controller.isCreateMode" fixedAction ="FixedAction.ACTION_CREATE"
 			 fixedActionvalidateFunc="validateforCreate()" fixedActionParam =  "SAVE"  />
 

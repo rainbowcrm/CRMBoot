@@ -14,15 +14,12 @@ import java.util.List;
 
 
 import com.rainbow.crm.abstratcs.model.CRMModelObject;
-import com.rainbow.crm.common.AbstractService;
-import com.rainbow.crm.common.CRMConstants;
-import com.rainbow.crm.common.CRMContext;
-import com.rainbow.crm.common.CommonUtil;
-import com.rainbow.crm.common.SpringObjectFactory;
+import com.rainbow.crm.common.*;
 import com.rainbow.crm.common.finitevalue.FiniteValue;
 import com.rainbow.crm.company.model.Company;
 import com.rainbow.crm.company.service.ICompanyService;
 import com.rainbow.crm.division.model.Division;
+import com.rainbow.crm.followup.validator.FollowupErrorCodes;
 import com.rainbow.crm.hibernate.ORMDAO;
 import com.rainbow.crm.reasoncode.model.ReasonCode;
 import com.rainbow.crm.saleslead.model.SalesLead;
@@ -32,6 +29,7 @@ import com.rainbow.crm.saleslead.service.ISalesLeadService;
 import com.rainbow.crm.followup.dao.FollowupDAO;
 import com.rainbow.crm.followup.model.Followup;
 import com.rainbow.crm.followup.validator.FollowupValidator;
+import com.techtrade.rads.framework.model.abstracts.ModelObject;
 import com.techtrade.rads.framework.model.abstracts.RadsError;
 import com.techtrade.rads.framework.model.transaction.TransactionResult;
 import com.techtrade.rads.framework.ui.components.SortCriteria;
@@ -56,6 +54,12 @@ public class FollowupService extends AbstractService implements IFollowupService
 	public TransactionResult createFollowup(SalesLeadExtended salesLeadExtended, SalesLead lead, CRMContext context) {
 		TransactionResult result = new TransactionResult();
 
+		if (salesLeadExtended.getNextFollowupDate() == null )
+		{
+			result.addError(CRMValidator.getErrorforCode(context.getLocale(), FollowupErrorCodes.FIELD_EMPTY,"Followup_Date"));
+			result.setResult(TransactionResult.Result.FAILURE);
+			return result;
+		}
 		Followup followup = new Followup();
 		followup.setCompany(context.getCompany());
 		followup.setLead(lead);
@@ -64,6 +68,7 @@ public class FollowupService extends AbstractService implements IFollowupService
 		followup.setResult(new FiniteValue(CRMConstants.FOLLOWUP_RESULT.PENDING));
 		followup.setStatus( new FiniteValue(CRMConstants.FOLLOWUP_STATUS.SCHEDULED));
 		followup.setSalesAssociate(lead.getSalesAssociate());
+
 		followup.setDivision(lead.getDivision());
 		double decimal = 0.0 ;
 		for (SalesLeadLine line : lead.getSalesLeadLines() ) {
@@ -188,11 +193,17 @@ public class FollowupService extends AbstractService implements IFollowupService
 		return		dao.getFollowupsforSalesLead(lead.getId());
 		
 	}
-	
-	
 
+	@Override
+	public List<RadsError> adaptfromUI(CRMContext context, ModelObject object) {
+		return null;
+	}
 
-	
-	
-
+	@Override
+	public List<RadsError> adaptToUI(CRMContext context, ModelObject object) {
+		Followup followup = (Followup) object;
+		if (followup !=null && followup.getLead() != null )
+			followup.setDivision(followup.getLead().getDivision());
+		return null;
+	}
 }

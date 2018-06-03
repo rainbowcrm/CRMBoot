@@ -6467,7 +6467,7 @@ function DayEventRenderer() {
                 console.log('first part = ' + windowLoc.substring(0,index)) ;
                 var urlBase =  windowLoc.substring(0,index);
                 console.log('event.id=' +event.id );
-			   window.open(urlBase + '/controller?page=mgrapptpopupview&navAction=loadfromPK&hdnUserID=' + event.id,'this one','width=560,height=340,toolbar=0,menubar=0,location=0');
+			   window.open(urlBase + '/controller?page=newfollowup&navAction=loadfromPK&hdnUserID=' + event.id,'this one','width=560,height=340,toolbar=0,menubar=0,location=0');
 				ev.preventDefault();
 			})
 			.click(function(ev) {

@@ -6,25 +6,22 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.rainbow.crm.common.CRMCRUDController;
-import com.rainbow.crm.common.CRMConstants;
-import com.rainbow.crm.common.CRMContext;
-import com.rainbow.crm.common.IBusinessService;
-import com.rainbow.crm.common.SpringObjectFactory;
+import com.rainbow.crm.common.*;
 import com.rainbow.crm.common.finitevalue.FiniteValue;
 import com.rainbow.crm.followup.model.Followup;
 import com.rainbow.crm.followup.service.IFollowupService;
 import com.rainbow.crm.reasoncode.model.ReasonCode;
 import com.rainbow.crm.reasoncode.service.IReasonCodeService;
 import com.rainbow.crm.database.GeneralSQLs;
+import com.techtrade.rads.framework.controller.abstracts.TransactionController;
 import com.techtrade.rads.framework.model.abstracts.ModelObject;
 import com.techtrade.rads.framework.model.abstracts.RadsError;
 import com.techtrade.rads.framework.ui.abstracts.PageResult;
 import com.techtrade.rads.framework.utils.Utils;
 
-public class FollowupController extends CRMCRUDController{
+public class FollowupController extends CRMTransactionController {
 	
-	public IBusinessService getService() {
+	public ITransactionService getService() {
 		IFollowupService serv = (IFollowupService) SpringObjectFactory.INSTANCE.getInstance("IFollowupService");
 		return serv;
 	}
@@ -33,8 +30,9 @@ public class FollowupController extends CRMCRUDController{
 	public ModelObject populateFullObjectfromPK(ModelObject objects) {
 		object = (ModelObject) getService().getById(object.getPK());
 		Followup followup = (Followup) object;
-		if (followup !=null && followup.getLead() != null )
+		if (followup !=null && followup.getLead() != null ) {
 			followup.setDivision(followup.getLead().getDivision());
+		}
 		return object;
 	}
 	public boolean  isScheduledVisit()

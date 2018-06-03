@@ -5,12 +5,13 @@ import java.util.List;
 
 import com.rainbow.crm.common.CRMContext;
 import com.rainbow.crm.common.IBusinessService;
+import com.rainbow.crm.common.ITransactionService;
 import com.rainbow.crm.followup.model.Followup;
 import com.rainbow.crm.saleslead.model.SalesLead;
 import com.rainbow.crm.saleslead.model.SalesLeadExtended;
 import com.techtrade.rads.framework.model.transaction.TransactionResult;
 
-public interface IFollowupService extends IBusinessService{
+public interface IFollowupService extends ITransactionService{
 	
 
 	 public List<Followup> getFollowupsforDayforAlerts(Date startDt ) ;
