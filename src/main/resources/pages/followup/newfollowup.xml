@@ -74,6 +74,35 @@ Controller = "com.rainbow.crm.followup.controller.FollowupController">
 	 <rows>5</rows> <cols>30</cols>
 	</Element>
 </Section>
+
+	<Section type ="detail">
+	<Element type = "UITable" rows = "1" cols = "7" style = "grid" applyStyleonChildren ="true" Id  ="tblTrans" property ="SalesLeadLines[]" >
+		<Element type = "UITableHead" style ="listPageTitle">
+			<Element type = "UITableRow">
+
+				<Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Code" /></Element>
+				<Element type ="UITableCol" width = "25%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Item" /></Element>
+				<Element type ="UITableCol" width = "18%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Comments" /></Element>
+				<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Retail_Price" /></Element>
+				<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Qty" /></Element>
+				<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Negotiated_Price" /></Element>
+
+			</Element>
+		</Element>
+		<Element type = "UITableRow"  dataType = "com.rainbow.crm.saleslead.model.SalesLeadLine" rendered = "!Object.getVoided">
+
+			<Element type ="UITableCol" width = "10%"><Element label = ""  type = "UILabel" Id = "txtSKUCode" size  = "10" readonly= "true" property ="Sku.code" /> </Element>
+			<Element type ="UITableCol" width = "25%"><Element label = ""  type = "UILabel"  Id = "txtItName"  size  = "30" readonly= "true" property ="Sku.Name"/> </Element>
+			<Element type ="UITableCol" width = "18%"><Element label = ""  type = "UILabel" Id = "txtLineCo"  property ="Comments" readonly= "true" size = "30" />  </Element>
+			<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "txtPrice"  property ="price"  readonly= "true" size = "10" />  </Element>
+			<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "txtQty"  property ="Qty"   readonly= "true"  size = "10"/>  </Element>
+			<Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "txtlineDisc"  property ="negotiatedPrice"  readonly= "true" size = "10" />  </Element>
+
+		</Element>
+	</Element>
+	</Section>
+
+
 </CoreSection>
 <Section type ="optionalsummary">
 	<Element caption = "Create"  type = "UIButton" Id = "btSubmit"   style="btn btn-primary" iconStyle="glyphicon glyphicon-plus"  rendered = "Controller.isCreateMode" fixedAction ="FixedAction.ACTION_CREATE"

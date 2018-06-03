@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id = "newContact" showinFrame ="true" title ="New Contact | Rainbow CRM" Object = "com.rainbow.crm.followup.model.Followup"
+      Controller = "com.rainbow.crm.followup.controller.FollowupController">
+    <Template type= "Transaction"  name = "TransactionTemplate"></Template>
+    <Forwards>
+
+    </Forwards>
+    <IncludeJS>./js/RadsLib.js</IncludeJS>
+    <IncludeJS>./js/CRMGeneral.js</IncludeJS>
+    <Elements>
+        <UIForm Id ="cust" method = "POST" >
+
+
+
+            <CoreSection>
+                <ErrorSection>
+                </ErrorSection>
+                <Section type ="header">
+                    <Element label = "" type = "UIHidden" Id = "hdnVersion" property ="ObjectVersion" />
+                    <Element label = ""  type = "UIHidden" Id = "hdnUserID"  property ="Id" />
+                    <Element label = "Division"  type = "UILabel" style="crudlabel"  size="30" Id = "lstInvDivision"  isMandatory="true" property ="Division.Name" >
+
+                    </Element>
+                    <Element label = "Sales_Lead"   type = "UILabel" style="crudlabel"  size="30"  Id = "txtName"  isMandatory="true" property ="lead.docNumber" >
+
+                    </Element>
+                    <Element label = "Sales_Associate"    type = "UILabel" style="crudlabel"  size="30" Id = "txtLName"  property ="salesAssociate" >
+
+                    </Element>
+                    <Element label = "Date"  type = "UILabel" style="crudlabel"   Id = "txtFLPDate" size="30" property ="followupDate" />
+                    <Element label="Status" type = "UILabel" style="crudlabel"  size="30"  readonly="true" property="status.description"/>
+                    <Element label = "Finalized"  type = "UIBooleanCheckBox" Id = "txtAdd2" hiddenControlId= "hdnfinalfollow"   property ="finalFollowup" />
+                    <!--<Element label = "Finalized"  type = "UICheckBox" Id = "txtAdd2" size="30" property ="finalFollowup" >
+                    <options>
+                      <option key ="true">  </option>
+                     </options>
+                    </Element>-->
+                    <Element label = "Next_Followup"  type = "UILabel" style="crudlabel"  size="30"  Id = "txtAdd1"  property ="nextFollwup" />
+                    <Element label = "Confidence_Level"  type = "UILabel" style="crudlabel"  size="30"  Id = "lstContact"   property ="confidenceLevel.description"  externalise= "true">
+
+                    </Element>
+                    <Element label = "Communication_Mode"  type = "UILabel" style="crudlabel"  size="30" Id = "lstCommMode"   property ="communicationMode.description"  externalise= "true">
+
+                    </Element>
+                    <Element label = "Offered_Price"  type = "UILabel" style="crudlabel"  size="30" property ="offeredPrice" />
+                    <Element label = "Result"  type = "UILabel" style="crudlabel"  size="30" Id = "lstResult"   property ="result.description"  externalise= "true">
+
+                    </Element>
+                    <Element label = "Result_Reason"  type = "UILabel" style="crudlabel"  size="30" Id = "lstResultReason"   property ="resultReason.description"  externalise= "true">
+
+                    </Element>
+                    <Element label = "Comments"  type = "UITextArea" Id = "txtComments"   property ="comments" >
+                        <rows>5</rows> <cols>30</cols>
+                    </Element>
+                    <Element label = "Conversation"  type = "UITextArea" Id = "txtConversation"   property ="comments" >
+                        <rows>5</rows> <cols>30</cols>
+                    </Element>
+                </Section>
+
+                <Section type ="detail">
+                    <Element type = "UITable" rows = "1" cols = "7" style = "grid" applyStyleonChildren ="true" Id  ="tblTrans" property ="SalesLeadLines[]" >
+                        <Element type = "UITableHead" style ="listPageTitle">
+                            <Element type = "UITableRow">
+
+                                <Element type ="UITableCol" width = "10%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Code" /></Element>
+                                <Element type ="UITableCol" width = "25%" ><Element label = ""  type = "UILabel" Id = "lblCode" value ="Item" /></Element>
+                                <Element type ="UITableCol" width = "18%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Comments" /></Element>
+                                <Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Retail_Price" /></Element>
+                                <Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Qty" /></Element>
+                                <Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "lblCode" value ="Negotiated_Price" /></Element>
+
+                            </Element>
+                        </Element>
+                        <Element type = "UITableRow"  dataType = "com.rainbow.crm.saleslead.model.SalesLeadLine" rendered = "!Object.getVoided">
+
+                            <Element type ="UITableCol" width = "10%"><Element label = ""  type = "UILabel" Id = "txtSKUCode" size  = "10" readonly= "true" property ="Sku.code" /> </Element>
+                            <Element type ="UITableCol" width = "25%"><Element label = ""  type = "UILabel"  Id = "txtItName"  size  = "30" readonly= "true" property ="Sku.Name"/> </Element>
+                            <Element type ="UITableCol" width = "18%"><Element label = ""  type = "UILabel" Id = "txtLineCo"  property ="Comments" readonly= "true" size = "30" />  </Element>
+                            <Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "txtPrice"  property ="price"  readonly= "true" size = "10" />  </Element>
+                            <Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "txtQty"  property ="Qty"   readonly= "true"  size = "10"/>  </Element>
+                            <Element type ="UITableCol" width = "8%"><Element label = ""  type = "UILabel" Id = "txtlineDisc"  property ="negotiatedPrice"  readonly= "true" size = "10" />  </Element>
+
+                        </Element>
+                    </Element>
+                </Section>
+
+
+            </CoreSection>
+            <Section type ="optionalsummary">
+                <Element caption="Close_Popup" type="UIButton" Id="btnAlink" style="btn btn-success"
+                         iconStyle="glyphicon glyphicon-link" onClickJS = "refreshParentFrame()"
+                         fixedActionParam="CANCEL"/>
+
+            </Section>
+            <Section type ="copyRightSection"/>
+        </UIForm>
+    </Elements>
+</Page>

@@ -19,7 +19,7 @@
 
             <CoreSection>
                 <Section type = "fullPage" >
-                    <Element type = "UIIFrame" src ="./controller?page=divisions" Id="frmFameId" style ="coresectionstyle" >
+                    <Element type = "UIIFrame" src ="./controller?page=calendar" Id="frmFameId" style ="coresectionstyle" >
                     </Element>
 
                 </Section>

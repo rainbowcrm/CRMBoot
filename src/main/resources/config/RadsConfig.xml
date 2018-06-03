@@ -159,6 +159,8 @@
         </Page>
         <Page id = "newfollowup" definition ="/resources/pages/followup/newfollowup.xml" modelclass = "com.rainbow.crm.followup.model.Followup" >
         </Page>
+        <Page id = "followuppopup" definition ="/resources/pages/followup/followuppopup.xml" modelclass = "com.rainbow.crm.followup.model.Followup" >
+        </Page>
         <Page id = "newenquiry" definition ="/resources/pages/enquiry/newenquiry.xml" modelclass = "com.rainbow.crm.enquiry.model.Enquiry" >
         </Page>
         <Page id = "newdocument" definition ="/resources/pages/documents/newdocument.xml" modelclass = "com.rainbow.crm.document.model.Document" >
