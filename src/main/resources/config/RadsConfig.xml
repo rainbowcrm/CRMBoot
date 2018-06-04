@@ -191,6 +191,8 @@
         </Page>
         <Page id = "customerprofile" definition ="/resources/pages/profiles/customerprofile.xml"  modelclass = "com.rainbow.crm.profile.model.CustomerProfile" >
         </Page>
+        <Page id = "mgrsnapshot" definition ="/resources/pages/snapshot/mgrsnapshot.xml" >
+        </Page>
 
         <Page id = "skucomplete" definition ="/resources/pages/item/skucomplete.xml" modelclass = "com.rainbow.crm.item.model.SkuComplete" >
         </Page>
@@ -425,7 +427,7 @@
                 <Element label = "" type = "UIMenu" Id = "menu934" style="menustyle" title="Sales_Leads" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=saleslead" iconStyle="fa fa-fw fa-eye"  />
                 <Element label = "" type = "UIMenu" Id = "menu935" style="menustyle" title="Followups" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=followups"  iconStyle="fa fa-fw fa-exchange" />
                 <Element label = "" type = "UIMenu" Id = "menu933" style="menustyle" title="Calendar" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=calendar"  iconStyle="fa fa-fw fa-calendar" />
-                <Element label = "" type = "UIMenu" Id = "menu932" style="menustyle" title="Dashboard" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=crmdashboard"  iconStyle="fa fa-fw fa-dashboard" />
+                <Element label = "" type = "UIMenu" Id = "menu932" style="menustyle" title="SnapShot" iFrameCtrlId ="frmFameId" iFrameSrc = "controller?page=mgrsnapshot"  iconStyle="fa fa-fw fa-dashboard" />
 
 
             </Element>
@@ -591,6 +593,12 @@
         <AjaxService service ="allfollowups" class = "com.rainbow.crm.followup.service.AllFollowupAjaxService">
 
         </AjaxService>
+
+
+        <AjaxService service ="mgrsnapShot" class = "com.rainbow.crm.snapshot.service.SnapShotAjaxService">
+
+        </AjaxService>
+
         <AjaxService service ="itemSearch" class = "com.rainbow.crm.item.service.ItemAjaxService">
             <key>Code</key>
             <key>Name</key>

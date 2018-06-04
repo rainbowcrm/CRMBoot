@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)http://webapplayers.com/inspinia_admin-v2.7.1/dashboard_2.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NETTER | PharnaCRM v1.0</title>
+
+    <link href="../css/build/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/build/font-awesome.css" rel="stylesheet">
+
+    <link href="../css/build/animate.css" rel="stylesheet">
+    <link href="../css/build/style.css" rel="stylesheet">
+
+    <style type="text/css">.jqstooltip { position: absolute;left: 0px;top: 0px;visibility: hidden;background: rgb(0, 0, 0) transparent;background-color: rgba(0,0,0,0.6);filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";color: white;font: 10px arial, san serif;text-align: left;white-space: nowrap;padding: 5px;border: 1px solid white;z-index: 10000;}.jqsfield { color: white;font: 10px arial, san serif;text-align: left;}</style></head>
+
+<body class="pace-done">
+<script>
+
+     function getURLBase()
+    {
+        console.log('appURL=' +window.location.href);
+		var windowLoc = window.location.href;
+		var index = windowLoc.indexOf('/snapshot/mgrsnapshot.html');
+		console.log('index = ' + index);
+		console.log('first part = ' + windowLoc.substring(0,index)) ;
+        return windowLoc.substring(0,index);
+    }
+
+    var reqObject = new XMLHttpRequest();
+    requestStr = getURLBase()  +  "/controller?ajxService=mgrsnapShot";
+    reqObject.onreadystatechange = function() {
+               if (this.readyState == 4 && this.status == 200) {
+                events  =   JSON.parse('['+reqObject.responseText+']')  ;
+                for (i in events) {
+                   events[i].start = new Date(events[i].start);
+                }
+                console.log("fetching events =" + events.toString());
+			    currentView.setEventData(events); // for View.js, TODO: unify with renderEvents
+			    currentView.renderEvents(events, modifiedEventID); // actually render the DOM elements
+			    currentView.trigger('eventAgfterAllRender');
+              }
+         };
+        reqObject.open("GET",requestStr,false);
+        reqObject.send();
+      //  var snapsotresponse = reqObject.responseText;
+
+         var snapsotresponse  =   JSON.parse(reqObject.responseText)  ;
+         console.log("Responss   e =" + reqObject.responseText );
+
+
+</script>
+<div class="pace  pace-inactive"><div class="pace-progress" data-progress-text="100%" data-progress="99" style="transform: translate3d(100%, 0px, 0px);">
+    <div class="pace-progress-inner"></div>
+</div>
+    <div class="pace-activity"></div></div>
+<div id="wrapper">
+    <div  class="gray-bg" style="min-height: 710px;">
+        <div class="row border-bottom">
+        </div>
+        <!-- CONTENT SECTION -->
+        <div class="wrapper">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <span class="label label-success pull-right">Monthly</span>
+                            <h5>Sales</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <!--<h1 class="no-margins"><script>  document.write(snapsotresponse.OrderFigure.AchievedAmount);</script></h1>
+                            <div class="stat-percent font-bold text-success"><script>document.write(snapsotresponse.OrderFigure.AchievedPercent);</script> % <i class="fa fa-bolt"></i></div>-->
+
+                            <h1 class="no-margins"><script>  document.write("90,099.56$");</script></h1>
+                            <div class="stat-percent font-bold text-success"><script>document.write("67");</script> % <i class="fa fa-bolt"></i></div>
+
+                            <small>Total Sales</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <!--<span class="label label-info pull-right"><script>  document.write(snapsotresponse.Period);</script></span>-->
+
+                            <span class="label label-info pull-right"><script>  document.write("Monthly");</script></span>
+
+                            <h5>Open Sales Leads</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <h1 class="no-margins">275,800</h1>
+                            <div class="stat-percent font-bold text-info">20% <i class="fa fa-level-up"></i></div>
+                            <small>New orders</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <span class="label label-primary pull-right"> "Monthly "</span>
+                            <h5>Customer Followups</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <!--<h1 class="no-margins"><script>  document.write(snapsotresponse.VisitCount);</script></h1>
+                            <div class="stat-percent font-bold text-navy">44% <i class="fa fa-level-up"></i></div>-->
+
+                            <h1 class="no-margins">"56"</h1>
+                            <div class="stat-percent font-bold text-navy">44% <i class="fa fa-level-up"></i></div>
+
+                            <small>New visits</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <span class="label label-danger pull-right"><script>   document.write("Monthly");</script></span>
+                            <h5>Open Services Request</h5>
+                        </div>
+                        <div class="ibox-content">
+                            <!--<h1 class="no-margins"><script>  document.write(snapsotresponse.PobFigure.AchievedAmount);</script></h1>
+                            <div class="stat-percent font-bold text-danger">38% <i class="fa fa-level-down"></i></div>-->
+
+                            <h1 class="no-margins"><script> document.write("12,600$");</script></h1>
+                            <div class="stat-percent font-bold text-danger">38% <i class="fa fa-level-down"></i></div>
+
+                            <small>POB</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Sales</h5>
+                            <div class="pull-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-xs btn-white active">Today</button>
+                                    <button type="button" class="btn btn-xs btn-white">Monthly</button>
+                                    <button type="button" class="btn btn-xs btn-white">Annual</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="row">
+                                <div class="col-lg-9">
+                                    <div class="flot-chart">
+                                        <div class="flot-chart-content" id="flot-dashboard-chart" style="padding: 0px; position: relative;"><canvas class="flot-base" width="1120" height="250" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 896.4px; height: 200px;"></canvas><div class="flot-text" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px; font-size: smaller; color: rgb(84, 84, 84);"><div class="flot-x-axis flot-x1-axis xAxis x1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;"><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 74px; top: 185px; left: 78px; text-align: center;">Jan 03</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 74px; top: 185px; left: 161px; text-align: center;">Jan 06</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 74px; top: 185px; left: 243px; text-align: center;">Jan 09</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 74px; top: 185px; left: 326px; text-align: center;">Jan 12</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 74px; top: 185px; left: 409px; text-align: center;">Jan 15</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 74px; top: 185px; left: 491px; text-align: center;">Jan 18</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 74px; top: 185px; left: 574px; text-align: center;">Jan 21</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 74px; top: 185px; left: 657px; text-align: center;">Jan 24</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 74px; top: 185px; left: 739px; text-align: center;">Jan 27</div><div class="flot-tick-label tickLabel" style="position: absolute; max-width: 74px; top: 185px; left: 822px; text-align: center;">Jan 30</div></div><div class="flot-y-axis flot-y1-axis yAxis y1Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 171px; left: 19px; text-align: right;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 131px; left: 6px; text-align: right;">250</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 91px; left: 6px; text-align: right;">500</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 52px; left: 6px; text-align: right;">750</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 12px; left: 0px; text-align: right;">1000</div></div><div class="flot-y-axis flot-y2-axis yAxis y2Axis" style="position: absolute; top: 0px; left: 0px; bottom: 0px; right: 0px;"><div class="flot-tick-label tickLabel" style="position: absolute; top: 171px; left: 884px;">0</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 143px; left: 884px;">5</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 114px; left: 884px;">10</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 86px; left: 884px;">15</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 57px; left: 884px;">20</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 29px; left: 884px;">25</div><div class="flot-tick-label tickLabel" style="position: absolute; top: 0px; left: 884px;">30</div></div></div><canvas class="flot-overlay" width="1120" height="250" style="direction: ltr; position: absolute; left: 0px; top: 0px; width: 896.4px; height: 200px;"></canvas><div class="legend"><div style="position: absolute; width: 110.4px; height: 30.4px; top: 13px; left: 35px; background-color: rgb(255, 255, 255); opacity: 0.85;"> </div><table style="position:absolute;top:13px;left:35px;;font-size:smaller;color:#545454"><tbody><tr><td class="legendColorBox"><div style="border:1px solid #000000;padding:1px"><div style="width:4px;height:0;border:5px solid #1ab394;overflow:hidden"></div></div></td><td class="legendLabel">Number of orders</td></tr><tr><td class="legendColorBox"><div style="border:1px solid #000000;padding:1px"><div style="width:4px;height:0;border:5px solid #1C84C6;overflow:hidden"></div></div></td><td class="legendLabel">Payments</td></tr></tbody></table></div></div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <ul class="stat-list">
+                                        <li>
+                                            <h2 class="no-margins">2,346</h2>
+                                            <small>Total orders in period</small>
+                                            <div class="stat-percent">48% <i class="fa fa-level-up text-navy"></i></div>
+                                            <div class="progress progress-mini">
+                                                <div style="width: 48%;" class="progress-bar"></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h2 class="no-margins ">4,422</h2>
+                                            <small>Orders in last month</small>
+                                            <div class="stat-percent">60% <i class="fa fa-level-down text-navy"></i></div>
+                                            <div class="progress progress-mini">
+                                                <div style="width: 60%;" class="progress-bar"></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <h2 class="no-margins ">9,180</h2>
+                                            <small>Monthly income from orders</small>
+                                            <div class="stat-percent">22% <i class="fa fa-bolt text-navy"></i></div>
+                                            <div class="progress progress-mini">
+                                                <div style="width: 22%;" class="progress-bar"></div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                            <h5>Messages</h5>
+                            <div class="ibox-tools">
+                                <a class="collapse-link">
+                                    <i class="fa fa-chevron-up"></i>
+                                </a>
+                                <a class="close-link">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="ibox-content ibox-heading">
+                            <h3><i class="fa fa-envelope-o"></i>FeedBacks</h3>
+                            <small><i class="fa fa-tim"></i> 15</small>
+                        </div>
+                        <div class="ibox-content">
+                            <div class="feed-activity-list">
+
+                                <div class="feed-element">
+                                    <div>
+                                        <small class="pull-right text-navy">10/02/2018 10:00 AM</small>
+                                        <strong>Harvey Specter</strong>
+                                        <div>Waiting for Pending delivery</div>
+                                        <small class="text-muted">Class A</small>
+                                    </div>
+                                </div>
+                                <!--<script>
+                                         var feedbackDetails = snapsotresponse.FeedbackDetailList;
+                                          for ( var i in feedbackDetails) {
+                                              document.write('<div class="feed-element">');
+                                               document.write(' <div>');
+                                               var feedbackDetail = feedbackDetails[i];
+                                               console.log(JSON.stringify(feedbackDetail));
+                                                    document.write('<small class="pull-right text-navy">' +  feedbackDetail.Date + '</small>');
+                                                    document.write('<strong>'+feedbackDetail.GivenBy + '</strong>');
+                                                    document.write('<div>'+feedbackDetail.Feedback + '</div>');
+                                                    document.write('<small class="text-muted">'+ feedbackDetail.DoctorClass +'</small>');
+                                                document.write('</div>');
+                                            document.write('</div>');
+                                          }
+                                </script>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-8">
+                    <!-- PORLET 2 -->
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>Appointments</h5>
+                                    <div class="ibox-tools">
+                                        <a class="collapse-link">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                        <a class="close-link">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="ibox-content">
+
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <table class="table table-hover margin bottom">
+                                                <thead>
+                                                <tr>
+                                                    <th style="width: 1%" class="text-center">No.</th>
+                                                    <th>Date</th>
+                                                    <th>Type</th>
+                                                    <th>Name</th>
+                                                    <th class="text-center">Status</th>
+
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                               <tr>
+                                                    <td class="text-center">1</td>
+                                                    <td> 10/2/18 10:00 AM </td>
+                                                    <td> Customer </td>
+                                                    <td> Jenna Fischer </td>
+                                                    <td class="text-center"><span class="label label-primary">Completed</span></td>
+                                                    <td class="text-center"><span class="label label-primary">T25.00</span></td>
+                                                </tr>
+                                                <!--<script>
+                                         var recentAppointments = snapsotresponse.RecentAppointments;
+                                          for ( var i in recentAppointments) {
+                                                document.write('<tr>');
+                                                    document.write('<td class="text-center">' + i +1  + '</td>');
+                                                    document.write('<td>'  + recentAppointments[i].Date +  '</td>');
+                                                    document.write('<td>' + recentAppointments[i].PartyType  + '</td>');
+                                                    document.write('<td> '+ recentAppointments[i].AppointmentTo + ' </td>');
+                                                    document.write('<td class="text-center"><span class="label label-primary">'+ recentAppointments[i].Status + '</span></td>');
+
+                                                document.write('</tr>');
+                                          }
+                                            </script>-->
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- PORTLET 2 END -->
+                    <!-- PORTLET 3 -->
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>Sales Area Wise</h5>
+                                    <div class="ibox-tools">
+                                        <a class="collapse-link">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                        <a class="close-link">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="ibox-content">
+                                    <table class="table table-hover no-margins">
+                                        <thead>
+                                        <tr>
+                                            <th>Area</th>
+                                            <th>Value</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Scranton</td>
+                                            <td>Feb-2018</td>
+                                            <td class="text-center"><span class="label label-primary">4500.00</span></td>
+                                        </tr>
+                                        <!--<script>
+                                        var storeSales = snapsotresponse.StoreSales;
+                                        for ( var i in storeSales) {
+                                            document.write('<tr>');
+                                            document.write('<td>'+storeSales[i].Store + '</td>');
+                                            document.write('<td class="text-navy"> <i class="fa fa-level-up"></i>' + storeSales[i].Value +  '</td>');
+                                            document.write('</tr>');
+                                        }
+                                        </script>-->
+
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- PORTLET 3 END -->
+
+                        <!-- PORTLET 4 -->
+                        <div class="col-lg-6">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>Product wise Sales</h5>
+                                    <div class="ibox-tools">
+                                        <a class="collapse-link">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                        <a class="close-link">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="ibox-content">
+                                    <table class="table table-hover no-margins">
+                                        <thead>
+                                        <tr>
+                                            <th>Item</th>
+                                            <th>Value</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td><small>Area1</small></td>
+                                            <td>Product 1</td>
+
+                                            <td class="text-navy"> <i class="fa fa-level-up"></i> 25000 </td>
+                                        </tr>
+                                       <!-- <script>
+                                        var itemSales = snapsotresponse.ItemSales;
+                                        for ( var i in itemSales) {
+                                            document.write('<tr>');
+                                            document.write('<td>'+itemSales[i].Item + '</td>');
+                                            document.write('<td class="text-navy"> <i class="fa fa-level-up"></i>' + itemSales[i].Value +  '</td>');
+                                            document.write('</tr>');
+                                        }
+                                        </script>-->
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- PORTLET 4 END -->
+                    </div>
+
+                </div>
+
+
+            </div>
+        </div>
+        <!-- CONTENT SECTION END -->
+        <!--<div class="footer">
+            <div>
+                <strong>Copyright</strong> Primus Solution Ltd © 2017-2018
+            </div>
+        </div>-->
+    </div>
+    <div id="right-sidebar" class="sidebar-close">
+        <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;">
+            <div class="sidebar-container" style="overflow: hidden; width: auto; height: 100%;">
+
+                <ul class="nav nav-tabs navs-2">
+
+                    <li class="active"><a data-toggle="tab" href="http://webapplayers.com/inspinia_admin-v2.7.1/dashboard_2.html#tab-1" aria-expanded="true">
+                        Actions
+                    </a></li>
+                    <li class=""><a data-toggle="tab" href="http://webapplayers.com/inspinia_admin-v2.7.1/dashboard_2.html#tab-2" aria-expanded="false">
+                        Administration
+                    </a></li>
+                </ul>
+
+                <div class="tab-content">
+
+                    <div id="tab-1" class="tab-pane active">
+
+                        <div class="sidebar-title">
+                            <h3> <i class="fa fa-comments-o"></i>Company Actions</h3>
+                        </div>
+
+                        <ul class="sidebar-list">
+                            <li><a href="http://webapplayers.com/inspinia_admin-v2.7.1/index.html">Agents</a></li>
+                            <li class="active"><a href="http://webapplayers.com/inspinia_admin-v2.7.1/dashboard_2.html">Dashboard v.2</a></li>
+                            <li><a href="http://webapplayers.com/inspinia_admin-v2.7.1/dashboard_3.html">Dashboard v.3</a></li>
+                            <li><a href="http://webapplayers.com/inspinia_admin-v2.7.1/dashboard_4_1.html">Dashboard v.4</a></li>
+                            <li><a href="http://webapplayers.com/inspinia_admin-v2.7.1/dashboard_5.html">Dashboard v.5 </a></li>
+                        </ul>
+
+                    </div>
+
+                    <div id="tab-2" class="tab-pane">
+
+                        <div class="sidebar-title">
+                            <h3> <i class="fa fa-cube"></i>Administration</h3>
+                        </div>
+
+                        <ul class="sidebar-list">
+                            <li><a href="http://webapplayers.com/inspinia_admin-v2.7.1/index.html">Admin</a></li>
+                            <li class="active"><a href="http://webapplayers.com/inspinia_admin-v2.7.1/dashboard_2.html">Stockist</a></li>
+                            <li><a href="http://webapplayers.com/inspinia_admin-v2.7.1/dashboard_3.html">Agents</a></li>
+                            <li><a href="http://webapplayers.com/inspinia_admin-v2.7.1/dashboard_4_1.html">Manager</a></li>
+                            <li><a href="http://webapplayers.com/inspinia_admin-v2.7.1/dashboard_5.html">Operations</a></li>
+                            <li><a href="http://webapplayers.com/inspinia_admin-v2.7.1/dashboard_5.html">Finance</a></li>
+                        </ul>
+
+                    </div>
+                </div>
+
+            </div><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 510.989px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.4; z-index: 90; right: 1px;"></div></div>
+
+
+
+    </div>
+</div>
+
+<!-- Mainly scripts -->
+<script src="../script/jquery-3.1.1.min.js.download"></script>
+<script src="../script/bootstrap.min.js.download"></script>
+<script src="../script/jquery.metisMenu.js.download"></script>
+<script src="../script/jquery.slimscroll.min.js.download"></script>
+
+<!-- Flot -->
+<script src="../script/jquery.flot.js.download"></script>
+<script src="../script/jquery.flot.tooltip.min.js.download"></script>
+<script src="../script/jquery.flot.spline.js.download"></script>
+<script src="../script/jquery.flot.resize.js.download"></script>
+<script src="../script/jquery.flot.pie.js.download"></script>
+<script src="../script/jquery.flot.symbol.js.download"></script>
+<script src="../script/jquery.flot.time.js.download"></script>
+
+<!-- Peity -->
+<script src="../script/jquery.peity.min.js.download"></script>
+<script src="../script/peity-demo.js.download"></script>
+
+<!-- Custom and plugin javascript -->
+<script src="../script/inspinia.js.download"></script>
+<script src="../script/pace.min.js.download"></script>
+
+<!-- jQuery UI -->
+<script src="../script/jquery-ui.min.js.download"></script>
+
+<!-- Jvectormap -->
+<script src="../script/jquery-jvectormap-2.0.2.min.js.download"></script>
+<script src="../script/jquery-jvectormap-world-mill-en.js.download"></script>
+
+<!-- EayPIE -->
+<script src="../script/jquery.easypiechart.js.download"></script>
+
+<!-- Sparkline -->
+<script src="../script/jquery.sparkline.min.js.download"></script>
+
+<!-- Sparkline demo data  -->
+<script src="../script/sparkline-demo.js.download"></script>
+
+<!-- font-awesome -->
+<script defer src="../script/font-awesome-all.js"></script>
+<script>
+        $(document).ready(function() {
+            $('.chart').easyPieChart({
+                barColor: '#f8ac59',
+//                scaleColor: false,
+                scaleLength: 5,
+                lineWidth: 4,
+                size: 80
+            });
+
+            $('.chart2').easyPieChart({
+                barColor: '#1c84c6',
+//                scaleColor: false,
+                scaleLength: 5,
+                lineWidth: 4,
+                size: 80
+            });
+
+            var data2 = [
+                [gd(2012, 1, 1), 7], [gd(2012, 1, 2), 6], [gd(2012, 1, 3), 4], [gd(2012, 1, 4), 8],
+                [gd(2012, 1, 5), 9], [gd(2012, 1, 6), 7], [gd(2012, 1, 7), 5], [gd(2012, 1, 8), 4],
+                [gd(2012, 1, 9), 7], [gd(2012, 1, 10), 8], [gd(2012, 1, 11), 9], [gd(2012, 1, 12), 6],
+                [gd(2012, 1, 13), 4], [gd(2012, 1, 14), 5], [gd(2012, 1, 15), 11], [gd(2012, 1, 16), 8],
+                [gd(2012, 1, 17), 8], [gd(2012, 1, 18), 11], [gd(2012, 1, 19), 11], [gd(2012, 1, 20), 6],
+                [gd(2012, 1, 21), 6], [gd(2012, 1, 22), 8], [gd(2012, 1, 23), 11], [gd(2012, 1, 24), 13],
+                [gd(2012, 1, 25), 7], [gd(2012, 1, 26), 9], [gd(2012, 1, 27), 9], [gd(2012, 1, 28), 8],
+                [gd(2012, 1, 29), 5], [gd(2012, 1, 30), 8], [gd(2012, 1, 31), 25]
+            ];
+
+            var data3 = [
+                [gd(2012, 1, 1), 800], [gd(2012, 1, 2), 500], [gd(2012, 1, 3), 600], [gd(2012, 1, 4), 700],
+                [gd(2012, 1, 5), 500], [gd(2012, 1, 6), 456], [gd(2012, 1, 7), 800], [gd(2012, 1, 8), 589],
+                [gd(2012, 1, 9), 467], [gd(2012, 1, 10), 876], [gd(2012, 1, 11), 689], [gd(2012, 1, 12), 700],
+                [gd(2012, 1, 13), 500], [gd(2012, 1, 14), 600], [gd(2012, 1, 15), 700], [gd(2012, 1, 16), 786],
+                [gd(2012, 1, 17), 345], [gd(2012, 1, 18), 888], [gd(2012, 1, 19), 888], [gd(2012, 1, 20), 888],
+                [gd(2012, 1, 21), 987], [gd(2012, 1, 22), 444], [gd(2012, 1, 23), 999], [gd(2012, 1, 24), 567],
+                [gd(2012, 1, 25), 786], [gd(2012, 1, 26), 666], [gd(2012, 1, 27), 888], [gd(2012, 1, 28), 900],
+                [gd(2012, 1, 29), 178], [gd(2012, 1, 30), 555], [gd(2012, 1, 31), 993]
+            ];
+
+
+            var dataset = [
+                {
+                    label: "Number of orders",
+                    data: data3,
+                    color: "#1ab394",
+                    bars: {
+                        show: true,
+                        align: "center",
+                        barWidth: 24 * 60 * 60 * 600,
+                        lineWidth:0
+                    }
+
+                }, {
+                    label: "Payments",
+                    data: data2,
+                    yaxis: 2,
+                    color: "#1C84C6",
+                    lines: {
+                        lineWidth:1,
+                            show: true,
+                            fill: true,
+                        fillColor: {
+                            colors: [{
+                                opacity: 0.2
+                            }, {
+                                opacity: 0.4
+                            }]
+                        }
+                    },
+                    splines: {
+                        show: false,
+                        tension: 0.6,
+                        lineWidth: 1,
+                        fill: 0.1
+                    },
+                }
+            ];
+
+
+            var options = {
+                xaxis: {
+                    mode: "time",
+                    tickSize: [3, "day"],
+                    tickLength: 0,
+                    axisLabel: "Date",
+                    axisLabelUseCanvas: true,
+                    axisLabelFontSizePixels: 12,
+                    axisLabelFontFamily: 'Arial',
+                    axisLabelPadding: 10,
+                    color: "#d5d5d5"
+                },
+                yaxes: [{
+                    position: "left",
+                    max: 1070,
+                    color: "#d5d5d5",
+                    axisLabelUseCanvas: true,
+                    axisLabelFontSizePixels: 12,
+                    axisLabelFontFamily: 'Arial',
+                    axisLabelPadding: 3
+                }, {
+                    position: "right",
+                    clolor: "#d5d5d5",
+                    axisLabelUseCanvas: true,
+                    axisLabelFontSizePixels: 12,
+                    axisLabelFontFamily: ' Arial',
+                    axisLabelPadding: 67
+                }
+                ],
+                legend: {
+                    noColumns: 1,
+                    labelBoxBorderColor: "#000000",
+                    position: "nw"
+                },
+                grid: {
+                    hoverable: false,
+                    borderWidth: 0
+                }
+            };
+
+            function gd(year, month, day) {
+                return new Date(year, month - 1, day).getTime();
+            }
+
+            var previousPoint = null, previousLabel = null;
+
+            $.plot($("#flot-dashboard-chart"), dataset, options);
+
+            var mapData = {
+                "US": 298,
+                "SA": 200,
+                "DE": 220,
+                "FR": 540,
+                "CN": 120,
+                "AU": 760,
+                "BR": 550,
+                "IN": 200,
+                "GB": 120,
+            };
+
+            $('#world-map').vectorMap({
+                map: 'world_mill_en',
+                backgroundColor: "transparent",
+                regionStyle: {
+                    initial: {
+                        fill: '#e4e4e4',
+                        "fill-opacity": 0.9,
+                        stroke: 'none',
+                        "stroke-width": 0,
+                        "stroke-opacity": 0
+                    }
+                },
+
+                series: {
+                    regions: [{
+                        values: mapData,
+                        scale: ["#1ab394", "#22d6b1"],
+                        normalizeFunction: 'polynomial'
+                    }]
+                },
+            });
+        });
+    </script>
+
+
+<script>
+    // Config box
+
+    // Enable/disable fixed top navbar
+
+    // Enable/disable boxed layout
+    $('#boxedlayout').click(function (){
+        if ($('#boxedlayout').is(':checked')){
+            $("body").addClass('boxed-layout');
+            $('#fixednavbar').prop('checked', false);
+            $('#fixednavbar2').prop('checked', false);
+            $(".navbar-fixed-top").removeClass('navbar-fixed-top').addClass('navbar-static-top');
+            $("body").removeClass('fixed-nav');
+            $("body").removeClass('fixed-nav-basic');
+            $(".footer").removeClass('fixed');
+            $('#fixedfooter').prop('checked', false);
+
+            if (localStorageSupport){
+                localStorage.setItem("fixednavbar",'off');
+            }
+
+            if (localStorageSupport){
+                localStorage.setItem("fixednavbar2",'off');
+            }
+
+            if (localStorageSupport){
+                localStorage.setItem("fixedfooter",'off');
+            }
+
+
+            if (localStorageSupport){
+                localStorage.setItem("boxedlayout",'on');
+            }
+        } else{
+            $("body").removeClass('boxed-layout');
+
+            if (localStorageSupport){
+                localStorage.setItem("boxedlayout",'off');
+            }
+        }
+    });
+
+    // Enable/disable fixed footer
+    $('#fixedfooter').click(function (){
+        if ($('#fixedfooter').is(':checked')){
+            $('#boxedlayout').prop('checked', false);
+            $("body").removeClass('boxed-layout');
+            $(".footer").addClass('fixed');
+
+            if (localStorageSupport){
+                localStorage.setItem("boxedlayout",'off');
+            }
+
+            if (localStorageSupport){
+                localStorage.setItem("fixedfooter",'on');
+            }
+        } else{
+            $(".footer").removeClass('fixed');
+
+            if (localStorageSupport){
+                localStorage.setItem("fixedfooter",'off');
+            }
+        }
+    });
+
+    // SKIN Select
+    $('.spin-icon').click(function (){
+        $(".theme-config-box").toggleClass("show");
+    });
+
+    // Default skin
+    $('.s-skin-0').click(function (){
+        $("body").removeClass("skin-1");
+        $("body").removeClass("skin-2");
+        $("body").removeClass("skin-3");
+    });
+
+    // Blue skin
+    $('.s-skin-1').click(function (){
+        $("body").removeClass("skin-2");
+        $("body").removeClass("skin-3");
+        $("body").addClass("skin-1");
+    });
+
+    // Inspinia ultra skin
+    $('.s-skin-2').click(function (){
+        $("body").removeClass("skin-1");
+        $("body").removeClass("skin-3");
+        $("body").addClass("skin-2");
+    });
+
+    // Yellow skin
+    $('.s-skin-3').click(function (){
+        $("body").removeClass("skin-1");
+        $("body").removeClass("skin-2");
+        $("body").addClass("skin-3");
+    });
+
+    if (localStorageSupport){
+        var collapse = localStorage.getItem("collapse_menu");
+        var fixedsidebar = localStorage.getItem("fixedsidebar");
+        var fixednavbar = localStorage.getItem("fixednavbar");
+        var fixednavbar2 = localStorage.getItem("fixednavbar2");
+        var boxedlayout = localStorage.getItem("boxedlayout");
+        var fixedfooter = localStorage.getItem("fixedfooter");
+
+        if (collapse == 'on'){
+            $('#collapsemenu').prop('checked','checked')
+        }
+        if (fixedsidebar == 'on'){
+            $('#fixedsidebar').prop('checked','checked')
+        }
+        if (fixednavbar == 'on'){
+            $('#fixednavbar').prop('checked','checked')
+        }
+        if (fixednavbar2 == 'on'){
+            $('#fixednavbar2').prop('checked','checked')
+        }
+        if (boxedlayout == 'on'){
+            $('#boxedlayout').prop('checked','checked')
+        }
+        if (fixedfooter == 'on') {
+            $('#fixedfooter').prop('checked','checked')
+        }
+    }
+
+</script></body></html>

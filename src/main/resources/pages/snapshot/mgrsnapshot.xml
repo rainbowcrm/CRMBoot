@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Page id="mgrsnapshot" showinFrame="true" title="Manager Snapshot  | Primus CRM"
+      Controller="com.rainbow.crm.snapshot.controller.SnapShotController">
+    <Template type="StaticHTML" ></Template>
+    <HTMLFile>./snapshot/mgrsnapshot.html</HTMLFile>
+</Page>
